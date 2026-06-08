@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesias — Villa Nueva y Sur · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="directorio.css">
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Municipios</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Arquidiócesis de Guatemala</p>
+    <h1 class="page-title">Villa Nueva <em>&amp; Sur</em></h1>
+    <p class="page-sub">Villa Nueva · San Miguel Petapa · Villa Canales · Fraijanes</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+  <div class="search-wrap"><input type="text" id="buscador" placeholder="🔍  Buscar por nombre o colonia..." oninput="filtrar('buscador','lista')"></div>
+  <div class="nota">⚠️ Horarios sujetos a cambio. Fuente: <a href="https://directorio.arzobispadodeguatemala.org" target="_blank">Arzobispado de Guatemala</a></div>
+  <div id="lista"></div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script src="directorio.js"></script>
+<script>
+const secciones = [
+  { label: 'Villa Nueva — El Mezquital (Zona 12)', items: [
+    {nombre:'Parroquia Dios con Nosotros — El Mezquital',cong:'Orden de Frailes Menores OFM (Franciscanos)',dir:'1a. Av. entre 5a. y 6a. Calle, El Mezquital, Z.12, Villa Nueva',oficina:'Lun–Vie 7:30–13:00 y 14:00–16:30 · Sáb 8:00–12:00',misas:'Jue: 19:00 | Sáb: 18:00 | Dom: 7:00 · 11:00',conf:'Jue: 9:00 (todo el día)',hs:'Jue: 18:00',tel:'24772076 · 51997235',mail:'parroquiadiosconnosotros@hotmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. José Luis De Paz Piril, O.F.M.',info:'Guatemalteco · Ord. 13/06/1998'},{cargo:'VICARIO',nombre:'R.P. Germán Faustino Tax Bulux, O.F.M.',info:'Guatemalteco · Ord. 18/11/1995'},{cargo:'VICARIO',nombre:'R.P. Héctor Balmaceda Ramírez, O.F.M.',info:'Nicaragüense · Ord. 28/01/1995'}],
+    filiales:[{n:'Santa María del Camino, Villa Lobos I',d:'22 Calle 3-95, Col. Villa Lobos 1, Z.12',h:'Jue 19:00 · Dom 7:00 · 18:00 | HS: Jue 7:00 (exp.) y 18:00'},{n:'San Francisco de Asís',d:'Las Margaritas, El Búcaro',h:'Jue 19:00 · Dom 9:00'}]}
+  ]},
+
+  { label: 'Villa Nueva — Zona 11 (Castañas / Villalobos)', items: [
+    {nombre:'Parroquia San Francisco Javier (Castañas)',cong:'Presbítero diocesano',dir:'51 Calle 1-39, Zona 11, Villa Nueva',oficina:'Mar–Vie 9:00–13:00 y 15:00–18:00 · Sáb 9:00–13:00',misas:'Mar–Sáb: 18:00 | Dom: 8:00 · 12:00 · 18:00',conf:'Mar–Vie: 17:45 · Dom: 18:45',hs:'Jue: 17:00',tel:'24773745',mail:'rtunchesaguilar@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Cristian Alexander López Morales',info:'Guatemalteco · Ord. 21/12/2019'}],
+    filiales:[{n:'La Anunciación',d:'Colinas de Monte María, Villa Nueva',h:'Dom 10:00 | HS: Jue 18:00 | Conf: Dom 9:45 y 18:45'}]},
+
+    {nombre:'Parroquia Jesucristo Resucitado (Villalobos II)',cong:'Presbítero diocesano',dir:'3 Avenida 52-00, Villa Lobos II, Zona 12, Villa Nueva',oficina:'Lun–Sáb 15:00–19:00 (Miércoles cerrado)',misas:'Lun–Sáb: 19:00 | Dom: 7:00 · 9:00 · 11:00 · 17:00',hs:'Jue: 18:00',tel:'24798492',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Mario Tubac Cuxé',info:'Guatemalteco · Ord. 10/08/2002'}],filiales:[]}
+  ]},
+
+  { label: 'Villa Nueva — Los Planes (Zona 5 VN)', items: [
+    {nombre:'Parroquia Ntra. Sra. Virgen de Guadalupe (Los Planes)',cong:'Padres Diocesanos (Catecúmenos)',dir:'7a. Calle 6-87, Zona 5, Los Planes, Villa Nueva',oficina:'Mar–Vie 16:00–19:00',misas:'Mar,Jue,Vie: 18:00 | Dom: 7:00 · 8:30 · 10:00',conf:'Mar,Mié,Vie: 17:00',hs:'Jue: 17:00',tel:'66105070',mail:'nsvdeguadalupe@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Noé de Jesús Chévez Reyes',info:'Guatemalteco · Ord. 03/06/1995'},{cargo:'VICARIO',nombre:'R.P. Antonio Godino Córcoles',info:'Español · Ord. 14/09/1985'},{cargo:'COLABORADOR',nombre:'R.P. José Mauricio Méndez Rivera',info:'Salvadoreño · Ord. 29/06/1996'}],
+    filiales:[{n:'Ntra. Sra. Virgen del Pilar (Alioto)',d:'Villa Nueva',h:'Lun,Mié,Vie 18:00 | HS: Jue 17:00'},{n:'Exaltación de la Santa Cruz (Mártires)',d:'Villa Nueva',h:'Mar,Jue 18:00 | HS: Jue 17:00'},{n:'El Señor de las Misericordias (Primavera)',d:'Villa Nueva',h:'Jue 19:00 | HS: Jue 18:00'},{n:'Ntra. Sra. del Rosario (Renacimiento)',d:'Villa Nueva',h:'Dom 11:30 (una vez al mes)'}]}
+  ]},
+
+  { label: 'Villa Nueva — San José (Zona 2 VN)', items: [
+    {nombre:'Parroquia San Pedro y San Pablo (San José)',cong:'Orden de Frailes Menores Capuchinos',dir:'8va. Calle 4-61, Zona 2, San José, Villa Nueva',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Mar–Sáb: 7:00 · 18:00 | Dom: 7:00 · 9:00 · 18:00',conf:'Jue: 19:00',hs:'Jue: 19:00',tel:'6629-9099 · 5768-3385',mail:'parroquiasanpedroysanpablo1998@hotmail.com',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Andrés Rodríguez Rodríguez, O.F.M.Cap.',info:'Hondureño · Ord. 25/09/1999'},{cargo:'VICARIO',nombre:'R.P. Carlos Manuel Ramírez Ramírez, O.F.M.Cap.',info:'Guatemalteco · Ord. 05/03/2022'},{cargo:'VICARIO',nombre:'R.P. Jose Francisco Saravia Canel, O.F.M.Cap.',info:'Guatemalteco · Ord. 02/08/2021'},{cargo:'VICARIO',nombre:'R.P. Mónico Gómez Aguilera, O.F.M.Cap.',info:'Hondureño · Ord. 22/01/1994'}],
+    filiales:[{n:'Inmaculada Concepción Bárcenas',d:'Villa Nueva',h:'Dom 7:00 · 9:00 · Mar 19:00 | Conf: Jue (3er jue)'},{n:'Santa Cruz Ramírez',d:'Villa Nueva',h:'Dom 7:00 | Conf: Jue (1er jue)'},{n:'San Francisco Altos (dos y tres de Bárcenas)',d:'Villa Nueva',h:'Dom 11:00 | Conf: Jue (4to jue)'},{n:'Señor de la Divina Misericordia (Altos de Bárcenas I)',d:'Res. Altos de Bárcenas I',h:'Dom 9:00 | Conf: Jue (2do jue)'},{n:'Sagrada Familia',d:'Villa Nueva',h:'Dom 11:00'},{n:'María Auxiliadora (Lomas del Sur)',d:'Villa Nueva',h:'Sáb 19:00'},{n:'Ntra. Sra. de Guadalupe (San José El Placer)',d:'Villa Nueva',h:'Dom 11:00 · Mié 19:00'}]}
+  ]},
+
+  { label: 'Villa Nueva — Santa Isabel (Zona 3 VN)', items: [
+    {nombre:'Parroquia San Juan Pablo II (Santa Isabel)',cong:'Presbítero diocesano',dir:'11 Calle 11-19, Santa Isabel II, Zona 3, Villa Nueva',oficina:'Mar–Vie 8:00–13:00 y 15:00–18:00 · Dom 8:00–12:00',misas:'Mar,Mié,Vie,Sáb: 18:00 | Jue: 9:00 · 18:00 | Dom: 9:00 · 11:00 · 17:00',conf:'Jue: 10:00–12:00 y 15:00–17:00',hs:'Jue: 10:00 · 18:00',tel:'5923-8766',mail:'parro.sanjuanpabloii@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Walter Osmundo Santizo Ordóñez',info:'Guatemalteco · Ord. 31/05/1995'}],
+    filiales:[{n:'Santa Isabel 1',d:'4 Av. 7-35, Col. Santa Isabel 1, Z.3, Villa Nueva',h:'Dom 7:00'},{n:'De Alameda Santa Clara de Asís',d:'Villa Nueva',h:'Dom 19:00 | HS: Jue 9:00 (exp. hasta 18:00)'}]}
+  ]},
+
+  { label: 'Villa Nueva — Linda Vista (Zona 4 VN)', items: [
+    {nombre:'Parroquia Medalla Milagrosa (Linda Vista)',cong:'Presbítero diocesano',dir:'14 Av. 5-22, Col. Linda Vista, Zona 4, Villa Nueva',oficina:'Mar–Sáb 8:30–12:30 y 14:30–17:00 · Dom 6:30–12:00 (Lunes cerrado)',misas:'Mar,Mié,Vie,Sáb: 18:30 | Jue: 10:30 | Dom: 7:00',conf:'Jue: 9:30',hs:'Jue: 9:30',tel:'6630-6784',mail:'parroquiamedallamilagrosa2711@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Henry Rafael Martínez Ramírez',info:'Guatemalteco · Ord. 19/01/2013'}],
+    filiales:[{n:'Ntra. Sra. de Fátima',d:'13 Av. 13-30, Asentamiento La Paz, Z.4 VN',h:'Dom 9:00 | HS: Jue 19:00'},{n:'María Auxiliadora',d:'1a. Calle 2-00, Prados de Sonora',h:'Dom 10:30 | HS: Jue 19:00'},{n:'Jesús Nazareno',d:'Prados de Linda Vista',h:'Dom 16:00 (1er dom)'}]}
+  ]},
+
+  { label: 'Villa Nueva — Naciones Unidas (Zona 10 VN)', items: [
+    {nombre:'Cuasiparroquia Divina Misericordia (Naciones Unidas)',cong:'Presbítero diocesano',dir:'10 Calle 0-09, Residencial Naciones Unidas 1, Zona 10, Villa Nueva',oficina:'Lun–Vie 9:00–12:00 y 14:00–17:00',misas:'Dom: 10:45 · 19:00 | Lun,Mar,Jue,Vie: 19:00',conf:'Dom,Lun,Mar,Jue,Vie: 19:45 (después de misa)',hs:'Jue: 18:00',tel:'6610-8354 · 47276675',mail:'cuasippdivinamisericordia2022@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Gilberto Ruiz Urízar',info:'Guatemalteco · Ord. 15/10/1994'},{cargo:'COLABORADOR',nombre:'Pbro. Jorge Luis Benítez Ortiz',info:'Salvadoreño · Ord. 25/09/2021'}],
+    filiales:[{n:'Capilla Ntra. Sra. de Candelaria (Planes de Bárcenas)',d:'Planes de Bárcenas',h:'Dom 7:00 · 18:00 | Lun,Mar,Jue,Vie 18:00 | HS: Jue 17:00'},{n:'Capilla Misericordiosísimo Jesús (Ulises Rojas)',d:'Ulises Rojas',h:'Dom 9:30 | HS: Jue 18:00'},{n:'Capilla Ntra. Sra. de Guadalupe (Plan Grande)',d:'Plan Grande',h:'Dom 8:15 | HS: Jue 17:00'}]}
+  ]},
+
+  { label: 'San Miguel Petapa', items: [
+    {nombre:'Parroquia El Sagrado Corazón de Jesús (Prados de Villa Hermosa)',cong:'Presbítero diocesano',dir:'Lote 41-42, Manzana B, Sector 6, Prados de Villa Hermosa, Zona 7, San Miguel Petapa',oficina:'Lun–Vie 8:00–12:30 y 15:00–18:00 · Sáb 8:00–12:00',misas:'Mar,Mié,Vie: 18:00 | Jue: 8:00 · 18:00 | Sáb: 17:00 | Dom: 7:00 · 11:00 · 18:00',conf:'Jue: 15:00',hs:'Jue: 9:00 (exposición todo el día)',tel:'24647900',mail:'parroquiapradosdevillahermosa@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Luis Alberto Mejia Castro',info:'Guatemalteco · Ord. 03/07/2010'}],
+    filiales:[{n:'Emiliani Somascos',d:'Sector 11, Villa Hermosa 1',h:'Dom 9:00'},{n:'Santiago Apóstol',d:'Col. Aguilar Hernández',h:'Dom 16:00'},{n:'San Lucas',d:'Sector 8, Villa Hermosa 1',h:'Sáb 18:30'}]},
+
+    {nombre:'Parroquia Ntra. Sra. de Fátima (Ribera del Río)',cong:'Presbítero diocesano',dir:'7a. Avenida 0-98, Col. Ribera del Río, Zona 13, San Miguel Petapa',oficina:'Lun–Vie 9:00–13:00 y 15:00–17:00',misas:'Lun–Vie: 18:00 | Dom: 9:00 · 11:00',conf:'Lun–Vie: 18:00',hs:'Jue: 17:00',tel:'6610-2227',mail:'pfatimariberadelrio2017@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Gustavo Antonio Montenegro Rouge',info:'Guatemalteco · Ord. 27/03/2004'}],
+    filiales:[{n:'Nuestro Señor de Esquipulas Álamos',d:'Álamos',h:'Dom 7:00 | HS: Jue 18:00'},{n:'Ntra. Sra. del Carmen Chichimecas',d:'Chichimecas',h:'Dom 7:00 | HS: Jue 18:00'}]}
+  ]},
+
+  { label: 'Villa Canales', items: [
+    {nombre:'Parroquia La Inmaculada Concepción "Boca del Monte"',cong:'Congregación Benedictina de Santa María de Monte Oliveto',dir:'3a. Av. "A" 2-01, Zona 1, Boca del Monte, Villa Canales',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun–Vie: 17:00 | Sáb: 18:00 | Dom: 6:00 · 8:00 · 10:00 · 12:00 · 17:00',conf:'Mié: 15:00',hs:'Jue: 19:00',tel:'2442-7874',ikon:'✝️',
+    sac:[{cargo:'MODERADOR',nombre:'R.P. Julio César Ola Velásquez, O.S.B.Oliv.',info:'Guatemalteco · Ord. 11/07/2003'},{cargo:'PÁRROCO',nombre:'R.P. Israel Enrique Valle Peña, O.S.B.Oliv.',info:'Salvadoreño · Ord. 12/07/2008'},{cargo:'PÁRROCO',nombre:'R.P. Juan Bautista Livar Orón, O.S.B.Oliv.',info:'Guatemalteco · Ord. 29/05/1988'}],
+    filiales:[{n:'Templo San José Las Minas El Porvenir',d:'Aldea El Porvenir',h:'Lun–Vie 16:00 · Sáb 18:00 · Dom 9:00 · 11:00 | HS: Jue 19:00'},{n:'Ntra. Sra. del Rosario Aldea El Porvenir',d:'2da. Calle 5-23, Z.3, Aldea El Porvenir',h:'Dom 7:00 · 17:00'}]},
+
+    {nombre:'Parroquia Santa Elena (Barillas)',cong:'Presbítero diocesano',dir:'3era. Av. y 4ta. Calle 3-31, Zona 1, Santa Elena Barillas, Villa Canales',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun: 18:00 | Mar,Mié,Jue,Vie,Sáb,Dom: 6:00 · 18:00',conf:'Jue: 8:30–12:00 y durante Hora Santa',hs:'Jue: 19:00',tel:'66324098 · 46914104',mail:'psantaelenadelacruz@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Julio Alfonso Hernández Ixtoco',info:'Guatemalteco · Ord. 05/04/2014'},{cargo:'VICARIO',nombre:'Pbro. José Pablo Hernández Quiñónez',info:'Guatemalteco · Ord. 30/11/2024'},{cargo:'VICARIO',nombre:'Pbro. Otto Fernando Arana Mont',info:'Guatemalteco · Ord. 04/11/2023'}],
+    filiales:[{n:'El Obrajuelo',d:'Aldea El Obrajuelo',h:'Dom 8:30 (1er y 3er dom)'},{n:'Río Negro',d:'Calle principal',h:'Dom 7:00 (1er dom)'},{n:'San José Veramina',d:'Villa Canales',h:'Dom 12:00 (2do dom) | HS: Jue 17:00'},{n:'Los Pocitos',d:'Villa Canales',h:'Dom 9:00 (dos veces al mes)'},{n:'Los Dolores',d:'Km. 20, Carretera Villa Canales',h:'Dom 8:30 (2do y 3er dom) | HS: Jue 16:00'},{n:'Santa Marta, El Jocotillo',d:'Aldea El Jocotillo',h:'Dom 10:30 | HS: Jue 16:00'},{n:'San Rafael, El Jocotillo',d:'El Jocotillo',h:'Dom 7:00 | HS: Jue 17:00'}]}
+  ]},
+
+  { label: 'Fraijanes', items: [
+    {nombre:'Parroquia El Sagrado Corazón de Jesús (Fraijanes)',cong:'Presbítero diocesano',dir:'1era. Avenida 1-30, Zona 2, Fraijanes',oficina:'Mar–Vie 9:00–13:00 y 14:00–18:00 · Sáb 9:00–13:30',misas:'Mar–Vie: 18:00 | Sáb: 18:30 | Dom: 8:30 · 11:00 · 17:00',conf:'Jue: 18:30',hs:'Jue: 18:30',tel:'6634-4028',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Iván José Vásquez Castellanos',info:'Guatemalteco · Ord. 18/10/2014'},{cargo:'VICARIO',nombre:'Pbro. Edgar Rolando Raxón Puluc',info:'Guatemalteco · Ord. 21/12/2019'}],
+    filiales:[{n:'Señor de Esquipulas (Sector San Arturo)',d:'Col. San Arturo',h:'Dom 10:00 (1er dom)'},{n:'San José',d:'Aldea Puerta del Señor',h:'Sáb 17:00'},{n:'Santa Cruz',d:'Caserío Las Crucitas',h:'Dom 10:00 (2do dom)'},{n:'Virgen de Concepción',d:'Caserío El Chocolate',h:'Dom 10:00 (3er dom)'},{n:'Inmaculada Concepción de María',d:'Aldea El Cerrito',h:'Dom 7:00'},{n:'Ntra. Sra. del Rosario',d:'Aldea Los Verdes',h:'Dom 10:00 (4to dom)'},{n:'San Bernardo (Sausalito)',d:'Sausalito',h:'Dom 12:30'}]},
+
+    {nombre:'Cuasiparroquia Ntra. Sra. de Fátima (Lo de Diéguez)',cong:'Presbítero diocesano',dir:'1a. Avenida 4-91, Zona 1, Lo de Diéguez, Fraijanes',oficina:'Mar–Vie 15:00–18:00 · Sáb 8:00–11:00',misas:'Mar: 18:30',conf:'Jue: 18:30',hs:'Jue: 18:30',tel:'6669-5331',mail:'iglesianuestrasenoradefatima@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Hugo Armando Portillo Oliva',info:'Guatemalteco · Ord. 26/09/1998'}],
+    filiales:[{n:'San Francisco (Pavón)',d:'Col. San Francisco (Pavón)',h:'Dom 8:30 | HS: Jue 18:30'},{n:'El Pino',d:'Aldea El Pino',h:'Dom 11:30 | HS: Jue 18:30'},{n:'La Anona',d:'Aldea La Anona',h:'Dom 7:00 | HS: Jue 18:30'}]}
+  ]}
+];
+
+renderSections(secciones, 'lista');
+</script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesias — Ciudad de Guatemala · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="directorio.css">
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Municipios</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Arquidiócesis de Guatemala</p>
+    <h1 class="page-title">Ciudad de <em>Guatemala</em></h1>
+    <p class="page-sub">Parroquias, rectorías y santuarios · Zonas 1–25</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+  <div class="search-wrap"><input type="text" id="buscador" placeholder="🔍  Buscar por nombre, zona o congregación..." oninput="filtrar('buscador','lista')"></div>
+  <div class="nota">⚠️ Horarios sujetos a cambio. Fuente: <a href="https://directorio.arzobispadodeguatemala.org" target="_blank">Arzobispado de Guatemala</a></div>
+  <div id="lista"></div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script src="directorio.js"></script>
+<script>
+const secciones = [
+  { label: 'Zona 1 · Centro Histórico', items: [
+    {nombre:'Parroquia El Sagrario — Catedral Metropolitana',cong:'Presbítero diocesano',dir:'7a. Avenida 6-73, Zona 1',oficina:'8:00–12:00 y 14:00–17:00',misas:'Lun–Mié, Vie: 8:00 · 12:15 | Jue: 8:00 · 12:15 · 17:00 | Sáb: 8:00 · 12:00 | Dom: 8:00 · 10:00 · 12:00 · 13:00 · 16:00',conf:'',hs:'',tel:'25046868',mail:'elsagrario.catedral@gmail.com',web:'catedralbicentenaria.org',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. José Luis Colmenares Samayoa',info:'Guatemalteco · Ord. 12/11/1988'},{cargo:'VICARIO',nombre:'Pbro. Luis René Sandoval Quinteros',info:'Guatemalteco · Ord. 20/10/2018'}],filiales:[]},
+
+    {nombre:'Parroquia Nuestra Señora de Candelaria',cong:'Presbítero diocesano',dir:'13 Avenida 1-12, Zona 1',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun–Sáb: 7:00 · 18:00 | Dom: 6:30 · 9:00 · 11:00 · 18:00',conf:'Jue 17:00 · Dom durante todas las misas (Capilla de Jesús)',hs:'Jue: 17:00',tel:'22512478 · 46976023',mail:'oficina.ns.candelaria@outlook.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Manuel de Jesús Chilín López',info:'Guatemalteco · Ord. 05/08/2000'},{cargo:'VICARIO',nombre:'Pbro. Ervin Alejandro Dardón Barillas',info:'Guatemalteco · Ord. 04/11/2023'}],filiales:[]},
+
+    {nombre:'Parroquia Nuestra Señora de Las Mercedes (La Merced)',cong:'Compañía de Jesús (Jesuitas)',dir:'5 Calle 11-73, Zona 1',oficina:'8:30–13:00 y 14:00–17:00 · Sáb 8:30–12:00',misas:'Mar, Jue, Sáb: 7:00 · 12:00 | Mié: 7:00 · 12:00 · 18:00 | Vie: 7:00 · 12:00 · 18:45 | Dom: 7:00 · 9:00 · 11:00',conf:'Mié: 7:30',hs:'Vie: 18:00',tel:'22513119 · 34815302',mail:'parroquialamercedguatemala@gmail.com',web:'iglesialamerced.gt',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. José María Andrés Vitoria, S.J.',info:'Español · Ord. 06/08/1977'},{cargo:'VICARIO',nombre:'R.P. Juan Pablo Vásquez Herrera, S.J.',info:'Guatemalteco · Ord. 28/08/2021'},{cargo:'COLABORADOR',nombre:'R.P. Ricardo Antonio Bendaña Perdomo, S.J.',info:'Guatemalteco · Ord. 14/08/1971'}],filiales:[]},
+
+    {nombre:'Parroquia Rectoral San Sebastián',cong:'Presbítero diocesano',dir:'6ta. Avenida y 2da. Calle, Zona 1',oficina:'8:00–12:30 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun: 7:00 | Mar,Jue,Vie: 7:00 · 17:00 | Mié: 7:00 · 12:00 | Sáb: 7:00 · 17:30 | Dom: 8:00 · 10:00 · 12:00 · 17:30',conf:'Mié: 17:30',hs:'Jue: 16:00',tel:'22327023',mail:'parroquiarectoralsansebastian@gmail.com',ikon:'✝️',
+    sac:[{cargo:'RECTOR',nombre:'Mons. Eddy René Calvillo Díaz',info:'Guatemalteco · Ord. 20/08/1999'},{cargo:'VICARIO',nombre:'Pbro. Marco Antonio Figueroa Ceh',info:'Guatemalteco · Ord. 31/10/1992'},{cargo:'COLABORADOR',nombre:'Pbro. Mario Venturini',info:'Italiano · Ord. 14/05/1978'}],filiales:[]},
+
+    {nombre:'Parroquia Nuestra Señora de Las Victorias',cong:'Presbítero diocesano',dir:'20 Avenida 1-95, Colonia Las Victorias, Zona 1',oficina:'Lun–Vie 8:00–13:00 y 14:00–16:00',misas:'Lun,Mar,Mié,Vie,Sáb: 18:00 | Jue: 19:00 | Dom: 9:00',conf:'Jue y Vie: 15:30',hs:'Jue: 18:00',tel:'22214373',mail:'parlasvictorias@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Willemsen Jarizhiño Hernández Pirir',info:'Guatemalteco · Ord. 20/10/2018'}],
+    filiales:[{n:'Iglesia Ntra. Sra. de los Ángeles',d:'2da. Calle 23-30, Z.6, Col. Los Ángeles',h:'Dom 7:00'},{n:'Iglesia Ntra. Sra. del Carmen',d:'2da. Calle 26-00, Z.6, El Carmen',h:'Dom 11:00'}]},
+
+    {nombre:'El Santísimo Nombre de Jesús (La Recolección)',cong:'Presbítero diocesano',dir:'3 Avenida 2-24, Zona 1',oficina:'Lun–Vie 8:00–13:00 y 14:00–17:00',misas:'Lun,Mar,Mié,Sáb: 7:00 | Jue,Vie: 7:00 · 17:00 | Dom: 7:00 · 9:00 · 12:00',conf:'Jue y Vie: 15:30',hs:'Jue: 15:00',tel:'22515087 · 53207488',mail:'psnjesusreco@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Julio Alejandro Barrios Azurdia',info:'Guatemalteco · Ord. 12/04/2008'}],
+    filiales:[{n:'San Rafael — Interior Hospital San Juan de Dios',d:'1A Avenida 10-50, Z.1',h:'Consultar con la parroquia'}]},
+
+    {nombre:'Parroquia Nuestra Señora de los Remedios (El Calvario)',cong:'Presbítero diocesano',dir:'6a. Avenida "A" 18-36, Zona 1',oficina:'Lun–Vie 9:00–12:00 y 14:00–17:00 · Sáb 9:00–12:00',misas:'Lun–Sáb: 7:00 · 17:00 | Dom: 7:00 · 8:30 · 10:00 · 12:00 · 16:00 · 17:30',conf:'Jue: 6:15 · 9:00–12:00 · 15:00',hs:'Jue: 16:00 · 16:30',tel:'22326424 · 4790-1411',mail:'parroquiaelcalvario1932@hotmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Francisco Raymundo Pop',info:'Guatemalteco · Ord. 02/02/2013'}],filiales:[]},
+
+    {nombre:'Parroquia Santo Domingo de Guzmán — Basílica Ntra. Sra. del Rosario',cong:'Orden de Predicadores (Dominicos)',dir:'12 Avenida 10-09, Zona 1',oficina:'Lun–Vie 9:00–13:00 y 14:00–18:00 · Sáb 9:00–13:00',misas:'Lun–Vie: 7:00 · 12:00 · 18:30 | Sáb: 18:30 | Dom: 6:30 · 8:00 · 12:00 · 16:30 · 18:30',conf:'Mar–Vie: 15:00 | Dom: 9:30',hs:'Jue: 19:30',tel:'2502-2727 · 5628-0420',mail:'parroquiasantodomingo.op@gmail.com',web:'basilicadelrosario.gt',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Geovany Alexander Molina Ramírez, O.P.',info:'Guatemalteco · Ord. 24/04/2021'},{cargo:'VICARIO',nombre:'R.P. Martín Illescas Hernández, O.P.',info:'Guatemalteco · Ord. 01/05/2004'},{cargo:'COLABORADOR',nombre:'R.P. José Luis Burguet Huerta, O.P.',info:'Español · Ord. 16/12/1967'}],filiales:[]},
+
+    {nombre:'Parroquia del Señor de las Misericordias',cong:'Congregación de la Misión (Vicentinos)',dir:'1ra. Avenida 11-02, Zona 1',oficina:'Lun–Vie 8:00–12:00 y 14:00–18:00',misas:'Dom: 7:00 · 9:00 · 11:00 · 18:00 | Lun: 7:00 · 12:00 · 20:00 | Mar–Sáb: 7:00 · 18:00',conf:'Lun–Sáb: 8:15',hs:'Lun: 6:00',tel:'22329723',mail:'p.delasmisericordias@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. José María Rivera Corrales, C.M.',info:'Panameño · Ord. 12/05/2001'},{cargo:'VICARIO',nombre:'R.P. José Francisco Ramos, C.M.',info:'Salvadoreño · Ord. 17/12/1983'}],
+    filiales:[{n:'Santuario de Guadalupe',d:'1 Avenida 8 Calle, Z.1',h:'Mar–Sáb: 7:00 · 17:00 | Dom: 7:00 · 10:00 · 17:00 | Hora Santa Jue 16:00'},{n:'Casa Central',d:'2da. Avenida 13-12, Z.1',h:'Sáb 7:00 · Dom 8:00'},{n:'El Niño de Praga',d:'13 Calle 0-18, Z.1',h:'Consultar con la parroquia'}]},
+
+    {nombre:'Parroquia Santa María Magdalena',cong:'Presbítero diocesano',dir:'14 Avenida 19-27, Zona 1',oficina:'Lun–Vie 16:00–18:00',misas:'Dom: 7:00 · 9:00 · 11:00 · 18:00 | Lun–Sáb: 18:00 (Mié: solo celebración de la Palabra)',hs:'Jue: 17:00',tel:'23084357 · 32080672',mail:'santamariamagdalenagt1@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Carlos Enrique Pirir Ávila',info:'Guatemalteco · Ord. 07/10/1994'}],filiales:[]},
+
+    {nombre:'Rectoría Santa Rosa',cong:'Presbítero diocesano',dir:'Zona 1 (Oficinas de Catedral)',oficina:'Ver El Sagrario',misas:'Dom: 9:00 · 11:00 | Lun y Jue: 10:00',hs:'Lun y Jue: 9:00',tel:'25046868',mail:'elsagrario.catedral@gmail.com',ikon:'🌸',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. José Luis Colmenares Samayoa',info:'Guatemalteco · Ord. 12/11/1988'}],filiales:[]},
+
+    {nombre:'Rectoría Santa Clara',cong:'Presbítero diocesano',dir:'6ta. Avenida 13 Calle, Zona 1',oficina:'Ver La Recolección',misas:'Jue: 12:30',conf:'Jue: 13:00',hs:'Diario: 7:00–17:00 (Exposición del Santísimo)',tel:'22515087 · 53207488',mail:'psnjesusreco@gmail.com',ikon:'🕯️',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. Julio Alejandro Barrios Azurdia',info:'Guatemalteco · Ord. 12/04/2008'}],filiales:[]},
+
+    {nombre:'Rectoría San Agustín',cong:'Presbítero diocesano',dir:'11 Calle 4-45, Zona 1',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Mar–Sáb: 12:15 | Dom: 9:00 · 12:00',conf:'Lun–Sáb: antes y después de misa',hs:'Dom: 10:00 (3er domingo de mes)',tel:'2232-7129 · 46271553',mail:'rectoriasanagustin2026@gmail.com',ikon:'✝️',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. Erwin Federico García Arandi',info:'Guatemalteco · Ord. 21/09/1975'}],filiales:[]},
+
+    {nombre:'Rectoría de San Francisco',cong:'Orden de Frailes Menores Conventuales',dir:'13 Calle 6-44, Zona 1',oficina:'Lun–Vie 8:00–16:00',misas:'Mar–Vie: 7:00 · 17:00 | Sáb: 17:00 | Dom: 8:00 · 10:00 · 12:00 · 17:00',conf:'Jue: 7:00 · 16:00',hs:'Jue: 7:00 (exposición)',tel:'2232-3625 · 3767-4417',mail:'rectoriasanfransisco20@gmail.com',ikon:'✝️',
+    sac:[{cargo:'RECTOR',nombre:'R.P. Isidoro Mejia Hernandez, O.F.M.Conv.',info:'Costarricense · Ord. 07/10/2000'},{cargo:'VICARIO',nombre:'R.P. Antonio Enrique Sandoval Poveda, O.F.M.Conv.',info:'Costarricense · Ord. 12/05/2018'},{cargo:'VICARIO',nombre:'R.P. Marcio Rolando Matute Berde, O.F.M.Conv.',info:'Hondureño · Ord. 18/12/1993'}],filiales:[]},
+
+    {nombre:'Rectoría Beatas de Belén',cong:'Presbítero diocesano',dir:'14 Calle 9-30, Zona 1',oficina:'Lun, Mié y Vie: 9:00–14:00',misas:'Dom: 10:00',hs:'Jue: 18:00',tel:'2232-3605 · 3804-9644',mail:'inscripciones@beateriodebelen.com',web:'www.beateriodebelen.com',ikon:'🌸',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. Marco Aurelio González Iriarte',info:'Guatemalteco · Ord. 21/12/1962'}],filiales:[]},
+
+    {nombre:'Santuario Arquidiocesano del Señor San José',cong:'Presbítero diocesano',dir:'13 Avenida 4-87, Zona 1',oficina:'Lun–Vie 9:00–12:30 y 14:00–16:00',misas:'Dom: 8:00 · 10:30 | Vie: 10:00 · 19:00 (el día 19 de cada mes: 18:00 y 19:00)',tel:'22516546',ikon:'⛪',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. José Luis Colmenares Samayoa',info:'Guatemalteco · Ord. 12/11/1988'}],filiales:[]},
+
+    {nombre:'Rectoría Ntra. Sra. del Carmen (8va. Calle)',cong:'Presbítero diocesano',dir:'8 Av. 10 Calle, Zona 1',oficina:'Lun–Vie 8:00–12:00 y 14:30–16:00',misas:'Mar–Vie: 7:15 | Dom: 11:00 · 12:30',hs:'Diario: 7:00 (exposición todo el día)',tel:'2232-8717',mail:'rectoria.del.carme@gmail.com',ikon:'🌸',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. Abel Abraham García Méndez',info:'Guatemalteco · Ord. 08/04/1995'}],filiales:[]},
+
+    {nombre:'Rectoría Santuario Ntra. Sra. del Carmen (Cerrito del Carmen)',cong:'Presbítero diocesano',dir:'12 Av. Final y 2a. Calle, Zona 1',oficina:'Lun–Dom 7:00–17:00',misas:'Mar–Vie: 7:00 | Dom: 7:00 · 9:00 · 11:00 · 16:00',conf:'Jue: 7:00–12:00',hs:'Jue: 7:00 (exposición todo el día)',tel:'22324687 · 41294740',mail:'santuariocerritoelcarmen@gmail.com',ikon:'⛪',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. Edwin David Muñoz Fajardo',info:'Guatemalteco · Ord. 17/12/1994'}],filiales:[]},
+
+    {nombre:'Rectoría Santa Catalina',cong:'Presbítero diocesano',dir:'5a Calle 3-61, Zona 1',oficina:'Lun–Vie 8:00–13:00 y 14:00–16:30',misas:'Lun–Vie: 7:00 | Dom: 11:00 · 12:30 · 17:00',tel:'2232-0849 · 5780-1053',ikon:'✝️',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. Manuel Armando Abac Morales',info:'Guatemalteco · Ord. 27/04/2002'}],filiales:[]},
+
+    {nombre:'Rectoría de Belén',cong:'Presbítero diocesano',dir:'13 Calle 10 Av., Zona 1',oficina:'Lun–Sáb 10:00–12:00 y 15:30–17:30',misas:'Dom: 6:30 · 10:00 · 19:00',hs:'Diario: 10:00–18:00 (exposición)',tel:'2232-4474 · 4829-0393',mail:'misteriobelen2011@hatmail.com',ikon:'🕯️',filiales:[],sac:[]},
+
+    {nombre:'Rectoría Ntra. Sra. de la Medalla Milagrosa',cong:'Congregación de la Misión (Vicentinos)',dir:'2da Av. A 13-12, Zona 1',oficina:'Lun–Vie 8:00–12:00 (también clínica popular y comedor)',misas:'Lun–Vie: 17:00 | Sáb: 7:00 | Dom: 8:00',conf:'Lun–Vie: 16:00',hs:'Jue: 18:00',tel:'22322323 · 60175977',mail:'capilladelamedallamilagrosa87@gmail.com',ikon:'🌸',
+    sac:[{cargo:'RECTOR',nombre:'R.P. José María Rivera Corrales, C.M.',info:'Panameño · Ord. 12/05/2001'}],filiales:[]},
+
+    {nombre:'Parroquia Santuario Nacional al Sagrado Corazón (Santa Cecilia / Don Bosco)',cong:'Salesianos de Don Bosco',dir:'26 Calle y Avenida Santa Cecilia, Zona 1',oficina:'7:00–11:50 y 13:00–15:45',misas:'Lun–Vie: 6:15 · 18:00 | Sáb: 6:30 | Dom: 7:00 · 9:00 · 11:00 · 17:00',conf:'Jue: 18:00',tel:'22465143',mail:'doli_herrera@donbosco.edu.gt',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Luis Ángel Gómez Araya, S.D.B.',info:'Hondureño · Ord. 05/11/1988'},{cargo:'VICARIO',nombre:'R.P. César Augusto Gutiérrez Nicaragua, S.D.B.',info:'Nicaragüense · Ord. 26/10/1996'}],
+    filiales:[{n:'Sagrado Corazón de Jesús',d:'Avenida Don Bosco 26 Calle, Z.1',h:'Consultar'},{n:'Oratorio Don Bosco',d:'Av. Santa Cecilia y 27 Calle, Z.8',h:'Consultar'}]}
+  ]},
+
+  { label: 'Zona 2 · Ciudad Nueva', items: [
+    {nombre:'Parroquia Nuestra Señora de Fátima',cong:'Presbítero diocesano',dir:'11 Avenida 9-83, Zona 2, Ciudad Nueva',oficina:'Lun–Vie 8:00–12:30 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun,Mié,Jue,Vie,Sáb: 7:00 | Mar: 7:00 · 18:00 | Dom: 8:00 · 10:00 · 12:00 · 18:00',conf:'Mar–Vie: 15:00',hs:'Jue: 19:00',tel:'22541535 · 33318320',mail:'pnsdefatimaz2@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Federico Guillermo Rodríguez Billeb',info:'Guatemalteco · Ord. 15/10/1994'}],filiales:[]},
+
+    {nombre:'Parroquia Nuestra Señora de la Asunción',cong:'Presbítero diocesano',dir:'7a. Avenida 5-45, Zona 2',oficina:'9:00–12:00 y 14:00–17:00 · Sáb 9:00–12:00',misas:'Mar–Vie: 7:00 · 17:30 | Sáb: 7:00 · 18:00 | Dom: 8:00 · 10:30 · 12:15 · 18:00',conf:'Vie: 15:00',hs:'Jue: 18:00',tel:'2254-1277',mail:'iglesialaasuncion@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Edgar Alfredo Aráuz Aguilar',info:'Guatemalteco · Ord. 05/12/1992'}],
+    filiales:[{n:'Capilla Santa Delfina del Signe',d:'3ra. Avenida, Finca El Zapote, Z.2',h:'Sáb 17:00 · Dom 8:00 · 11:30'}]},
+
+    {nombre:'Parroquia Santos Ángeles Custodios',cong:'Presbítero diocesano',dir:'24 Avenida "A", Parque San Ángel, Zona 2',oficina:'Lun–Dom 16:00–19:00 (Viernes cerrado)',misas:'Lun,Mar,Mié,Jue,Sáb: 18:00 | Dom: 9:00 · 11:00 · 18:00',conf:'Mar–Jue: 16:30–18:00 · Sáb–Dom antes de misa',hs:'Jue: 17:00',tel:'48745460',mail:'alonsobaeza.luis@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Luis Felipe Alonso Baeza',info:'Guatemalteco · Ord. 28/03/1988'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 3', items: [
+    {nombre:'Parroquia Santa Marta',cong:'Presbítero diocesano',dir:'3ra. Avenida 24-67, Zona 3',oficina:'Lun–Vie 9:00–13:00 · Mié y Vie 15:00–17:00 · Sáb 9:00–12:00',misas:'Mar–Sáb: 18:00 | Dom: 8:00 · 10:00 · 18:00',hs:'Jue: 16:30',tel:'22323015 · 46400044',mail:'parroquiasantamartazona3@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Wenseslao Mazariegos Barrera',info:'Guatemalteco · Ord. 02/10/1993'}],filiales:[]},
+
+    {nombre:'Parroquia Santísima Trinidad (Barrio El Gallito)',cong:'Presbítero diocesano',dir:'14 Calle "C" 4-53, Zona 3',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun,Mar,Jue,Vie: 7:00 · 19:00 | Mié: 7:00 | Sáb: 18:00 | Dom: 7:00 · 9:00 · 12:00 · 19:00',conf:'Lun–Vie: 19:00',tel:'32916734',mail:'trinidadparroquia@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Carlos Manuel Castellanos González',info:'Guatemalteco · Ord. 19/12/1983'}],
+    filiales:[{n:'Señor del Consuelo',d:'Cementerio General',h:'Dom 10:30'}]},
+
+    {nombre:'Parroquia La Virgen de la Medalla Milagrosa (La Verbena)',cong:'Pía Sociedad San Cayetano',dir:'11 Calle E 10-01, Zona 7 (área La Verbena)',oficina:'Lun–Vie 15:00–19:00 · Sáb 8:00–12:00',misas:'Mar–Vie: 7:00 | Sáb: 18:00 | Dom: 7:00 · 10:30 · 18:00',tel:'2473-5105',mail:'medallamilagrosaverbena@gmail.com',ikon:'🌸',
+    sac:[{cargo:'MODERADOR',nombre:'R.P. Vittorino Gonella Tibaldo',info:'Italiano · Ord. 11/04/1977'},{cargo:'CO-PÁRROCO',nombre:'R.P. José Alejandro Franco León',info:'Guatemalteco · Ord. 24/04/2021'}],
+    filiales:[{n:'Santa Catalina Labure',d:'Calle A, Col. 6 de Octubre, Z.7',h:'Dom 9:00 | Jue 19:00 (2do y 4to jue del mes)'}]},
+
+    {nombre:'Parroquia San Vicente de Paúl (Col. Bethania)',cong:'Congregación de la Misión (Vicentinos)',dir:'Av. Moctezuma 25-45, Col. Bethania, Zona 7',oficina:'Lun–Vie 8:00–13:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun: 18:00 (Celebración de la Palabra) | Mar–Sáb: 18:00 | Dom: 9:00 · 18:00',conf:'Mar y Jue: 16:00–18:00',hs:'Jue: 19:00',tel:'2232-0485',mail:'parroquiasvp2022@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Francisco Alejandro Cortez, C.M.',info:'Salvadoreño · Ord. 27/11/1993'},{cargo:'VICARIO',nombre:'R.P. Oscar Efraín Ramírez García, C.M.',info:'Guatemalteco · Ord. 27/11/2022'}],
+    filiales:[{n:'Jesús del Portal',d:'Col. Insiencio',h:'Dom 7:00 · Sáb 18:00 (1er sáb)'},{n:'Jesús Resucitado',d:'Col. 4 de Febrero',h:'Dom 9:00 · Sáb 19:00 (1er sáb)'},{n:'Asunción de María',d:'El Esfuerzo',h:'Hora Santa Jue 20:00'},{n:'Inmaculada Concepción',d:'Las Torres',h:'Dom 16:00 · Sáb 18:00 (2do sáb)'},{n:'Divino Salvador del Mundo',d:'El Cerrito',h:'Dom 16:00 · Sáb 17:00 (3er sáb)'},{n:'Santa Luisa de Marillac',d:'Col. San Querte',h:'Dom 7:00 · Sáb 17:30 (3er sáb)'}]},
+
+    {nombre:'Parroquia Ntra. Sra. del Carmen (El Carmelo)',cong:'Orden de Carmelitas Descalzos (OCD)',dir:'12 Avenida 0-77, Zona 7 (El Carmelo)',oficina:'Lun–Vie 8:00–12:00 y 14:30–17:00',misas:'Lun–Sáb: 7:00 | Dom: 7:00 · 18:00',tel:'24713593',mail:'igl.carmelo@hotmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Mario René Reyes Maldonado, O.C.D.',info:'Guatemalteco · Ord. 25/03/2000'}],
+    filiales:[{n:'Iglesia Santa María de Guadalupe',d:'14 Av. 6-09, Z.7, Col. Quinta Samayoa',h:'Dom 8:30 · 18:00'},{n:'Iglesia Santa Teresita',d:'23 Av. 6ta. Calle 23-43, Z.7, Caminal Juyú 1',h:'Sáb 18:00 · Dom 9:30 · 12:00'}]}
+  ]},
+
+  { label: 'Zona 5', items: [
+    {nombre:'Parroquia María Auxiliadora (Barrio La Palmita)',cong:'Presbítero diocesano',dir:'25 Avenida 24-41, Zona 5, Barrio La Palmita',oficina:'Lun–Sáb 9:00–13:00 y 14:30–18:00',misas:'Mar–Vie: 7:00 · 18:00 | Sáb: 18:00 | Dom: 7:00 · 8:30 · 10:30 · 12:00 · 18:00',conf:'Jue: 17:00 (durante Hora Santa)',hs:'Jue: 17:00',tel:'23355950 · 32773687',mail:'parroquiamariauxiliadoraz5@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Álvaro René Oliva Ochoa',info:'Guatemalteco · Ord. 14/11/2020'}],filiales:[]},
+
+    {nombre:'Parroquia Santa Ana',cong:'Orden de Predicadores (Dominicos)',dir:'34 Avenida 28-87, Zona 5, Col. Santa Ana',oficina:'9:00–12:00 y 15:00–18:00 · Sáb 9:00–12:00',misas:'Mar,Mié,Vie: 6:00 · 18:30 | Jue: 6:00 · 8:00 · 12:00 · 18:00 | Sáb: 18:00 | Dom: 8:00 · 10:00 · 12:30 · 18:00',conf:'Jue y Vie: 18:30',hs:'Jue: 19:30',tel:'55134144',mail:'secretaria@parroquiasantaanazona5.org',ikon:'✝️',
+    sac:[{cargo:'ADMINISTRADOR',nombre:'R.P. Francisco Antonio Sequeira Morales, O.P.',info:'Guatemalteco · Ord. 26/07/2015'}],filiales:[]},
+
+    {nombre:'Parroquia San Juan Bautista (Jardines de la Asunción)',cong:'Presbítero diocesano',dir:'Diagonal 14, Bulevar Asunción 13-01, Zona 5',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–13:00',misas:'Mar–Sáb: 18:00 | Dom: 8:00 · 11:30 · 18:30',tel:'23350704 · 48705858',mail:'parroquiasanjuanbautista.z5@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Aarón Fabrizio Tello Mérida',info:'Guatemalteco · Ord. 14/03/2009'}],
+    filiales:[{n:'Iglesia Santo Domingo de Guzmán',d:'44 Av. 12-88, Z.5, Col. Santo Domingo, La Chácara',h:'Dom 9:30'}]},
+
+    {nombre:'Parroquia Santa Rosa de Lima (Col. Saravia)',cong:'Presbítero diocesano',dir:'20 Calle 43-71, Col. Saravia, Zona 5',oficina:'Lun–Vie 9:00–12:30 y 15:00–18:00 · Sáb 9:00–12:00',misas:'Lun–Sáb: 18:00 | Dom: 8:00 · 12:00 · 18:00',conf:'Jue: 19:00',hs:'Jue: 19:00',tel:'23364937 · 54338940',mail:'psantarosadelima21@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Juan Rodriguez Xoc',info:'Guatemalteco · Ord. 18/09/2004'},{cargo:'VICARIO',nombre:'Pbro. Virgilio Hernandez Gonzalez',info:'Guatemalteco · Ord. 02/02/2013'}],
+    filiales:[{n:'Santo Hermano Pedro',d:'43 Av. 25-75, Col. Covías, Z.5',h:'Consultar'},{n:'Arravillaga',d:'37 Av. 22-67, Z.5',h:'Consultar'},{n:'Ntra. Sra. del Rosario',d:'Col. Valle del Rosario',h:'Consultar'},{n:'Inmaculada Concepción',d:'1a Calle Z.17, Sabana Arriba',h:'Consultar'}]},
+
+    {nombre:'Parroquia San Pedro Apóstol (San Pedrito)',cong:'Congregación Religiosos Somascos',dir:'13 Avenida 29-11, Zona 5, Barrio San Pedrito',oficina:'Lun–Vie 8:00–12:30 y 14:30–17:30 · Sáb 9:00–12:00',misas:'Lun–Sáb: 7:00 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',hs:'Jue: 17:00',tel:'23317273',mail:'sanpedrito5@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Celestino Menjívar Tobar, C.R.S.',info:'Guatemalteco · Ord. 16/12/1984'},{cargo:'VICARIO',nombre:'R.P. Alfonso de Jesús Guzmán Pérez, C.R.S.',info:'Salvadoreño · Ord. 27/09/2008'}],filiales:[]},
+
+    {nombre:'Parroquia San Juan María Vianney — Santo Cura de Ars',cong:'Presbítero diocesano',dir:'14 Calle "A" 34-25, Zona 5, Col. Abril',oficina:'Mar–Vie 8:00–12:00 y 15:00–17:00 · Sáb–Dom 8:00–12:00',misas:'Mar,Jue: 7:00 · 18:00 | Mié,Vie,Sáb: 7:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',conf:'Jue: 19:00',hs:'Jue: 19:00',tel:'23348590 · 34313096',mail:'parroquiastocuraarsz5@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Carlos Eduardo Rodríguez García',info:'Guatemalteco · Ord. 18/10/2024'}],
+    filiales:[{n:'Capilla de San José',d:'31 Av. Sinal Lote 144, Col. San José El Esfuerzo, Z.5',h:'Sáb 18:00'},{n:'Capilla Ntra. Sra. de Lourdes',d:'25 Av. Sinal, Col. Lourdes 1, Z.5',h:'Dom 17:00'}]}
+  ]},
+
+  { label: 'Zona 6', items: [
+    {nombre:'Parroquia Corpus Christi',cong:'Orden de Frailes Menores Capuchinos',dir:'8 Calle 14-09, Zona 6',oficina:'Mar–Vie 8:00–12:00 y 13:00–15:30 · Sáb–Dom 8:00–12:00',misas:'Mar–Sáb: 7:00 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',conf:'Mar–Sáb: 7:00 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',hs:'Jue: 17:00 (exposición 7:45–17:00)',tel:'22882152',mail:'parroquiacorpuschristi6@gmail.com',web:'iglesiacorpuschristi.org',ikon:'✝️',
+    sac:[{cargo:'MODERADOR',nombre:'R.P. Alejandro Josué Núñez Ennabe, O.F.M.Cap.',info:'Hondureño · Ord. 13/06/2009'},{cargo:'COLABORADOR',nombre:'R.P. Adolfo Salazar Peña, O.F.M.Cap.',info:'Hondureño · Ord. 26/01/1991'},{cargo:'COLABORADOR',nombre:'R.P. José Jaime Mena Mancía, O.F.M.Cap.',info:'Hondureño · Ord. 12/12/1998'}],
+    filiales:[{n:'Madre del Buen Pastor',d:'Res. Melgar Díaz, 14 Av. 17-10, Z.2',h:'Sáb 19:00 | Hora Santa: Jue 7:00'},{n:'Inmaculada Concepción de María',d:'Col. El Quintanal, 14 Av. C y 14 Calle 14-69, Z.6',h:'Dom 16:00 | Hora Santa: Jue 18:00'}]},
+
+    {nombre:'Parroquia San Antonio de Padua',cong:'Presbítero diocesano',dir:'23 Avenida Final, 16 Calle, Barrio San Antonio, Zona 6',oficina:'Lun–Vie 15:30–18:00',misas:'Mar,Mié,Vie,Sáb: 18:00 | Jue: 19:00 | Dom: 7:00 · 11:00 · 18:00',conf:'Jue: 15:30',hs:'Jue: 18:00 | 1er Vie de mes: 18:00 (Sagrado Corazón)',tel:'22889019 · 54440840',mail:'psanantoniopadua6@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Erick Arnulfo García Hidalgo',info:'Guatemalteco · Ord. 19/09/2015'}],
+    filiales:[{n:'San Juan de Dios',d:'18 Calle B 21-46, San Juan, Z.6',h:'Dom 9:00'},{n:'Virgen del Carmen',d:'La Joyita, Barrio San Antonio, Z.6',h:'Dom 11:00'},{n:'Jesús de la Buena Esperanza',d:'Puente Belice, Z.6',h:'Dom 9:00'}]},
+
+    {nombre:'Parroquia Santa Cruz',cong:'Presbítero diocesano',dir:'4ta. Calle 15-43, Zona 6',oficina:'Lun–Vie 8:00–12:00 y 14:00–16:00 · Sáb 8:00–11:00',misas:'Mar–Sáb: 18:00 | Dom: 6:00 · 8:00 · 12:00 · 18:00',conf:'Jue: 17:00',hs:'Jue: 17:00',tel:'22888695 · 42486129',mail:'parroquiasantacruzdelmilagro@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Oliverio Gonzalo Amador Fabián',info:'Guatemalteco · Ord. 19/01/2013'}],filiales:[]},
+
+    {nombre:'Parroquia San Julián (Nueva Chinautla)',cong:'Presbítero diocesano',dir:'Sector 2, Lote 97, Zona 6, Nueva Chinautla',oficina:'Mar–Vie 8:30–12:00 y 14:00–17:30 · Sáb 8:00–12:00',misas:'Mar,Mié,Vie: 18:00 | Jue: 8:00 · 20:00 | Sáb: 17:00 | Dom: 8:00 · 10:00 · 16:00',conf:'Jue: 15:00',hs:'Jue: 9:00 · 15:00',tel:'22868689',mail:'parroquianuevachinautla@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Ángel Gabriel Sequén Sicán',info:'Guatemalteco · Ord. 02/10/2021'}],
+    filiales:[{n:'Capilla San José',d:'Col. Los Jocotales',h:'Sáb 19:00'},{n:'Capilla Ntra. Sra. de la Asunción',d:'Col. La Asunción',h:'Dom 18:00 | HS: Jue 18:00'},{n:'Santa Marta',d:'Col. Santa Marta 1',h:'Vie 15:00 (2do vie)'},{n:'Santa Faz',d:'Col. Santa Faz',h:'Dom 6:00 | HS: Jue 15:00'},{n:'El Paraíso',d:'Col. El Paraíso 1',h:'Vie 19:30 (4to vie)'}]},
+
+    {nombre:'Parroquia El Divino Salvador del Mundo (Proyectos 4-3)',cong:'Presbítero diocesano',dir:'18 Avenida 26-68, Col. Proyecto 4-3, Zona 6',oficina:'Mar–Vie 8:00–12:00 y 14:00–18:00 (emergencia 24h)',misas:'Mar,Mié,Vie,Sáb: 18:00 | Jue: 8:00 · 18:00 | Dom: 7:00 · 9:00 · 18:00',conf:'Jue: 9:00 (todo el día)',hs:'Jue: 9:00–12:00 · 19:00',tel:'22888338 · 59461960',mail:'parroquiaeldivinosalvador69@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Manuel de Jesús Paredes Tello',info:'Guatemalteco · Ord. 20/04/2000'}],
+    filiales:[{n:'San Rafael',d:'28 Calle A y 18 Av. A Final, Finca San Rafael, Z.6',h:'Dom 11:00 | HS: Jue 18:00'}]},
+
+    {nombre:'Parroquia San Juan Apóstol (Proyectos 4-4)',cong:'Presbítero diocesano',dir:'16 Avenida 18-68, Zona 6, Proyectos 4-4',oficina:'Lun–Vie 8:00–15:00 · Sáb 8:00–12:00',misas:'Lun,Mar,Vie,Sáb: 18:00 | Jue: 19:00 | Dom: 7:00 · 18:00',conf:'Jue: 16:00',hs:'Jue: 18:00',tel:'23933009 · 53874131',mail:'psanjuan.ap@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Oscar Rolando Mendoza Prera',info:'Guatemalteco · Ord. 29/01/2022'}],
+    filiales:[{n:'Iglesia Ntra. Sra. del Rosario',d:'23 Av. 21-76, Z.6, Proyecto 4-10',h:'Dom 11:00 | HS Dom 16:00'},{n:'San José',d:'Col. La Reina, Z.6',h:'Dom 9:30'},{n:'Sagrado Corazón de Jesús',d:'Col. 30 de Junio, Z.6',h:'Dom 16:00 (4to dom)'}]}
+  ]},
+
+  { label: 'Zona 7', items: [
+    {nombre:'Parroquia San José Obrero (Castillo Lara)',cong:'Presbítero diocesano',dir:'9 Calle 7-20, Zona 7, Castillo Lara',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00',misas:'Mar,Mié,Vie: 7:00 | Jue: 7:00 · 18:00 | Sáb: 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',conf:'Jue: 7:00',hs:'Jue: 19:00',tel:'24752691',mail:'sanjoseobreroparroquia19@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Juan Gregorio Mendoza Arévalo',info:'Guatemalteco · Ord. 14/08/1999'}],
+    filiales:[{n:'Iglesia Ntra. Sra. del Carmen',d:'5ta. Av. 11-39, Z.7, Col. Landívar',h:'Lun,Mié,Jue,Vie 18:00 · Sáb 17:30 · Dom 8:30 · 17:00 | HS: Jue 16:00 | Conf: Jue 16:30'},{n:'Capilla Santa María',d:'2da. Av. 12-91, Col. San Francisco de Asís, Z.7',h:'Dom 16:00 | HS: Vie 14:00'}]},
+
+    {nombre:'Parroquia San Juan de la Cruz (Amparo)',cong:'Presbítero diocesano',dir:'34 Av. 38 Calle Final, Amparo, Zona 7',oficina:'Lun–Vie 8:00–12:00 y 13:00–18:00',misas:'Dom: 8:00 (Sta. Edith) · 9:15 (Sta. Elena) · 11:00 (San Juan) · 17:00 (San Elías) · 18:00 (Sta. Edith) · 19:00 (San Juan) | Sáb: 19:00 (4to sáb, El Cerrito)',conf:'Dom y Sáb: 8:00 (cada grupo)',hs:'Jue: 18:45 (San Juan) · 19:45 (Sta. Edith)',tel:'30171651',mail:'par.sanjuandelacruz@gmail.com',ikon:'✝️',
+    sac:[{cargo:'CO-PÁRROCO',nombre:'Pbro. Omar Arturo Carrera Campos',info:'Guatemalteco · Ord. 02/02/2013'},{cargo:'CO-PÁRROCO',nombre:'Pbro. Pedro Jaramillo Rivas',info:'Guatemalteco · Ord. 19/03/1964'}],filiales:[]},
+
+    {nombre:'Parroquia San Pablo Apóstol (Col. Centro América)',cong:'Presbítero diocesano',dir:'31 Avenida "C" 8-64, Zona 7, Col. Centro América',oficina:'Mar–Vie 9:00–13:00 y 14:00–18:00 · Sáb 9:00–13:00',misas:'Mar,Mié,Vie,Sáb: 18:00 | Jue: 7:00 · 19:00 | Dom: 7:00 · 10:00 · 12:00 · 18:00',conf:'Jue: 8:30',hs:'Jue: 18:00',tel:'24649648 · 35691819',mail:'parroquiasanpablo7@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Luis Rodolfo Yol Ordóñez',info:'Guatemalteco · Ord. 29/01/2022'}],
+    filiales:[{n:'Capilla de la Sagrada Familia',d:'14 Calle "B" 32-08, Z.7, Col. San Martín',h:'Jue 18:00 · Dom 8:30 | HS: Jue 16:00 | Conf: Jue 17:00'}]},
+
+    {nombre:'Parroquia Santiago Apóstol (Col. El Rodeo)',cong:'Congregación de Misioneros Josefinos',dir:'38 Avenida 4-61, Col. El Rodeo, Zona 7',oficina:'Mar–Sáb 8:30–12:00 y 15:00–18:00 · Dom 6:30–11:30',misas:'Mar–Vie: 8:00 | Sáb: 8:00 · 19:00 | Dom: 7:00 · 9:00 (Villas del Rosario) · 10:30 · 19:00',conf:'Jue: 8:30 · Dom después de cada misa',hs:'Jue: 8:30',tel:'24332115 · 41578737',mail:'parroquiasantiagoapostol17@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. José Roberto Zaldaña Rivas, M.J.',info:'Salvadoreño · Ord. 27/11/2021'},{cargo:'RECTOR',nombre:'R.P. Miguel Antonio González García, M.J.',info:'Salvadoreño · Ord. 13/02/1999'}],
+    filiales:[{n:'Rectoría San José del Buen Consejo',d:'12 Calle 7-44, Col. Nueva Montserrat, Z.3 de Mixco',h:'Mar,Mié,Vie 7:00 · Jue 7:00 · 17:30 · Sáb 7:30 · 17:00 · Dom 7:00 · 9:00 · 11:00 · 17:00 | HS: Jue 16:00 | Tel: 2433-1289'}]},
+
+    {nombre:'Cuasiparroquia San Estebán (Villa Linda 2)',cong:'Presbítero diocesano',dir:'16 Calle 33-96, Zona 7, Villa Linda 2',oficina:'Mar–Vie 9:30–13:00 y 14:30–17:00 · Sáb 9:30–13:00',misas:'Mar–Vie: 19:00 | Dom: 8:30 · 19:00',conf:'Jue: 15:00',tel:'24349657 · 31872905',mail:'parroquiasanesteban2023@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Juan José Oliva Álvarez',info:'Guatemalteco · Ord. 18/10/2014'}],
+    filiales:[{n:'Capilla Hogar San José',d:'10 Av. 10-12, Condado Naranjo, Z.4 de Mixco',h:'Lun–Sáb 7:00 · Dom 10:00 · 12:00 | Conf: Jue 9:00'}]},
+
+    {nombre:'Parroquia San Cayetano (Ciudad de Plata II)',cong:'Presbítero diocesano',dir:'30 Av. "D" 13-73, Zona 7, Ciudad de Plata II',oficina:'Lun–Vie 8:00–12:00 y 14:30–18:00 · Sáb 8:00–12:00',misas:'Lun–Vie: 7:00 · 18:00 | Sáb: 19:00 | Dom: 7:00 · 10:00 · 12:00 · 19:00',conf:'Jue: 10:00–12:00 y 16:00–18:00',hs:'Jue: 16:00–20:00',tel:'24738455 · 38730422',mail:'parroquiasancayetano07@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Marco Antonio López González',info:'Guatemalteco · Ord. 31/08/2001'},{cargo:'VICARIO',nombre:'Pbro. Edgar Roberto García Ramírez',info:'Guatemalteco · Ord. 05/12/2009'}],
+    filiales:[{n:'San Vicente de Paúl',d:'Col. Kaminal Juyú II',h:'Jue 18:00 · Dom 8:30'}]}
+  ]},
+
+  { label: 'Zona 8', items: [
+    {nombre:'Parroquia La Divina Providencia',cong:'Salesianos de Don Bosco',dir:'7ma. Avenida 39-75, Zona 8',oficina:'Lun–Vie 7:30–12:30 y 14:00–16:30 · Sáb 8:00–12:00 · Dom 8:00–13:00',misas:'Lun–Vie: 6:00 · 7:30 · 18:00 | Sáb: 7:30 · 18:00 | Dom: 8:00 · 10:00 · 12:00 · 17:00 · 19:00',conf:'Dom: 8:00',hs:'Jue: 18:45',tel:'24721460 · 41516301',mail:'parroquia.divinaprovidencia@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Horacio Francisco Macal Garbutt, S.D.B.',info:'Guatemalteco · Ord. 25/04/1987'},{cargo:'VICARIO',nombre:'R.P. José María Seas Chinchilla, S.D.B.',info:'Costarricense · Ord. 15/08/1985'},{cargo:'PASTORALISTA',nombre:'R.P. Luis Francisco Carias Girón, S.D.B.',info:'Guatemalteco · Ord. 05/11/1995'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 9', items: [
+    {nombre:'Parroquia Santo Tomás de Aquino — La Inmaculada de Tívoli',cong:'Orden de Predicadores (Dominicos)',dir:'1ra. Avenida 9-14, Zona 9',oficina:'Lun–Vie 8:00–13:00 y 14:00–17:00 · Sáb 9:00–12:00',misas:'Lun: 7:00 | Mar–Vie: 7:00 · 18:30 | Sáb: 7:30 | Dom: 10:00 · 11:00 · 12:00',conf:'Mar–Jue: 15:00',hs:'Jue: 7:00',tel:'23310703 · 48903365',mail:'iglesiativoli@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Alfonso Martín Molina Lara, O.P.',info:'Guatemalteco · Ord. 13/07/1991'},{cargo:'VICARIO',nombre:'R.P. Porfirio Atencio Rodríguez, O.P.',info:'Guatemalteco · Ord. 14/05/2005'}],
+    filiales:[{n:'Ntra. Sra. Virgen del Camino',d:'15 Calle 7-47, Aurora I, Z.13',h:'Dom 8:00 · 10:00'}]}
+  ]},
+
+  { label: 'Zona 10 · Zona Viva / Ciudad Vieja', items: [
+    {nombre:'Parroquia Inmaculada Concepción — Ciudad Vieja',cong:'Presbítero diocesano',dir:'2a. Avenida 7-32, Zona 10, Ciudad Vieja',oficina:'Lun–Vie 8:00–12:30 y 13:30–16:00 · Sáb 8:30–12:00',misas:'Mar,Mié,Vie: 7:00 | Jue: 7:00 · 17:00 | Dom: 8:00 · 10:00 · 12:00',conf:'Jue: 18:00',hs:'Jue: 18:00',tel:'23613052 · 43776519',mail:'pinmaculada10@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Edwin Ignacio Roldan Monterroso',info:'Guatemalteco · Ord. 17/06/1995'}],filiales:[]},
+
+    {nombre:'Parroquia Ntra. Sra. de Guadalupe — La Villa',cong:'Presbítero diocesano',dir:'15 Av. 18-45, Zona 10',oficina:'Lun 8–13 · Mar 9–13 y 14:30–17 · Mié–Vie 8–13 y 14:30–17 · Sáb 8–12',misas:'Lun: 7:00 | Mar,Mié,Vie: 7:00 · 12:15 · 18:00 | Jue: 7:00 · 12:15 · 18:30 | Sáb: 7:00 · 17:30 | Dom: 7:00 · 10:00 · 12:00 · 18:00',tel:'2368-1744 · 40607644',mail:'ofinsguadalupez10@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Donaldo de Jesús Rodríguez Rodríguez',info:'Guatemalteco · Ord. 18/10/2014'},{cargo:'VICARIO',nombre:'Pbro. Jorge David Dávila Morataya',info:'Guatemalteco · Ord. 04/11/2023'},{cargo:'VICARIO',nombre:'Pbro. José Juárez Fernández',info:'Guatemalteco · Ord. 19/07/1971'}],
+    filiales:[{n:'El Señor de Esquipulas',d:'Cantón 21, Z.14',h:'Jue 18:00 · Dom 12:00'},{n:'Ntra. Sra. del Rosario (Victoria)',d:'Cantón 21, Z.14',h:'Jue 19:00 · Dom 8:30'},{n:'Hermano Pedro',d:'Cantón 21, Z.14',h:'Jue 19:00 · Dom 8:30'},{n:'San José, El Cambray',d:'Final 20 Calle, Z.10',h:'Sáb 18:00 · Jue 19:00 (c/15 días)'},{n:'Ntra. Sra. Concepción',d:'18 Calle Z.10 (frente PriceSmart)',h:'Jue 18:00 · Dom 7:00'}]},
+
+    {nombre:'Cuasiparroquia Castrense San Miguel Arcángel',cong:'Presbítero diocesano · Fraternidad Misionera de María',dir:'6 Avenida 1-50, Zona 10 — Interior Brigada de Policía Militar Guardia de Honor',oficina:'Lun–Vie 7:00–16:00',misas:'Sáb: 18:30 | Dom: 8:30',conf:'Sáb: 18:30 · Diariamente en los comandos',hs:'Jue: 18:30 · 1er Vie de mes: 18:30',tel:'4125-4596 · 57096148',mail:'parroquiacastrenseguatemala@gmail.com',ikon:'✝️',
+    sac:[{cargo:'CAPELLÁN',nombre:'Pbro. Jorge Fernando Divassi',info:'Guatemalteco · Ord. 22/02/1997'},{cargo:'COLABORADOR',nombre:'R.P. Samuel Chonay Ichaj, F.M.M.',info:'Guatemalteco · Ord. 22/12/1996'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 11', items: [
+    {nombre:'Parroquia San Cristóbal (Col. Roosevelt)',cong:'Congregación del Santísimo Redentor (Redentoristas)',dir:'10 Avenida 7-76, Zona 11, Col. Roosevelt',oficina:'Lun 14:00–18:00 · Mar–Sáb 8:00–12:00 y 14:00–18:00',misas:'Mar–Sáb: 8:15 · 18:00 | Dom: 6:30 · 8:30 · 10:30 · 16:00 · 18:00',conf:'Mar–Sáb: 9:00 y 15:00',hs:'Jue: 9:30 (tras misa) y 19:00 (tras misa) — exposición todo el día',tel:'24715813 · 38128676',mail:'parroquiasancristobalz11@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Salvador Anzora Portillo, C.Ss.R.',info:'Salvadoreño · Ord. 14/07/2007'},{cargo:'VICARIO',nombre:'R.P. Eduardo Andrés Martínez Ávila, C.Ss.R.',info:'Guatemalteco · Ord. 24/06/2017'}],
+    filiales:[{n:'Ntra. Sra. del Perpetuo Socorro',d:'1a. Av. y 2a. Calle 1-70, Z.11, Col. El Progreso',h:'Jue 9:00 · Dom 9:00 | HS: Jue 10:00'}]},
+
+    {nombre:'Parroquia Divino Redentor (Jardines de Utatlán II)',cong:'Congregación del Santísimo Redentor',dir:'32 Avenida 2-29, Col. Jardines de Utatlán II, Zona 11',oficina:'Lun–Sáb 8:00–12:00 y 14:00–18:00',misas:'Mar–Vie: 8:30 · 18:30 | Sáb: 8:30 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 16:00 · 18:00',conf:'Dom: todas las misas',hs:'Jue: 9:30 · 19:30',tel:'24397620',mail:'peldivinoredentor@yahoo.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Manuel Cruz Meza, C.Ss.R.',info:'Salvadoreño · Ord. 12/08/2000'},{cargo:'VICARIO',nombre:'R.P. Rolando Gustavo Cruz Galeas, C.Ss.R.',info:'Hondureño · Ord. 07/09/2001'}],filiales:[]},
+
+    {nombre:'Parroquia El Espíritu Santo (Las Charcas)',cong:'Salesianos de Don Bosco',dir:'32 Calle 11-01, Zona 11, Las Charcas',oficina:'Lun–Vie 7:00–12:00 y 13:00–16:00 · Sáb 8:00–12:00',misas:'Lun: 7:00 | Mar–Vie: 7:00 · 19:00 | Sáb: 7:30 · 19:00 | Dom: 7:30 · 9:00 · 11:00 · 17:00 · 19:00',conf:'Dom: 7:30',hs:'Jue: 18:00',tel:'22164555',mail:'espiritusantoof@gmail.com',web:'espiritusantogt.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Luis Corral Prieto, S.D.B.',info:'Español · Ord. 14/08/1977'},{cargo:'VICARIO',nombre:'R.P. Marvin Giovanni Mena Navidad, S.D.B.',info:'Salvadoreño · Ord. 24/11/2012'}],filiales:[]},
+
+    {nombre:'Parroquia Señor Jesucristo Crucificado de Esquipulas — Esquipulitas',cong:'Presbítero diocesano',dir:'20 Calle 11 Av. Mariscal 20-76, Zona 11, Col. Mariscal',oficina:'Lun–Vie 8:00–13:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun–Sáb: 7:00 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',conf:'Mar y Jue: 15:00 | Dom: 7:00 · 9:00 · 11:00',hs:'Jue: 15:00',tel:'24731333',mail:'oficina@parroquiesquipulitas.com',web:'www.parroquiaesquipulitas.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Jorge Ramiro González Camey',info:'Guatemalteco · Ord. 06/07/1996'},{cargo:'VICARIO',nombre:'Pbro. Hector José Corado Avila',info:'Guatemalteco · Ord. 27/07/1971'}],filiales:[]},
+
+    {nombre:'Parroquia San Juan Bosco (María Auxiliadora, Mirador 2)',cong:'Salesianos de Don Bosco',dir:'20 Avenida 13-45, Zona 11, Mirador 2',oficina:'Lun–Vie 8:00–12:30 y 13:30–17:00 · Sáb 8:00–12:00',misas:'Lun–Sáb: 6:30 · 19:00 | Dom: 6:00 · 8:00 · 10:00 · 12:00 · 19:00',tel:'24738256 · 34217775',mail:'parroquia.sanjuanbosco@itsi.org.gt',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Guillermo César Argüello Alvarado, S.D.B.',info:'Nicaragüense · Ord. 02/12/2001'}],filiales:[]},
+
+    {nombre:'Rectoría Ntra. Sra. del Perpetuo Socorro (Utatlán II)',cong:'Orden de Predicadores (Dominicos)',dir:'2 Calle 31-90, Zona 7, Utatlán II',misas:'Dom: 9:00 · 12:00 | Jue: 18:00',conf:'Jue: 16:30',hs:'Jue: 16:00',mail:'perpetuosocorro.op@gmail.com',ikon:'✝️',
+    sac:[{cargo:'RECTOR',nombre:'R.P. Mario Vinicio Torres Escobar, O.P.',info:'Guatemalteco · Ord. 29/03/2008'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 12', items: [
+    {nombre:'Parroquia San Carlos Borromeo (Col. Monte María 3)',cong:'Presbítero diocesano',dir:'5ta. Avenida 47-60, Zona 12, Col. Monte María 3',oficina:'Mar–Dom 8:00–12:00',misas:'Mar,Mié,Vie,Sáb: 18:00 | Jue: 8:30 · 18:00 | Dom: 8:00 · 10:00 · 12:00 · 18:00',conf:'Jue: 9:30–12:00 y 16:30–17:30 | Sáb: 16:30–17:30',hs:'Jue: 9:00–12:00 y 17:00–18:00 | Dom: 17:00–18:00',tel:'24773031',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Alberto Vásquez García',info:'Guatemalteco · Ord. 07/05/2011'}],filiales:[]},
+
+    {nombre:'Parroquia Inmaculado Corazón de María (Col. La Reformita)',cong:'Orden de Frailes Menores OFM (Franciscanos)',dir:'7ma. Avenida 27-03, Zona 12, Col. La Reformita',oficina:'Lun–Vie 8:00–13:00 y 14:00–16:00 · Sáb 8:00–12:00',misas:'Mar–Sáb: 6:30 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',conf:'Dom: 7:00–11:00',hs:'Jue: 17:00',tel:'24763742 · 38834348',mail:'parroquia_icm@yahoo.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Byron René Santos Barrios, O.F.M.',info:'Guatemalteco · Ord. 06/07/2013'},{cargo:'VICARIO',nombre:'R.P. Celso Antonio Pérez Mendoza, O.F.M.',info:'Hondureño · Ord. 15/08/2015'},{cargo:'VICARIO',nombre:'R.P. José Alberto González Fuentes, O.F.M.',info:'Guatemalteco · Ord. 17/12/2011'},{cargo:'VICARIO',nombre:'R.P. Marcos Esteban García García, O.F.M.',info:'Guatemalteco · Ord. 02/07/1989'}],filiales:[]},
+
+    {nombre:'Parroquia Cristo Hermano (Ciudad Real I)',cong:'Presbítero diocesano',dir:'2a. Av. 3-78, Ciudad Real I, Zona 12',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–13:00',misas:'Mar: 8:00 | Mié,Vie,Sáb: 8:00 · 18:00 | Jue: 8:00 · 18:00 · 19:00 | Dom: 8:00 · 12:00 · 17:00',conf:'Jue: 19:00',tel:'2477-5080',mail:'parroquiacristohermano@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Rudy Alexander Vásquez Saloj',info:'Guatemalteco · Ord. 05/04/2014'}],
+    filiales:[{n:'Comunidad de Lourdes',d:'Cristo Hermano',h:'Dom 7:00 | HS: Jue 17:00'},{n:'Comunidad de Candelaria',d:'Cristo Hermano',h:'Dom 19:00 | HS: Jue 19:00'},{n:'Comunidad Visitación',d:'Cristo Hermano',h:'Sáb 19:30 (1er sáb)'},{n:'Comunidad Guadalupe',d:'Cristo Hermano',h:'Sáb 19:30 | Conf: Jue 19:00'}]},
+
+    {nombre:'Parroquia El Buen Pastor (La Reformita)',cong:'Padres Diocesanos (Catecúmenos)',dir:'10a. Avenida 10-22, Zona 12, La Reformita',oficina:'Lun–Vie 9:00–12:00 y 14:00–17:00',misas:'Lun–Vie: 18:00 | Sáb: 8:00 | Dom: 8:00 · 10:00 · 17:00',conf:'Lun,Sáb: 17:00 | Mar–Vie: 16:00 | Dom: 7:30 · 9:30 · 16:30',hs:'Jue: 9:00 · 19:00',tel:'23724571',mail:'parroquiaelbuenpastorz12@gmail.com',ikon:'✝️',
+    sac:[{cargo:'ADMINISTRADOR',nombre:'R.P. Omar Antonio Martínez Sánchez',info:'Salvadoreño · Ord. 25/06/2005'},{cargo:'VICARIO',nombre:'R.P. Juan Pablo Guadalupe Mejicanos García',info:'Guatemalteco · Ord. 29/06/2018'}],filiales:[]},
+
+    {nombre:'Parroquia Ntra. Sra. de los Ángeles (Col. Santa Elisa)',cong:'Orden de Frailes Menores OFM (Franciscanos)',dir:'35 Calle 21-40, Zona 12, Col. Santa Elisa',oficina:'Lun–Vie 8:00–13:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Mar–Sáb: 7:00 · 18:00 | Dom: 7:00 · 9:00 · 11:00 · 18:00',conf:'Mar–Vie: 9:00 · 15:00',hs:'Jue: 8:00 · 19:00',tel:'24760028',mail:'parroquiasantaelisaofm@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Marco Antonio Patzán Hernández, O.F.M.',info:'Guatemalteco · Ord. 18/11/2000'},{cargo:'VICARIO',nombre:'R.P. Denis Alexander Chávez, O.F.M.',info:'Hondureño · Ord. 18/08/2014'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 13', items: [
+    {nombre:'Parroquia Santa María Goretti (Col. Santa Fe)',cong:'Orden de Agustinos Recoletos',dir:'28 Calle 12-69, Zona 13, Col. Santa Fe',oficina:'Lun–Vie 9:00–12:00 y 15:00–18:30',misas:'Lun–Sáb: 18:00 | Dom: 7:00 · 8:30 · 10:00',conf:'Mar–Vie: 16:30–17:30',hs:'Jue: 9:00 (1er jue de mes) · 15:00',tel:'23333219 · 34294569',mail:'parroquiasantamariagorettigt@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. José Julio Mendi Vallejo, O.A.R.',info:'Español · Ord. 24/07/1983'}],filiales:[]},
+
+    {nombre:'Parroquia San Fermín (Lomas de Pamplona)',cong:'Presbítero diocesano',dir:'4ta. Av. "A" 13-66, Col. Lomas de Pamplona, Zona 13',oficina:'Lun–Vie 9:00–12:00 y 14:00–16:30',misas:'Lun,Mar,Jue,Vie: 18:00 | Dom: 8:30 · 11:30',conf:'Lun,Mar,Jue,Vie: 15:30',hs:'Jue: 17:00',tel:'24711284 · 58493449',mail:'sanferminguatemala@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Rafael Eduardo Escobar Aguirre',info:'Guatemalteco · Ord. 07/08/1993'}],
+    filiales:[{n:'Capilla Sagrada Familia',d:'6ta. Av. "B" 17 Calle, Col. Reyna Barrios, Z.13',h:'Dom 17:30 · Jue 18:30 (1er jue) | HS: Jue 17:30'},{n:'Capilla San Benito de Palermo',d:'29 Av. 18-58, Z.12, Col. Miler Rock',h:'Dom 10:00 | HS: Jue 19:30'}]}
+  ]},
+
+  { label: 'Zona 14', items: [
+    {nombre:'Parroquia San Judas Tadeo (Zona 14)',cong:'Orden de Agustinos Recoletos',dir:'10ma. Calle 1-35, Zona 14',oficina:'Lun–Vie 8:30–12:30 y 14:30–16:30',misas:'Lun–Sáb: 8:00 · 18:30 | Dom: 8:00 · 9:30 · 11:00 · 12:30 · 18:00 · 19:30',conf:'Lun,Mié,Vie: 10:00 y 15:30',hs:'Jue: 7:45 (1er jue de mes)',tel:'22287537 · 30528007',mail:'sjudasgt@gmail.com',web:'sanjudasgt.org',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Axel Armando Sánchez Cóbar, O.A.R.',info:'Guatemalteco · Ord. 05/08/1988'},{cargo:'VICARIO',nombre:'R.P. Francisco Javier Lopeandía Baigorri, O.A.R.',info:'Español · Ord. 17/07/1966'},{cargo:'VICARIO',nombre:'R.P. Jesús Vidaurreta Ichaso, O.A.R.',info:'Español · Ord. 21/07/1963'}],
+    filiales:[{n:'Oratorio Ntra. Sra. de la Paz',d:'10 Av. 11-43, Z.14, Col. Las Conchas',h:'Conf: Lun–Sáb 9:30–12:00 y 15:30–17:30'}]}
+  ]},
+
+  { label: 'Zona 15 · Vista Hermosa', items: [
+    {nombre:'Parroquia Cristo Rey (Col. Tecún Umán)',cong:'Presbítero diocesano',dir:'3ra. Calle 10-50, Zona 15, Col. Tecún Umán',oficina:'Lun–Vie 8:30–13:00 y 14:00–17:00 · Sáb 8:30–12:00',misas:'Mar–Sáb: 18:00 | Dom: 10:00 · 12:00 · 18:00',conf:'Mar–Vie: 16:00',hs:'Jue: 17:00',tel:'22112220',mail:'parroquiacristoreyzona15@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Hugo Quintanilla Cardona',info:'Guatemalteco · Ord. 28/04/1990'}],
+    filiales:[{n:'Iglesia Inmaculada Concepción Las Lomas',d:'Zona 16',h:'Consultar'},{n:'Santa María Reyna de la Familia',d:'Plaza Cayalá',h:'Consultar'}]},
+
+    {nombre:'Parroquia San Martín de Porres (Vista Hermosa 2)',cong:'Orden de Predicadores (Dominicos)',dir:'2da. Calle 21-54, Zona 15, Vista Hermosa 2',oficina:'Lun 8:00–16:00 · Mar–Vie 8:00–18:00 · Sáb 8:00–12:00',misas:'Lun: 8:00 | Mar–Vie: 8:00 · 18:30 | Sáb: 8:00 · 18:00 | Dom: 7:30 · 10:00 · 12:00 · 17:00 · 19:00',conf:'Mar–Vie: 18:00',hs:'Jue: 19:30 (último jue del mes)',tel:'22102727 · 54787549',mail:'secretaria@parroquiasanmartin.org',web:'parroquiasanmartin.org',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Rodolfo Joel Méndez Vallecillo, O.P.',info:'Nicaragüense · Ord. 10/04/2021'},{cargo:'PROVINCIAL',nombre:'R.P. Ricardo Guardado Flores, O.P.',info:'Hondureño · Ord. 24/10/2009'}],
+    filiales:[{n:'Capilla del Colegio Bethania',d:'3ra. Calle 23-41, Z.15, Vista Hermosa 1',h:'Dom 11:00'}]}
+  ]},
+
+  { label: 'Zona 16', items: [
+    {nombre:'Cuasiparroquia Madre Teresa de Calcuta (Col. Hacienda Real)',cong:'Presbítero diocesano',dir:'24 Ave. 37-40, Col. Hacienda Real, Zona 16',oficina:'Vía telefónica a partir de 9:00',misas:'Lun: 17:00 (por solemnidad) | Mar,Jue,Vie: 17:00 | Dom: 9:00 · 12:00',conf:'Jue: 16:00 (antes de la misa)',hs:'Jue: 17:00–18:00',tel:'47142767',mail:'parroquiasantateresadecalcuta16.sec@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Oscar Giovanni Gracias Ramos',info:'Guatemalteco · Ord. 06/01/2001'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 17 · Lomas del Norte', items: [
+    {nombre:'Parroquia Santa María — Lomas del Norte',cong:'Presbítero diocesano',dir:'10 Calle A 10-06, Col. Lomas del Norte, Zona 17',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Mar–Jue: 18:00 | Dom: 7:00 · 9:00 · 18:00',hs:'Jue: 9:00 · 19:00',tel:'22561408 · 45820280',mail:'parroquiasantamariazona17@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Carlos Enrique Castellanos Ortiz',info:'Guatemalteco · Ord. 18/11/1989'}],
+    filiales:[{n:'San José',d:'3ra. Av. 10-55, Z.17, Residenciales El Norte',h:'Vie 18:00 · Dom 11:00 | HS: Jue 19:00'},{n:'Sagrada Familia',d:'Col. Casatenango, Z.17',h:'Jue 20:00 · Sáb 19:00 | HS: Jue 19:00'},{n:'La Santísima Trinidad',d:'Col. Salud Pública, Z.17',h:'Mié 19:30 · Dom 16:00'},{n:'San Francisco de Asís',d:'Jardín Zona Portales',h:'Dom 12:30'}]}
+  ]},
+
+  { label: 'Zona 18', items: [
+    {nombre:'Parroquia San Ignacio de Loyola — La Maya',cong:'Presbítero diocesano',dir:'Área Cívica, Lote 891, Col. Maya, Zona 18',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb–Dom 8:00–12:00',misas:'Lun–Vie: 7:00 | Sáb: 18:00 · 19:30 | Dom: 7:00 · 9:00 · 11:00 · 18:30',conf:'Lun,Mar,Mié,Vie: 8:00 (tras misa) | Jue: 9:00–12:00',hs:'Jue: 19:30',tel:'22600272 · 58918858',mail:'parroquiasanignacionzona18@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Orland Fernando Cáceres Bosque',info:'Guatemalteco · Ord. 21/11/2020'},{cargo:'VICARIO',nombre:'Pbro. Adán Rodolfo Tobar Melchor',info:'Guatemalteco · Ord. 16/03/2024'}],
+    filiales:[{n:'Inmaculada Concepción de María La Estancia',d:'Z.18',h:'Sáb 18:00 | HS: Jue 19:30'},{n:'Jesús Resucitado de la Pascua',d:'Z.18',h:'Sáb 19:30'},{n:'San Francisco de Asís',d:'Z.18',h:'Dom 9:00'},{n:'Virgen de Candelaria Las Tapias',d:'Z.18',h:'Dom 18:30'},{n:'Señor de Esquipulas El Valle',d:'Z.18',h:'Dom 7:00'},{n:'Virgen de Fátima Los Olivos',d:'Z.18',h:'Dom 7:00'}]},
+
+    {nombre:'Parroquia San Rafael Arcángel (San Rafael La Laguna)',cong:'Fraternidad Misionera de María',dir:'6ta. Calle, 3ra. Av., San Rafael La Laguna 1, Zona 18',oficina:'Lun–Vie 14:00–18:00 · Sáb 9:00–12:00',misas:'Mar,Mié,Vie: 17:00',hs:'Jue: 17:00',tel:'2242-6426',mail:'parroquiasanrafael24@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Juan Carlos Dealtán López, F.M.M.',info:'Guatemalteco · Ord. 12/06/2004'},{cargo:'VICARIO',nombre:'R.P. Manglio Elizardo Rodas Rabanales, F.M.M.',info:'Guatemalteco · Ord. 02/10/1993'}],filiales:[]},
+
+    {nombre:'Parroquia Jesús de la Montaña — Santa Elena III',cong:'Presbítero diocesano',dir:'16 Calle 29-14, Col. Santa Elena III, Zona 18',oficina:'Mar–Vie 13:00–17:00 · Jue también 10:00–12:00 · Sáb 8:00–12:00',misas:'Mié,Vie: 16:00 · 17:00 (int. particular) | Sáb: 11:00 · 15:00 · 16:30 · 18:00 | Dom: 8:00 · 18:00',conf:'Jue: 19:00 (1er jue de mes)',tel:'22553075',mail:'parroquia.jesus.dela.montana@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. José Ordóñez Flores',info:'Guatemalteco · Ord. 14/03/2009'}],
+    filiales:[{n:'Santiago Apóstol',d:'8 Calle 21-13, Col. Renacimiento Municipal, Z.18',h:'Dom 10:30 | Conf: Jue 19:00 (2do jue)'},{n:'Ntra. Sra. del Rosario',d:'Col. Lavarreda, Z.18',h:'Dom 12:00 | Conf: Jue 18:00 (4to jue)'},{n:'Ntra. Sra. de Fátima',d:'Col. Lomas de Lavarreda, Z.18',h:'Sáb 18:00 | Conf: Jue 19:00 (3er jue)'},{n:'San José',d:'Col. San José Lavarreda, Z.18',h:'Sáb 18:00 (2do y 4to vie)'}]},
+
+    {nombre:'Parroquia San Marcos — Kennedy',cong:'Presbítero diocesano',dir:'3ra. Av., 5ta. Calle, Lote 200, Col. Kennedy, Zona 18',oficina:'Lun–Vie 9:00–13:00 y 14:00–18:00',misas:'Mar: 20:00 | Jue: 6:00 · 20:00 | Sáb: 6:00 | Dom: 9:00 · 18:00',conf:'Mar: 19:00 | Jue: 18:00 · 19:00',hs:'Jue: 19:00',tel:'22428958 · 49505919',mail:'tsanmarcos1997@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Walter Antonio Ruiz Guzmán',info:'Guatemalteco · Ord. 22/10/2022'}],
+    filiales:[{n:'Iglesia Sagrado Corazón',d:'1ra. Calle, Col. San Jorge, Z.18',h:'Vie 20:00 · Dom 11:00'},{n:'Inmaculada Concepción de María',d:'2da. Calle, 10 Av. A y 11 Av.',h:'Mié 20:00 · Dom 7:00'}]},
+
+    {nombre:'Parroquia Natividad de María (Col. Alameda)',cong:'Presbítero diocesano',dir:'Colonia Alameda, 12 Calle "A" 25-01, Zona 18',oficina:'Lun–Vie 9:00–13:00 y 14:00–17:00',misas:'Jue: 8:00 · 18:00 | Vie,Sáb: 18:00 | Dom: 8:00 · 11:00 · 18:00',conf:'Jue: 16:30',hs:'Jue: 17:00',tel:'22573767 · 44043825',mail:'parr.natividaddemariaz18@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. José Rosa Cifuentes Diaz',info:'Guatemalteco · Ord. 01/12/2012'}],
+    filiales:[{n:'Altos de Sinaí',d:'Asentamiento Altos de Sinaí',h:'Sáb 16:00 · Dom 16:00 (2do dom)'}]},
+
+    {nombre:'Parroquia La Preciosísima Sangre (Col. Atlántida)',cong:'Presbítero diocesano',dir:'10 Avenida 10-16, Atlántida, Zona 18',oficina:'Lun–Vie 8:30–12:00 y 15:00–18:00 · Sáb 8:30–12:00',misas:'Mar–Sáb: 7:30 | Dom: 8:00 · 11:00 · 18:00',conf:'Mar,Mié,Vie: 17:45',hs:'Jue: 17:00 (hasta 18:00)',tel:'22560113 · 54567047',mail:'lapreciosisimasangre77@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Manuel de Jesús Chacón Reyes',info:'Guatemalteco · Ord. 15/04/1989'}],filiales:[]},
+
+    {nombre:'Parroquia La Inmaculada Concepción de María (Aldea El Chato)',cong:'Fraternidad Misionera de María',dir:'Km. 15.5 Ruta al Atlántico, Lote 34, Aldea El Chato, Zona 18',oficina:'Lun,Mar,Jue,Sáb 8:00–12:00 y 14:00–16:00',misas:'Jue: 17:00 | Dom: 7:00 · 19:00',hs:'Jue: 8:00 (Jubileo hasta 16:45)',tel:'22982453 · 40379027',mail:'formacionsinodalinmaculada@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Jorge López Vásquez, F.M.M.',info:'Guatemalteco · Ord. 29/09/1990'},{cargo:'VICARIO',nombre:'R.P. Armando Antonio Lemús Corado, F.M.M.',info:'Guatemalteco · Ord. 22/02/2019'},{cargo:'VICARIO',nombre:'R.P. Elias Cruz Monzón, F.M.M.',info:'Guatemalteco · Ord. 17/12/2016'},{cargo:'VICARIO',nombre:'R.P. Manuel de Jesús Pelaez Flores, F.M.M.',info:'Guatemalteco · Ord. 15/06/2000'}],filiales:[]},
+
+    {nombre:'Parroquia Cristo Nuestra Paz (Col. El Limón)',cong:'Misioneros Pasionistas',dir:'Col. El Limón, 23 Av. 13-01, Zona 18',oficina:'Mar–Vie 9:00–12:00 y 15:00–17:00',misas:'Mar–Sáb: 17:00 | Dom: 8:00',conf:'Jue: 19:00',hs:'Jue: 19:00',tel:'41713785 · 55175593',mail:'parroquiacristonuestrapaz@gmail.com',ikon:'✝️',
+    sac:[{cargo:'ADMINISTRADOR',nombre:'R.P. Víctor Alfonso Caballero Cruz, C.P.',info:'Hondureño · Ord. 10/02/2024'},{cargo:'VICARIO',nombre:'R.P. Jesús Canfran Casorran, C.P.',info:'Español · Ord. 25/02/1979'}],
+    filiales:[{n:'Medalla Milagrosa',d:'05 Calle, Lote 21, Manzana 16, Col. Juana de Arco',h:'Dom 11:00'},{n:'Inmaculada Concepción',d:'Col. Santa Elena, Z.18',h:'Dom 9:30'},{n:'Candelaria',d:'Asentamiento de Candelaria',h:'Dom 12:30'}]}
+  ]},
+
+  { label: 'Zona 19 · La Florida', items: [
+    {nombre:'Parroquia Ntra. Sra. del Rosario — La Florida',cong:'Presbítero diocesano',dir:'8 Avenida 5-94, Zona 19, La Florida',oficina:'Lun–Vie 8:30–12:00 y 14:30–18:00 · Sáb 8:30–12:00',misas:'Lun–Sáb: 7:00 · 18:00',conf:'Jue: 8:30 · 16:30',hs:'Jue: 19:00',tel:'24310394',mail:'parroquialafloridazona19@gmail.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Erick Humberto Monzón de la Roca',info:'Guatemalteco · Ord. 06/06/1992'},{cargo:'VICARIO',nombre:'Pbro. Juan Luis Emanuel Batres Ramírez',info:'Guatemalteco · Ord. 07/12/2024'}],filiales:[]}
+  ]},
+
+  { label: 'Zona 21', items: [
+    {nombre:'Parroquia San Miguel Febres Cordero — Venezuela',cong:'Presbítero diocesano',dir:'16 Avenida 10-49, Zona 21, Col. Venezuela',oficina:'Lun–Mié 8–12 y 14–18 · Jue–Vie 8–12 y 15–19 · Sáb 8–12',misas:'Lun,Mar,Jue,Vie,Sáb: 18:00 | Dom: 7:00 · 11:00 · 18:00',conf:'Jue y Vie: 16:00',hs:'Jue: 19:00',tel:'24488686',mail:'psanmfc9@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Víctor Aníbal Patzán Laroj',info:'Guatemalteco · Ord. 26/04/2003'},{cargo:'VICARIO',nombre:'Pbro. Rowso Aldair Monroy Noj',info:'Guatemalteco · Ord. 07/12/2024'}],
+    filiales:[{n:'Santo Hermano Pedro',d:'Col. La Arenera, Z.21',h:'Jue 17:00 · Dom 16:00 (1er y 3er dom)'},{n:'San Pedro Apóstol',d:'Col. La Arenera, Z.21',h:'Dom 16:00 (2do y 4to dom)'},{n:'San Juan Bautista',d:'Condominio San Juan de Los Encinos 2, Z.21',h:'Dom 9:00 (2do y 4to dom)'},{n:'María Auxiliadora',d:'Cerro Gordo, Z.21',h:'Dom 9:00 (1er y 3er dom)'},{n:'Santa María de La Paz',d:'Asentamiento Ramiro de León Carpio, Z.21',h:'Dom 16:00 (2do y 4to dom)'},{n:'Sagrado Corazón de Jesús',d:'Av. Ferrocarril, Z.12',h:'Sáb 19:00 (1er sáb)'},{n:'Virgen de Guadalupe',d:'Col. Nuevo Amanecer, Z.21',h:'Dom 9:00 (2do y 4to dom)'},{n:'San José',d:'Loma Blanca, Z.21',h:'Dom 9:00 (1er y 3er dom)'},{n:'Ntra. Sra. de Fátima',d:'Col. Nuevo Amanecer, Z.21',h:'Dom 16:00 (1er y 3er dom)'}]},
+
+    {nombre:'Parroquia Santa Clara de Asís (Col. Justo Rufino Barrios)',cong:'Presbítero diocesano',dir:'33 Avenida "A" 10-90, Zona 21, Col. Justo Rufino Barrios',oficina:'Lun–Vie 8:00–12:00 y 15:00–19:00 · Sáb 9:00–12:00',misas:'Lun: 18:00 | Mar,Mié: 7:00 | Jue: 7:00 · 18:30 | Vie: 7:00 · 18:00 | Sáb: 18:00 | Dom: 7:00 · 11:00 · 18:00',hs:'Jue: 7:00 (exp. hasta 12:00) · 15:00 (exp.) · 17:00',tel:'2449-7104 · 58536813',mail:'parroquiasantaclaradeasis.z21gt@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. José Alfredo Contreras Echeverría',info:'Guatemalteco · Ord. 01/10/1994'}],
+    filiales:[{n:'Ntra. Sra. de Los Ángeles',d:'Col. Vásquez, Z.21',h:'Mar 18:00 · Jue 17:00 · Dom 9:00 | HS: Jue 16:00'}]},
+
+    {nombre:'Parroquia Santa María del Tepeyac (Guajitos)',cong:'Presbítero diocesano',dir:'4ta. Calle y 4ta. Av., Calle Guajitos, Zona 21',oficina:'Lun–Vie 8:30–12:00 y 14:00–17:00 · Sáb 8:30–12:00',misas:'Dom,Mar,Mié,Vie,Sáb: 18:00 | Jue: 18:00 (misa por sector)',conf:'Vie: 15:30',hs:'Jue: 17:00',tel:'2479-3354',mail:'parroquiaguajitos@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Gonzalo Yoc Campos',info:'Guatemalteco · Ord. 19/09/2015'}],
+    filiales:[{n:'Inmaculada Concepción',d:'49 Calle 23-75, Los Cedros, Z.12',h:'Dom 11:00'}]}
+  ]},
+
+  { label: 'Zona 25 · Los Ocotes', items: [
+    {nombre:'Parroquia Santa Lucía (Los Ocotes)',cong:'Presbítero diocesano',dir:'Lote 6, Sector 1, Santa Lucía, Los Ocotes, Zona 25',oficina:'Mié–Vie 15:00–18:00',misas:'Mar,Mié: 19:00 | Jue: 19:30 | Dom: 7:00',conf:'Jue: 15:00',hs:'Jue: 18:30',tel:'55119299',mail:'santaluciazona25@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. José Fernando Cifuentes Mijangos',info:'Guatemalteco · Ord. 21/11/2020'}],
+    filiales:[{n:'Santa Teresa',d:'Las Canoas, Z.25',h:'Dom 9:00'},{n:'Inmaculada Concepción',d:'Las Conchas, Z.25',h:'Sáb 18:30 (c/15 días)'},{n:'El Buen Pastor',d:'Col. El Buen Pastor, Z.25',h:'Sáb 17:00 (c/15 días)'},{n:'Ntra. Sra. de Los Ángeles',d:'Col. Los Ángeles, Z.25',h:'Dom 10:30'},{n:'San Antonio',d:'Finca La Esperanza, Z.17',h:'Dom 12:00 (c/15 días)'},{n:'San Agustín',d:'Col. San Agustín, Z.25',h:'Sáb 17:00 (c/15 días)'},{n:'Santa Anita',d:'Col. Santa Anita, Z.25',h:'Sáb 18:30 (c/15 días)'}]},
+
+    {nombre:'Parroquia Personal Penitenciaria',cong:'Orden de la Merced',dir:'9 Calle A 9-29, Zona 8 de Mixco, Sector A-10',oficina:'Lun–Vie 8:00–12:00',misas:'Misas en centros de detención (Pavón, Pavoncito, COF, F1, Sta. Teresa, Z.18)',tel:'24433154',mail:'pepegonzalocan@gmail.com',ikon:'✝️',
+    sac:[{cargo:'CAPELLÁN',nombre:'R.P. Gonzalo Cano González, O. de M.',info:'Panameño · Ord. 28/11/1998'}],filiales:[]}
+  ]}
+];
+
+renderSections(secciones, 'lista');
+</script>
+</body>
+</html>

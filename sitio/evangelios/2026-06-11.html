@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evangelio Jueves, 11 de junio de 2026 · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage-dark:#8aaa80;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;min-height:100vh;}
+.bg-blob{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-blob::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.28) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(45px);}
+.bg-blob::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.22) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(40px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);text-decoration:none;}.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);text-decoration:none;}
+.page{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:100px 24px 80px;}
+.hdr{text-align:center;margin-bottom:36px;animation:fadeUp 0.8s ease forwards 0.2s;opacity:0;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:12px;}
+.ptitle{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,52px);font-weight:300;color:var(--warm-brown);line-height:1.1;}.ptitle em{font-style:italic;color:var(--mauve);}
+.datebar{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:36px;animation:fadeUp 0.8s ease forwards 0.35s;opacity:0;}
+.dl{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(232,196,184,0.5));max-width:80px;}.dlr{background:linear-gradient(to left,transparent,rgba(232,196,184,0.5));}
+.dt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-light);}
+.wrap{animation:fadeUp 0.8s ease forwards 0.5s;opacity:0;}
+.chip{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:6px 16px;margin-bottom:20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+.santo{display:inline-flex;align-items:center;gap:8px;background:rgba(184,201,176,0.15);border:1px solid rgba(138,170,128,0.3);border-radius:20px;padding:5px 14px;margin-bottom:16px;font-size:11px;letter-spacing:1px;color:var(--sage-dark);}
+.gc{background:rgba(255,255,255,0.68);backdrop-filter:blur(10px);border:1px solid rgba(232,196,184,0.4);border-radius:24px;padding:36px;margin-bottom:22px;position:relative;overflow:hidden;}
+@media(max-width:500px){.gc{padding:24px 20px;}}
+.gc::before{content:'“';position:absolute;top:-15px;left:20px;font-family:'Cormorant Garamond',serif;font-size:130px;color:rgba(232,196,184,0.22);line-height:1;pointer-events:none;}
+.gref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:6px;display:block;position:relative;z-index:1;}
+.gtit{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:400;color:var(--warm-brown);margin-bottom:20px;display:block;position:relative;z-index:1;line-height:1.3;}
+.gt{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,19px);font-style:italic;font-weight:300;color:var(--warm-brown);line-height:1.9;position:relative;z-index:1;}
+.gt p{margin-bottom:16px;}.gt p:last-child{margin-bottom:0;}
+.sep{display:flex;align-items:center;gap:12px;margin:28px 0 20px;}
+.sl{flex:1;height:1px;background:rgba(232,196,184,0.4);}
+.st{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);white-space:nowrap;}
+.ec{background:rgba(240,246,237,0.45);border:1px solid rgba(184,201,176,0.35);border-radius:20px;padding:28px 32px;margin-bottom:20px;}
+@media(max-width:500px){.ec{padding:22px 18px;}}
+.etit{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--warm-brown);margin-bottom:14px;line-height:1.3;}
+.eb{font-size:14.5px;line-height:1.95;color:var(--text);font-weight:300;}.eb p{margin-bottom:12px;}.eb p:last-child{margin-bottom:0;}.eb strong{color:var(--warm-brown);font-weight:400;}
+.ac{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.35);border-radius:16px;padding:18px 22px;margin-bottom:12px;}
+.at{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.ap{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+.atx{font-size:14px;line-height:1.8;color:var(--text);font-weight:300;}.atx strong{color:var(--warm-brown);font-weight:400;}
+.rc{background:linear-gradient(135deg,rgba(245,230,224,0.5),rgba(240,246,237,0.5));border:1px solid rgba(200,169,110,0.22);border-radius:20px;padding:24px 28px;margin-bottom:18px;}
+.rl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:10px;}
+.rt{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+.oc{background:rgba(197,217,232,0.15);border:1px solid rgba(150,190,215,0.28);border-radius:20px;padding:24px 28px;margin-bottom:24px;text-align:center;}
+.ol{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4a7090;margin-bottom:10px;}
+.ot{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+.acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+.bg{background:linear-gradient(135deg,rgba(200,169,110,0.9),rgba(180,140,80,0.95));color:#fff;border:none;border-radius:50px;padding:11px 26px;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.25s;}
+.bo{background:rgba(255,255,255,0.6);color:var(--warm-brown);border:1px solid rgba(232,196,184,0.5);border-radius:50px;padding:11px 26px;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.25s;}
+.ftr{position:fixed;top:0;right:0;width:180px;opacity:0.4;pointer-events:none;z-index:0;}
+.fbl{position:fixed;bottom:0;left:0;width:160px;opacity:0.32;pointer-events:none;z-index:0;transform:rotate(180deg);}
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:16px;}
+footer p{font-size:12px;color:var(--mauve);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="bg-blob"></div>
+<svg class="ftr" viewBox="0 0 300 300" fill="none"><circle cx="220" cy="60" r="38" fill="rgba(232,196,184,0.35)"/><circle cx="248" cy="45" r="26" fill="rgba(245,230,224,0.42)"/><ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(232,196,184,0.38)" transform="rotate(-20 230 55)"/><ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.4)" transform="rotate(40 175 85)"/></svg>
+<svg class="fbl" viewBox="0 0 300 300" fill="none"><circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.28)"/><circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.34)"/><ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.36)" transform="rotate(-15 75 245)"/></svg>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Evangelios</a>
+</nav>
+<div class="page">
+  <div class="hdr"><p class="eyebrow">Volver a Ti, Jesús</p><h1 class="ptitle">Evangelio del <em>Día</em></h1></div>
+  <div class="datebar"><div class="dl"></div><span class="dt">Jueves, 11 de junio de 2026</span><div class="dl dlr"></div></div>
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:18px;"><span class="chip">✦ san Mateo · 10, 7-13</span></div>
+    <div style="text-align:center;margin-bottom:16px;"><span class="santo">🌿 Memoria de San Bernabé, Apóstol</span></div>
+    <div class="gc">
+      <span class="gref">Lectura del santo Evangelio según san Mateo · 10, 7-13</span>
+      <span class="gtit">Que haya paz en esta casa</span>
+      <div class="gt"><p>En aquel tiempo, Jesús envió a sus discípulos con estas instrucciones: "Vayan proclamando que el Reino de los cielos está cerca. Curen a los enfermos, resuciten a los muertos y echen fuera a los demonios. Gratuitamente han recibido este poder; dennlo gratuitamente.</p><p>No lleven consigo ni oro, ni plata, ni monedas de cobre. No lleven alforja para el camino, ni dos túnicas, ni sandalias, ni bordón; pues el trabajador tiene derecho a su sustento.</p><p>Cuando entren en una ciudad o en un pueblo, busquen a alguien respetable y quédense en su casa hasta que se vayan. Al entrar, saluden así: 'Que haya paz en esta casa', y si la casa es digna, la paz de ustedes se quedará en ella; si no es digna, la paz retornará a ustedes."</p><p style='font-style:normal;font-size:14px;color:var(--text-light);letter-spacing:1px;'>Palabra del Señor.</p></div>
+    </div>
+    <div class="sep"><div class="sl"></div><span class="st">✦ Explicación</span><div class="sl"></div></div>
+    <div class="ec"><h2 class="etit">Misión sin equipaje — solo confianza y paz</h2><div class="eb"><p>Jesús envía a los discípulos con autoridad real — poder para curar, liberar, resucitar. Pero también con una condición: <strong>sin equipaje.</strong> Sin oro, sin plata, sin alforja. Total dependencia de la Providencia de Dios.</p><p>El saludo <strong>"Que haya paz en esta casa"</strong> no es un protocolo. Es un don real que se da o no se queda según la disposición del que recibe. Nadie pierde nada ofreciendo paz.</p><p>San Bernabé, "el hijo del consuelo", acompañó a Pablo cuando nadie más confiaba en él. En Antioquía, donde ellos predicaron, los seguidores de Jesús recibieron por primera vez el nombre de <strong>"cristianos"</strong>.</p></div></div>
+    <div class="sep"><div class="sl"></div><span class="st">✦ Para ser mejor persona hoy</span><div class="sl"></div></div>
+    <div class="ac"><p class="at">🔍 Examina tu corazón</p><p class="ap">¿Llevo demasiado 'equipaje' en mi fe? ¿Condiciones para seguir a Dios, seguridades que exijo antes de dar el paso?</p></div><div class="ac"><p class="at">💛 Acción concreta</p><p class="atx">Hoy al entrar a tu casa, tu trabajo, donde vayas — lleva paz como intención real: <strong>"Que haya paz en este lugar."</strong></p></div><div class="ac"><p class="at">🌿 San Bernabé</p><p class="ap">¿Hay alguien como Bernabé en mi vida — alguien que abrió una puerta por mí, que confió en mí cuando otros no? ¿Le he agradecido?</p></div><div class="ac"><p class="at">✦ Gratuidad</p><p class="ap">"Gratuitamente han recibido, gratuitamente den." ¿Qué he recibido yo de Dios que podría dar más generosamente?</p></div>
+    <div class="rc"><p class="rl">🌸 Para llevar todo el día</p><p class="rt">"Que haya paz en esta casa." — La paz no es ausencia de problemas. Es la presencia de Dios.</p></div>
+    <div class="oc"><p class="ol">🙏 Oración del día</p><p class="ot">Señor, que yo sea portador de paz. Que donde yo entre haya algo de tu calma, tu bondad, tu presencia. Amén.</p></div>
+    <div class="acts">
+      <button class="bg" onclick="compartir()">Compartir 🌸</button>
+      <a href="index.html" class="bo">← Ver todos</a>
+    </div>
+  </div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script>function compartir(){if(navigator.share){navigator.share({title:document.title,url:window.location.href});}else{navigator.clipboard.writeText(window.location.href).then(()=>alert('¡Link copiado! 🌸'));}}</script>
+</body></html>

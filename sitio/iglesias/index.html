@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directorio de Iglesias · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);min-height:100vh;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);text-decoration:none;}.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);text-decoration:none;}
+.page{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:88px 20px 80px;}
+.page-hdr{text-align:center;padding:36px 0 28px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,7vw,60px);font-weight:300;color:var(--warm-brown);line-height:1.1;}
+.page-title em{font-style:italic;color:var(--mauve);}
+.page-sub{font-size:15px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.7;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto 36px;width:fit-content;}
+.dl{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--soft-gold);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+@media(max-width:480px){.grid{grid-template-columns:1fr;}}
+.mun-card{display:block;background:rgba(255,255,255,0.68);backdrop-filter:blur(10px);border:1px solid rgba(232,196,184,0.35);border-radius:20px;padding:24px 22px;text-decoration:none;transition:all 0.25s;position:relative;overflow:hidden;}
+.mun-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--soft-gold),rgba(200,169,110,0.2));}
+.mun-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,160,160,0.15);border-color:rgba(200,169,110,0.4);}
+.mun-icon{font-size:28px;margin-bottom:10px;display:block;}
+.mun-nombre{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--warm-brown);line-height:1.2;margin-bottom:4px;}
+.mun-desc{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.5;}
+.mun-count{display:inline-block;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--soft-gold);margin-top:10px;letter-spacing:1px;}
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:14px 18px;font-size:12px;color:var(--text-light);font-weight:300;line-height:1.7;text-align:center;}
+.nota a{color:var(--soft-gold);text-decoration:none;} a{color:inherit;text-decoration:none;}
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Arquidiócesis de Guatemala</p>
+    <h1 class="page-title">Directorio de <em>Iglesias</em></h1>
+    <p class="page-sub">Selecciona tu municipio para ver todas las parroquias, rectorías y santuarios con horarios oficiales.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <div class="grid">
+    <a href="ciudad.html" class="mun-card">
+      <span class="mun-icon">🏙️</span>
+      <div class="mun-nombre">Ciudad de Guatemala</div>
+      <div class="mun-desc">Zonas 1–25 · Parroquias, rectorías y santuarios del centro histórico y colonias</div>
+      <span class="mun-count">~60 iglesias</span>
+    </a>
+    <a href="mixco.html" class="mun-card">
+      <span class="mun-icon">⛪</span>
+      <div class="mun-nombre">Mixco</div>
+      <div class="mun-desc">San Cristóbal, Panorama, El Milagro, La Comunidad y más</div>
+      <span class="mun-count">~20 iglesias</span>
+    </a>
+    <a href="villa-nueva.html" class="mun-card">
+      <span class="mun-icon">🌿</span>
+      <div class="mun-nombre">Villa Nueva y Sur</div>
+      <div class="mun-desc">Villa Nueva, San Miguel Petapa, Villa Canales, Fraijanes</div>
+      <span class="mun-count">~20 iglesias</span>
+    </a>
+    <a href="oriente.html" class="mun-card">
+      <span class="mun-icon">🌄</span>
+      <div class="mun-nombre">Oriente y Norte</div>
+      <div class="mun-desc">Palencia, San José Pinula, San Pedro Ayampuc, Santa Catarina Pinula</div>
+      <span class="mun-count">~8 iglesias</span>
+    </a>
+    <a href="sacatepequez.html" class="mun-card">
+      <span class="mun-icon">🌺</span>
+      <div class="mun-nombre">Sacatepéquez</div>
+      <div class="mun-desc">Antigua, Pastores, Alotenango, San Lucas, Sumpango, Milpas Altas</div>
+      <span class="mun-count">~10 iglesias</span>
+    </a>
+    <a href="escuintla.html" class="mun-card">
+      <span class="mun-icon">🌊</span>
+      <div class="mun-nombre">Escuintla</div>
+      <div class="mun-desc">Diócesis de Escuintla · Catedral, Puerto San José, Iztapa y más</div>
+      <span class="mun-count">~15 iglesias</span>
+    </a>
+  </div>
+
+  <div class="nota">⚠️ Horarios sujetos a cambio. Fuente: <a href="https://directorio.arzobispadodeguatemala.org" target="_blank">Arzobispado de Guatemala</a></div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+</body>
+</html>
