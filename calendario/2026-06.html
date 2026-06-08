@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junio 2026 · Calendario Litúrgico · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--rose:#e8c4b8;
+  --morado:#7b5ea7;--morado-bg:rgba(123,94,167,0.1);--morado-border:rgba(123,94,167,0.3);
+  --blanco-bg:rgba(245,240,232,0.5);--blanco-border:rgba(200,169,110,0.4);
+  --rojo:#c0392b;--rojo-bg:rgba(192,57,43,0.08);--rojo-border:rgba(192,57,43,0.3);
+  --verde:#2e7d52;--verde-bg:rgba(46,125,82,0.08);--verde-border:rgba(46,125,82,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+.bg-blob{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-blob::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(46,125,82,0.1) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg-blob::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(200,169,110,0.1) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm-brown);text-decoration:none;}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-link{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);text-decoration:none;transition:color 0.2s;}
+.nav-link:hover{color:var(--warm-brown);}
+.page{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:88px 20px 80px;}
+.cal-header{text-align:center;padding:40px 0 32px;animation:fadeUp 0.8s ease forwards 0.2s;opacity:0;}
+.cal-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.cal-mes{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,8vw,72px);font-weight:300;color:var(--warm-brown);line-height:1;}
+.cal-ano{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,32px);font-weight:300;color:var(--mauve);display:block;margin-top:4px;}
+.cal-tiempo{display:inline-flex;align-items:center;gap:8px;background:var(--verde-bg);border:1px solid var(--verde-border);border-radius:20px;padding:6px 18px;margin-top:14px;font-size:12px;letter-spacing:1px;color:var(--verde);}
+.color-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.leyenda{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px;animation:fadeUp 0.8s ease forwards 0.4s;opacity:0;}
+.leyenda-item{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.3);border-radius:20px;padding:5px 12px;}
+.leyenda-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.leyenda-text{font-size:11px;color:var(--text-light);}
+.mes-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;animation:fadeUp 0.8s ease forwards 0.5s;opacity:0;}
+.mes-nav-btn{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);text-decoration:none;padding:8px 16px;border:1px solid rgba(232,196,184,0.4);border-radius:20px;background:rgba(255,255,255,0.5);transition:all 0.2s;}
+.mes-nav-btn:hover{color:var(--warm-brown);border-color:rgba(200,169,110,0.4);}
+.mes-nav-center{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--text-light);font-style:italic;}
+.semana-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin:24px 0 12px;display:flex;align-items:center;gap:10px;}
+.semana-label::before,.semana-label::after{content:'';flex:1;height:1px;background:rgba(232,196,184,0.35);}
+/* DÍA CARD */
+.dia-card{border-radius:16px;overflow:hidden;border:1px solid rgba(232,196,184,0.25);margin-bottom:10px;background:rgba(255,255,255,0.55);transition:all 0.2s;}
+.dia-card:hover{box-shadow:0 4px 16px rgba(201,160,160,0.12);transform:translateY(-1px);}
+.dia-header{display:flex;align-items:stretch;cursor:pointer;user-select:none;}
+.dia-color-bar{width:5px;flex-shrink:0;}
+.dia-fecha-box{background:rgba(0,0,0,0.03);padding:14px 14px;min-width:68px;text-align:center;border-right:1px solid rgba(232,196,184,0.2);flex-shrink:0;}
+.dia-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;line-height:1;color:var(--warm-brown);}
+.dia-semana{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);}
+.dia-info{padding:13px 16px;flex:1;min-width:0;}
+.dia-titulo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--warm-brown);line-height:1.3;margin-bottom:3px;}
+.dia-subtitulo{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.4;}
+.dia-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+.dia-chip{font-size:10px;letter-spacing:0.5px;border-radius:10px;padding:2px 9px;font-weight:300;}
+.dia-arrow{padding:0 14px;display:flex;align-items:center;color:rgba(201,160,160,0.4);font-size:14px;flex-shrink:0;transition:transform 0.2s;}
+.dia-card.open .dia-arrow{transform:rotate(180deg);}
+.dia-body{display:none;padding:0 16px 18px;border-top:1px solid rgba(232,196,184,0.2);}
+.dia-body.open{display:block;}
+.dia-explicacion{font-size:14px;line-height:1.85;color:var(--text);font-weight:300;margin-top:14px;}
+.dia-explicacion p{margin-bottom:10px;}
+.dia-explicacion p:last-child{margin-bottom:0;}
+.dia-explicacion strong{color:var(--warm-brown);font-weight:400;}
+.dia-explicacion em{font-style:italic;color:var(--text-light);}
+.dia-color-info{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--text-light);background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.3);border-radius:10px;padding:4px 10px;}
+/* Colores */
+.bar-verde{background:var(--verde);}
+.bar-blanco{background:#c8a96e;}
+.bar-rojo{background:var(--rojo);}
+.bar-morado{background:var(--morado);}
+.chip-verde{background:var(--verde-bg);border:1px solid var(--verde-border);color:var(--verde);}
+.chip-blanco{background:rgba(245,240,232,0.6);border:1px solid rgba(200,169,110,0.4);color:#8a6a30;}
+.chip-rojo{background:var(--rojo-bg);border:1px solid var(--rojo-border);color:var(--rojo);}
+.chip-morado{background:var(--morado-bg);border:1px solid var(--morado-border);color:var(--morado);}
+.dot-verde{background:var(--verde);}
+.dot-blanco{background:#c8a96e;}
+.dot-rojo{background:var(--rojo);}
+.dot-morado{background:var(--morado);}
+/* Destacados */
+.dia-card.solemnidad{border-color:rgba(200,169,110,0.45);}
+.dia-card.solemnidad .dia-fecha-box{background:rgba(200,169,110,0.08);}
+.dia-card.solemnidad .dia-num{color:var(--soft-gold);}
+.dia-card.destacado{border-color:rgba(200,169,110,0.35);}
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+.floral-tr{position:fixed;top:0;right:0;width:180px;opacity:0.4;pointer-events:none;z-index:0;}
+.floral-bl{position:fixed;bottom:0;left:0;width:160px;opacity:0.3;pointer-events:none;z-index:0;transform:rotate(180deg);}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="bg-blob"></div>
+<svg class="floral-tr" viewBox="0 0 300 300" fill="none"><circle cx="220" cy="60" r="38" fill="rgba(46,125,82,0.18)"/><circle cx="248" cy="45" r="26" fill="rgba(100,170,120,0.15)"/><ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(46,125,82,0.15)" transform="rotate(-20 230 55)"/><ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.4)" transform="rotate(40 175 85)"/></svg>
+<svg class="floral-bl" viewBox="0 0 300 300" fill="none"><circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.28)"/><circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.3)"/><ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.3)" transform="rotate(-15 75 245)"/></svg>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-link">← Calendario</a>
+</nav>
+
+<div class="page">
+
+  <div class="cal-header">
+    <p class="cal-eyebrow">Calendario Litúrgico Católico</p>
+    <h1 class="cal-mes">Junio<span class="cal-ano">2026</span></h1>
+    <div class="cal-tiempo"><div class="color-dot dot-verde"></div>Tiempo Ordinario · Color: Verde</div>
+  </div>
+
+  <div class="leyenda">
+    <div class="leyenda-item"><div class="leyenda-dot dot-verde"></div><span class="leyenda-text">Verde — Tiempo Ordinario</span></div>
+    <div class="leyenda-item"><div class="leyenda-dot dot-blanco"></div><span class="leyenda-text">Blanco / Dorado — Fiestas del Señor y santos</span></div>
+    <div class="leyenda-item"><div class="leyenda-dot dot-rojo"></div><span class="leyenda-text">Rojo — Mártires / Espíritu Santo</span></div>
+  </div>
+
+  <div class="mes-nav reveal">
+    <a href="2026-05.html" class="mes-nav-btn">← Mayo 2026</a>
+    <span class="mes-nav-center">Junio 2026</span>
+    <a href="2026-07.html" class="mes-nav-btn">Julio 2026 →</a>
+  </div>
+
+  <!-- SEMANA 1 -->
+  <div class="semana-label reveal">Semana 9ª del Tiempo Ordinario</div>
+
+  <!-- 1 Jun -->
+  <div class="dia-card reveal destacado" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">1</div><div class="dia-semana">Lun</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Justino, mártir</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Apologista cristiano</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-rojo">Mártir</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Justino</strong> (100-165) fue el primer gran filósofo cristiano. Nació en Samaria de familia pagana, estudió filosofía griega y, tras su conversión, usó su formación intelectual para defender la fe cristiana. Escribió sus famosas <em>Apologías</em> dirigidas al emperador romano, explicando racionalmente el cristianismo y demostrando que no era una superstición sino la verdad que todos los filósofos habían buscado.</p>
+      <p>Fue decapitado en Roma con seis compañeros por negarse a ofrecer sacrificios a los dioses paganos. Su martirio dejó un testimonio escrito precioso sobre cómo celebraba la Eucaristía la Iglesia del siglo II — casi igual a como la celebramos hoy.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: mártir.</div>
+    </div></div>
+  </div>
+
+  <!-- 2 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-rojo"></div>
+      <div class="dia-fecha-box"><div class="dia-num">2</div><div class="dia-semana">Mar</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Santos Marcelino y Pedro, mártires</div>
+        <div class="dia-subtitulo">Memoria libre · Siglo IV</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-rojo">Mártires</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>Santos Marcelino y Pedro</strong>, mártires romanos del siglo IV bajo la persecución de Diocleciano. Marcelino era sacerdote y Pedro exorcista. Fueron decapitados en el año 304. Constantino el Grande los veneró especialmente y construyó una basílica en su honor. El Papa San Dámaso compuso su epitafio. Están mencionados en el Canon Romano de la Misa.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: mártires.</div>
+    </div></div>
+  </div>
+
+  <!-- 3 Jun -->
+  <div class="dia-card reveal destacado" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-rojo"></div>
+      <div class="dia-fecha-box"><div class="dia-num">3</div><div class="dia-semana">Mié</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Carlos Lwanga y compañeros, mártires</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Mártires de Uganda</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-rojo">Memoria</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Carlos Lwanga y 21 compañeros</strong>, mártires ugandeses. En 1886, el rey Mwanga II de Uganda ordenó matar a sus pajes de corte que se habían convertido al catolicismo y se negaban a participar en sus prácticas inmorales. Carlos Lwanga, de 25 años, era catequista y bautizó a varios de sus compañeros la noche antes de la ejecución. Fueron quemados vivos en Munyonyo.</p>
+      <p>Tenían entre 13 y 30 años. Algunos protestantes murieron junto a ellos. Fueron canonizados por Pablo VI en 1964. Son los protomártires del África negra y patronos de la juventud africana.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: mártires.</div>
+    </div></div>
+  </div>
+
+  <!-- 4 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">4</div><div class="dia-semana">Jue</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 9ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>Feria ordinaria. El <strong>Tiempo Ordinario</strong> no es un tiempo "aburrido" — es el tiempo de vivir cotidianamente lo que se celebró en los grandes tiempos litúrgicos. Es el tiempo de crecer, madurar y vivir el Evangelio en lo de todos los días.</p>
+      <p>El color verde simboliza la vida, el crecimiento, la esperanza. Es el color de la naturaleza en su plenitud.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: Tiempo Ordinario.</div>
+    </div></div>
+  </div>
+
+  <!-- 5 Jun -->
+  <div class="dia-card reveal destacado" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-rojo"></div>
+      <div class="dia-fecha-box"><div class="dia-num">5</div><div class="dia-semana">Vie</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Bonifacio, obispo y mártir</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Apóstol de Germania</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-rojo">Memoria</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Bonifacio</strong> (680-754), monje inglés llamado Winfrido, es el gran apóstol de Germania. Dejó su patria para evangelizar los pueblos germánicos con una energía extraordinaria. Fundó diócesis, monasterios y reformó la Iglesia franca. Fue nombrado arzobispo de Maguncia y legado papal.</p>
+      <p>A los 80 años, mientras se preparaba para una confirmación en Frisia (Holanda), fue atacado con sus compañeros por un grupo de paganos. Murió mártir con los evangelios en la mano. Es patrono de Germania y Países Bajos.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: obispo mártir.</div>
+    </div></div>
+  </div>
+
+  <!-- 6 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">6</div><div class="dia-semana">Sáb</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Norberto de Xanten, obispo</div>
+        <div class="dia-subtitulo">Memoria libre · Fundador premonstratense</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Norberto de Xanten</strong> (1080-1134), noble alemán que vivió una conversión radical después de casi morir en un accidente a caballo. Vendió todos sus bienes, se hizo sacerdote y fundó en Prémontré (Francia) la Orden Premonstratense o Norbertinos, religiosos que combinan la vida contemplativa con la pastoral activa. Fue luego obispo de Magdeburgo y arzobispo reformador.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: obispo confesor.</div>
+    </div></div>
+  </div>
+
+  <!-- 7 Jun — CORPUS CHRISTI -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">7</div><div class="dia-semana">Dom</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">✦ Santísimo Cuerpo y Sangre de Cristo — Corpus Christi</div>
+        <div class="dia-subtitulo">Solemnidad · Precepto · 10º Domingo del Tiempo Ordinario</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Solemnidad</span><span class="dia-chip chip-blanco">Precepto</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>La gran fiesta eucarística del año. La Iglesia celebra con gozo la presencia real de Jesucristo en la Eucaristía — su Cuerpo, Sangre, Alma y Divinidad bajo las especies de pan y vino.</p>
+      <p>Esta fiesta fue instituida en el siglo XIII gracias a Santa Juliana de Lieja, quien tuvo visiones en las que se le pedía una fiesta especial para el Santísimo Sacramento. El Papa Urbano IV la extendió a toda la Iglesia en 1264 y encargó a <strong>Santo Tomás de Aquino</strong> componer el oficio litúrgico, que incluye los himnos <em>Pange Lingua</em>, <em>Tantum Ergo</em> y <em>O Salutaris Hostia</em>.</p>
+      <p>Evangello: Juan 6, 51-58 — <em>"El que come mi carne y bebe mi sangre permanece en mí y yo en él."</em></p>
+      <p>En muchos países se celebra con procesiones eucarísticas por las calles, altares adornados con flores y el pueblo arrodillándose ante el Santísimo Sacramento expuesto.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco/dorado: solemnidad del Señor.</div>
+    </div></div>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="semana-label reveal">Semana 10ª del Tiempo Ordinario</div>
+
+  <!-- 8 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">8</div><div class="dia-semana">Lun</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 10ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. El Evangelio de esta semana en el ciclo B continúa el libro de Marcos. La Iglesia medita sobre el crecimiento del Reino de Dios — como la semilla que crece de noche sin que el sembrador sepa cómo.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: Tiempo Ordinario.</div></div></div>
+  </div>
+
+  <!-- 9 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">9</div><div class="dia-semana">Mar</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Efrén el Sirio, diácono y doctor</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Doctor de la Iglesia</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Doctor</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Efrén el Sirio</strong> (306-373), diácono y poeta teólogo de la Iglesia de Oriente. Escribió miles de himnos y poemas teológicos en arameo — la lengua que hablaba Jesús. Sus obras son una fuente extraordinaria de la teología y espiritualidad primitiva. Es llamado "la cítara del Espíritu Santo" por la belleza de sus composiciones. Doctor de la Iglesia universal.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: Doctor de la Iglesia.</div>
+    </div></div>
+  </div>
+
+  <!-- 10 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">10</div><div class="dia-semana">Mié</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Beato Álvaro del Portillo, presbítero</div>
+        <div class="dia-subtitulo">Memoria libre · Sucesor de San Josemaría</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>Beato Álvaro del Portillo</strong> (1914-1994), sacerdote español, fue el sucesor de San Josemaría Escrivá como prelado del Opus Dei. Teólogo brillante, participó activamente en el Concilio Vaticano II y fue obispo de la Prelatura del Opus Dei. Era conocido por su profunda paz interior, su humildad y su cercanía con las personas. Fue beatificado por el Papa Francisco en 2014.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: beato confesor.</div>
+    </div></div>
+  </div>
+
+  <!-- 11 Jun -->
+  <div class="dia-card reveal destacado" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-rojo"></div>
+      <div class="dia-fecha-box"><div class="dia-num">11</div><div class="dia-semana">Jue</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Bernabé, apóstol</div>
+        <div class="dia-subtitulo">Fiesta · Compañero de San Pablo</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-blanco">Fiesta</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Bernabé</strong>, levita chipriota, uno de los primeros discípulos de Jesús en Jerusalén. Su nombre real era José, pero los apóstoles lo llamaron Bernabé, que significa "hijo del consuelo". Fue él quien presentó al recién convertido Pablo ante los apóstoles desconfiados. Acompañó a Pablo en su primer viaje misionero por Chipre y Asia Menor.</p>
+      <p>Aunque no es uno de los Doce, la Iglesia lo llama "apóstol" por su misión fundadora. La tradición dice que murió martirizado en Chipre.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: apóstol (los apóstoles se celebran con rojo o blanco según la tradición).</div>
+    </div></div>
+  </div>
+
+  <!-- 12 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">12</div><div class="dia-semana">Vie</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 10ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. Este viernes la Iglesia medita en el Evangelio de Marcos donde Jesús habla del perdón de los pecados y la misericordia. La feria es una invitación a vivir el Evangelio en lo cotidiano.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: Tiempo Ordinario.</div></div></div>
+  </div>
+
+  <!-- 13 Jun -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">13</div><div class="dia-semana">Sáb</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">✦ San Antonio de Padua, presb. y doctor</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Doctor Evangélico</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Memoria</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Antonio de Padua</strong> (1195-1231), fraile franciscano portugués, es uno de los santos más populares del mundo. Predicador extraordinario, teólogo brillante y obrador de milagros, fue canonizado solo un año después de su muerte y Doctor de la Iglesia a los 352 años de fallecido.</p>
+      <p>Es famoso como patrono de los objetos perdidos — la tradición viene de que un novicio robó su Salterio con glosas y Antonio rezó; el novicio devolvió el libro aterrorizado. También es patrón de los pobres, de los matrimonios y de Portugal y Padua.</p>
+      <p>Murió a los 36 años. Sus últimas palabras fueron: "Veo a mi Señor." Su lengua, incorrupta, se conserva en Padua como reliquia.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: Doctor de la Iglesia.</div>
+    </div></div>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="semana-label reveal">Semana 11ª del Tiempo Ordinario</div>
+
+  <!-- 14 Jun -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">14</div><div class="dia-semana">Dom</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">✦ Santísimo Corazón de Jesús</div>
+        <div class="dia-subtitulo">Solemnidad · 11º Domingo del Tiempo Ordinario</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Solemnidad</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>La gran fiesta del amor de Dios. La Iglesia contempla el corazón humano de Jesús como símbolo y fuente de su amor infinito por la humanidad. Esta solemnidad se celebra el viernes siguiente a Corpus Christi — 19 días después de Pentecostés.</p>
+      <p>La devoción al Sagrado Corazón fue propagada especialmente por <strong>Santa Margarita María de Alacoque</strong> (siglo XVII), a quien Jesús se apareció mostrándole su corazón rodeado de llamas y coronado de espinas, pidiendo reparación por los pecados y la consagración al Sagrado Corazón.</p>
+      <p>El Papa Pío XII llamó a esta devoción "la síntesis de toda la religión cristiana". Muchas familias consagran su hogar al Sagrado Corazón este día.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: solemnidad del Señor.</div>
+    </div></div>
+  </div>
+
+  <!-- 15 Jun -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">15</div><div class="dia-semana">Lun</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">✦ Inmaculado Corazón de María</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Sábado después del S. Corazón</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Memoria</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>Al día siguiente de la solemnidad del Sagrado Corazón, la Iglesia celebra el <strong>Inmaculado Corazón de María</strong>. El corazón de María es el corazón más parecido al de Jesús — puro, lleno de amor, totalmente entregado a Dios.</p>
+      <p>En Fátima (1917), Nuestra Señora pidió la consagración del mundo a su Inmaculado Corazón, prometiendo que al final su Corazón triunfaría. Esta memoria fue elevada a obligatoria por San Juan Pablo II en 1986, vinculándola para siempre al Sagrado Corazón de Jesús.</p>
+      <p><em>"Al final mi Inmaculado Corazón triunfará."</em> — Nuestra Señora de Fátima, 1917.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: memoria mariana.</div>
+    </div></div>
+  </div>
+
+  <!-- 16 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">16</div><div class="dia-semana">Mar</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 11ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. El ciclo de lecturas continúa con Marcos y las cartas de San Pablo a los Corintios, meditando sobre la vida nueva en Cristo y la reconciliación.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: Tiempo Ordinario.</div></div></div>
+  </div>
+
+  <!-- 17 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">17</div><div class="dia-semana">Mié</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">San Gregorio Barbarigo, obispo · Memoria libre</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Gregorio Barbarigo</strong> (1625-1697), obispo de Padua, fue uno de los prelados más brillantes del siglo XVII. Fundó una imprenta para publicar textos sagrados en lenguas orientales para favorecer la unidad de los cristianos. Hombre de oración, caridad y reforma. Canonizado por Juan XXIII en 1960.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: feria ordinaria.</div>
+    </div></div>
+  </div>
+
+  <!-- 18 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">18</div><div class="dia-semana">Jue</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 11ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. El Evangelio de esta semana presenta las parábolas del Reino: el grano de mostaza, la levadura, el tesoro escondido. Jesús enseña que el Reino de Dios crece silenciosamente, desde lo pequeño, transformando todo desde adentro.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde.</div></div></div>
+  </div>
+
+  <!-- 19 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">19</div><div class="dia-semana">Vie</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Romualdo, abad</div>
+        <div class="dia-subtitulo">Memoria libre · Fundador camaldulense</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Romualdo</strong> (952-1027), noble ravenaes que se convirtió en monje tras ver a su padre matar a un hombre en un duelo. Fundó la Orden Camaldulense, que combina el cenobitismo (vida en comunidad) con el eremitismo (vida solitaria y contemplativa). Fundó más de cien monasterios en Italia.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: abad.</div>
+    </div></div>
+  </div>
+
+  <!-- 20 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">20</div><div class="dia-semana">Sáb</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 11ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. Los sábados en Tiempo Ordinario tienen un carácter especialmente mariano en la tradición de la Iglesia — es el día dedicado a la Virgen María desde la Edad Media, recordando que ella fue la única que mantuvo la fe durante el Sábado Santo, entre la muerte y la resurrección de Jesús.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde.</div></div></div>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="semana-label reveal">Semana 12ª del Tiempo Ordinario</div>
+
+  <!-- 21 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">21</div><div class="dia-semana">Dom</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Luis Gonzaga, religioso</div>
+        <div class="dia-subtitulo">Memoria obligatoria · 12º Domingo del Tiempo Ordinario</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-verde">Verde (Misa dominical)</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>El <strong>12º Domingo del Tiempo Ordinario</strong>: el Evangelio presenta la tempestad calmada — Jesús dormido en la barca, los discípulos aterrados, su reproche: <em>"¿Por qué tenéis miedo? ¿Aún no tenéis fe?"</em></p>
+      <p><strong>San Luis Gonzaga</strong> (1568-1591), joven jesuita de noble familia italiana que renunció a sus títulos y herencias para consagrarse a Dios. Murió a los 23 años cuidando apestados en Roma. Es patrono de la juventud católica. Su pureza y entrega total son un modelo de cómo ser joven y santo al mismo tiempo.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: domingo ordinario.</div>
+    </div></div>
+  </div>
+
+  <!-- 22 Jun -->
+  <div class="dia-card reveal destacado" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-rojo"></div>
+      <div class="dia-fecha-box"><div class="dia-num">22</div><div class="dia-semana">Lun</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Santos Tomás Moro y Juan Fisher, mártires</div>
+        <div class="dia-subtitulo">Memoria libre · Mártires de Inglaterra</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-rojo">Mártires</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Tomás Moro</strong> (1478-1535), Lord Canciller de Inglaterra, humanista y hombre de Estado brillante, fue decapitado por el rey Enrique VIII por negarse a reconocer su matrimonio con Ana Bolena y su supremacía sobre la Iglesia. Sus últimas palabras: <em>"Muero siendo buen servidor del rey, pero de Dios primero."</em></p>
+      <p><strong>San Juan Fisher</strong>, obispo de Rochester, único obispo inglés que se negó a reconocer el divorcio del rey. Fue decapitado el mismo año. Son los dos grandes mártires de la Reforma inglesa — patronos de los políticos y gobernantes.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: mártires.</div>
+    </div></div>
+  </div>
+
+  <!-- 23 Jun -->
+  <div class="dia-card reveal destacado" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">23</div><div class="dia-semana">Mar</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Vigilia de San Juan Bautista</div>
+        <div class="dia-subtitulo">Vigilia · Solemnidad mañana · San José Cafasso</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Vigilia</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>Vigilia de la Natividad de San Juan Bautista — una de las pocas fiestas de santos que tiene vigilia propia en el calendario romano, señal de su altísima importancia.</p>
+      <p><strong>San José Cafasso</strong> (1811-1860), sacerdote turinés, director espiritual de San Juan Bosco (Don Bosco). Dedicó su vida a los presos y condenados a muerte, acompañándolos hasta el cadalso. Fue canonizado por Pío XII en 1947.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: vigilia de solemnidad.</div>
+    </div></div>
+  </div>
+
+  <!-- 24 Jun — SAN JUAN BAUTISTA -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">24</div><div class="dia-semana">Mié</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">✦ Natividad de San Juan Bautista</div>
+        <div class="dia-subtitulo">Solemnidad · Precepto en muchos países</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Solemnidad</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>Una de las pocas solemnidades del año que celebra el <em>nacimiento</em> de un santo — solo hay tres: la Navidad del Señor (25 dic), la Natividad de María (8 sep) y esta, la de Juan Bautista. Eso indica su lugar excepcional en la historia de la salvación.</p>
+      <p>Juan es el último y más grande de los profetas, el precursor inmediato del Mesías. Jesús mismo lo elogió: <em>"Entre los nacidos de mujer no ha surgido ninguno mayor que Juan el Bautista."</em> Nació seis meses antes que Jesús y fue consagrado profeta desde el vientre materno, cuando saltó de gozo ante la presencia de Cristo en el vientre de María.</p>
+      <p>Esta fiesta se ubica intencionalmente en el solsticio de verano, cuando los días empiezan a acortarse — recordando las palabras de Juan: <em>"Él debe crecer, yo debo menguar."</em></p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: solemnidad del precursor del Señor.</div>
+    </div></div>
+  </div>
+
+  <!-- 25 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">25</div><div class="dia-semana">Jue</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 12ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. La Iglesia medita esta semana en el Evangelio de Marcos donde Jesús calma la tempestad y libera al endemoniado de Gerasa — signos de su poder sobre las fuerzas del caos y del mal.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: Tiempo Ordinario.</div></div></div>
+  </div>
+
+  <!-- 26 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">26</div><div class="dia-semana">Vie</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Feria del Tiempo Ordinario</div>
+        <div class="dia-subtitulo">Semana 12ª</div>
+        <div class="dia-chips"><span class="dia-chip chip-verde">Verde</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion"><p>Feria ordinaria. En muchas diócesis latinoamericanas, los viernes del año tienen una devoción especial al Sagrado Corazón de Jesús y a la Pasión del Señor, heredada de siglos de piedad popular.</p><div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde.</div></div></div>
+  </div>
+
+  <!-- 27 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">27</div><div class="dia-semana">Sáb</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Cirilo de Alejandría, obispo y doctor</div>
+        <div class="dia-subtitulo">Memoria obligatoria · Doctor de la Encarnación</div>
+        <div class="dia-chips"><span class="dia-chip chip-blanco">Blanco</span><span class="dia-chip chip-blanco">Doctor</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p><strong>San Cirilo de Alejandría</strong> (378-444), patriarca y Doctor de la Iglesia. Defensor incansable de la maternidad divina de María — <em>Theotokos</em> (Madre de Dios) — frente a la herejía de Nestorio, que la llamaba solo "madre de Cristo". En el Concilio de Éfeso (431) triunfó la doctrina correcta: María es verdaderamente Madre de Dios porque Jesús es verdadera y completamente Dios y hombre.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-blanco"></div>Color blanco: Doctor de la Iglesia.</div>
+    </div></div>
+  </div>
+
+  <!-- SEMANA 5 -->
+  <div class="semana-label reveal">Semana 13ª del Tiempo Ordinario</div>
+
+  <!-- 28 Jun -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-blanco"></div>
+      <div class="dia-fecha-box"><div class="dia-num">28</div><div class="dia-semana">Dom</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">San Ireneo de Lyon, obispo y mártir</div>
+        <div class="dia-subtitulo">Memoria obligatoria · 13º Domingo del Tiempo Ordinario</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-verde">Verde (Misa dominical)</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>El <strong>13º Domingo del Tiempo Ordinario</strong>: el Evangelio narra la resurrección de la hija de Jairo y la curación de la mujer hemorroísa — dos milagros de Jesús que revelan su poder sobre la enfermedad y la muerte.</p>
+      <p><strong>San Ireneo de Lyon</strong> (130-202), discípulo de San Policarpo (quien fue discípulo del apóstol Juan), obispo y mártir. Es el primer gran teólogo sistemático de la Iglesia. Su obra <em>Contra las Herejías</em> combate el gnosticismo y transmite fielmente la fe apostólica. Su frase más famosa: <em>"La gloria de Dios es el hombre que vive; y la vida del hombre es la visión de Dios."</em></p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-verde"></div>Color verde: domingo ordinario.</div>
+    </div></div>
+  </div>
+
+  <!-- 29 Jun — PEDRO Y PABLO -->
+  <div class="dia-card reveal solemnidad" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-rojo"></div>
+      <div class="dia-fecha-box"><div class="dia-num">29</div><div class="dia-semana">Lun</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">✦ Santos Pedro y Pablo, apóstoles</div>
+        <div class="dia-subtitulo">Solemnidad · Precepto en muchos países</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-blanco">Solemnidad</span><span class="dia-chip chip-blanco">Precepto</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>Una de las solemnidades más antiguas del calendario cristiano. La Iglesia celebra juntos a los dos columnas del cristianismo.</p>
+      <p><strong>San Pedro</strong> (†67): el pescador de Galilea elegido por Jesús como primera piedra de su Iglesia. <em>"Tú eres Pedro, y sobre esta piedra edificaré mi Iglesia."</em> Primer Papa, negó a Cristo tres veces y fue restaurado tres veces. Fue crucificado cabeza abajo en Roma, bajo Nerón, porque no se consideraba digno de morir como su Señor.</p>
+      <p><strong>San Pablo</strong> (†67): el gran perseguidor convertido en el más ardiente misionero. Sus cartas forman casi la mitad del Nuevo Testamento. Recorrió el mundo mediterráneo tres veces en misión. Fue decapitado en Roma el mismo año que Pedro — como ciudadano romano no podía ser crucificado.</p>
+      <p>Esta es la fiesta de la unidad de la Iglesia, fundada sobre el testimonio apostólico. El Papa celebra este día dando el palio a los nuevos arzobispos metropolitanos.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: apóstoles y mártires.</div>
+    </div></div>
+  </div>
+
+  <!-- 30 Jun -->
+  <div class="dia-card reveal" onclick="toggleDia(this)">
+    <div class="dia-header">
+      <div class="dia-color-bar bar-verde"></div>
+      <div class="dia-fecha-box"><div class="dia-num">30</div><div class="dia-semana">Mar</div></div>
+      <div class="dia-info">
+        <div class="dia-titulo">Primeros Mártires de la Iglesia de Roma</div>
+        <div class="dia-subtitulo">Memoria libre · Siglo I</div>
+        <div class="dia-chips"><span class="dia-chip chip-rojo">Rojo</span><span class="dia-chip chip-rojo">Mártires</span></div>
+      </div>
+      <div class="dia-arrow">▼</div>
+    </div>
+    <div class="dia-body"><div class="dia-explicacion">
+      <p>La Iglesia recuerda a los <strong>primeros mártires de Roma</strong> — los cientos de cristianos ejecutados por el emperador Nerón en el año 64, acusados falsamente de incendiar Roma. Fueron arrojados a los leones, quemados como antorchas en los jardines del Vaticano, crucificados. Entre ellos murió el apóstol Pedro.</p>
+      <p>Sus nombres son en su mayoría desconocidos, pero la Iglesia los recuerda colectivamente al día siguiente de la solemnidad de Pedro y Pablo, con quienes comparten la gloria del martirio.</p>
+      <div class="dia-color-info"><div class="leyenda-dot dot-rojo"></div>Color rojo: mártires.</div>
+    </div></div>
+  </div>
+
+  <!-- Navegación inferior -->
+  <div class="mes-nav reveal" style="margin-top:32px;">
+    <a href="2026-05.html" class="mes-nav-btn">← Mayo 2026</a>
+    <span class="mes-nav-center">Junio 2026</span>
+    <a href="2026-07.html" class="mes-nav-btn">Julio 2026 →</a>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Calendario Litúrgico Católico · Guatemala 🌸</p></footer>
+
+<script>
+function toggleDia(card){
+  const body = card.querySelector('.dia-body');
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.dia-card').forEach(c=>{c.classList.remove('open');c.querySelector('.dia-body').classList.remove('open');});
+  if(!isOpen){card.classList.add('open');body.classList.add('open');setTimeout(()=>body.scrollIntoView({behavior:'smooth',block:'nearest'}),100);}
+}
+// Resaltar hoy
+const hoy = new Date();
+if(hoy.getMonth()===5 && hoy.getFullYear()===2026){
+  document.querySelectorAll('.dia-card').forEach(card=>{
+    const n = card.querySelector('.dia-num');
+    if(n && parseInt(n.textContent)===hoy.getDate()){
+      card.style.borderColor='rgba(200,169,110,0.7)';
+      card.style.boxShadow='0 0 0 2px rgba(200,169,110,0.3)';
+      const s=card.querySelector('.dia-semana');
+      if(s) s.innerHTML+='<br><span style="color:var(--soft-gold);font-size:9px;font-weight:700;">HOY</span>';
+    }
+  });
+}
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*25);obs.unobserve(e.target);}});},{threshold:0.05});
+reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

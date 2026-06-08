@@ -171,7 +171,7 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
     <li><a href="#herramientas">Herramientas</a></li>
     <li><a href="#conoceme">Conóceme</a></li>
     <li><a href="#proyectos">Donativos</a></li>
-    <li><a href="sitio/iglesias/index.html">Iglesias GT</a></li>
+    <li><a href="#iglesias">Iglesias GT</a></li>
   </ul>
   <button class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
@@ -179,7 +179,7 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
   <a href="#herramientas" onclick="toggleMenu()">Herramientas</a>
   <a href="#conoceme" onclick="toggleMenu()">Conóceme</a>
   <a href="#proyectos" onclick="toggleMenu()">Donativos</a>
-  <a href="sitio/iglesias/index.html" onclick="toggleMenu()">Iglesias GT</a>
+  <a href="#iglesias" onclick="toggleMenu()">Iglesias GT</a>
 </div>
 
 <!-- HERO -->
@@ -209,7 +209,7 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
       <span class="hero-nav-icon">🤲</span>
       <span class="hero-nav-label">Donativos</span>
     </a>
-    <a href="sitio/iglesias/index.html" class="hero-nav-btn">
+    <a href="#iglesias" class="hero-nav-btn">
       <span class="hero-nav-icon">⛪</span>
       <span class="hero-nav-label">Iglesias GT</span>
     </a>
@@ -349,26 +349,296 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
 <!-- DIRECTORIO DE IGLESIAS -->
 <section id="iglesias">
   <div class="section-inner">
-    <p class="section-label reveal">Arquidiócesis de Guatemala</p>
+    <p class="section-label reveal">Ciudad de Guatemala</p>
     <h2 class="section-title reveal">Directorio de <em>Iglesias</em></h2>
-    <p class="section-sub reveal">Más de 150 parroquias, rectorías y santuarios organizados por municipio. Con horarios, sacerdotes y filiales.</p>
+    <p class="section-sub reveal">Información oficial del Arzobispado de Guatemala. Toca una iglesia para ver todos sus datos.</p>
     <div class="divider reveal">
       <div class="divider-line"></div><div class="divider-dot"></div>
       <div class="divider-dot" style="background:var(--rose)"></div>
       <div class="divider-dot"></div><div class="divider-line r"></div>
     </div>
 
+    <!-- Buscador -->
+    <div class="buscador-wrap reveal">
+      <input type="text" id="buscador" placeholder="🔍  Buscar por nombre o zona..." oninput="filtrar()">
+    </div>
 
-    <div style="text-align:center;padding:40px 0;">
-      <a href="iglesias/index.html" style="display:inline-block;background:linear-gradient(135deg,var(--soft-gold),rgba(200,169,110,0.8));color:#fff;text-decoration:none;padding:18px 48px;border-radius:50px;font-family:'Lato',sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;">
-        Ver Directorio de Iglesias →
+    <!-- Nota -->
+    <div style="background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 18px;margin-bottom:28px;font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.7;" class="reveal">
+      ⚠️ Horarios sujetos a cambio en días festivos y Semana Santa. Siempre confirmar con la iglesia. Fuente: <a href="https://directorio.arzobispadodeguatemala.org" target="_blank" style="color:var(--soft-gold);">Arzobispado de Guatemala</a>
+    </div>
+
+    <div id="lista-iglesias">
+
+      <!-- ═══ ZONA 1 ═══ -->
+      <div class="zona-label reveal" data-zona="zona1">Zona 1 · Centro Histórico</div>
+
+      <div class="iglesia-row reveal" data-search="sagrario catedral metropolitana zona 1 parroquia" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">⛪</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia El Sagrario — S.I. Catedral Metropolitana</div>
+            <div class="iglesia-sub">Parroquia · Arzobispado de Guatemala</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">7a. Av. 6-73, Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Vie: 8:00 · 12:15 · 17:15<br>Sábado: 8:00 · 12:00<br>Domingo: 8:00 · 10:00 · 12:00 · 13:00 · 16:00 · 17:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Lun, Mar, Vie: 15:00–17:00<br>Sábado: 10:00–12:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🕯️</span><div><span class="det-label">Hora Santa</span><span class="det-val">Consultar con la parroquia</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">PBX 2504-6868<br>elsagrario.catedral@gmail.com</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="candelaria parroquia zona 1" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Nuestra Señora de Candelaria</div>
+            <div class="iglesia-sub">Parroquia · Zona 1</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">13 Av. 1-12, Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Sáb: 7:15 · 18:00<br>Domingo: 6:30 · 8:30 · 11:00 · 18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Viernes: 17:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2251-2478 · 2251-2501<br>julio01candelaria@hotmail.com</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="mercedes parroquia zona 1 nuestra señora" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Nuestra Señora de las Mercedes</div>
+            <div class="iglesia-sub">Parroquia · Zona 1</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">5a. Calle 11-73, Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Sáb: 7:00 · 12:00 · 18:00<br>Domingo: 8:00 · 10:00 · 12:00 · 18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Mar–Sáb: 10:00–12:00 y 16:00–18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🏛️</span><div><span class="det-label">Congregación</span><span class="det-val">Compañía de Jesús (Jesuitas)</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2232-0631 · 2251-3119</span></div></div>
+          <div class="det-fila"><span class="det-icon">🔗</span><div><span class="det-label">Filiales</span><span class="det-val">Rectoría Santa Rosa · Santuario del Sr. San José</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="santo domingo rosario zona 1 dominicos basílica" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Santo Domingo de Guzmán</div>
+            <div class="iglesia-sub">Basílica Ntra. Sra. del Rosario · Dominicos</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">12 Av. 10-09, Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Sáb: 6:30 · 12:00 · 18:30<br>Domingo: 6:30 · 8:00 · 10:00 · 12:00 · 17:00 · 19:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Lun–Vie: 15:30–17:00<br>Sábado: 18:00<br>Domingo: antes y durante las misas</span></div></div>
+          <div class="det-fila"><span class="det-icon">🏛️</span><div><span class="det-label">Congregación</span><span class="det-val">Orden de Predicadores (Dominicos)</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2502-2727 · stodom@intelnet.net.gt</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="misericordias parroquia señor zona 1" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia del Señor de las Misericordias</div>
+            <div class="iglesia-sub">Parroquia · Zona 1</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">1a. Av. 11-02, Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lunes: 7:00 · 12:00 · 19:00<br>Mar–Sáb: 7:00 · 18:00<br>Domingo: 7:30 · 9:00 · 11:00 · 18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Domingo: antes de cada misa</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2232-9723 · 2220-7715<br>p.delasmisericordias@gmail.com</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="santa teresa parroquia zona 1 rectoría" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">🌸</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Rectoría Santa Teresa</div>
+            <div class="iglesia-sub">Rectoría · Zona 1</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">4a. Calle y 9a. Av., Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Vie: 7:00<br>Sábado: 7:00 · 18:00<br>Domingo: 6:30 · 8:30 · 10:00 · 11:30 · 18:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Durante las misas</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2232-9124 · info@rectoriasantateresa.com</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="san sebastian parroquia padre eterno zona 1" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Rectoral San Sebastián</div>
+            <div class="iglesia-sub">Santuario del Padre Eterno · Zona 1</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">6a. Av. entre 2a. y 3a. Calle, Zona 1</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun: 7:00 · 12:15 · 17:30<br>Mar: 7:00 · 17:30<br>Mié: 7:00 · 10:00 · 12:15 · 17:00 · 18:00<br>Jue: 7:00 · 12:15 · 17:30<br>Sáb: 12:15 · 18:00<br>Domingo: 8:00 · 10:00 · 12:00 · 18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2232-7023 · 2238-0984<br>parroquiarectoralsansebastian@gmail.com</span></div></div>
+        </div>
+      </div>
+
+      <!-- ═══ ZONA 9 ═══ -->
+      <div class="zona-label reveal" data-zona="zona9">Zona 9 · Tívoli</div>
+
+      <div class="iglesia-row reveal" data-search="inmaculada tivoli santo tomas zona 9 aquino" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">⛪</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Santo Tomás de Aquino — La Inmaculada de Tívoli</div>
+            <div class="iglesia-sub">Parroquia · Zona 9</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">1a. Av. 9-14, Zona 9</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Sáb: 7:00 · 18:30<br>Domingo: 10:00 · 12:00 · 18:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Lun–Vie: 15:00–18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2331-0703 · 2360-5168</span></div></div>
+        </div>
+      </div>
+
+      <!-- ═══ ZONA 10 ═══ -->
+      <div class="zona-label reveal" data-zona="zona10">Zona 10 · Zona Viva</div>
+
+      <div class="iglesia-row reveal" data-search="guadalupe villa zona 10 parroquia nuestra señora" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">🌸</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Nuestra Señora de Guadalupe</div>
+            <div class="iglesia-sub">La Villa · Zona 10</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">15a. Av. 18-45, Zona 10</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Vie: 7:00 · 18:00<br>Sáb: 7:00 · 16:00 · 17:00 · 19:00<br>Domingo: 7:00 · 10:00 · 12:00 · 19:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Lun, Mar, Vie: 15:30–17:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2368-1744 · 2368-1745</span></div></div>
+          <div class="det-fila"><span class="det-icon">🔗</span><div><span class="det-label">Filiales</span><span class="det-val">Santo Hermano Pedro (26 Av. 9-53 Z.14)<br>Ntra. Sra. de las Victorias (20 Av. 3-09 Z.14)<br>Sr. Crucificado de Esquipulas (12 C. 12-69 Z.14)<br>Inmaculada Concepción (18 C. 21-41 Z.10)</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="san ignacio loyola zona 10 jesuitas" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Iglesia San Ignacio de Loyola</div>
+            <div class="iglesia-sub">Compañía de Jesús (Jesuitas) · Zona 10</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">18 Calle 8-50, Zona 10</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Vie: 7:30 · 12:00<br>Sábado: 7:30 · 12:00 · 18:00<br>Domingo: 8:00 · 9:30 · 12:00 · 19:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Lun–Dom: 11:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🏛️</span><div><span class="det-label">Congregación</span><span class="det-val">Compañía de Jesús (Jesuitas)</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2368-0387 · 2368-2370</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="inmaculada concepcion ciudad vieja zona 10" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Inmaculada Concepción</div>
+            <div class="iglesia-sub">Ciudad Vieja · Zona 10</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">2a. Av. 7-32, Zona 10, Ciudad Vieja</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lunes: 12:15<br>Mar–Vie: 12:15 · 17:00<br>Sábado: 17:00<br>Domingo: 7:00 · 9:00 · 10:30 · 12:15 · 18:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Hacer cita</span></div></div>
+          <div class="det-fila"><span class="det-icon">📞</span><div><span class="det-label">Contacto</span><span class="det-val">2334-5852 · 2332-6053</span></div></div>
+        </div>
+      </div>
+
+      <!-- ═══ ZONA 14 ═══ -->
+      <div class="zona-label reveal" data-zona="zona14">Zona 14</div>
+
+      <div class="iglesia-row reveal" data-search="san judas tadeo zona 14 parroquia" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">⛪</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia San Judas Tadeo</div>
+            <div class="iglesia-sub">Parroquia · Zona 14</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">10a. Calle 1-35, Zona 14</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lun–Sáb: 8:00 · 18:30<br>Domingo y festivos: 8:00 · 9:30 · 11:00 · 12:30 · 18:00 · 19:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Lun, Mié, Vie: 7:45–8:15<br>Mar y Sáb: 18:00–18:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🌐</span><div><span class="det-label">Web</span><span class="det-val">www.sanjudasgt.org</span></div></div>
+        </div>
+      </div>
+
+      <!-- ═══ ZONA 15 ═══ -->
+      <div class="zona-label reveal" data-zona="zona15">Zona 15 · Vista Hermosa</div>
+
+      <div class="iglesia-row reveal" data-search="cristo rey zona 15 tecun uman" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">✝️</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia Cristo Rey</div>
+            <div class="iglesia-sub">Col. Tecún Umán · Zona 15</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">3a. Calle 10-50, Zona 15, Col. Tecún Umán</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Mar–Vie: 19:00<br>Sábado: 19:00<br>Domingo: 8:00 · 12:00 · 19:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Consultar con la parroquia</span></div></div>
+        </div>
+      </div>
+
+      <div class="iglesia-row reveal" data-search="san martin porres zona 15 vista hermosa parroquia" onclick="abrirIglesia(this)">
+        <div class="iglesia-top">
+          <span class="iglesia-ikon">⛪</span>
+          <div class="iglesia-meta">
+            <div class="iglesia-nombre">Parroquia San Martín de Porres</div>
+            <div class="iglesia-sub">Col. Vista Hermosa II · Zona 15</div>
+          </div>
+          <span class="iglesia-chevron">▼</span>
+        </div>
+        <div class="iglesia-detalle">
+          <div class="det-fila"><span class="det-icon">📍</span><div><span class="det-label">Dirección</span><span class="det-val">2a. Calle 21-54, Zona 15, Col. Vista Hermosa II</span></div></div>
+          <div class="det-fila"><span class="det-icon">⛪</span><div><span class="det-label">Horarios de Misa</span><span class="det-val">Lunes: 8:00<br>Mar–Vie: 8:00 · 18:30<br>Sábado: 8:00 · 18:00<br>Domingo: 7:30 · 9:00 · 10:30 · 12:30 · 17:00 · 19:00<br>Misa en inglés Dom: 10:30</span></div></div>
+          <div class="det-fila"><span class="det-icon">🙏</span><div><span class="det-label">Confesiones</span><span class="det-val">Mar–Vie: 15:00–17:00</span></div></div>
+          <div class="det-fila"><span class="det-icon">🌐</span><div><span class="det-label">Web</span><span class="det-val">www.parroquiasanmartin.org</span></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Agregar iglesia -->
+    <div class="iglesia-agregar reveal">
+      <p>¿Falta tu parroquia? Escríbeme el nombre, zona y horarios y la agrego al directorio. 🌸</p>
+      <a href="https://wa.me/50240440951" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(200,169,110,0.9),rgba(180,140,80,0.95));color:#fff;border-radius:50px;padding:11px 26px;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 14px rgba(200,169,110,0.3);">
+        💬 Agregar mi iglesia
       </a>
-      <p style="margin-top:16px;font-size:13px;color:var(--text-light);font-weight:300;">Ciudad de Guatemala · Mixco · Villa Nueva · Sacatepéquez · Escuintla y más</p>
     </div>
 
   </div>
 </section>
-
 
 <!-- FOOTER -->
 <footer>
@@ -378,7 +648,7 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
     <a href="#herramientas">Herramientas</a>
     <a href="#conoceme">Conóceme</a>
     <a href="#proyectos">Donativos</a>
-    <a href="sitio/iglesias/index.html">Iglesias GT</a>
+    <a href="#iglesias">Iglesias GT</a>
   </div>
   <p class="footer-copy">Hecho con fe y amor 🌸 · Guatemala</p>
 </footer>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evangelio del Día · 6 de junio · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{--blush:#f5e6e0;--rose:#e8c4b8;--mauve:#c9a0a0;--sage-dark:#8aaa80;--cream:#fdf8f4;--warm-brown:#7a5c58;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;min-height:100vh;}
+  .bg-blob{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .bg-blob::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.28) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(45px);}
+  .bg-blob::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.22) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(40px);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);text-decoration:none;}
+  .nav-logo em{font-style:italic;color:var(--mauve);}
+  .nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);text-decoration:none;}
+  .nav-back:hover{color:var(--warm-brown);}
+  .page{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:100px 24px 80px;}
+  .page-header{text-align:center;margin-bottom:36px;animation:fadeUp 0.8s ease forwards 0.2s;opacity:0;}
+  .page-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:12px;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,52px);font-weight:300;color:var(--warm-brown);line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--mauve);}
+  .date-bar{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:36px;animation:fadeUp 0.8s ease forwards 0.35s;opacity:0;}
+  .date-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(232,196,184,0.5));max-width:80px;}
+  .date-line.r{background:linear-gradient(to left,transparent,rgba(232,196,184,0.5));}
+  .date-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-light);white-space:nowrap;}
+  .evangelio-wrap{animation:fadeUp 0.8s ease forwards 0.5s;opacity:0;}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:6px 16px;margin-bottom:20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+  .santo-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(184,201,176,0.15);border:1px solid rgba(138,170,128,0.3);border-radius:20px;padding:5px 14px;margin-bottom:16px;font-size:11px;letter-spacing:1px;color:var(--sage-dark);}
+  .gospel-card{background:rgba(255,255,255,0.68);backdrop-filter:blur(10px);border:1px solid rgba(232,196,184,0.4);border-radius:24px;padding:40px 40px;margin-bottom:22px;position:relative;overflow:hidden;}
+  @media(max-width:500px){.gospel-card{padding:28px 22px;}}
+  .gospel-card::before{content:'\201C';position:absolute;top:-15px;left:20px;font-family:'Cormorant Garamond',serif;font-size:130px;color:rgba(232,196,184,0.22);line-height:1;pointer-events:none;}
+  .gospel-ref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:6px;display:block;position:relative;z-index:1;}
+  .gospel-title-big{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--warm-brown);margin-bottom:20px;display:block;position:relative;z-index:1;line-height:1.3;}
+  .gospel-text{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,20px);font-style:italic;font-weight:300;color:var(--warm-brown);line-height:1.9;position:relative;z-index:1;}
+  .gospel-text p{margin-bottom:16px;}
+  .gospel-text p:last-child{margin-bottom:0;}
+  .section-sep{display:flex;align-items:center;gap:12px;margin:28px 0 20px;}
+  .section-sep-line{flex:1;height:1px;background:rgba(232,196,184,0.4);}
+  .section-sep-text{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);white-space:nowrap;}
+  .explanation-card{background:rgba(240,246,237,0.45);border:1px solid rgba(184,201,176,0.35);border-radius:20px;padding:32px 36px;margin-bottom:20px;}
+  @media(max-width:500px){.explanation-card{padding:22px 18px;}}
+  .explanation-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--warm-brown);margin-bottom:16px;line-height:1.3;}
+  .explanation-body{font-size:15px;line-height:1.95;color:var(--text);font-weight:300;}
+  .explanation-body p{margin-bottom:14px;}
+  .explanation-body p:last-child{margin-bottom:0;}
+  .explanation-body strong{color:var(--warm-brown);font-weight:400;}
+  .analisis-grid{display:flex;flex-direction:column;gap:14px;margin-bottom:20px;}
+  .analisis-card{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.35);border-radius:16px;padding:20px 24px;}
+  .analisis-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:10px;}
+  .analisis-pregunta{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--warm-brown);line-height:1.65;}
+  .analisis-texto{font-size:14.5px;line-height:1.8;color:var(--text);font-weight:300;}
+  .analisis-texto strong{color:var(--warm-brown);font-weight:400;}
+  .contraste-box{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+  @media(max-width:480px){.contraste-box{grid-template-columns:1fr;}}
+  .contraste-item{border-radius:14px;padding:16px 18px;text-align:center;}
+  .contraste-item .c-icon{font-size:24px;margin-bottom:8px;}
+  .contraste-item .c-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+  .contraste-item .c-text{font-size:13.5px;font-weight:300;line-height:1.6;}
+  .reflexion-card{background:linear-gradient(135deg,rgba(245,230,224,0.5),rgba(240,246,237,0.5));border:1px solid rgba(200,169,110,0.22);border-radius:20px;padding:26px 30px;margin-bottom:20px;}
+  .reflexion-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:12px;}
+  .reflexion-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+  .oracion-card{background:rgba(197,217,232,0.15);border:1px solid rgba(150,190,215,0.28);border-radius:20px;padding:26px 30px;margin-bottom:28px;text-align:center;}
+  .oracion-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4a7090;margin-bottom:12px;}
+  .oracion-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;}
+  .btn-gold{background:linear-gradient(135deg,rgba(200,169,110,0.9),rgba(180,140,80,0.95));color:#fff;border:none;border-radius:50px;padding:12px 28px;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.25s;box-shadow:0 4px 16px rgba(200,169,110,0.3);}
+  .btn-gold:hover{transform:translateY(-2px);}
+  .btn-outline{background:rgba(255,255,255,0.6);color:var(--warm-brown);border:1px solid rgba(232,196,184,0.5);border-radius:50px;padding:12px 28px;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.25s;}
+  .btn-outline:hover{background:rgba(245,230,224,0.7);transform:translateY(-2px);}
+  .floral-tr{position:fixed;top:0;right:0;width:190px;opacity:0.42;pointer-events:none;z-index:0;}
+  .floral-bl{position:fixed;bottom:0;left:0;width:170px;opacity:0.35;pointer-events:none;z-index:0;transform:rotate(180deg);}
+  footer{position:relative;z-index:1;text-align:center;padding:28px 24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+  footer p{font-size:12px;color:var(--mauve);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="bg-blob"></div>
+<svg class="floral-tr" viewBox="0 0 300 300" fill="none"><circle cx="220" cy="60" r="38" fill="rgba(232,196,184,0.35)"/><circle cx="248" cy="45" r="26" fill="rgba(245,230,224,0.42)"/><ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(232,196,184,0.38)" transform="rotate(-20 230 55)"/><ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.4)" transform="rotate(40 175 85)"/></svg>
+<svg class="floral-bl" viewBox="0 0 300 300" fill="none"><circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.28)"/><circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.34)"/><ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.36)" transform="rotate(-15 75 245)"/></svg>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Evangelios</a>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <p class="page-eyebrow">Volver a Ti, Jesús</p>
+    <h1 class="page-title">Evangelio del <em>Día</em></h1>
+  </div>
+
+  <div class="date-bar">
+    <div class="date-line"></div>
+    <span class="date-text">Sábado, 6 de junio de 2026</span>
+    <div class="date-line r"></div>
+  </div>
+
+  <div class="evangelio-wrap">
+
+    <div style="text-align:center;margin-bottom:18px;">
+      <span class="chip">✦ Marcos 12, 38-44</span>
+    </div>
+    <div style="text-align:center;margin-bottom:20px;">
+      <span class="santo-chip">🌿 Memoria de San Norberto, obispo</span>
+    </div>
+
+    <div class="gospel-card">
+      <span class="gospel-ref">Lectura del santo Evangelio según san Marcos · 12, 38-44</span>
+      <span class="gospel-title-big">Das limosna de lo que te sobra</span>
+      <div class="gospel-text">
+        <p>En aquel tiempo, enseñaba Jesús a la gente y le decía: "Cuidado con los escribas, a quienes les encanta pasearse con largas túnicas y que los saluden en las plazas; que buscan los primeros asientos en las sinagogas y los puestos de honor en los banquetes; que se comen los bienes de las viudas y aparentan hacer largas oraciones. Estos recibirán un castigo más severo."</p>
+        <p>Estando Jesús sentado frente al arca de las ofrendas, miraba cómo la gente echaba dinero, y muchos ricos echaban mucho. Llegó una viuda pobre y echó dos monedas de muy poco valor. Llamando entonces a sus discípulos, Jesús les dijo: "Yo les aseguro que esa viuda pobre ha dado más que todos los demás. Porque todos han dado de lo que les sobraba; pero ella, en su pobreza, ha dado todo lo que tenía para vivir."</p>
+        <p style="font-style:normal;font-size:14px;color:var(--text-light);margin-top:20px;letter-spacing:1px;">Palabra del Señor.</p>
+      </div>
+    </div>
+
+    <div class="section-sep">
+      <div class="section-sep-line"></div>
+      <span class="section-sep-text">✦ Explicación</span>
+      <div class="section-sep-line"></div>
+    </div>
+
+    <div class="explanation-card">
+      <h2 class="explanation-title">Dios no mide cuánto das — mide cuánto te cuesta</h2>
+      <div class="explanation-body">
+        <p>Jesús acaba de advertir sobre los escribas: personas religiosas que hacen todo para ser vistos, aplaudidos y admirados. Oran largo, ocupan los mejores asientos y cuidan mucho las apariencias. Pero por dentro están vacíos — e incluso abusan de los más vulnerables.</p>
+        <p>Inmediatamente después, Jesús mira a una viuda pobre que echa dos monedas pequeñísimas en el arca. Nadie la nota. Nadie la aplaude. Pero Jesús sí la ve. Y dice algo que voltea toda lógica humana: <strong>ella dio más que todos los ricos.</strong> Porque ellos dieron de lo que les sobraba. Ella dio todo lo que tenía.</p>
+        <p>Dios no evalúa la cantidad — evalúa el corazón. <strong>Un gesto pequeño dado con amor total vale más que grandes gestos hechos para ser vistos.</strong> Esta viuda no sabía que Jesús la estaba mirando. Y eso es exactamente lo que la hace grande.</p>
+      </div>
+    </div>
+
+    <div class="section-sep">
+      <div class="section-sep-line"></div>
+      <span class="section-sep-text">✦ Para ser mejor persona hoy</span>
+      <div class="section-sep-line"></div>
+    </div>
+
+    <!-- Contraste visual -->
+    <div class="contraste-box">
+      <div class="contraste-item" style="background:rgba(245,226,220,0.35); border:1px solid rgba(220,180,170,0.3);">
+        <div class="c-icon">🎭</div>
+        <div class="c-label" style="color:#9a5a50;">Los escribas</div>
+        <div class="c-text" style="color:var(--text-light);">Hacen todo para ser vistos. La apariencia es lo primero.</div>
+      </div>
+      <div class="contraste-item" style="background:rgba(240,246,237,0.4); border:1px solid rgba(138,170,128,0.3);">
+        <div class="c-icon">🪙</div>
+        <div class="c-label" style="color:var(--sage-dark);">La viuda</div>
+        <div class="c-text" style="color:var(--text-light);">Da sin que nadie la vea. El corazón es lo primero.</div>
+      </div>
+    </div>
+
+    <div class="analisis-grid">
+
+      <div class="analisis-card">
+        <p class="analisis-tag">🔍 Examina tu corazón</p>
+        <p class="analisis-pregunta">¿Doy de lo que me sobra, o a veces doy de lo que me cuesta?</p>
+      </div>
+
+      <div class="analisis-card">
+        <p class="analisis-tag">💛 Acción concreta</p>
+        <p class="analisis-texto">Hoy haz algo por alguien <strong>sin que nadie lo sepa.</strong> Un mensaje, una ayuda, un gesto de amor silencioso. No para ser visto — solo porque sí. Eso es lo que Jesús miró en la viuda.</p>
+      </div>
+
+      <div class="analisis-card">
+        <p class="analisis-tag">🔍 Para reflexionar</p>
+        <p class="analisis-pregunta">¿Hay algo en mi vida espiritual que hago más por apariencia que por amor genuino a Dios?</p>
+      </div>
+
+      <div class="analisis-card">
+        <p class="analisis-tag">🌿 San Norberto</p>
+        <p class="analisis-texto">San Norberto era un hombre rico que lo dejó todo para vivir el Evangelio radicalmente. Fundó una orden religiosa y dedicó su vida a los demás. Su pregunta para hoy: <strong>¿Qué tengo que yo podría dar con más generosidad?</strong></p>
+      </div>
+
+    </div>
+
+    <div class="reflexion-card">
+      <p class="reflexion-label">🌸 Para llevar todo el día</p>
+      <p class="reflexion-text">"Ella ha dado todo lo que tenía para vivir." — Hoy quiero dar con el corazón, no con lo que me sobra.</p>
+    </div>
+
+    <div class="oracion-card">
+      <p class="oracion-label">🙏 Oración del día</p>
+      <p class="oracion-text">Señor, enséñame a dar con generosidad real — no solo lo que me sobra, sino lo que me cuesta. Que mis gestos vengan del corazón y no de la galería. Amén.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn-gold" onclick="compartir()">Compartir 🌸</button>
+      <a href="index.html" class="btn-outline">← Ver todos</a>
+    </div>
+
+  </div>
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+
+<script>
+function compartir() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Evangelio del día · Marcos 12, 38-44',
+      text: 'Das limosna de lo que te sobra — Sábado 6 de junio · Volver a Ti, Jesús',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => alert('¡Link copiado! 🌸'));
+  }
+}
+</script>
+</body>
+</html>

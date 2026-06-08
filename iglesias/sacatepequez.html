@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesias — Sacatepéquez · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="directorio.css">
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Municipios</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Arquidiócesis de Guatemala</p>
+    <h1 class="page-title"><em>Sacatepéquez</em></h1>
+    <p class="page-sub">Antigua Guatemala · Pastores · Alotenango · San Lucas · Sumpango · Milpas Altas</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+  <div class="search-wrap"><input type="text" id="buscador" placeholder="🔍  Buscar por nombre o municipio..." oninput="filtrar('buscador','lista')"></div>
+  <div class="nota">⚠️ Horarios sujetos a cambio. Fuente: <a href="https://directorio.arzobispadodeguatemala.org" target="_blank">Arzobispado de Guatemala</a></div>
+  <div id="lista"></div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script src="directorio.js"></script>
+<script>
+const secciones = [
+  { label: 'Antigua Guatemala — San Felipe', items: [
+    {nombre:'Santuario San Felipe Apóstol',cong:'Presbítero diocesano',dir:'Calle Real de San Felipe, Zona 0, Aldea San Felipe de Jesús, Antigua Guatemala',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–17:00 · Dom 6:00–16:00',misas:'Lun,Mar,Mié,Vie,Sáb: 7:00 · 12:00 | Jue: 7:00 · 12:00 · 18:00 | Dom: 7:00 · 9:30 · 12:00 · 17:00',conf:'Dom–Sáb: 11:30',hs:'Jue: 19:00',tel:'4141-1323 · 7831-1855',mail:'secresantuariosanfelipeapostol@gmail.com',ikon:'⛪',
+    sac:[{cargo:'RECTOR',nombre:'Pbro. José Valentín Guzmán Pacay',info:'Guatemalteco · Ord. 21/11/2020'}],filiales:[]},
+
+    {nombre:'Parroquia San Miguel Escobar',cong:'Padres Diocesanos (Coreanos)',dir:'3ra. Avenida 3-60, Zona 6, San Miguel Escobar, Ciudad Vieja, Sacatepéquez',oficina:'Lun–Vie 9:00–13:00 y 15:00–19:00',misas:'Lun,Mié,Vie: 6:30 | Mar,Jue: 18:30 | Sáb: 10:00 · 11:00 · 14:00 | Dom: 7:00 · 11:00 · 18:00',hs:'Jue: 18:00',tel:'788-86891 · 46916169',mail:'parroquiasanmiguelescobar@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Seon Bok Pablo Kim',info:'Surcoreano · Ord. 11/01/2011'}],
+    filiales:[{n:'San Lorenzo el Cubo',d:'Aldea San Lorenzo el Cubo',h:'Dom 15:00 · Mié 18:30 | HS: Mié 18:00'},{n:'Bosareyes',d:'Caserío Bosareyes',h:'Dom 9:00'}]}
+  ]},
+
+  { label: 'Pastores', items: [
+    {nombre:'Parroquia San Dionisio Areopagita (Pastores)',cong:'Fraternidad Misionera de María',dir:'Iglesia Católica, Pastores, Plazuela, Zona 0, Pastores, Sacatepéquez',oficina:'Mar–Vie 9:00–13:00 y 15:00–17:00 · Sáb 9:00–12:00',misas:'Dom: 9:00 · 18:00 | Jue: 9:00 · 18:00',conf:'Jue: 10:00 · 19:00 · Dom: 19:00',hs:'Jue: 7:00',tel:'30473363',mail:'Vlaynez184@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Vicente Laynez Batz, F.M.M.',info:'Guatemalteco · Ord. 20/07/1996'},{cargo:'VICARIO',nombre:'R.P. Juan Fernando Martínez Barrios, F.M.M.',info:'Guatemalteco · Ord. 29/09/1990'}],
+    filiales:[{n:'San Luis Pueblo Nuevo, San Luis Las Carretas, Pueblo Nuevo, Barrio La Cruz',d:'Pastores',h:'Dom 7:00 (San Luis P.N.) · 7:00 (Pueblo Nuevo) · 9:00 (San Luis Las Carretas) · Sáb 19:00 (Barrio La Cruz) | HS: Jue 17:00'}]}
+  ]},
+
+  { label: 'Santa María de Jesús', items: [
+    {nombre:'Parroquia El Dulce Nombre de Jesús',cong:'Misioneros Claretianos',dir:'Calle Real, Lote 4, Cantón 1, Zona 0, Santa María de Jesús, Sacatepéquez',oficina:'Lun–Vie 8:30–12:00 y 14:00–17:00 · Sáb 8:30–12:00',misas:'Lun–Sáb: 7:00 · 17:00 | Dom: 7:30 · 10:00 · 17:00',conf:'Mié y Vie: 14:00–17:00',hs:'Jue: 18:00',tel:'78744664',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Luis Alonso Díaz García, C.M.F.',info:'Hondureño · Ord. 26/02/2011'},{cargo:'VICARIO',nombre:'R.P. Martiniano Lombraña Lombraña, C.M.F.',info:'Español · Ord. 24/10/1975'}],filiales:[]}
+  ]},
+
+  { label: 'Alotenango', items: [
+    {nombre:'Parroquia San Juan Bautista (Alotenango)',cong:'Presbítero diocesano',dir:'6 Calle A, 4 Av., Zona 1, San Juan Alotenango, Sacatepéquez',oficina:'Lun–Vie 15:00–19:00',misas:'Lun,Mar,Mié,Vie,Sáb: 18:00 | Jue: 7:00 · 18:00 | Dom: 6:00 · 10:00 · 18:00',conf:'Jue: 16:00',hs:'Jue: 8:00 · 19:00',tel:'7830-6438',mail:'secretaria.alotenango@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Adrián Perén Chex',info:'Guatemalteco · Ord. 18/09/2004'}],
+    filiales:[{n:'El Porvenir',d:'Caserío El Porvenir',h:'Dom 15:00 (2do dom)'},{n:'Finca El Capetillo',d:'Finca El Capetillo',h:'Dom 12:00 (3er dom)'},{n:'Camino a La Inminencia',d:'Zona 2',h:'Dom 15:00 (1er dom)'}]}
+  ]},
+
+  { label: 'San Lucas Sacatepéquez', items: [
+    {nombre:'Parroquia San Lucas Evangelista',cong:'Fraternidad Misionera de María',dir:'6ta. Calle y 5ta. Av. 4-00, Zona 1, San Lucas Sacatepéquez',oficina:'Mar–Vie 8:00–12:00 y 15:00–18:00 · Sáb 15:00–18:00',misas:'Mar–Sáb: 18:30 | Dom: 7:00 · 9:00 · 11:00 · 18:30',conf:'Mar–Sáb: 19:30',hs:'Jue: 19:30',tel:'7830-3286',mail:'despachosanlucassac@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Enmer Félix Ovalle Pacheco, F.M.M.',info:'Guatemalteco · Ord. 04/04/1996'},{cargo:'VICARIO',nombre:'R.P. José Abilio Martínez Melgares, F.M.M.',info:'Salvadoreño · Ord. 07/01/2010'}],
+    filiales:[{n:'Inmaculada Concepción (El Manzanillo)',d:'Aldea El Manzanillo, Z.6',h:'Dom 16:30 (2do dom)'},{n:'Inmaculada Concepción (Choacorral)',d:'Choacorral, Z.4',h:'Dom 7:00 y 9:00'},{n:'San José',d:'Caserío San José, Z.2',h:'Sáb 16:30 (2do sáb)'},{n:'Ntra. Sra. de la Asunción',d:'Caserío Chicamén, Z.5',h:'Dom 16:30 (1er dom)'}]}
+  ]},
+
+  { label: 'Sumpango', items: [
+    {nombre:'Parroquia San Agustín (Sumpango)',cong:'Presbítero diocesano',dir:'0 Calle 1-35, Zona 3, Sumpango, Sacatepéquez',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Lun–Sáb: 7:00 · 18:00 | Dom: 6:00 · 8:00 · 10:00 · 18:00',conf:'Jue: 15:00',hs:'Jue: 19:00',tel:'78331366',mail:'sanagustinparroquiasumpangosac@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Felipe Chial Bocel',info:'Guatemalteco · Ord. 19/09/2015'},{cargo:'VICARIO',nombre:'Pbro. Edwin Eduardo Ajvix Cotzojay',info:'Guatemalteco · Ord. 30/11/2024'}],
+    filiales:[{n:'Aldea Santa Marta',d:'Sumpango',h:'Dom 15:00 (3er dom)'},{n:'San Rafael El Arado',d:'Sumpango',h:'Dom 16:30 (2do dom)'},{n:'San José El Yalú',d:'Sumpango',h:'Dom 15:00 (2do dom)'},{n:'San Antonio Las Flores',d:'Sumpango',h:'Dom 16:30 (1er dom)'},{n:'El Guachipilín',d:'Sumpango',h:'Dom 15:00 (1er dom)'},{n:'El Chipotón',d:'Sumpango',h:'Dom 16:30 (3er dom)'},{n:'Ntra. Sra. del Carmen, Los Planes',d:'Col. Los Planes',h:'Sáb 16:30 (4to sáb)'},{n:'El Rejón',d:'Aldea El Rejón',h:'Dom 15:00 (4to dom)'}]}
+  ]},
+
+  { label: 'Santiago Sacatepéquez — Santa María Cauqué', items: [
+    {nombre:'Parroquia Santa María de la Asunción, Cauqué',cong:'Congregación del Inmaculado Corazón de María (Scalabrinianos)',dir:'2da. Calle A 5-14, Zona 1, Santa María Cauqué, Santiago Sacatepéquez',oficina:'Mar–Vie 15:00–19:00 · Sáb 9:00–12:00 y 15:00–19:00',misas:'Lun–Sáb: 6:00 | Dom: 6:00 · 8:00 · 16:30',conf:'Dom y Sáb: después de misa de 6:00 · Lun,Mar,Mié,Vie: después de misa de 6:00',hs:'Jue: 19:00',tel:'77259878 · 49424542',mail:'parroquiacauque@hotmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Jean De Dieu Bukasa Mazaza',info:'Congoleño · Ord. 15/07/2017'}],filiales:[]}
+  ]},
+
+  { label: 'Milpas Altas (San Bartolomé, Santa Lucía, Santo Tomás)', items: [
+    {nombre:'Parroquia San Bartolomé Apóstol (Milpas Altas)',cong:'Fraternidad Misionera de María',dir:'4 Calle 0-52, Zona 1, San Bartolomé Milpas Altas, Sacatepéquez',oficina:'Mar–Vie 9:00–12:00 y 14:00–17:00 · Sáb 9:00–12:00',misas:'Mar,Mié,Vie,Sáb: 18:00 | Jue: 8:00 · 15:00 · 18:00 | Dom: 7:00 · 11:00 · 18:00',conf:'Jue: 9:00',hs:'Jue: 9:00 (exposición)',tel:'36480471',mail:'parroquiasanbartoloap@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Antonio Sánchez Vásquez, F.M.M.',info:'Guatemalteco · Ord. 29/09/1992'},{cargo:'VICARIO',nombre:'R.P. Benjamín Hermelindo Gálvez Roblero, F.M.M.',info:'Guatemalteco · Ord. 06/01/2001'}],
+    filiales:[{n:'San Mateo Milpas Altas',d:'Aldea San Mateo Milpas Altas',h:'Dom 16:00'},{n:'La Colorada',d:'Vuelta Grande La Colorada',h:'Dom 9:30'},{n:'El Hato',d:'Aldea El Hato',h:'Dom 6:00'},{n:'La Guardianía',d:'Aldea La Guardianía',h:'Dom 7:30'},{n:'San Juan Gafcón',d:'Aldea San Juan Gafcón',h:'Sáb 18:00'}]},
+
+    {nombre:'Cuasiparroquia Santa Lucía Virgen y Mártir (Milpas Altas)',cong:'Fraternidad Misionera de María',dir:'3era. Calle, Zona 1, Santa Lucía Milpas Altas, Sacatepéquez',oficina:'Mar–Vie 9:00–12:00 y 14:00–17:00 · Dom 9:00–13:00',misas:'Mar–Jue: 18:00 | Vie: 17:00 | Dom: 6:00 · 10:00 · 11:30 · 17:00',conf:'Jue: 14:00',hs:'Jue: 10:00',tel:'77256752 · 31632988',mail:'santaluciavirgen13@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Marcos Sergio Salazar Són, F.M.M.',info:'Guatemalteco · Ord. 17/05/1997'}],
+    filiales:[{n:'La Virgen de la Asunción',d:'Aldea La Libertad',h:'Dom 9:30'},{n:'Santa Rosa de Lima',d:'Parcelamiento Santa Rosa',h:'Dom 8:00'},{n:'Virgen de Candelaria',d:'Aldea Embaulada',h:'Sáb 19:30'},{n:'Virgen de Guadalupe',d:'Condominio Villas La Meseta',h:'Dom 10:00 · 10:30'},{n:'El Señor de Esquipulas',d:'Rancho Las Julias',h:'Dom 19:00'},{n:'Zorzoya / Zorzoya Sector 2',d:'Aldea Zorzoya',h:'Dom 8:00 · 9:30'},{n:'Joyas de Santa Lucía',d:'Condominio Joyas de Santa Lucía',h:'Sáb 18:00'}]},
+
+    {nombre:'Parroquia Santo Tomás (Aldea Santo Tomás, Milpas Altas)',cong:'Fraternidad Misionera de María',dir:'2 Calle 2-01, Zona 1, Aldea Santo Tomás, Santa Lucía Milpas Altas',oficina:'Lun–Vie 8:00–12:00 y 14:00–17:00',misas:'Mar,Jue,Vie,Sáb: 7:00 · 17:00 | Mié: 7:00 | Dom: 7:00 · 9:00 · 11:00 · 16:00 · 19:00',conf:'Jue: 19:00',hs:'Jue: 19:00',tel:'78302057 · 39380017',mail:'apostolsantotomas3@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Henry Christian González Campos, F.M.M.',info:'Guatemalteco · Ord. 10/06/2000'},{cargo:'VICARIO',nombre:'R.P. Romeo de Jesús Solares González, F.M.M.',info:'Guatemalteco · Ord. 12/06/2004'}],
+    filiales:[{n:'Santa Isabel',d:'Col. Santa Isabel',h:'Sáb 18:30'},{n:'Florencia',d:'Finca Florencia',h:'Dom 9:00'},{n:'Vista de Santo Tomás',d:'Residencial Vista de Santo Tomás',h:'Dom 9:00'}]}
+  ]}
+];
+
+renderSections(secciones, 'lista');
+</script>
+</body>
+</html>

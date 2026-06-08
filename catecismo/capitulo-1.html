@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catecismo — Primera Parte · Capítulo I</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f5e6e0;
+    --rose: #e8c4b8;
+    --mauve: #c9a0a0;
+    --sage: #b8c9b0;
+    --sage-dark: #8aaa80;
+    --cream: #fdf8f4;
+    --warm-brown: #7a5c58;
+    --soft-gold: #c8a96e;
+    --text: #4a3a38;
+    --text-light: #7a6560;
+    --sky: #c5d9e8;
+    --sky-dark: #4a7090;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--cream);
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── WATERCOLOR BG ── */
+  .bg-wash { position:fixed; inset:0; z-index:0; pointer-events:none; }
+  .bg-wash::before {
+    content:''; position:absolute; top:-10%; right:-5%;
+    width:55%; height:60%;
+    background:radial-gradient(ellipse, rgba(197,217,232,0.25) 0%, transparent 70%);
+    border-radius:60% 40% 70% 30%; filter:blur(45px);
+  }
+  .bg-wash::after {
+    content:''; position:absolute; bottom:5%; left:-8%;
+    width:50%; height:55%;
+    background:radial-gradient(ellipse, rgba(184,201,176,0.2) 0%, transparent 70%);
+    border-radius:40% 60% 30% 70%; filter:blur(40px);
+  }
+
+  /* ── FLORALS ── */
+  .flower-top-right { position:fixed; top:0; right:0; width:260px; opacity:0.5; pointer-events:none; z-index:0; }
+  .flower-bottom-left { position:fixed; bottom:0; left:0; width:220px; opacity:0.4; pointer-events:none; z-index:0; transform:rotate(180deg); }
+
+  /* ── LAYOUT ── */
+  .page { position:relative; z-index:1; max-width:720px; margin:0 auto; padding:60px 44px 100px; }
+
+  /* ── PORTADA DE SECCIÓN ── */
+  .section-cover {
+    min-height: 85vh;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; padding:60px 0 80px;
+  }
+  .breadcrumb {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:28px;
+    animation: fadeUp 1s ease forwards 0.1s; opacity:0;
+  }
+  .part-number {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(60px,10vw,100px);
+    font-weight:300; color:rgba(197,217,232,0.35); line-height:1;
+    animation: fadeUp 1s ease forwards 0.2s; opacity:0;
+  }
+  .part-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,50px);
+    font-weight:300; color:var(--warm-brown); line-height:1.15; margin-top:-10px;
+    animation: fadeUp 1s ease forwards 0.35s; opacity:0;
+  }
+  .part-subtitle {
+    font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic;
+    color:var(--mauve); margin-top:12px; line-height:1.5;
+    animation: fadeUp 1s ease forwards 0.5s; opacity:0;
+  }
+  .cover-divider {
+    display:flex; align-items:center; gap:14px; margin:36px auto;
+    animation: fadeUp 1s ease forwards 0.65s; opacity:0;
+  }
+  .cover-divider-line { width:55px; height:1px; background:linear-gradient(to right, transparent, var(--sky)); }
+  .cover-divider-line.r { background:linear-gradient(to left, transparent, var(--sky)); }
+  .cover-dot { width:5px; height:5px; border-radius:50%; background:var(--sky-dark); opacity:0.5; }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    max-width:540px; text-align:left;
+    background:rgba(255,255,255,0.6); backdrop-filter:blur(10px);
+    border:1px solid rgba(197,217,232,0.4); border-radius:22px;
+    padding:32px 36px;
+    animation: fadeUp 1s ease forwards 0.8s; opacity:0;
+  }
+  .intro-card .intro-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--sky-dark); margin-bottom:14px;
+  }
+  .intro-card p {
+    font-size:14.5px; line-height:1.9; color:var(--text); font-weight:300;
+  }
+  .intro-card strong { color:var(--warm-brown); font-weight:400; }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter-header {
+    text-align:center; margin:80px 0 50px;
+    animation: fadeUp 1s ease forwards 0.2s; opacity:0;
+  }
+  .chapter-eyebrow {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:10px;
+  }
+  .chapter-number {
+    font-family:'Cormorant Garamond',serif; font-size:80px; font-weight:300;
+    color:rgba(201,160,160,0.15); line-height:1; display:block;
+  }
+  .chapter-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(24px,4vw,36px);
+    font-weight:300; color:var(--warm-brown); line-height:1.2; margin-top:-12px;
+  }
+  .chapter-sub {
+    font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic;
+    color:var(--mauve); margin-top:8px;
+  }
+
+  /* ── SECTION TAG ── */
+  .section-tag {
+    display:flex; align-items:center; gap:12px; margin:48px 0 28px;
+  }
+  .section-tag-line { flex:1; height:1px; background:rgba(201,160,160,0.25); }
+  .section-tag-text {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mauve); white-space:nowrap;
+  }
+
+  /* ── PARAGRAPH BLOCK ── */
+  .para-block { margin-bottom:52px; }
+  .para-badge {
+    display:inline-flex; align-items:center;
+    background:rgba(200,169,110,0.1); border:1px solid rgba(200,169,110,0.3);
+    border-radius:20px; padding:4px 16px; margin-bottom:16px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:13px; letter-spacing:1px; color:var(--soft-gold); font-weight:600;
+  }
+  .para-text {
+    font-size:15.5px; line-height:1.95; color:var(--text); font-weight:300; margin-bottom:14px;
+  }
+
+  /* ── PHRASE BREAKDOWN ── */
+  .phrase-item {
+    display:grid; grid-template-columns:auto 1fr; gap:0;
+    margin-bottom:14px; border-radius:14px; overflow:hidden;
+    border:1px solid rgba(232,196,184,0.3);
+  }
+  .phrase-original {
+    background:rgba(232,196,184,0.2); padding:14px 16px;
+    font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic;
+    color:var(--warm-brown); line-height:1.5;
+    border-right:1px solid rgba(232,196,184,0.3);
+    min-width:160px; max-width:200px;
+  }
+  .phrase-explain {
+    background:rgba(255,255,255,0.5); padding:14px 18px;
+    font-size:14px; line-height:1.75; color:var(--text); font-weight:300;
+  }
+  .phrase-explain strong { color:var(--warm-brown); font-weight:400; }
+
+  /* ── INSIGHT ── */
+  .insight {
+    background:rgba(184,201,176,0.2); border-left:3px solid var(--sage-dark);
+    padding:14px 20px; border-radius:0 12px 12px 0; margin:16px 0;
+    font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic;
+    color:#4a7a44; line-height:1.65;
+  }
+
+  /* ── ANALOGY CARD ── */
+  .analogy-card {
+    background:linear-gradient(135deg, rgba(245,230,224,0.45), rgba(240,246,237,0.45));
+    border:1px solid rgba(200,169,110,0.2); border-radius:16px;
+    padding:22px 26px; margin:16px 0;
+    font-family:'Cormorant Garamond',serif; font-size:16px;
+    font-style:italic; color:var(--text); line-height:1.8;
+  }
+  .analogy-card .analogy-label {
+    font-style:normal; font-size:10px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--soft-gold); margin-bottom:8px; display:block;
+  }
+
+  /* ── HIGHLIGHT BANNER ── */
+  .highlight-banner {
+    background:linear-gradient(135deg, rgba(245,230,224,0.6), rgba(240,246,237,0.6));
+    border-left:4px solid var(--soft-gold); border-radius:0 16px 16px 0;
+    padding:18px 24px; margin:20px 0;
+    font-family:'Cormorant Garamond',serif; font-size:18px;
+    line-height:1.6; color:var(--warm-brown);
+  }
+
+  /* ── MYTH BUSTER ── */
+  .myth-buster {
+    background:rgba(255,255,255,0.55); border:1px solid rgba(232,196,184,0.35);
+    border-radius:16px; padding:20px 24px; margin:16px 0;
+  }
+  .myth-buster .myth-label {
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:10px;
+  }
+  .myth-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:8px; font-size:14px; line-height:1.65; }
+  .myth-icon { font-size:16px; flex-shrink:0; margin-top:2px; }
+  .myth-row .myth-text { color:var(--text); font-weight:300; }
+
+  /* ── STEPS LIST ── */
+  .step-item { display:flex; gap:14px; align-items:flex-start; margin-bottom:12px; }
+  .step-num {
+    flex-shrink:0; width:28px; height:28px; border-radius:50%;
+    background:rgba(200,169,110,0.2); border:1px solid rgba(200,169,110,0.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--soft-gold); font-weight:600;
+  }
+  .step-text { font-size:15px; line-height:1.75; color:var(--text); font-weight:300; padding-top:3px; }
+  .step-text strong { color:var(--warm-brown); font-weight:400; }
+
+  /* ── CENTRAL QUOTE ── */
+  .central-quote {
+    text-align:center; background:rgba(255,255,255,0.65); backdrop-filter:blur(10px);
+    border:1px solid rgba(197,217,232,0.45); border-radius:22px;
+    padding:40px 36px; margin:30px 0; position:relative; overflow:hidden;
+  }
+  .central-quote::before {
+    content:'\201C'; position:absolute; top:-15px; left:18px;
+    font-family:'Cormorant Garamond',serif; font-size:130px;
+    color:rgba(197,217,232,0.3); line-height:1; pointer-events:none;
+  }
+  .central-quote .cq-text {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(20px,3.5vw,26px);
+    font-style:italic; font-weight:300; color:var(--warm-brown);
+    line-height:1.5; position:relative; z-index:1;
+  }
+  .central-quote .cq-ref {
+    display:block; margin-top:14px;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--sky-dark); position:relative; z-index:1;
+  }
+
+  /* ── HUMAN SEARCH VISUAL ── */
+  .search-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:18px 0;
+  }
+  @media (max-width:500px) { .search-grid { grid-template-columns:repeat(2,1fr); } }
+  .search-item {
+    background:rgba(255,255,255,0.5); border:1px solid rgba(232,196,184,0.3);
+    border-radius:12px; padding:14px 12px; text-align:center;
+  }
+  .search-item .s-icon { font-size:22px; margin-bottom:6px; }
+  .search-item .s-text { font-size:12.5px; color:var(--text-light); font-weight:300; line-height:1.5; }
+  .search-item .s-result {
+    margin-top:6px; font-size:11px; font-style:italic;
+    color:var(--mauve); font-family:'Cormorant Garamond',serif;
+  }
+
+  /* ── DIGNITY BOX ── */
+  .dignity-box {
+    background:linear-gradient(135deg, rgba(197,217,232,0.2), rgba(220,234,244,0.3));
+    border:1px solid rgba(150,190,215,0.35); border-radius:18px;
+    padding:28px 32px; margin:20px 0; text-align:center;
+  }
+  .dignity-box .d-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--sky-dark); margin-bottom:14px;
+  }
+  .dignity-box .d-text {
+    font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic;
+    color:var(--warm-brown); line-height:1.6;
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-table { margin:18px 0; border-radius:16px; overflow:hidden; border:1px solid rgba(232,196,184,0.35); }
+  .summary-row { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid rgba(232,196,184,0.2); }
+  .summary-row:last-child { border-bottom:none; }
+  .summary-q {
+    background:rgba(245,230,224,0.4); padding:14px 18px;
+    font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic;
+    color:var(--warm-brown); line-height:1.5;
+    border-right:1px solid rgba(232,196,184,0.2);
+  }
+  .summary-a {
+    background:rgba(255,255,255,0.45); padding:14px 18px;
+    font-size:13.5px; color:var(--text); font-weight:300; line-height:1.6;
+  }
+
+  /* ── TAKEAWAY ── */
+  .takeaway-box {
+    background:linear-gradient(135deg, rgba(248,234,228,0.75), rgba(240,246,237,0.75));
+    border:1px solid rgba(200,169,110,0.3); border-radius:20px;
+    padding:36px 40px; margin-top:60px; text-align:center;
+  }
+  .takeaway-icon { font-size:30px; margin-bottom:12px; display:block; }
+  .takeaway-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:14px;
+  }
+  .takeaway-text {
+    font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic;
+    color:var(--warm-brown); line-height:1.6;
+  }
+  .takeaway-sub { margin-top:16px; font-size:13.5px; color:var(--text-light); font-weight:300; line-height:1.8; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    margin-top:70px; display:flex; justify-content:space-between; align-items:center;
+    padding-top:20px; border-top:1px solid rgba(201,160,160,0.2);
+  }
+  .footer-text { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); font-weight:300; }
+  .page-num { font-family:'Cormorant Garamond',serif; font-size:22px; color:rgba(201,160,160,0.4); }
+
+  .mini-divider { width:40px; height:1px; background:rgba(201,160,160,0.35); margin:28px auto; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ══════════════════════════════════════
+     BOTÓN DE IMPRIMIR
+     ══════════════════════════════════════ */
+  #print-btn {
+    position:fixed; bottom:28px; right:28px; z-index:999;
+    background:linear-gradient(135deg,rgba(74,112,144,0.9),rgba(50,90,120,0.95));
+    color:#fff; border:none; border-radius:50px;
+    padding:12px 24px; font-family:'Lato',sans-serif;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; box-shadow:0 4px 20px rgba(74,112,144,0.4);
+    transition:all 0.25s ease;
+  }
+  #print-btn:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(74,112,144,0.5); }
+
+  /* ══════════════════════════════════════
+     CSS DE IMPRESIÓN / PDF
+     ══════════════════════════════════════ */
+  @media print {
+    @page {
+      size: letter;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    #print-btn,
+    .bg-wash,
+    .flower-top-right,
+    .flower-bottom-left { display:none !important; }
+
+    body {
+      background:#fff !important;
+      font-size:11pt;
+      color:#2a1a18 !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+
+    .page { max-width:100% !important; padding:0 !important; margin:0 !important; }
+
+    * { animation:none !important; opacity:1 !important; transform:none !important; }
+
+    /* Tipografía */
+    .part-title { font-size:24pt !important; }
+    .chapter-title { font-size:20pt !important; }
+    .para-text { font-size:10.5pt !important; line-height:1.7 !important; }
+
+    /* Evitar cortes */
+    .para-block,
+    .phrase-item,
+    .myth-buster,
+    .analogy-card,
+    .highlight-banner,
+    .summary-table,
+    .takeaway-box,
+    .central-quote,
+    .step-item,
+    .search-grid,
+    .dignity-box { page-break-inside:avoid; }
+
+    /* Portada en página propia */
+    .section-cover { page-break-after:always; min-height:auto !important; padding:40px 0 !important; }
+
+    /* Quiz: ocultar en PDF */
+    #quiz-section, #quiz-container, #quiz-result, .quiz-card, #print-btn { display:none !important; }
+
+    /* Colores de fondo */
+    .insight { background:#eef5eb !important; border-left:3px solid #8aaa80 !important; }
+    .myth-buster { background:#fdf8f4 !important; border:1px solid #e8c4b8 !important; }
+    .analogy-card { background:#fdf6f0 !important; border:1px solid #d4b88a !important; }
+    .highlight-banner { background:#fdf4ee !important; border-left:4px solid #c8a96e !important; }
+    .takeaway-box { background:#fdf4f0 !important; border:1px solid #c8a96e !important; }
+    .summary-table { border:1px solid #e8c4b8 !important; }
+    .summary-q { background:#fdf0ea !important; }
+    .summary-a { background:#fff !important; }
+    .phrase-item { border:1px solid #e8c4b8 !important; }
+    .phrase-original { background:#fdf0ea !important; }
+    .phrase-explain { background:#fff !important; }
+    .para-badge { background:#fdf6e8 !important; border:1px solid #d4b88a !important; }
+    .step-num { background:#fdf6e8 !important; border:1px solid #d4b88a !important; }
+    .central-quote { background:#f5fafd !important; border:1px solid #c5d9e8 !important; backdrop-filter:none !important; }
+    .intro-card { background:#fdf8f4 !important; border:1px solid #c5d9e8 !important; backdrop-filter:none !important; }
+    .search-item { background:#fdf8f4 !important; border:1px solid #e8c4b8 !important; }
+    .dignity-box { background:#f5fafd !important; border:1px solid #c5d9e8 !important; }
+
+    .page-footer { border-top:1px solid #e8c4b8 !important; margin-top:20px !important; }
+  }
+</style>
+</head>
+<body>
+
+<button id="print-btn" onclick="window.print()">🖨 Guardar como PDF</button>
+
+<div class="bg-wash"></div>
+
+<!-- Top floral (tonos azul-cielo) -->
+<svg class="flower-top-right" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="220" cy="60" r="38" fill="rgba(197,217,232,0.35)"/>
+  <circle cx="248" cy="45" r="26" fill="rgba(220,234,244,0.45)"/>
+  <circle cx="200" cy="40" r="20" fill="rgba(175,205,225,0.3)"/>
+  <ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(197,217,232,0.45)" transform="rotate(-20 230 55)"/>
+  <ellipse cx="215" cy="70" rx="10" ry="20" fill="rgba(220,234,244,0.5)" transform="rotate(30 215 70)"/>
+  <ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.45)" transform="rotate(40 175 85)"/>
+  <ellipse cx="265" cy="95" rx="7" ry="24" fill="rgba(184,201,176,0.35)" transform="rotate(-30 265 95)"/>
+  <circle cx="180" cy="50" r="10" fill="rgba(220,234,244,0.4)"/>
+  <path d="M200 120 Q210 90 230 55" stroke="rgba(184,201,176,0.45)" stroke-width="1.5" fill="none"/>
+  <path d="M200 120 Q185 95 175 65" stroke="rgba(184,201,176,0.35)" stroke-width="1" fill="none"/>
+</svg>
+
+<!-- Bottom floral -->
+<svg class="flower-bottom-left" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.3)"/>
+  <circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.35)"/>
+  <circle cx="100" cy="260" r="18" fill="rgba(197,217,232,0.25)"/>
+  <ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.4)" transform="rotate(-15 75 245)"/>
+  <ellipse cx="90" cy="255" rx="10" ry="18" fill="rgba(210,224,205,0.45)" transform="rotate(25 90 255)"/>
+  <circle cx="120" cy="250" r="9" fill="rgba(232,196,184,0.3)"/>
+  <path d="M100 180 Q90 210 80 240" stroke="rgba(184,201,176,0.4)" stroke-width="1.5" fill="none"/>
+</svg>
+
+<div class="page">
+
+  <!-- ══ PORTADA DE LA PRIMERA PARTE ══ -->
+  <div class="section-cover">
+    <p class="breadcrumb">Fe que se entiende · Catecismo de la Iglesia Católica</p>
+
+    <div class="part-number">I</div>
+    <h1 class="part-title">La profesión<br>de la fe</h1>
+    <p class="part-subtitle">Primera Parte · Primera Sección</p>
+
+    <div class="cover-divider">
+      <div class="cover-divider-line"></div>
+      <div class="cover-dot"></div>
+      <span style="font-size:18px;">🕊️</span>
+      <div class="cover-dot"></div>
+      <div class="cover-divider-line r"></div>
+    </div>
+
+    <div class="intro-card">
+      <p class="intro-label">Lo que viene ahora</p>
+      <p>El Prólogo te presentó el mapa. Ahora empieza el viaje. La Primera Parte responde la pregunta más grande de todas:</p>
+      <br>
+      <p><strong>¿Qué cree la Iglesia Católica sobre Dios?</strong></p>
+      <br>
+      <p>Pero antes de llegar al Credo, el Catecismo hace algo hermoso: empieza hablando del <strong>ser humano que busca.</strong> Porque para entender qué es la fe, primero hay que entender por qué la necesitamos.</p>
+      <br>
+      <p style="font-size:13px; color:var(--text-light);">Esta sección cubre los §§ 26–27 · Capítulo Primero · "El deseo de Dios"</p>
+    </div>
+
+    <div style="margin-top:44px; animation: fadeUp 1s ease forwards 1s; opacity:0;">
+      <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve);">Comienza aquí ↓</p>
+    </div>
+  </div>
+
+  <!-- Separador -->
+  <div style="width:100%; height:1px; background:linear-gradient(to right, transparent, rgba(197,217,232,0.4), transparent); margin-bottom:70px;"></div>
+
+  <!-- ══ § 26 ══ -->
+  <div style="text-align:center; margin-bottom:40px;">
+    <p style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--sky-dark); margin-bottom:6px;">Primera Sección</p>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(26px,5vw,40px); font-weight:300; color:var(--warm-brown); line-height:1.2;">"Creo" — "Creemos"</h2>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--mauve); margin-top:8px;">¿Qué significa realmente creer?</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 26</div>
+
+    <p class="para-text">Cuando profesamos nuestra fe, comenzamos diciendo: <strong>"Creo"</strong> o <strong>"Creemos"</strong>. Antes de exponer la fe de la Iglesia tal como es confesada en el Credo, vivida en la Liturgia y en los Mandamientos, el Catecismo se pregunta: ¿qué significa realmente creer?</p>
+
+    <div class="phrase-item" style="margin-bottom:16px;">
+      <div class="phrase-original">"La fe es la respuesta del hombre a Dios que se revela"</div>
+      <div class="phrase-explain"><strong>Dios da el primer paso.</strong> Él se muestra. El ser humano responde. Es como cuando alguien te dice "te amo" y tú respondes "yo también". La fe no es una idea que inventamos — es una respuesta a un amor que ya existía.</div>
+    </div>
+
+    <div class="phrase-item" style="margin-bottom:16px;">
+      <div class="phrase-original">"Una luz sobreabundante al hombre que busca el sentido último de su vida"</div>
+      <div class="phrase-explain">Todo ser humano se pregunta: ¿por qué existo? ¿qué pasa después de morir? ¿qué sentido tiene el sufrimiento? <strong>La fe ilumina esas preguntas.</strong> No las elimina, pero las transforma.</div>
+    </div>
+
+    <!-- El orden de los capítulos -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:20px 0 12px;">El orden en que avanza la Primera Sección</p>
+    <div style="display:flex; flex-direction:column; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+      <div style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:rgba(245,230,224,0.3); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:22px; color:rgba(200,169,110,0.5); font-weight:300; flex-shrink:0;">1</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">La búsqueda del hombre</strong>
+          <p style="font-size:12.5px; color:var(--text-light); font-weight:300; margin-top:2px;">¿Por qué buscamos a Dios? ¿Qué hay en el corazón humano? (Cap. I — aquí)</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:rgba(255,255,255,0.4); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:22px; color:rgba(200,169,110,0.4); font-weight:300; flex-shrink:0;">2</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">Dios viene al encuentro del hombre</strong>
+          <p style="font-size:12.5px; color:var(--text-light); font-weight:300; margin-top:2px;">La Revelación: cómo Dios se da a conocer. (Cap. II)</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:rgba(240,246,237,0.3);">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:22px; color:rgba(200,169,110,0.4); font-weight:300; flex-shrink:0;">3</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">La respuesta de la fe</strong>
+          <p style="font-size:12.5px; color:var(--text-light); font-weight:300; margin-top:2px;">Qué significa creer de verdad. (Cap. III)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-top:20px;">
+      El Catecismo no empieza diciendo "aquí está Dios, acéptalo". Empieza diciendo: "primero hablemos del ser humano que está buscando." Porque todos buscamos algo — incluso quienes dicen no creer.
+    </div>
+  </div>
+
+  <!-- ══ CAPÍTULO I ══ -->
+  <div class="chapter-header">
+    <p class="chapter-eyebrow">Capítulo Primero</p>
+    <span class="chapter-number">I</span>
+    <h2 class="chapter-title">El hombre es<br>"capaz" de Dios</h2>
+    <p class="chapter-sub">¿Por qué todos buscamos algo más grande?</p>
+  </div>
+
+  <!-- Sección I: El deseo de Dios -->
+  <div class="section-tag">
+    <div class="section-tag-line"></div>
+    <span class="section-tag-text">I · El deseo de Dios</span>
+    <div class="section-tag-line"></div>
+  </div>
+
+  <!-- Qué significa "capaz de Dios" -->
+  <div class="para-block">
+    <div class="myth-buster" style="margin-bottom:24px;">
+      <p class="myth-label">¿Qué significa "El hombre es capaz de Dios"?</p>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No significa que el hombre sea Dios.</span></div>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No significa que pueda convertirse en Dios.</span></div>
+      <div class="myth-row" style="margin-top:6px;"><span class="myth-icon">✦</span><span class="myth-text"><strong>Sí significa:</strong> el ser humano fue creado con la capacidad única de conocer, amar y relacionarse con Dios.</span></div>
+    </div>
+
+    <div class="analogy-card">
+      <span class="analogy-label">Una imagen para entenderlo</span>
+      Tu perro puede amarte. Pero no puede preguntarse: ¿quién me creó? ¿qué sentido tiene mi vida? ¿qué pasa después de morir? Tú sí puedes — porque fuiste creada con una dimensión espiritual que ningún animal tiene. <strong>La Iglesia llama a eso: ser capaz de Dios.</strong>
+    </div>
+  </div>
+
+  <!-- § 27 -->
+  <div class="para-block">
+    <div class="para-badge">§ 27</div>
+
+    <p class="para-text">El deseo de Dios está inscrito en el corazón del hombre, porque el hombre ha sido creado por Dios y para Dios; y Dios no cesa de atraer al hombre hacia sí, y sólo en Dios encontrará el hombre la verdad y la dicha que no cesa de buscar.</p>
+
+    <!-- Frase 1 -->
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"El deseo de Dios está inscrito en el corazón del hombre"</div>
+      <div class="phrase-explain">Dentro de cada persona existe <strong>una sed de algo más grande.</strong> Aunque no lo sepa. Aunque no lo llame Dios. Es una inquietud que no desaparece, sin importar cuánto logres.</div>
+    </div>
+
+    <!-- Frase 2 -->
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"El hombre ha sido creado por Dios y para Dios"</div>
+      <div class="phrase-explain">No solo vienes <em>de</em> Dios — también vas <em>hacia</em> Dios. Un pez fue hecho para el agua. Una planta para la luz. <strong>El ser humano fue creado para Dios.</strong> Por eso nada finito lo llena completamente.</div>
+    </div>
+
+    <!-- Frase 3 -->
+    <div class="phrase-item" style="margin-bottom:20px;">
+      <div class="phrase-original">"Sólo en Dios encontrará la verdad y la dicha que no cesa de buscar"</div>
+      <div class="phrase-explain">La felicidad completa no está en cosas temporales. La familia, el éxito, los viajes son regalos hermosos — <strong>pero no pueden ocupar el lugar de Dios.</strong> Siempre habrá algo que falte si Él no está en el centro.</div>
+    </div>
+
+    <!-- El vacío que todos sienten -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:0 0 12px;">Por qué las personas buscan — y siguen insatisfechas</p>
+    <div class="search-grid">
+      <div class="search-item">
+        <div class="s-icon">💰</div>
+        <div class="s-text">Dinero y éxito</div>
+        <div class="s-result">¿Y después qué?</div>
+      </div>
+      <div class="search-item">
+        <div class="s-icon">❤️</div>
+        <div class="s-text">Amor y relaciones</div>
+        <div class="s-result">El vacío regresa.</div>
+      </div>
+      <div class="search-item">
+        <div class="s-icon">🌟</div>
+        <div class="s-text">Fama y reconocimiento</div>
+        <div class="s-result">Nunca es suficiente.</div>
+      </div>
+      <div class="search-item">
+        <div class="s-icon">🎉</div>
+        <div class="s-text">Placer y diversión</div>
+        <div class="s-result">Dura poco.</div>
+      </div>
+      <div class="search-item">
+        <div class="s-icon">🏆</div>
+        <div class="s-text">Logros y metas</div>
+        <div class="s-result">La meta cambia.</div>
+      </div>
+      <div class="search-item" style="background:rgba(240,246,237,0.5); border-color:rgba(138,170,128,0.35);">
+        <div class="s-icon">🕊️</div>
+        <div class="s-text" style="color:#4a7a44; font-weight:400;">Dios</div>
+        <div class="s-result" style="color:#4a7a44; font-style:normal; font-weight:400;">Para esto fuiste creada.</div>
+      </div>
+    </div>
+
+    <div class="highlight-banner" style="margin-top:20px;">
+      La Iglesia no te juzga por buscar felicidad. Al contrario — dice: fuiste <em>creada</em> para buscarla. La única diferencia es que esa búsqueda encuentra su plenitud cuando termina en Dios.
+    </div>
+
+    <!-- Cita en letra pequeña del Catecismo -->
+    <div class="central-quote">
+      <p class="cq-text">
+        "La razón más alta de la dignidad humana consiste en la vocación del hombre a la comunión con Dios."
+      </p>
+      <span class="cq-ref">Gaudium et Spes 19, 1 — citado en el § 27</span>
+    </div>
+
+    <div class="phrase-item" style="margin:16px 0;">
+      <div class="phrase-original">"La razón más alta de la dignidad humana"</div>
+      <div class="phrase-explain">¿Qué hace tan valiosa a una persona? No su dinero, inteligencia, belleza ni profesión. <strong>Lo que la hace infinitamente valiosa es que Dios la llama a una relación con Él.</strong> Eso no puede quitárselo nadie.</div>
+    </div>
+
+    <div class="phrase-item" style="margin-bottom:16px;">
+      <div class="phrase-original">"El hombre es invitado al diálogo con Dios desde su nacimiento"</div>
+      <div class="phrase-explain">Dios empieza a buscarte antes de que tú lo busques a Él. No es que un día decidiste acercarte y Él dijo "qué bueno". <strong>La Iglesia enseña: Él te estaba llamando desde el principio.</strong></div>
+    </div>
+
+    <!-- Resumen del § 27 -->
+    <div class="mini-divider"></div>
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-bottom:12px;">Resumen del § 27</p>
+    <div class="summary-table">
+      <div class="summary-row">
+        <div class="summary-q">¿Por qué buscamos algo más?</div>
+        <div class="summary-a">Porque el deseo de Dios está inscrito en nuestro corazón desde que nacemos.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Para qué fue creado el ser humano?</div>
+        <div class="summary-a">Por Dios y para Dios. No solo vinimos de Él — también vamos hacia Él.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Por qué nada nos llena del todo?</div>
+        <div class="summary-a">Porque fuimos hechos para lo infinito, y las cosas finitas no pueden llenarnos completamente.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Qué hace a una persona valiosa?</div>
+        <div class="summary-a">Que Dios la llama a una relación con Él. No sus logros ni sus talentos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       §§ 28-30 — EL HOMBRE BUSCA A DIOS
+       ════════════════════════════════ -->
+
+  <div style="margin:70px 0 0; text-align:center;">
+    <div style="width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(197,217,232,0.4),transparent); margin-bottom:40px;"></div>
+  </div>
+
+  <!-- § 28 -->
+  <div class="para-block">
+    <div class="para-badge">§ 28</div>
+
+    <p class="para-text">De múltiples maneras, en su historia y hasta el día de hoy, los hombres han expresado su búsqueda de Dios por medio de sus creencias y sus comportamientos religiosos: oraciones, sacrificios, cultos, meditaciones, etc. A pesar de las ambigüedades que pueden entrañar, estas formas de expresión son tan universales que se puede llamar al hombre <strong>un ser religioso.</strong></p>
+
+    <!-- Las culturas que buscaron -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:16px 0 12px;">Todas las culturas de la historia han buscado lo divino</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:18px;">
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:12px 10px; text-align:center;">
+        <div style="font-size:18px; margin-bottom:5px;">🏛️</div>
+        <p style="font-size:11.5px; color:var(--warm-brown); font-weight:400;">Griegos y Romanos</p>
+      </div>
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:12px 10px; text-align:center;">
+        <div style="font-size:18px; margin-bottom:5px;">🌙</div>
+        <p style="font-size:11.5px; color:var(--warm-brown); font-weight:400;">Mayas y Aztecas</p>
+      </div>
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:12px 10px; text-align:center;">
+        <div style="font-size:18px; margin-bottom:5px;">𓂀</div>
+        <p style="font-size:11.5px; color:var(--warm-brown); font-weight:400;">Egipcios</p>
+      </div>
+      <div style="background:rgba(240,246,237,0.4); border-radius:12px; padding:12px 10px; text-align:center;">
+        <div style="font-size:18px; margin-bottom:5px;">🪷</div>
+        <p style="font-size:11.5px; color:var(--warm-brown); font-weight:400;">Culturas de Asia</p>
+      </div>
+      <div style="background:rgba(240,246,237,0.4); border-radius:12px; padding:12px 10px; text-align:center;">
+        <div style="font-size:18px; margin-bottom:5px;">🌿</div>
+        <p style="font-size:11.5px; color:var(--warm-brown); font-weight:400;">Pueblos indígenas</p>
+      </div>
+      <div style="background:rgba(197,217,232,0.25); border-radius:12px; padding:12px 10px; text-align:center; border:1px solid rgba(150,190,215,0.25);">
+        <div style="font-size:18px; margin-bottom:5px;">✝️</div>
+        <p style="font-size:11.5px; color:var(--sky-dark); font-weight:400;">Tradición judeo-cristiana</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      Así como el ser humano es racional y social, también es naturalmente <em>religioso.</em> Tiene inscrita en su naturaleza la tendencia a preguntarse por algo más grande que él.
+    </div>
+
+    <!-- Cita de Hechos -->
+    <div class="central-quote" style="margin-top:20px;">
+      <p class="cq-text">"En Él vivimos, nos movemos y existimos."</p>
+      <span class="cq-ref">Hechos 17, 26-28 — citado en el § 28</span>
+    </div>
+    <div class="phrase-item" style="margin-top:12px;">
+      <div class="phrase-original">"Él no se encuentra lejos de cada uno de nosotros"</div>
+      <div class="phrase-explain">Dios no está escondido en una galaxia lejana. <strong>La Iglesia enseña que Dios está más cerca de nosotros de lo que imaginamos</strong> — de hecho, en Él existimos en cada momento.</div>
+    </div>
+  </div>
+
+  <!-- § 29 -->
+  <div class="para-block">
+    <div class="para-badge">§ 29</div>
+
+    <p class="para-text">Pero esta "unión íntima y vital con Dios" puede ser olvidada, desconocida e incluso rechazada explícitamente por el hombre. Tales actitudes pueden tener orígenes muy diversos.</p>
+
+    <div class="highlight-banner">
+      La Iglesia no dice que todo el mundo creerá automáticamente. Reconoce con honestidad que muchas personas no creen — y explica por qué.
+    </div>
+
+    <!-- Las 5 razones -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:20px 0 14px;">Por qué algunas personas se alejan de Dios — 5 razones que el Catecismo reconoce</p>
+
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(232,196,184,0.25); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">⚡</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">1 · El problema del mal</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Ver guerras, enfermedades e injusticias lleva a preguntar: <em>"Si Dios existe, ¿por qué permite esto?"</em> Es una de las preguntas más antiguas y honestas de la humanidad.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(232,196,184,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">😶</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">2 · Ignorancia o indiferencia</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Hay personas que nunca profundizaron en el tema, o simplemente no les interesa. La fe requiere búsqueda activa.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(200,169,110,0.15); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">📱</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">3 · Los afanes del mundo</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">El dinero, el éxito, el entretenimiento y las preocupaciones pueden ocupar tanto espacio que ya no queda lugar para Dios. Muy actual, ¿verdad? <span style="font-size:11px; color:var(--text-light);">(cf Mt 13, 22)</span></p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(184,201,176,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">😔</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">4 · El mal ejemplo de los creyentes</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;"><strong>El Catecismo lo reconoce explícitamente.</strong> Hay personas que se alejan de Dios porque ven cristianos que juzgan, son hipócritas o hacen daño. La Iglesia no lo niega.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(197,217,232,0.35);">
+        <div style="background:rgba(197,217,232,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">😨</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">5 · El miedo y la culpa</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Como Adán que se escondió de Dios (Gn 3, 8-10): a veces las personas se alejan por vergüenza o culpa, creyendo que Dios las rechazará. Pero huir de Dios no borra la búsqueda — solo la entristece.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="analogy-card">
+      <span class="analogy-label">Lo importante de este número</span>
+      No creer no te hace malo ni tonto. El Catecismo entiende que hay razones reales y humanas por las que la gente se aleja. La Iglesia no juzga — describe la experiencia humana con honestidad.
+    </div>
+  </div>
+
+  <!-- § 30 -->
+  <div class="para-block">
+    <div class="para-badge">§ 30</div>
+
+    <!-- Verso del Salmo como apertura -->
+    <div class="central-quote">
+      <p class="cq-text">"Se alegre el corazón<br>de los que buscan a Dios."</p>
+      <span class="cq-ref">Salmo 105, 3 — citado en el § 30</span>
+    </div>
+
+    <p class="para-text" style="margin-top:20px;">Si el hombre puede olvidar o rechazar a Dios, <strong>Dios no cesa de llamar a todo hombre</strong> a buscarle para que viva y encuentre la dicha. Pero esta búsqueda exige del hombre todo el esfuerzo de su inteligencia, la rectitud de su voluntad, y el testimonio de otros que le enseñen a buscar a Dios.</p>
+
+    <!-- Las 3 exigencias de la búsqueda -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:20px 0 12px;">Buscar a Dios exige tres cosas del hombre</p>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>El esfuerzo de la inteligencia.</strong> La fe no consiste en apagar el pensamiento. Buscar a Dios requiere usar la cabeza, hacerse preguntas, investigar con seriedad.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>La rectitud de la voluntad.</strong> No basta querer saber si Dios existe. También hay que estar dispuesto a seguir la verdad cuando la encontramos — aunque implique cambiar.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>El testimonio de otros.</strong> Nadie llega a Dios completamente solo. Necesitamos personas que nos enseñen, acompañen y sean testimonio de fe. Por eso existe la comunidad cristiana.</div>
+      </div>
+    </div>
+
+    <div class="myth-buster">
+      <p class="myth-label">Una distinción importante</p>
+      <div class="myth-row"><span class="myth-icon">❓</span><span class="myth-text">A veces no queremos que Dios <em>no</em> exista. Lo que no queremos es <strong>cambiar.</strong> La búsqueda sincera requiere apertura a la verdad, aunque esa verdad nos transforme.</span></div>
+    </div>
+
+    <!-- La cita de San Agustín — LA JOYA -->
+    <div style="margin:28px 0; background:linear-gradient(160deg, rgba(248,234,228,0.8), rgba(240,246,237,0.7)); border:1px solid rgba(200,169,110,0.3); border-radius:22px; padding:40px 36px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-15px; left:16px; font-family:'Cormorant Garamond',serif; font-size:120px; color:rgba(200,169,110,0.15); line-height:1; pointer-events:none;">"</div>
+      <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--soft-gold); margin-bottom:16px; position:relative; z-index:1;">✦ La frase más famosa de San Agustín ✦</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(19px,3.5vw,25px); font-style:italic; font-weight:300; color:var(--warm-brown); line-height:1.6; position:relative; z-index:1;">
+        "Nos has hecho para ti, Señor,<br>y nuestro corazón está inquieto<br>mientras no descansa en ti."
+      </p>
+      <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-top:16px; position:relative; z-index:1;">San Agustín · Confesiones I, 1, 1</p>
+    </div>
+
+    <!-- Explicación de San Agustín -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-bottom:12px;">¿Por qué esta frase lo resume todo?</p>
+    <div style="display:flex; flex-direction:column; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3); margin-bottom:16px;">
+      <div style="padding:14px 18px; background:rgba(245,230,224,0.3); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <p style="font-size:13px; font-style:italic; color:var(--text-light); font-family:'Cormorant Garamond',serif; margin-bottom:6px;">"Cuando tenga más dinero estaré completa."</p>
+        <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.6;">Lo conseguimos… y aparece otra búsqueda.</p>
+      </div>
+      <div style="padding:14px 18px; background:rgba(255,255,255,0.45); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <p style="font-size:13px; font-style:italic; color:var(--text-light); font-family:'Cormorant Garamond',serif; margin-bottom:6px;">"Cuando baje de peso / tenga pareja / logre ese trabajo…"</p>
+        <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.6;">Lo logramos… y el vacío regresa.</p>
+      </div>
+      <div style="padding:14px 18px; background:rgba(240,246,237,0.3);">
+        <p style="font-size:13px; font-weight:400; color:var(--warm-brown); margin-bottom:6px;">San Agustín explica por qué pasa esto:</p>
+        <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.6;">El corazón humano fue creado para algo <strong>infinito.</strong> Nada finito puede llenarlo completamente. La inquietud que sientes no es un defecto — es una brújula que apunta hacia Dios.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      La inquietud del corazón no es un defecto. Es una señal: fuiste creada para algo más grande que todo lo que el mundo puede ofrecerte.
+    </div>
+  </div>
+
+  <!-- RESUMEN DE LOS §§ 28-30 -->
+  <div style="margin:40px 0;">
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-bottom:14px; text-align:center;">Resumen de los §§ 28 – 30</p>
+    <div class="summary-table">
+      <div class="summary-row">
+        <div class="summary-q">¿Todos buscan a Dios?</div>
+        <div class="summary-a">Sí — toda cultura humana ha desarrollado formas de buscar lo divino. Es parte de la naturaleza humana.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Por qué algunos no creen?</div>
+        <div class="summary-a">Por el sufrimiento, la indiferencia, las distracciones, el mal ejemplo de creyentes, o el miedo y la culpa.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Qué hace Dios cuando alguien se aleja?</div>
+        <div class="summary-a">No cesa de llamarlo. Dios siempre toma la iniciativa. Nunca abandona a nadie.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Qué exige la búsqueda sincera?</div>
+        <div class="summary-a">Inteligencia abierta, voluntad dispuesta a cambiar, y comunidad que acompañe.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN II — LAS VÍAS DE ACCESO A DIOS
+       §§ 31-35
+       ════════════════════════════════════════ -->
+
+  <div style="margin:80px 0 0; text-align:center;">
+    <div style="width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(197,217,232,0.4),transparent); margin-bottom:40px;"></div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:44px;">
+    <span style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:rgba(197,217,232,0.2); line-height:1; display:block;">II</span>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-top:-12px;">Las vías de acceso al conocimiento de Dios</p>
+  </div>
+
+  <!-- Pregunta central de esta sección -->
+  <div class="central-quote" style="margin-bottom:40px;">
+    <p class="cq-text">¿Se puede llegar a saber que Dios existe<br>usando solo la razón?</p>
+    <span class="cq-ref" style="color:var(--soft-gold);">✦ &nbsp; La Iglesia responde: Sí. &nbsp; ✦</span>
+  </div>
+
+  <!-- § 31 -->
+  <div class="para-block">
+    <div class="para-badge">§ 31</div>
+
+    <p class="para-text">Creado a imagen de Dios, llamado a conocer y amar a Dios, el hombre que le busca descubre ciertas <strong>"vías"</strong> para acceder al conocimiento de Dios. Se las llama también "pruebas de la existencia de Dios", no en el sentido de las pruebas propias de las ciencias naturales, sino en el sentido de <strong>argumentos convergentes y convincentes</strong> que permiten llegar a verdaderas certezas.</p>
+
+    <div class="myth-buster">
+      <p class="myth-label">¿Qué significa "pruebas de la existencia de Dios"?</p>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No son una prueba matemática como 2+2=4, ni un experimento de laboratorio.</span></div>
+      <div class="myth-row" style="margin-top:6px;"><span class="myth-icon">✦</span><span class="myth-text"><strong>Son argumentos muy fuertes</strong> que, juntos, apuntan convincentemente hacia la existencia de Dios. Como piezas de un rompecabezas que forman una imagen clara.</span></div>
+    </div>
+
+    <div class="analogy-card">
+      <span class="analogy-label">El punto de partida</span>
+      No necesitas abrir la Biblia para llegar a pensar que Dios existe. Puedes empezar observando el universo, la naturaleza y tu propia existencia. Eso es lo que propone esta sección.
+    </div>
+  </div>
+
+  <!-- § 32 — El mundo -->
+  <div class="para-block">
+    <div class="para-badge">§ 32 · Primera vía: El mundo</div>
+
+    <p class="para-text">El mundo material: a partir del movimiento y del devenir, de la contingencia, del orden y de la belleza del mundo se puede conocer a Dios como origen y fin del universo.</p>
+
+    <!-- Los 4 argumentos del mundo -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:16px 0 12px;">Cuatro señales en el mundo que apuntan hacia Dios</p>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:22px;">
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(197,217,232,0.35);">
+        <div style="background:rgba(197,217,232,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">🌀</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">El movimiento</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Todo se mueve, todo cambia, nada permanece igual. Algo tuvo que poner todo en marcha. <em>¿Qué fue?</em></p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(197,217,232,0.35);">
+        <div style="background:rgba(197,217,232,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">💫</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">La contingencia</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Todo lo que existe <em>podría no haber existido.</em> Tú, la Tierra, el universo. Entonces surge la pregunta más profunda: <strong>¿Por qué existe algo en lugar de nada?</strong></p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(197,217,232,0.35);">
+        <div style="background:rgba(197,217,232,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">🔬</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">El orden</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Las leyes físicas, el ADN, los planetas, las estaciones — todo funciona con una precisión asombrosa. <em>¿De dónde viene ese orden?</em></p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.35);">
+        <div style="background:rgba(232,196,184,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:20px; padding:14px 10px; flex-shrink:0;">🌅</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">La belleza</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Un atardecer, el mar, una montaña, el rostro de un bebé. Toda esa belleza parece apuntar hacia una <strong>Belleza más grande</strong> que la originó.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- San Pablo -->
+    <div class="phrase-item" style="margin-bottom:16px;">
+      <div class="phrase-original">"Lo invisible de Dios se deja ver a través de sus obras"<br><span style="font-size:11px; color:var(--text-light);">Romanos 1, 19-20</span></div>
+      <div class="phrase-explain">No vemos a Dios directamente. Pero vemos sus huellas. <strong>Como cuando llegas a una playa y ves huellas en la arena:</strong> no ves a la persona, pero sabes que estuvo allí.</div>
+    </div>
+
+    <!-- San Agustín interroga la creación -->
+    <div class="central-quote">
+      <p class="cq-text" style="font-size:17px;">"Interroga a la belleza de la tierra, interroga a la belleza del mar… Interroga a todas estas realidades. Todas te responden: <em>Ve, nosotras somos bellas.</em> Su belleza es una profesión. Estas bellezas sujetas a cambio, ¿quién las ha hecho sino la Suma Belleza, no sujeta a cambio?"</p>
+      <span class="cq-ref">San Agustín · Sermón 241, 2</span>
+    </div>
+  </div>
+
+  <!-- § 33 — El hombre -->
+  <div class="para-block">
+    <div class="para-badge">§ 33 · Segunda vía: El hombre mismo</div>
+
+    <p class="para-text">Con su apertura a la verdad y a la belleza, con su sentido del bien moral, con su libertad y la voz de su conciencia, con su aspiración al infinito y a la dicha, el hombre se interroga sobre la existencia de Dios. En estas aperturas percibe signos de su alma espiritual.</p>
+
+    <div class="analogy-card">
+      <span class="analogy-label">¿Por qué el ser humano es tan diferente a todo lo demás?</span>
+      Un perro quiere comida, descanso, afecto. Tú quieres saber <em>quién eres</em>, <em>para qué existes</em>, <em>qué es el amor verdadero</em>, <em>qué es la justicia</em>. Eso es algo completamente único. Ningún animal busca la verdad ni la eternidad. <strong>Eso apunta hacia una naturaleza espiritual que no puede tener origen solo en la materia.</strong>
+    </div>
+
+    <div class="phrase-item" style="margin:16px 0;">
+      <div class="phrase-original">"La semilla de eternidad"<br><span style="font-size:11px; color:var(--text-light);">Gaudium et Spes 18, 1</span></div>
+      <div class="phrase-explain">Dentro de nosotros hay una intuición profunda de que <strong>fuimos hechos para algo más que esta vida.</strong> Por eso la muerte nos parece tan extraña, tan injusta, tan incompleta. Porque estamos hechos para la eternidad — y la muerte contradice eso.</div>
+    </div>
+
+    <!-- Las búsquedas únicas del hombre -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:16px 0 12px;">Lo que solo el ser humano busca</p>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:16px;">
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:14px 15px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">🔍</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La verdad</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">No solo lo que conviene, sino lo que <em>es</em>.</p>
+      </div>
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:14px 15px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">⚖️</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La justicia</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">Un sentido moral que trasciende las culturas.</p>
+      </div>
+      <div style="background:rgba(240,246,237,0.4); border-radius:12px; padding:14px 15px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">🌸</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La belleza</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">El arte, la música, la poesía — sin utilidad práctica.</p>
+      </div>
+      <div style="background:rgba(197,217,232,0.2); border-radius:12px; padding:14px 15px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">♾️</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La eternidad</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">La intuición de que no fuimos hechos para desaparecer.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      El alma humana no puede tener origen solo en la materia. La capacidad de buscar la verdad, la justicia, la belleza y el infinito apunta hacia Dios como origen.
+    </div>
+  </div>
+
+  <!-- § 34 -->
+  <div class="para-block">
+    <div class="para-badge">§ 34</div>
+
+    <p class="para-text">El mundo y el hombre atestiguan que no tienen en ellos mismos ni su primer principio ni su fin último, sino que participan de Aquel que es el Ser en sí, sin origen y sin fin. Así, por estas diversas vías, el hombre puede acceder al conocimiento de la existencia de una realidad que es la <strong>causa primera y el fin último</strong> de todo, "y que todos llaman Dios".</p>
+
+    <div style="background:rgba(255,255,255,0.6); border:1px solid rgba(200,169,110,0.3); border-radius:16px; padding:22px 26px; margin:16px 0;">
+      <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--soft-gold); margin-bottom:14px;">La lógica completa del argumento</p>
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">El universo existe — pero podría no haber existido.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">El ser humano existe — pero tampoco se explica a sí mismo.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">Nada puede darse a sí mismo la existencia. Tiene que haber una causa.</div>
+      </div>
+      <div class="step-item" style="margin-bottom:0;">
+        <div class="step-num">∴</div>
+        <div class="step-text"><strong>Debe existir una realidad que no fue creada, que no comenzó ni terminará:</strong> la causa primera y el fin último de todo. A eso llamamos Dios.</div>
+      </div>
+    </div>
+
+    <div class="highlight-banner">
+      "Causa primera y fin último" — Dios no es solo el origen de todo. También es la meta hacia la que todo se dirige. Esto lo enseñó Santo Tomás de Aquino y la Iglesia lo hace suyo.
+    </div>
+    <p style="font-size:12px; color:var(--text-light); margin-top:6px; font-style:italic;">Santo Tomás de Aquino, Suma Teológica I, 2, 3</p>
+  </div>
+
+  <!-- § 35 -->
+  <div class="para-block">
+    <div class="para-badge">§ 35</div>
+
+    <p class="para-text">Las facultades del hombre lo hacen capaz de conocer la existencia de un Dios personal. Pero para que el hombre pueda entrar en su intimidad, <strong>Dios ha querido revelarse al hombre</strong> y darle la gracia de poder acoger esa revelación en la fe. Sin embargo, las pruebas de la existencia de Dios pueden disponer a la fe y ayudar a ver que la fe no se opone a la razón humana.</p>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Capaz de conocer la existencia de Dios"</div>
+      <div class="phrase-explain">La razón puede llegar a saber que Dios <em>existe.</em> Pero para saber <em>quién es</em> — su amor, su plan, su Trinidad — Dios tuvo que revelarse. Ahí entran la Biblia, Jesús y la fe.</div>
+    </div>
+
+    <!-- La relación fe-razón -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:18px 0 12px;">Fe y razón: no son enemigas</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px;">
+      <div style="flex:1; min-width:140px; background:rgba(197,217,232,0.2); border:1px solid rgba(150,190,215,0.3); border-radius:14px; padding:18px 16px; text-align:center;">
+        <div style="font-size:26px; margin-bottom:8px;">🧠</div>
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:6px;">La razón</strong>
+        <p style="font-size:12.5px; color:var(--text-light); font-weight:300; line-height:1.6;">Puede descubrir que Dios existe. Llega hasta la puerta.</p>
+      </div>
+      <div style="flex:1; min-width:40px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--soft-gold);">+</div>
+      <div style="flex:1; min-width:140px; background:rgba(245,230,224,0.3); border:1px solid rgba(232,196,184,0.35); border-radius:14px; padding:18px 16px; text-align:center;">
+        <div style="font-size:26px; margin-bottom:8px;">🙏</div>
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:6px;">La fe</strong>
+        <p style="font-size:12.5px; color:var(--text-light); font-weight:300; line-height:1.6;">Permite entrar y conocer a Dios en su intimidad. Abre la puerta.</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(197,217,232,0.2),rgba(245,230,224,0.3)); border:1px solid rgba(200,169,110,0.2); border-radius:14px; padding:20px 24px; text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:var(--warm-brown); line-height:1.5;">
+        No tienes que elegir entre <em>pensar</em> y <em>creer.</em><br>
+        La razón y la fe son amigas.
+      </p>
+    </div>
+
+    <div class="analogy-card" style="margin-top:16px;">
+      <span class="analogy-label">Por qué grandes científicos y filósofos creían</span>
+      La Iglesia sostiene que toda búsqueda sincera de la verdad termina acercándose a Dios. No por fuerza — sino porque la realidad misma señala hacia Él. Por eso tantos grandes mentes de la historia (Newton, Pasteur, Mendel, Copérnico) veían la ciencia como una forma de conocer más a fondo la mente del Creador.
+    </div>
+  </div>
+
+  <!-- RESUMEN §§ 31-35 -->
+  <div style="margin:30px 0;">
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-bottom:14px; text-align:center;">Resumen de los §§ 31–35</p>
+    <div class="summary-table">
+      <div class="summary-row">
+        <div class="summary-q">¿Puede la razón llegar a Dios?</div>
+        <div class="summary-a">Sí — puede descubrir que Dios existe mirando el universo y el ser humano.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">Primera vía: el mundo</div>
+        <div class="summary-a">El movimiento, la contingencia, el orden y la belleza apuntan hacia un Creador.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">Segunda vía: el hombre</div>
+        <div class="summary-a">La búsqueda de verdad, justicia, belleza e infinito señala hacia un origen espiritual.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Puede la razón conocer a Dios completamente?</div>
+        <div class="summary-a">No. Para conocer quién es en su intimidad, Dios tuvo que revelarse. Ahí entra la fe.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Fe contra razón?</div>
+        <div class="summary-a">Nunca. La Iglesia enseña que fe y razón son amigas que se necesitan mutuamente.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN III — EL CONOCIMIENTO DE DIOS
+       SEGÚN LA IGLESIA · §§ 36-40
+       ════════════════════════════════════════ -->
+
+  <div style="margin:80px 0 0; text-align:center;">
+    <div style="width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(232,196,184,0.4),transparent); margin-bottom:40px;"></div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:44px;">
+    <span style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:rgba(232,196,184,0.2); line-height:1; display:block;">III</span>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-top:-12px;">El conocimiento de Dios según la Iglesia</p>
+  </div>
+
+  <!-- Pregunta que responde esta sección -->
+  <div class="big-question" style="animation:none; opacity:1; padding:22px 28px; margin-bottom:40px; background:rgba(255,255,255,0.6); backdrop-filter:blur(8px); border:1px solid rgba(232,196,184,0.4); border-radius:20px;">
+    <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-bottom:10px;">La objeción que responde esta sección</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:19px; color:var(--warm-brown); line-height:1.4; font-style:italic;">"Si la razón puede conocer a Dios, ¿para qué necesitamos la Revelación?"</p>
+    <div style="margin-top:14px; background:rgba(245,230,224,0.4); border-radius:12px; padding:12px 18px; font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--warm-brown);">
+      ✦ &nbsp;Una cosa es poder llegar, y otra muy distinta es lograrlo fácilmente, con certeza y sin errores.
+    </div>
+  </div>
+
+  <!-- § 36 -->
+  <div class="para-block">
+    <div class="para-badge">§ 36</div>
+
+    <p class="para-text">La santa Iglesia, nuestra madre, mantiene y enseña que <strong>Dios, principio y fin de todas las cosas, puede ser conocido con certeza mediante la luz natural de la razón humana</strong> a partir de las cosas creadas. Sin esta capacidad, el hombre no podría acoger la revelación de Dios. El hombre tiene esta capacidad porque ha sido creado a imagen de Dios.</p>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Conocido con certeza mediante la luz natural de la razón"</div>
+      <div class="phrase-explain">La Iglesia lo enseña <strong>oficialmente</strong> — no como opinión, sino como doctrina. La inteligencia humana puede descubrir que Dios existe sin necesidad de abrir primero la Biblia.</div>
+    </div>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Creado a imagen de Dios"</div>
+      <div class="phrase-explain">Tenemos esta capacidad racional precisamente <strong>porque llevamos impresa la imagen de Dios.</strong> Nuestra capacidad de razonar, buscar la verdad y preguntarnos por el origen y sentido de todo es un reflejo de la mente divina.</div>
+    </div>
+
+    <div class="myth-buster">
+      <p class="myth-label">Lo que la Iglesia NO dice vs. lo que SÍ dice</p>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">"Solo cree y no pienses."</span></div>
+      <div class="myth-row" style="margin-top:6px;"><span class="myth-icon">✦</span><span class="myth-text"><strong>Piensa profundamente y descubrirás huellas de Dios.</strong> La razón y la fe son amigas, no enemigas.</span></div>
+    </div>
+
+    <p style="font-size:12px; color:var(--text-light); margin-top:8px;">Concilio Vaticano I: DS 3004 · Concilio Vaticano II: DV 6</p>
+  </div>
+
+  <!-- § 37 -->
+  <div class="para-block">
+    <div class="para-badge">§ 37</div>
+
+    <p class="para-text">Sin embargo, en las condiciones históricas en que se encuentra, el hombre experimenta muchas dificultades para conocer a Dios con la sola luz de su razón.</p>
+
+    <div class="highlight-banner">
+      Sí podemos — pero en la práctica las cosas son más complicadas. No somos seres perfectos.
+    </div>
+
+    <!-- Los obstáculos reales -->
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:18px 0 12px;">Los obstáculos que nublan la razón humana</p>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(232,196,184,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:18px; padding:14px 10px; flex-shrink:0;">👁️</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Los sentidos</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">A veces solo creemos lo que podemos tocar o ver. Dios trasciende lo sensible — y eso puede ser un límite si solo confiamos en los sentidos.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(232,196,184,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:18px; padding:14px 10px; flex-shrink:0;">💭</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">La imaginación</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">A veces inventamos ideas sobre Dios que no corresponden a la realidad — dioses a nuestra imagen y semejanza, no al revés.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(200,169,110,0.25);">
+        <div style="background:rgba(200,169,110,0.15); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:18px; padding:14px 10px; flex-shrink:0;">😤</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Los malos deseos y el ego</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">A veces rechazamos una idea no porque sea falsa, sino porque <strong>no nos conviene</strong>. Si Dios existe, quizá tengo que cambiar, perdonar, reconocer errores. Eso incomoda.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+        <div style="background:rgba(232,196,184,0.2); min-width:44px; display:flex; align-items:center; justify-content:center; font-size:18px; padding:14px 10px; flex-shrink:0;">😟</div>
+        <div style="background:rgba(255,255,255,0.5); padding:14px 18px; flex:1;">
+          <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Heridas, miedos y prejuicios</strong>
+          <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Nuestras experiencias pasadas, heridas y contexto cultural afectan profundamente la manera en que vemos — o no vemos — a Dios.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      "Los hombres se persuaden fácilmente de la falsedad o al menos de la incertidumbre de las cosas que no quisieran que fuesen verdaderas." — Pío XII, Humani Generis
+    </div>
+
+    <p style="font-size:12px; color:var(--text-light); margin-top:8px;">Pío XII, Enc. Humani Generis: DS 3875</p>
+  </div>
+
+  <!-- § 38 -->
+  <div class="para-block">
+    <div class="para-badge">§ 38</div>
+
+    <p class="para-text">Por esto el hombre necesita ser iluminado por la revelación de Dios, no solamente acerca de lo que supera su entendimiento, sino también sobre las verdades religiosas y morales que, de suyo, no son inaccesibles a la razón, a fin de que puedan ser conocidas por todos con facilidad, con certeza firme y sin mezcla de error.</p>
+
+    <!-- La analogía de la montaña -->
+    <div class="analogy-card">
+      <span class="analogy-label">La analogía de la montaña</span>
+      Imagina una montaña muy alta. Algunos podrían llegar a la cima solos — pero les tomaría años y muchos se perderían en el camino. Entonces Dios viene y dice: <strong>"Les mostraré el camino."</strong> No porque sean incapaces, sino porque los ama y quiere que lleguen todos, fácilmente y sin errores. Eso es la Revelación.
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(184,201,176,0.35); margin:16px 0;">
+      <div style="padding:14px 18px; background:rgba(240,246,237,0.4); border-bottom:1px solid rgba(184,201,176,0.2);">
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Sin Revelación</strong>
+        <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;">Solo los filósofos y genios, después de mucho esfuerzo, y con riesgo de error.</p>
+      </div>
+      <div style="padding:14px 18px; background:rgba(255,255,255,0.45);">
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Con Revelación ✦</strong>
+        <p style="font-size:13.5px; color:var(--text); font-weight:300; line-height:1.7;"><strong>Todos</strong> — sin importar edad, cultura o nivel de estudios — con claridad, certeza y sin error.</p>
+      </div>
+    </div>
+
+    <div class="highlight-banner">
+      Dios no nos pide creer a ciegas. Nos dio una inteligencia capaz de buscarlo, pero también nos ama tanto que vino a ayudarnos revelándose Él mismo.
+    </div>
+
+    <p style="font-size:12px; color:var(--text-light); margin-top:6px;">DS 3875-3876 · DV 6 · Santo Tomás de Aquino, s. th. 1, 1, 1</p>
+  </div>
+
+  <!-- ════════ SECCIÓN IV — ¿CÓMO HABLAR DE DIOS? ════════ -->
+  <div style="margin:80px 0 0; text-align:center;">
+    <div style="width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(197,217,232,0.35),transparent); margin-bottom:40px;"></div>
+  </div>
+
+  <div style="text-align:center; margin-bottom:44px;">
+    <span style="font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:rgba(197,217,232,0.18); line-height:1; display:block;">IV</span>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-top:-12px;">¿Cómo hablar de Dios?</p>
+  </div>
+
+  <!-- § 39 -->
+  <div class="para-block">
+    <div class="para-badge">§ 39</div>
+
+    <p class="para-text">Al defender la capacidad de la razón humana para conocer a Dios, la Iglesia expresa su confianza en la posibilidad de hablar de Dios a todos los hombres y con todos los hombres. Esta convicción está en la base de su diálogo con las otras religiones, con la filosofía y las ciencias, y también con los no creyentes y los ateos.</p>
+
+    <div class="insight">
+      Si la razón puede conocer a Dios, entonces podemos hablar de Él con cualquier persona — creyente o no. Por eso la Iglesia dialoga con científicos, filósofos, ateos y otras religiones.
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0;">
+      <div style="background:rgba(255,255,255,0.55); border:1px solid rgba(232,196,184,0.3); border-radius:12px; padding:14px 16px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">🔬</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">Ciencias y filosofía</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">La Iglesia dialoga porque comparte el terreno común de la razón.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.55); border:1px solid rgba(232,196,184,0.3); border-radius:12px; padding:14px 16px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">🌍</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">Otras religiones</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">Comparten la búsqueda humana universal de Dios.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.55); border:1px solid rgba(232,196,184,0.3); border-radius:12px; padding:14px 16px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">🤔</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">No creyentes</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">También tienen la capacidad racional de buscar la verdad.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.55); border:1px solid rgba(232,196,184,0.3); border-radius:12px; padding:14px 16px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">❓</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">Ateos</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">El diálogo es posible porque compartimos la misma humanidad.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- § 40 -->
+  <div class="para-block">
+    <div class="para-badge">§ 40</div>
+
+    <p class="para-text">Puesto que nuestro conocimiento de Dios es limitado, nuestro lenguaje sobre Dios lo es también. No podemos nombrar a Dios sino a partir de las criaturas, y según nuestro modo humano limitado de conocer y de pensar.</p>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Nuestro conocimiento de Dios es limitado"</div>
+      <div class="phrase-explain">Podemos conocer a Dios de verdad — pero no podemos <strong>comprenderlo completamente.</strong> Como el océano: puedes verlo, tocarlo y nadar en él, pero no puedes meter todo el océano en una cubeta.</div>
+    </div>
+
+    <div class="phrase-item" style="margin-bottom:16px;">
+      <div class="phrase-original">"No podemos nombrar a Dios sino a partir de las criaturas"</div>
+      <div class="phrase-explain">Todo nuestro lenguaje viene de la experiencia humana. No tenemos un idioma divino. Cuando decimos "Dios es bueno", usamos la palabra "bueno" que aprendimos de la experiencia humana — <strong>pero aplicada de manera perfecta e infinita a Dios.</strong></div>
+    </div>
+
+    <!-- El ejemplo del Padre -->
+    <div class="analogy-card">
+      <span class="analogy-label">¿Qué significa llamar a Dios "Padre"?</span>
+      No significa que Dios sea literalmente un hombre sentado en el cielo. Significa que posee <strong>de forma perfecta e infinita</strong> aquello que vemos imperfectamente en un buen padre: amor incondicional, protección, guía. Tomamos lo mejor que conocemos y lo llevamos al máximo absoluto — eso es lo que Dios es.
+    </div>
+
+    <div style="margin:18px 0; background:rgba(255,255,255,0.6); border:1px solid rgba(200,169,110,0.25); border-radius:14px; padding:20px 24px;">
+      <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--soft-gold); margin-bottom:12px;">Cómo funciona nuestro lenguaje sobre Dios</p>
+      <div class="summary-table" style="margin:0; border:none; border-radius:0;">
+        <div class="summary-row" style="border:none; border-bottom:1px solid rgba(232,196,184,0.2);">
+          <div class="summary-q" style="background:none; border:none; padding:10px 4px;">"Dios es bueno"</div>
+          <div class="summary-a" style="background:none; padding:10px 12px;">Bondad perfecta, sin límite ni defecto alguno.</div>
+        </div>
+        <div class="summary-row" style="border:none; border-bottom:1px solid rgba(232,196,184,0.2);">
+          <div class="summary-q" style="background:none; border:none; padding:10px 4px;">"Dios es sabio"</div>
+          <div class="summary-a" style="background:none; padding:10px 12px;">Sabiduría infinita que lo conoce y abarca todo.</div>
+        </div>
+        <div class="summary-row" style="border:none;">
+          <div class="summary-q" style="background:none; border:none; padding:10px 4px;">"Dios es amor"</div>
+          <div class="summary-a" style="background:none; padding:10px 12px;">No solo ama — es el Amor mismo en su fuente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMEN GENERAL §§ 36-40 -->
+  <div style="margin:20px 0 40px;">
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-bottom:14px; text-align:center;">Resumen de los §§ 36–40</p>
+    <div class="summary-table">
+      <div class="summary-row">
+        <div class="summary-q">§ 36 — ¿Puede la razón conocer a Dios?</div>
+        <div class="summary-a">Sí — la Iglesia lo enseña oficialmente. Somos capaces porque fuimos hechos a imagen de Dios.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">§ 37 — ¿Por qué nos cuesta tanto?</div>
+        <div class="summary-a">Porque tenemos obstáculos reales: sentidos, imaginación, ego, heridas y miedos.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">§ 38 — ¿Para qué la Revelación?</div>
+        <div class="summary-a">Para que todos, sin excepción, puedan conocer la verdad con certeza y sin error.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">§ 39 — ¿Podemos hablar de Dios con todos?</div>
+        <div class="summary-a">Sí — la razón es un terreno común con creyentes, ateos, científicos y otras religiones.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">§ 40 — ¿Cómo hablamos de Dios?</div>
+        <div class="summary-a">Con lenguaje humano que apunta hacia Él. Lo conocemos de verdad, pero no lo agotamos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       §§ 41-43 — CÓMO HABLAMOS DE DIOS (cont.)
+       ════════════════════════════════════════ -->
+
+  <div style="margin:80px 0 0; text-align:center;">
+    <div style="width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(200,169,110,0.3),transparent); margin-bottom:40px;"></div>
+  </div>
+
+  <!-- § 41 -->
+  <div class="para-block">
+    <div class="para-badge">§ 41</div>
+
+    <p class="para-text">Todas las criaturas poseen una cierta semejanza con Dios, muy especialmente el hombre creado a imagen y semejanza de Dios. Las múltiples perfecciones de las criaturas — su verdad, su bondad, su belleza — reflejan, por tanto, la perfección infinita de Dios. Por ello, podemos nombrar a Dios a partir de las perfecciones de sus criaturas.</p>
+
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:16px 0 12px;">Todo lo bueno de la creación refleja algo de Dios</p>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:18px;">
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:14px 15px;">
+        <div style="font-size:18px; margin-bottom:6px;">🌸</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La belleza de una flor</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">Refleja algo de la belleza infinita de Dios.</p>
+      </div>
+      <div style="background:rgba(245,230,224,0.4); border-radius:12px; padding:14px 15px;">
+        <div style="font-size:18px; margin-bottom:6px;">🌊</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La fuerza del océano</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">Refleja algo de su poder sin límite.</p>
+      </div>
+      <div style="background:rgba(240,246,237,0.4); border-radius:12px; padding:14px 15px;">
+        <div style="font-size:18px; margin-bottom:6px;">🧠</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">La inteligencia humana</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">Refleja algo de su sabiduría infinita.</p>
+      </div>
+      <div style="background:rgba(240,246,237,0.4); border-radius:12px; padding:14px 15px;">
+        <div style="font-size:18px; margin-bottom:6px;">🤱</div>
+        <strong style="font-size:12.5px; color:var(--warm-brown);">El amor de una madre</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; margin-top:4px; line-height:1.5;">Refleja algo de su amor que no tiene fin.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      Ninguna criatura refleja a Dios completamente. Cada una refleja apenas un destello. Pero juntas forman un mosaico que apunta hacia Él.
+    </div>
+    <p style="font-size:12px; color:var(--text-light); margin-top:6px;">Sabiduría 13, 5</p>
+  </div>
+
+  <!-- § 42 -->
+  <div class="para-block">
+    <div class="para-badge">§ 42</div>
+
+    <p class="para-text"><strong>Dios trasciende toda criatura.</strong> Es preciso, pues, purificar sin cesar nuestro lenguaje de todo lo que tiene de limitado, de expresión por medio de imágenes, de imperfecto, para no confundir al Dios <strong>"inefable, incomprensible, invisible, inalcanzable"</strong> con nuestras representaciones humanas. Nuestras palabras humanas quedan siempre más acá del Misterio de Dios.</p>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Dios trasciende toda criatura"</div>
+      <div class="phrase-explain"><strong>Trascender</strong> significa estar infinitamente por encima. Aunque la creación refleje algo de Dios, Dios es infinitamente más grande que todo lo creado junto.</div>
+    </div>
+
+    <div class="analogy-card">
+      <span class="analogy-label">La foto y la persona</span>
+      Una foto de alguien que amas se parece a esa persona. Pero la foto no es la persona. Del mismo modo, la creación refleja algo de Dios — pero Dios es infinitamente más que todo lo que podemos ver, tocar o imaginar.
+    </div>
+
+    <!-- Los 4 atributos del Misterio -->
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin:16px 0;">
+      <div style="background:rgba(197,217,232,0.2); border:1px solid rgba(150,190,215,0.3); border-radius:12px; padding:12px 14px; text-align:center;">
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Inefable</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.5;">No puede expresarse completamente con palabras.</p>
+      </div>
+      <div style="background:rgba(197,217,232,0.2); border:1px solid rgba(150,190,215,0.3); border-radius:12px; padding:12px 14px; text-align:center;">
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Incomprensible</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.5;">No puede ser abarcado completamente por la mente.</p>
+      </div>
+      <div style="background:rgba(197,217,232,0.2); border:1px solid rgba(150,190,215,0.3); border-radius:12px; padding:12px 14px; text-align:center;">
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Invisible</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.5;">No se ve directamente con ojos corporales.</p>
+      </div>
+      <div style="background:rgba(197,217,232,0.2); border:1px solid rgba(150,190,215,0.3); border-radius:12px; padding:12px 14px; text-align:center;">
+        <strong style="font-size:13px; color:var(--warm-brown); display:block; margin-bottom:4px;">Inalcanzable</strong>
+        <p style="font-size:12px; color:var(--text-light); font-weight:300; line-height:1.5;">No puede ser "capturado" ni reducido a nuestras categorías.</p>
+      </div>
+    </div>
+
+    <p style="font-size:12px; color:var(--text-light); margin-top:4px;">Anáfora de la Liturgia de San Juan Crisóstomo</p>
+  </div>
+
+  <!-- § 43 -->
+  <div class="para-block">
+    <div class="para-badge">§ 43</div>
+
+    <p class="para-text">Al hablar así de Dios, nuestro lenguaje se expresa ciertamente de modo humano, pero capta realmente a Dios mismo, sin poder, no obstante, expresarlo en su infinita simplicidad.</p>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Capta realmente a Dios mismo"</div>
+      <div class="phrase-explain">Cuando decimos "Dios es amor", <strong>no es falso ni metáfora vacía</strong>. Es verdad. Nuestro lenguaje, aunque limitado, sí apunta y toca la realidad de Dios.</div>
+    </div>
+
+    <div class="phrase-item" style="margin-bottom:14px;">
+      <div class="phrase-original">"Entre el Creador y la criatura no se puede señalar una semejanza tal que la diferencia entre ellos no sea mayor todavía"</div>
+      <div class="phrase-explain">Sí existe semejanza entre Dios y nosotros — pero la diferencia siempre es <strong>muchísimo mayor.</strong> Imagina la diferencia entre un padre y su hijo, llevada al infinito. Eso es lo que hay entre Dios y cualquier criatura.</div>
+    </div>
+
+    <div class="highlight-banner">
+      Podemos conocer verdaderamente a Dios — y nuestras palabras lo captan. Pero nunca lo agotaremos. Siempre será mayor, más profundo y más bello de lo que podemos imaginar.
+    </div>
+
+    <p style="font-size:12px; color:var(--text-light); margin-top:6px;">Concilio de Letrán IV: DS 806 · Santo Tomás de Aquino, s. gent. 1, 30</p>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       RESUMEN DEL CAPÍTULO I · §§ 44-49
+       ════════════════════════════════════════ -->
+
+  <div style="margin:80px 0 0; text-align:center;">
+    <div style="width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(232,196,184,0.4),transparent); margin-bottom:40px;"></div>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--warm-brown);">Resumen</p>
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-top:6px;">Lo esencial del Capítulo I en seis afirmaciones</p>
+  </div>
+
+  <!-- §§ 44-49 en formato de tarjetas de resumen -->
+  <div style="display:flex; flex-direction:column; gap:12px; margin:32px 0;">
+
+    <div style="display:flex; gap:0; border-radius:16px; overflow:hidden; border:1px solid rgba(232,196,184,0.35);">
+      <div style="background:rgba(200,169,110,0.15); min-width:50px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--soft-gold); font-weight:600; padding:16px 10px; flex-shrink:0;">44</div>
+      <div style="background:rgba(255,255,255,0.5); padding:16px 20px; flex:1;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--warm-brown); line-height:1.5; margin-bottom:6px;">El hombre es por naturaleza y por vocación un ser religioso. Viniendo de Dios y yendo hacia Dios, el hombre no vive una vida plenamente humana si no vive libremente su vínculo con Dios.</p>
+        <p style="font-size:13px; color:var(--text-light); font-weight:300; line-height:1.6;">Buscar a Dios no es una rareza ni una moda. Es parte de lo que significa ser humano. Venimos de Dios — y nuestro destino final es Dios.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0; border-radius:16px; overflow:hidden; border:1px solid rgba(232,196,184,0.35);">
+      <div style="background:rgba(200,169,110,0.15); min-width:50px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--soft-gold); font-weight:600; padding:16px 10px; flex-shrink:0;">45</div>
+      <div style="background:rgba(255,255,255,0.5); padding:16px 20px; flex:1;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--warm-brown); line-height:1.5; margin-bottom:6px;">El hombre está hecho para vivir en comunión con Dios, en quien encuentra su dicha.</p>
+        <p style="font-size:13px; color:var(--text-light); font-weight:300; line-height:1.6;">La felicidad más profunda del ser humano no está en los logros, el dinero o las relaciones — está en la unión con Dios. San Agustín lo vivió: <em>"Cuando yo me adhiera a ti con todo mi ser, no habrá ya para mí penas ni pruebas, y mi vida, toda llena de ti, será plena."</em></p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0; border-radius:16px; overflow:hidden; border:1px solid rgba(184,201,176,0.35);">
+      <div style="background:rgba(184,201,176,0.2); min-width:50px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--sage-dark); font-weight:600; padding:16px 10px; flex-shrink:0;">46</div>
+      <div style="background:rgba(255,255,255,0.5); padding:16px 20px; flex:1;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--warm-brown); line-height:1.5; margin-bottom:6px;">Cuando el hombre escucha el mensaje de las criaturas y la voz de su conciencia, puede alcanzar la certeza de la existencia de Dios, causa y fin de todo.</p>
+        <p style="font-size:13px; color:var(--text-light); font-weight:300; line-height:1.6;">Dos grandes señales apuntan hacia Dios: el mundo exterior (la creación) y el mundo interior (la conciencia moral). Ambos son caminos hacia Él.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0; border-radius:16px; overflow:hidden; border:1px solid rgba(184,201,176,0.35);">
+      <div style="background:rgba(184,201,176,0.2); min-width:50px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--sage-dark); font-weight:600; padding:16px 10px; flex-shrink:0;">47</div>
+      <div style="background:rgba(255,255,255,0.5); padding:16px 20px; flex:1;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--warm-brown); line-height:1.5; margin-bottom:6px;">La Iglesia enseña que el Dios único y verdadero, nuestro Creador y Señor, puede ser conocido con certeza por sus obras, gracias a la luz natural de la razón humana.</p>
+        <p style="font-size:13px; color:var(--text-light); font-weight:300; line-height:1.6;">No es irracional creer. La Iglesia lo enseña como doctrina oficial: la inteligencia humana puede descubrir que Dios existe.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0; border-radius:16px; overflow:hidden; border:1px solid rgba(197,217,232,0.35);">
+      <div style="background:rgba(197,217,232,0.2); min-width:50px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--sky-dark); font-weight:600; padding:16px 10px; flex-shrink:0;">48</div>
+      <div style="background:rgba(255,255,255,0.5); padding:16px 20px; flex:1;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--warm-brown); line-height:1.5; margin-bottom:6px;">Nosotros podemos realmente nombrar a Dios partiendo de las múltiples perfecciones de las criaturas, semejanzas del Dios infinitamente perfecto, aunque nuestro lenguaje limitado no agote su misterio.</p>
+        <p style="font-size:13px; color:var(--text-light); font-weight:300; line-height:1.6;">Sí podemos hablar de Dios — y lo que decimos es verdadero. Pero nunca terminaremos de comprenderlo. Siempre será más grande.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:0; border-radius:16px; overflow:hidden; border:1px solid rgba(197,217,232,0.35);">
+      <div style="background:rgba(197,217,232,0.2); min-width:50px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--sky-dark); font-weight:600; padding:16px 10px; flex-shrink:0;">49</div>
+      <div style="background:rgba(255,255,255,0.5); padding:16px 20px; flex:1;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--warm-brown); line-height:1.5; margin-bottom:6px;">"Sin el Creador la criatura se diluye." He aquí por qué los creyentes saben que son impulsados por el amor de Cristo a llevar la luz del Dios vivo a los que no le conocen o le rechazan.</p>
+        <p style="font-size:13px; color:var(--text-light); font-weight:300; line-height:1.6;">Sin Dios, la identidad humana pierde su centro: no sabemos de dónde venimos, para qué existimos ni hacia dónde vamos. Por eso conocer a Dios no es para guardárselo — es para compartirlo.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PUENTE HACIA EL CAPÍTULO II
+       ════════════════════════════════════════ -->
+
+  <div style="margin:60px 0; background:linear-gradient(160deg, rgba(197,217,232,0.2), rgba(245,230,224,0.3)); border:1px solid rgba(150,190,215,0.3); border-radius:22px; padding:44px 40px; text-align:center; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-20px; right:-20px; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, rgba(197,217,232,0.2), transparent 70%); pointer-events:none;"></div>
+
+    <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--sky-dark); margin-bottom:16px; position:relative; z-index:1;">✦ Ahora cambia la perspectiva ✦</p>
+
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,3vw,20px); color:var(--warm-brown); line-height:1.6; margin-bottom:20px; position:relative; z-index:1;">
+      El Capítulo I respondió:<br>
+      <em>¿Cómo busca el hombre a Dios?</em>
+    </p>
+
+    <div style="width:40px; height:1px; background:rgba(197,217,232,0.5); margin:0 auto 20px; position:relative; z-index:1;"></div>
+
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,4vw,32px); font-weight:300; color:var(--warm-brown); line-height:1.3; margin-bottom:16px; position:relative; z-index:1;">
+      Capítulo Segundo<br>
+      <strong style="font-weight:600;">Dios al encuentro del hombre</strong>
+    </p>
+
+    <p style="font-size:14px; color:var(--text-light); font-weight:300; line-height:1.8; max-width:440px; margin:0 auto; position:relative; z-index:1;">
+      El próximo capítulo responde la pregunta más emocionante:<br>
+      <strong style="color:var(--warm-brown);">¿Cómo salió Dios a buscar al ser humano?</strong><br>
+      Es una de las historias más bellas de toda la Biblia. ✝️
+    </p>
+  </div>
+
+  <!-- TAKEAWAY FINAL DEL CAPÍTULO I -->
+  <div class="takeaway-box">
+    <span class="takeaway-icon">🌸</span>
+    <p class="takeaway-label">Las 5 ideas gigantes del Capítulo I</p>
+    <div style="display:flex; flex-direction:column; gap:8px; margin:16px 0; text-align:left;">
+      <div style="background:rgba(255,255,255,0.5); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--warm-brown); font-family:'Cormorant Garamond',serif; font-style:italic; line-height:1.5;">
+        1 · Todo ser humano tiene un deseo natural de Dios inscrito en el corazón.
+      </div>
+      <div style="background:rgba(255,255,255,0.5); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--warm-brown); font-family:'Cormorant Garamond',serif; font-style:italic; line-height:1.5;">
+        2 · La razón puede descubrir que Dios existe mirando el mundo y el corazón humano.
+      </div>
+      <div style="background:rgba(255,255,255,0.5); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--warm-brown); font-family:'Cormorant Garamond',serif; font-style:italic; line-height:1.5;">
+        3 · La creación y la conciencia son señales que apuntan hacia Él.
+      </div>
+      <div style="background:rgba(255,255,255,0.5); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--warm-brown); font-family:'Cormorant Garamond',serif; font-style:italic; line-height:1.5;">
+        4 · Podemos conocer verdaderamente a Dios, pero nunca comprenderlo del todo.
+      </div>
+      <div style="background:rgba(255,255,255,0.5); border-radius:10px; padding:12px 16px; font-size:14px; color:var(--warm-brown); font-family:'Cormorant Garamond',serif; font-style:italic; line-height:1.5;">
+        5 · Fuimos creados para vivir en comunión con Él — ahí está nuestra plenitud.
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       QUIZ INTERACTIVO — CAPÍTULO I
+       ════════════════════════════════════════ -->
+
+  <div style="margin-top:70px;" id="quiz-section">
+    <div style="text-align:center; margin-bottom:36px;">
+      <p style="font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--soft-gold); margin-bottom:10px;">✦ Repaso ✦</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,5vw,40px); font-weight:300; color:var(--warm-brown); line-height:1.2;">¿Entendiste el Capítulo I?</h2>
+      <p style="font-size:13.5px; color:var(--text-light); font-weight:300; margin-top:10px; line-height:1.7;">10 preguntas sobre lo que acabas de leer.<br>Toca cada opción y verás la explicación de inmediato.</p>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <div id="quiz-result" style="display:none; margin-top:32px; background:linear-gradient(135deg,rgba(248,234,228,0.8),rgba(240,246,237,0.8)); border:1px solid rgba(200,169,110,0.3); border-radius:20px; padding:36px 40px; text-align:center;">
+      <span style="font-size:36px; display:block; margin-bottom:12px;" id="result-emoji">🌸</span>
+      <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-bottom:10px;">Resultado final</p>
+      <p id="result-text" style="font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:var(--warm-brown); line-height:1.5;"></p>
+      <p id="result-sub" style="font-size:13.5px; color:var(--text-light); font-weight:300; margin-top:12px; line-height:1.7;"></p>
+      <button onclick="resetQuiz()" style="margin-top:20px; background:rgba(200,169,110,0.15); border:1px solid rgba(200,169,110,0.4); border-radius:20px; padding:10px 28px; font-family:'Lato',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--warm-brown); cursor:pointer;">Intentar de nuevo</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer" style="margin-top:60px;">
+    <span class="footer-text">Fe que se entiende · Primera Parte · §§ 26–49 · Cap. I completo</span>
+    <span class="page-num">Cap. I ✦</span>
+  </footer>
+
+</div>
+
+<style>
+.quiz-card {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(232,196,184,0.35);
+  border-radius: 18px;
+  padding: 24px 26px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.quiz-q-num {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--soft-gold); margin-bottom: 10px;
+}
+.quiz-q-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; color: var(--warm-brown);
+  line-height: 1.5; margin-bottom: 16px; font-weight: 400;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(232,196,184,0.4);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px; color: var(--text); font-weight: 300;
+  cursor: pointer; text-align: left; line-height: 1.5;
+  transition: all 0.25s ease;
+  font-family: 'Lato', sans-serif;
+}
+.quiz-opt:hover:not(:disabled) {
+  background: rgba(245,230,224,0.5);
+  border-color: rgba(200,169,110,0.4);
+  transform: translateX(3px);
+}
+.quiz-opt.correct {
+  background: rgba(184,201,176,0.35) !important;
+  border-color: rgba(138,170,128,0.6) !important;
+  color: #3a6a34 !important;
+}
+.quiz-opt.wrong {
+  background: rgba(240,180,170,0.25) !important;
+  border-color: rgba(200,120,110,0.4) !important;
+  color: #8a4a44 !important;
+}
+.quiz-opt.reveal {
+  background: rgba(184,201,176,0.2) !important;
+  border-color: rgba(138,170,128,0.3) !important;
+  color: #4a7a44 !important;
+  opacity: 0.75;
+}
+.quiz-opt:disabled { cursor: default; }
+.quiz-explanation {
+  display: none;
+  margin-top: 14px;
+  background: rgba(240,246,237,0.5);
+  border-left: 3px solid var(--sage-dark);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  font-size: 13.5px; color: var(--text); font-weight: 300; line-height: 1.75;
+}
+.quiz-explanation.show { display: block; }
+.quiz-explanation strong { color: var(--warm-brown); font-weight: 400; }
+.quiz-score-bar {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(232,196,184,0.3);
+  border-radius: 14px; padding: 14px 20px;
+  margin-bottom: 28px;
+}
+.score-text { font-size: 13px; color: var(--text-light); font-weight: 300; }
+.score-num { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--warm-brown); margin-left: auto; }
+</style>
+
+<script>
+const questions = [
+  {
+    q: "¿Por qué el ser humano busca a Dios, según el Catecismo?",
+    opts: [
+      "Porque la sociedad lo obliga a tener una religión.",
+      "Porque el deseo de Dios está inscrito en el corazón humano desde que fue creado.",
+      "Porque sin religión sería imposible vivir en comunidad.",
+      "Porque la Iglesia enseña que es un deber moral buscarlo."
+    ],
+    correct: 1,
+    explanation: "<strong>El deseo de Dios está inscrito en el corazón humano</strong> (§27) porque el hombre fue creado por Dios y para Dios. No es una imposición externa — es parte de su naturaleza más profunda. Por eso, aunque alguien diga no creer, sigue buscando algo que llene ese vacío interior."
+  },
+  {
+    q: "¿Qué significa que el hombre es 'capaz de Dios'?",
+    opts: [
+      "Que el hombre puede convertirse en Dios si se esfuerza.",
+      "Que el hombre tiene el poder de crear a Dios con su mente.",
+      "Que el hombre fue creado con la capacidad de conocer, amar y relacionarse con Dios.",
+      "Que todos los seres humanos creen en Dios automáticamente."
+    ],
+    correct: 2,
+    explanation: "Ser '<strong>capaz de Dios</strong>' (Capítulo I) no significa que podamos volvernos Dios ni crearlo. Significa que tenemos una dimensión espiritual única: podemos preguntarnos por el origen, el sentido y la eternidad. Ningún animal puede hacer eso. Esa capacidad es el sello de haber sido creados a imagen de Dios."
+  },
+  {
+    q: "Según el § 29, ¿cuál de estas es una razón reconocida por el Catecismo por la que alguien se aleja de Dios?",
+    opts: [
+      "Ser demasiado inteligente para creer.",
+      "El mal ejemplo de los creyentes.",
+      "Nacer en un país sin tradición religiosa.",
+      "No haber recibido el bautismo."
+    ],
+    correct: 1,
+    explanation: "El Catecismo es <strong>honesto y humilde</strong>: reconoce explícitamente que el mal ejemplo de los creyentes es una razón real por la que personas se alejan de Dios (§29). También menciona el sufrimiento, la indiferencia, los afanes del mundo y el miedo. Ninguna de estas razones hace a la persona mala — describe la complejidad de la experiencia humana."
+  },
+  {
+    q: "¿Cuál es la famosa frase de San Agustín que resume el capítulo?",
+    opts: [
+      "'Ama a Dios y haz lo que quieras.'",
+      "'Dios no existe más que en el corazón de quien lo busca.'",
+      "'Nos has hecho para ti, Señor, y nuestro corazón está inquieto mientras no descansa en ti.'",
+      "'La fe mueve montañas y la razón las construye.'"
+    ],
+    correct: 2,
+    explanation: "Esta frase de las <strong>Confesiones de San Agustín (I, 1, 1)</strong> es una de las más importantes de toda la historia cristiana. Explica por qué nada nos llena completamente: el dinero, el éxito, las relaciones. Porque el corazón fue creado para algo infinito, y solo en Dios encuentra su descanso verdadero."
+  },
+  {
+    q: "¿Qué son las 'vías de acceso al conocimiento de Dios' que menciona el § 31?",
+    opts: [
+      "Los sacramentos de la Iglesia.",
+      "Argumentos convergentes y convincentes que apuntan hacia la existencia de Dios.",
+      "Pruebas matemáticas de que Dios existe.",
+      "Experiencias místicas que solo tienen los santos."
+    ],
+    correct: 1,
+    explanation: "El § 31 aclara que estas 'pruebas' <strong>no son demostraciones matemáticas</strong> ni experimentos. Son argumentos filosóficos sólidos — el movimiento, el orden, la contingencia, la belleza del mundo y la naturaleza espiritual del hombre — que juntos apuntan convincentemente hacia Dios. Se pueden llamar 'argumentos convergentes y convincentes'."
+  },
+  {
+    q: "¿Cuál es la 'primera vía' que el Catecismo propone para conocer a Dios (§ 32)?",
+    opts: [
+      "La lectura de la Biblia.",
+      "La experiencia de los sacramentos.",
+      "La observación del mundo material: su movimiento, orden, contingencia y belleza.",
+      "La voz de la conciencia moral."
+    ],
+    correct: 2,
+    explanation: "El § 32 propone mirar el <strong>mundo material</strong>: todo se mueve (¿quién lo puso en marcha?), todo podría no haber existido (¿por qué existe algo en lugar de nada?), hay un orden asombroso (¿de dónde viene?), hay belleza (¿hacia dónde apunta?). San Pablo dice: 'Lo invisible de Dios se deja ver a través de sus obras' (Rm 1, 19-20)."
+  },
+  {
+    q: "Según el § 37, ¿por qué necesitamos la Revelación si la razón ya puede llegar a Dios?",
+    opts: [
+      "Porque la razón humana es completamente inútil para buscar a Dios.",
+      "Porque en la práctica tenemos muchos obstáculos: ego, heridas, malos deseos e imaginación.",
+      "Porque Dios no quiere que usemos la inteligencia para buscarlo.",
+      "Porque solo los filósofos tienen razón suficiente para encontrarlo."
+    ],
+    correct: 1,
+    explanation: "El § 37 es muy realista: <strong>sí podemos llegar a Dios con la razón, pero en la práctica nos lo dificultamos</strong>. Los sentidos, la imaginación, el ego y los malos deseos nublan nuestra capacidad de ver la verdad. A veces rechazamos a Dios no porque sea falso, sino porque cambiar nos incomoda. Por eso la Revelación es un regalo de Dios: para que todos lleguen, fácilmente y sin error."
+  },
+  {
+    q: "¿Qué enseña la Iglesia sobre la relación entre la fe y la razón?",
+    opts: [
+      "Que son enemigas y hay que elegir una de las dos.",
+      "Que la razón es superior a la fe porque es verificable.",
+      "Que la fe es superior a la razón y esta debe callarse.",
+      "Que son amigas: la razón llega hasta la puerta y la fe permite entrar en la intimidad de Dios."
+    ],
+    correct: 3,
+    explanation: "El § 35 enseña que <strong>fe y razón no se oponen</strong>. La razón puede descubrir que Dios existe. La fe permite conocerlo en su intimidad — quién es, qué ha hecho, cómo nos ama. No tienes que apagar tu inteligencia para creer. Al contrario: la Iglesia invita a usarla hasta el final, porque toda búsqueda sincera de la verdad termina acercándose a Dios."
+  },
+  {
+    q: "¿Qué significa que 'Dios trasciende toda criatura' (§ 42)?",
+    opts: [
+      "Que Dios está tan lejos que no podemos conocerlo en absoluto.",
+      "Que Dios está infinitamente por encima de todo lo creado, aunque la creación lo refleje.",
+      "Que las criaturas no tienen ninguna semejanza con Dios.",
+      "Que Dios abandonó la creación después de hacerla."
+    ],
+    correct: 1,
+    explanation: "<strong>Trascender</strong> significa estar infinitamente por encima. La creación refleja algo de Dios — como una foto refleja a una persona — pero Dios es infinitamente más que todo lo creado. Por eso el § 42 nos pide purificar nuestro lenguaje: Dios es 'inefable, incomprensible, invisible, inalcanzable'. No significa que no podamos conocerlo, sino que nunca lo agotaremos."
+  },
+  {
+    q: "¿Qué quiere decir el § 49: 'Sin el Creador la criatura se diluye'?",
+    opts: [
+      "Que sin creer en Dios es imposible vivir físicamente.",
+      "Que la ciencia no puede explicar nada sin Dios.",
+      "Que sin Dios la identidad humana pierde su centro: ya no sabemos de dónde venimos, para qué existimos ni hacia dónde vamos.",
+      "Que las personas no creyentes son menos valiosas."
+    ],
+    correct: 2,
+    explanation: "Esta frase del Concilio Vaticano II (GS 36) tiene una profundidad enorme. No dice que los no creyentes no puedan vivir bien. Dice que <strong>sin Dios en el horizonte, las preguntas más fundamentales quedan sin respuesta</strong>: ¿de dónde vengo? ¿para qué existo? ¿qué pasa después de morir? Esa es la razón por la que los creyentes sienten el impulso de compartir la fe — no por imponerla, sino porque es una luz que no quieren guardar para sí."
+  }
+];
+
+let answered = new Array(questions.length).fill(false);
+let score = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+
+  // Score bar
+  const bar = document.createElement('div');
+  bar.className = 'quiz-score-bar';
+  bar.innerHTML = `<span class="score-text">Respuestas correctas</span><span class="score-num" id="live-score">0 / ${questions.length}</span>`;
+  container.appendChild(bar);
+
+  questions.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.id = `card-${qi}`;
+
+    const num = document.createElement('p');
+    num.className = 'quiz-q-num';
+    num.textContent = `Pregunta ${qi + 1} de ${questions.length}`;
+    card.appendChild(num);
+
+    const qtext = document.createElement('p');
+    qtext.className = 'quiz-q-text';
+    qtext.textContent = q.q;
+    card.appendChild(qtext);
+
+    const opts = document.createElement('div');
+    opts.className = 'quiz-options';
+
+    q.opts.forEach((opt, oi) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.onclick = () => handleAnswer(qi, oi, btn, opts, exp);
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+
+    const exp = document.createElement('div');
+    exp.className = 'quiz-explanation';
+    card.appendChild(exp);
+
+    container.appendChild(card);
+  });
+}
+
+function handleAnswer(qi, oi, btn, opts, exp) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+
+  const q = questions[qi];
+  const allBtns = opts.querySelectorAll('.quiz-opt');
+
+  allBtns.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add('correct');
+    else if (i === oi && oi !== q.correct) b.classList.add('wrong');
+    else b.classList.add('reveal');
+  });
+
+  if (oi === q.correct) {
+    score++;
+    exp.innerHTML = `<strong>✦ ¡Correcto!</strong><br><br>${q.explanation}`;
+    exp.style.background = 'rgba(184,201,176,0.25)';
+    exp.style.borderColor = 'var(--sage-dark)';
+  } else {
+    exp.innerHTML = `<strong>No es esa.</strong> La respuesta correcta está marcada en verde.<br><br>${q.explanation}`;
+    exp.style.background = 'rgba(245,230,224,0.4)';
+    exp.style.borderColor = 'rgba(200,120,110,0.4)';
+  }
+
+  exp.classList.add('show');
+  document.getElementById('live-score').textContent = `${score} / ${questions.length}`;
+
+  if (answered.every(a => a)) showResult();
+}
+
+function showResult() {
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+
+  const pct = score / questions.length;
+  let emoji, text, sub;
+
+  if (pct === 1) {
+    emoji = '🌸'; text = `¡Perfecto! ${score} de ${questions.length}`;
+    sub = 'Dominaste el Capítulo I por completo. Tienes una comprensión sólida del deseo humano de Dios, las vías de acceso y el lenguaje sobre Dios. ¡Adelante al Capítulo II!';
+  } else if (pct >= 0.7) {
+    emoji = '✝️'; text = `Muy bien — ${score} de ${questions.length}`;
+    sub = 'Entendiste los conceptos fundamentales. Puedes repasar las preguntas que fallaste leyendo la explicación — están ahí para ayudarte.';
+  } else if (pct >= 0.5) {
+    emoji = '📖'; text = `Vas bien — ${score} de ${questions.length}`;
+    sub = 'Ya tienes la base. Te recomiendo volver a leer las secciones donde fallaste. El material se vuelve más claro en la segunda lectura.';
+  } else {
+    emoji = '🕊️'; text = `Sigue adelante — ${score} de ${questions.length}`;
+    sub = 'El Capítulo I tiene ideas muy profundas. Intenta releerlo despacio, sección por sección. ¡Cada relectura suma!';
+  }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-text').textContent = text;
+  document.getElementById('result-sub').textContent = sub;
+  res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+  answered = new Array(questions.length).fill(false);
+  score = 0;
+  document.getElementById('quiz-result').style.display = 'none';
+  buildQuiz();
+  document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+buildQuiz();
+</script>
