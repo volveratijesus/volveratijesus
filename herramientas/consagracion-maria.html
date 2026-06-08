@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consagración a Jesús por María · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;--blue-mary:#8ca8c8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+.bg-mary{position:fixed;top:20%;left:-5%;width:40%;height:50%;background:radial-gradient(ellipse,rgba(140,168,200,0.1) 0%,transparent 70%);border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO */
+.page-hdr{text-align:center;padding:40px 0 32px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,58px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.page-title em{font-style:italic;color:var(--mauve);}
+.page-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* CITA APERTURA */
+.cita-apertura{background:linear-gradient(135deg,rgba(140,168,200,0.1),rgba(232,196,184,0.15));border:1px solid rgba(140,168,200,0.25);border-radius:20px;padding:22px 24px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden;}
+.cita-apertura::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(140,168,200,0.4),var(--soft-gold),rgba(140,168,200,0.4));}
+.cita-txt{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--warm-brown);line-height:1.8;margin-bottom:8px;}
+.cita-autor{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:24px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:28px 0 16px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:16px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,34px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:20px;line-height:1.7;}
+
+/* PREGUNTAS FRECUENTES */
+.faq{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.faq-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:16px;overflow:hidden;}
+.faq-head{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;user-select:none;}
+.faq-open .faq-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.faq-ikon{font-size:20px;flex-shrink:0;}
+.faq-pregunta{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--warm-brown);flex:1;line-height:1.3;}
+.faq-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.faq-open .faq-chev{transform:rotate(180deg);}
+.faq-body{display:none;padding:16px 18px;}
+.faq-open .faq-body{display:block;}
+.faq-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;}
+.faq-txt strong{color:var(--warm-brown);}
+.faq-txt em{font-style:italic;color:var(--mauve);}
+
+/* LOS 33 DÍAS */
+.dias-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 24px;}
+@media(max-width:480px){.dias-grid{grid-template-columns:repeat(3,1fr);}}
+.semana-card{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:12px;padding:12px 10px;text-align:center;}
+.semana-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--warm-brown);line-height:1;}
+.semana-lbl{font-size:10px;letter-spacing:1px;color:var(--text-light);margin-top:3px;line-height:1.3;}
+.semana-tema{font-size:11px;color:var(--soft-gold);font-style:italic;margin-top:4px;line-height:1.3;}
+
+/* PARA QUIÉN */
+.para-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 24px;}
+@media(max-width:480px){.para-grid{grid-template-columns:1fr;}}
+.para-item{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.para-ikon{font-size:20px;flex-shrink:0;}
+.para-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.6;}
+.para-txt strong{color:var(--warm-brown);display:block;margin-bottom:2px;}
+
+/* DÍA DE LA CONSAGRACIÓN */
+.dia-card{background:linear-gradient(135deg,rgba(200,169,110,0.12),rgba(232,196,184,0.2));border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:22px 24px;margin-bottom:24px;position:relative;overflow:hidden;}
+.dia-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--soft-gold),rgba(200,169,110,0.2));}
+.dia-titulo{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--warm-brown);margin-bottom:14px;}
+.dia-pasos{display:flex;flex-direction:column;gap:10px;}
+.dia-paso{display:flex;gap:14px;align-items:flex-start;}
+.dia-hora{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);flex-shrink:0;width:50px;margin-top:3px;}
+.dia-desc{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.dia-desc strong{color:var(--warm-brown);}
+
+/* BENEFICIOS */
+.ben-lista{display:flex;flex-direction:column;gap:8px;margin:16px 0 24px;}
+.ben-item{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.2);border-radius:12px;padding:12px 14px;}
+.ben-ikon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.ben-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.ben-txt strong{color:var(--warm-brown);}
+
+/* CTA CONSAGRACIÓN */
+.cta-box{background:linear-gradient(135deg,rgba(140,168,200,0.15),rgba(232,196,184,0.2));border:1px solid rgba(140,168,200,0.3);border-radius:24px;padding:28px 24px;text-align:center;margin:20px 0;}
+.cta-box::before{content:'🌸';font-size:32px;display:block;margin-bottom:12px;}
+.cta-titulo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--warm-brown);margin-bottom:8px;line-height:1.2;}
+.cta-titulo em{font-style:italic;color:var(--mauve);}
+.cta-sub{font-size:13px;color:var(--text-light);font-weight:300;line-height:1.8;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(140,168,200,0.8),rgba(120,148,180,0.9));color:#fff;border-radius:50px;padding:14px 32px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-family:'Lato',sans-serif;text-decoration:none;transition:all .2s;margin-bottom:12px;}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(140,168,200,0.3);}
+.cta-info{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.7;}
+.cta-info a{color:var(--soft-gold);}
+
+/* NOTA */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:20px;}
+.nota strong{color:var(--warm-brown);}
+
+/* CIERRE */
+.cierre{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:12px;}
+.cierre-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.cierre-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:1.9;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg-mary"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-hdr">
+    <p class="eyebrow">Conoce tu Fe · Devoción mariana</p>
+    <h1 class="page-title">Consagración a <em>Jesús</em><br>por medio de <em>María</em></h1>
+    <p class="page-sub">33 días de preparación que pueden cambiarte la vida — explicados desde cero.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <!-- CITA -->
+  <div class="cita-apertura">
+    <div class="cita-txt">"A Jesús por María."</div>
+    <div class="cita-autor">San Luis María Grignion de Montfort · El Secreto de María</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <strong>¿Qué es esto?</strong> Es una de las devociones más hermosas y transformadoras de la Iglesia Católica. Durante 33 días te preparas — con lecturas, oraciones y reflexiones — para hacer un acto de consagración: entregarte completamente a Jesús, tomando a María de la mano. No es una promesa complicada ni una obligación pesada. <strong>Es un camino de amor.</strong>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Preguntas que todos <em>nos hacemos</em></h2>
+  <p class="sec-sub">Si nunca has oído de esto, empieza aquí.</p>
+
+  <div class="faq">
+
+    <div class="faq-card faq-open" id="f1">
+      <div class="faq-head" onclick="toggleFaq('f1')">
+        <span class="faq-ikon">🤔</span>
+        <div class="faq-pregunta">¿Qué es exactamente la consagración?</div>
+        <span class="faq-chev">▼</span>
+      </div>
+      <div class="faq-body">
+        <div class="faq-txt">La consagración a Jesús por medio de María es un <strong>acto de amor y entrega total</strong> a Dios. Es decirle a Jesús: <em>"Todo lo que soy, todo lo que tengo, te lo doy — y te lo doy de la mano de tu Madre."</em><br><br>
+        María no es el destino — es el <strong>camino más corto y seguro hacia Jesús.</strong> Así como Jesús llegó al mundo por medio de María (en Belén), nosotros llegamos a Jesús por medio de ella. Ella nos lleva, nos presenta, nos acompaña.</div>
+      </div>
+    </div>
+
+    <div class="faq-card" id="f2">
+      <div class="faq-head" onclick="toggleFaq('f2')">
+        <span class="faq-ikon">📖</span>
+        <div class="faq-pregunta">¿De dónde viene esta devoción?</div>
+        <span class="faq-chev">▼</span>
+      </div>
+      <div class="faq-body">
+        <div class="faq-txt">Viene del libro <strong>"Tratado de la Verdadera Devoción a la Virgen María"</strong> escrito por <strong>San Luis María Grignion de Montfort</strong> en el siglo XVIII (1700s). Este sacerdote francés vivió de manera heroica la pobreza y la oración, y escribió este libro como el fruto de toda su espiritualidad mariana.<br><br>
+        El libro casi se pierde — estuvo escondido 126 años. Cuando lo encontraron y lo publicaron, se convirtió en uno de los libros espirituales más leídos de la historia. <strong>El Papa Juan Pablo II</strong> lo leyó de joven y quedó tan impactado que tomó como lema episcopal <em>"Totus Tuus"</em> — "Todo tuyo" — palabras tomadas de este libro. Él mismo se consagró a María y nunca dejó de vivir esa consagración.</div>
+      </div>
+    </div>
+
+    <div class="faq-card" id="f3">
+      <div class="faq-head" onclick="toggleFaq('f3')">
+        <span class="faq-ikon">🙏</span>
+        <div class="faq-pregunta">¿No es adorar a María en lugar de a Dios?</div>
+        <span class="faq-chev">▼</span>
+      </div>
+      <div class="faq-body">
+        <div class="faq-txt">Esta es la pregunta más común, y tiene una respuesta muy clara: <strong>no.</strong> Los católicos <em>adoramos</em> solo a Dios. A María la <em>veneramos</em> — que es algo completamente diferente.<br><br>
+        Piénsalo así: si necesitas hablar con alguien importante, ¿no es natural pedirle a un familiar cercano que te presente? María es la Madre de Jesús. Nadie lo conoce mejor, nadie lo ama más. Pedirle que nos lleve a Él no es quitarle el lugar a Dios — <strong>es usarlo sabiamente.</strong><br><br>
+        San Luis de Montfort lo dice claramente: <em>"Todo nuestro culto, todo nuestro amor, todo nuestro servicio va a Dios — pero a través de María, como Él mismo quiso venir a nosotros."</em></div>
+      </div>
+    </div>
+
+    <div class="faq-card" id="f4">
+      <div class="faq-head" onclick="toggleFaq('f4')">
+        <span class="faq-ikon">⏳</span>
+        <div class="faq-pregunta">¿Por qué 33 días?</div>
+        <span class="faq-chev">▼</span>
+      </div>
+      <div class="faq-body">
+        <div class="faq-txt">Los <strong>33 días representan los 33 años que Jesús vivió en la tierra.</strong> Es un período de preparación — no de sufrimiento — para llegar al día de la consagración con el corazón dispuesto.<br><br>
+        Durante esos 33 días haces lecturas, reflexiones y oraciones diarias. No es una carga pesada — son como cartas de amor que vas leyendo poco a poco. Muchas personas dicen que el proceso de preparación ya es transformador en sí mismo, antes de llegar al día de la consagración.</div>
+      </div>
+    </div>
+
+    <div class="faq-card" id="f5">
+      <div class="faq-head" onclick="toggleFaq('f5')">
+        <span class="faq-ikon">✨</span>
+        <div class="faq-pregunta">¿Qué pasa el día de la consagración?</div>
+        <span class="faq-chev">▼</span>
+      </div>
+      <div class="faq-body">
+        <div class="faq-txt">Es uno de los días más hermosos de la vida espiritual. Normalmente se celebra así:<br><br>
+        <strong>1.</strong> Te confiesas — vas limpio, con el corazón preparado.<br>
+        <strong>2.</strong> Participas en una Misa especial — que es el corazón del día.<br>
+        <strong>3.</strong> Pronuncias el <strong>acto de consagración</strong> — unas palabras que son tu "sí" total a Jesús por manos de María.<br>
+        <strong>4.</strong> Muchos grupos terminan con un compartir, una celebración, porque es un día de alegría.<br><br>
+        <em>No es un ritual misterioso ni complicado. Es sencillo, íntimo y muy emocionante.</em> Muchas personas lloran — de alegría, no de tristeza.</div>
+      </div>
+    </div>
+
+    <div class="faq-card" id="f6">
+      <div class="faq-head" onclick="toggleFaq('f6')">
+        <span class="faq-ikon">🔄</span>
+        <div class="faq-pregunta">¿Es para siempre? ¿Puedo arrepentirme?</div>
+        <span class="faq-chev">▼</span>
+      </div>
+      <div class="faq-body">
+        <div class="faq-txt">La consagración es para toda la vida — es un <strong>acto de amor permanente.</strong> Pero no es una promesa jurídica que te encadena. Es una relación de amor que, como todas, se renueva cada día.<br><br>
+        Muchos consagrados la <strong>renuevan anualmente</strong> — en la misma fecha o en fechas marianas especiales como el 8 de diciembre (Inmaculada Concepción) o el 31 de mayo (Virgen de Fátima). La renovación ayuda a mantener viva esa entrega y a no dejarla solo como un recuerdo bonito.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOS 33 DÍAS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📅</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Cómo son los <em>33 días</em>?</h2>
+  <p class="sec-sub">Cada semana tiene un tema. Vas avanzando poco a poco, sin prisa.</p>
+
+  <div class="dias-grid">
+    <div class="semana-card">
+      <div class="semana-num">12</div>
+      <div class="semana-lbl">días</div>
+      <div class="semana-tema">Vaciarse del espíritu del mundo</div>
+    </div>
+    <div class="semana-card">
+      <div class="semana-num">1ª</div>
+      <div class="semana-lbl">semana</div>
+      <div class="semana-tema">Conocerse a uno mismo</div>
+    </div>
+    <div class="semana-card">
+      <div class="semana-num">2ª</div>
+      <div class="semana-lbl">semana</div>
+      <div class="semana-tema">Conocer a María</div>
+    </div>
+    <div class="semana-card">
+      <div class="semana-num">3ª</div>
+      <div class="semana-lbl">semana</div>
+      <div class="semana-tema">Conocer a Jesús</div>
+    </div>
+  </div>
+
+  <div class="nota"><strong>¿Cómo se hace?</strong> Cada día lees un fragmento del libro de San Luis de Montfort (u otros materiales adaptados), rezas unas oraciones específicas y haces una reflexión breve. Toma entre 15 y 30 minutos al día. Se puede hacer solo o en grupo — y hacerlo en grupo es mucho más bonito y motivador.</div>
+
+  <!-- PARA QUIÉN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">💙</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Para <em>quién</em> es?</h2>
+
+  <div class="para-grid">
+    <div class="para-item"><span class="para-ikon">🌱</span><div class="para-txt"><strong>Para quien empieza</strong>Si quieres retomar tu fe y no sabes por dónde empezar, este es un camino hermoso.</div></div>
+    <div class="para-item"><span class="para-ikon">🔥</span><div class="para-txt"><strong>Para quien ya tiene fe</strong>Lleva tu vida espiritual a otro nivel. Muchos lo describen como un "antes y después".</div></div>
+    <div class="para-item"><span class="para-ikon">👨‍👩‍👧</span><div class="para-txt"><strong>Para familias</strong>Hacerlo en familia — papás, hijos, abuelos — es una experiencia que une profundamente.</div></div>
+    <div class="para-item"><span class="para-ikon">💔</span><div class="para-txt"><strong>Para quien está en crisis</strong>Enfermedad, duelo, problemas serios. María es madre — y las madres están en los momentos difíciles.</div></div>
+    <div class="para-item"><span class="para-ikon">😐</span><div class="para-txt"><strong>Para quien siente que la fe es rutina</strong>Si la Misa ya no te dice nada, si rezar se siente mecánico — esto puede despertar todo de nuevo.</div></div>
+    <div class="para-item"><span class="para-ikon">🎓</span><div class="para-txt"><strong>Para jóvenes</strong>Muchos jóvenes que no se identificaban con la Iglesia encontraron en esta devoción algo real y profundo.</div></div>
+  </div>
+
+  <!-- EL DÍA DE LA CONSAGRACIÓN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⭐</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">El día de la <em>Consagración</em></h2>
+  <p class="sec-sub">El día 33 — el más hermoso. Termina siempre con Misa.</p>
+
+  <div class="dia-card">
+    <div class="dia-titulo">✨ ¿Cómo es ese día?</div>
+    <div class="dia-pasos">
+      <div class="dia-paso">
+        <div class="dia-hora">Antes</div>
+        <div class="dia-desc"><strong>Confesión</strong> — Te preparas con el corazón limpio. Muchos grupos organizan confesiones el día anterior o esa mañana.</div>
+      </div>
+      <div class="dia-paso">
+        <div class="dia-hora">Mañana</div>
+        <div class="dia-desc"><strong>Santa Misa especial</strong> — El corazón del día. En ella recibes la Comunión con toda la preparación de 33 días. Es el momento más íntimo de toda la consagración.</div>
+      </div>
+      <div class="dia-paso">
+        <div class="dia-hora">En la Misa</div>
+        <div class="dia-desc"><strong>Acto de Consagración</strong> — Ante el altar, pronuncias las palabras de entrega. Breves, sencillas, pero de un peso enorme. Muchas personas sienten una paz inexplicable en ese momento.</div>
+      </div>
+      <div class="dia-paso">
+        <div class="dia-hora">Después</div>
+        <div class="dia-desc"><strong>Compartir en comunidad</strong> — Los grupos suelen reunirse a compartir, dar testimonio de lo que vivieron en los 33 días, y celebrar juntos. Porque es un día de <em>alegría</em>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUÉ CAMBIA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌿</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Qué <em>cambia</em> después?</h2>
+  <p class="sec-sub">Testimonios de cientos de personas que lo han vivido.</p>
+
+  <div class="ben-lista">
+    <div class="ben-item"><span class="ben-ikon">🕊️</span><div class="ben-txt"><strong>Una paz nueva.</strong> No la ausencia de problemas — sino la capacidad de enfrentarlos de otra manera. Muchos describen una serenidad que no tenían antes.</div></div>
+    <div class="ben-item"><span class="ben-ikon">📿</span><div class="ben-txt"><strong>El Rosario cobra vida.</strong> Quien se consagra suele descubrir el Rosario de una manera completamente nueva — ya no como repetición mecánica sino como conversación real con María.</div></div>
+    <div class="ben-item"><span class="ben-ikon">🍞</span><div class="ben-txt"><strong>La Misa se vuelve diferente.</strong> Ir a Misa deja de ser obligación y se convierte en encuentro. La Eucaristía se recibe con otra profundidad.</div></div>
+    <div class="ben-item"><span class="ben-ikon">❤️</span><div class="ben-txt"><strong>Más amor por los demás.</strong> María lleva siempre a la caridad. Los consagrados suelen notar que se vuelven más pacientes, más compasivos, más capaces de perdonar.</div></div>
+    <div class="ben-item"><span class="ben-ikon">🛡️</span><div class="ben-txt"><strong>Protección espiritual.</strong> San Luis de Montfort promete que quien se consagra a María con fe y perseverancia, ella lo llevará a la santidad. No es magia — es confiar tu vida a la mejor madre.</div></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+
+  <div class="cta-box">
+    <div class="cta-titulo">¿Quieres <em>consagrarte</em>?</div>
+    <div class="cta-sub">Hay un grupo en Guatemala que acompaña este proceso de 33 días y celebra la consagración con Misa. Contáctalos para conocer las próximas fechas.</div>
+    <a href="https://www.instagram.com/consagracionjxm" target="_blank" class="cta-btn">
+      📲 Ver próximas fechas en Instagram
+    </a>
+    <div class="cta-info">
+      <strong style="color:var(--warm-brown);">Consagración JxM Guatemala</strong><br>
+      📱 WhatsApp: <a href="https://wa.me/50257099706">+(502) 5709-9706</a><br>
+      🌐 <a href="https://www.jesusxmaria.com" target="_blank">www.JesusxMaria.com</a><br>
+      <br>
+      <em>El proceso termina siempre con una Misa de consagración — uno de los días más bonitos de tu vida.</em>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="cierre">
+    <div class="cierre-lbl">Para llevar en el corazón</div>
+    <div class="cierre-txt">
+      Ella no te pide que seas perfecto.<br>
+      Solo que le des la mano.<br>
+      Ella sabe el camino.<br>
+      Ella conoce a su Hijo.<br>
+      <em>Y te quiere llevar a Él.</em><br><br>
+      Totus Tuus — Todo tuyo, Jesús. 🌸
+    </div>
+  </div>
+
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Basado en San Luis María Grignion de Montfort</p></footer>
+
+<script>
+function toggleFaq(id){
+  const card = document.getElementById(id);
+  const isOpen = card.classList.contains('faq-open');
+  document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('faq-open'));
+  if(!isOpen){
+    card.classList.add('faq-open');
+    setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 80);
+  }
+}
+</script>
+</body>
+</html>
