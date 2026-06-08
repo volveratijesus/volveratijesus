@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen de Conciencia · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HEADER */
+.page-hdr{text-align:center;padding:40px 0 32px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,58px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.page-title em{font-style:italic;color:var(--mauve);}
+.page-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:24px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:28px 0 16px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:16px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,32px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:18px;line-height:1.7;}
+
+/* PASOS */
+.pasos{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+.paso{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:16px;padding:16px 18px;}
+.paso-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--soft-gold),rgba(200,169,110,0.7));color:#fff;font-size:13px;font-family:'Cormorant Garamond',serif;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.paso-contenido{flex:1;}
+.paso-titulo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--warm-brown);margin-bottom:4px;}
+.paso-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.8;}
+.paso-txt strong{color:var(--warm-brown);}
+.paso-cita{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--mauve);margin-top:8px;display:block;}
+
+/* ORACION */
+.oracion-card{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:16px;padding:18px 20px;margin-bottom:12px;}
+.oracion-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.oracion-txt{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--text);line-height:1.9;}
+
+/* MANDAMIENTOS ACORDEÓN */
+.mand-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:16px;overflow:hidden;margin-bottom:10px;transition:all .2s;}
+.mand-card:hover{border-color:rgba(200,169,110,0.35);}
+.mand-head{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;}
+.mand-open .mand-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.mand-num{width:28px;height:28px;border-radius:50%;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.25);font-size:12px;color:var(--soft-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;}
+.mand-titulo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--warm-brown);flex:1;line-height:1.3;}
+.mand-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.mand-open .mand-chev{transform:rotate(180deg);}
+.mand-body{display:none;padding:14px 16px;}
+.mand-open .mand-body{display:block;}
+.mand-preguntas{display:flex;flex-direction:column;gap:8px;}
+.pregunta{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(245,230,224,0.3);border-radius:8px;}
+.preg-ikon{font-size:13px;flex-shrink:0;margin-top:2px;}
+.preg-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.6;}
+
+/* PECADO MORTAL VS VENIAL */
+.tipos-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 28px;}
+@media(max-width:480px){.tipos-grid{grid-template-columns:1fr;}}
+.tipo-card{border-radius:14px;padding:16px 18px;}
+.tipo-mortal{background:rgba(232,196,184,0.25);border:1px solid rgba(201,160,160,0.3);}
+.tipo-venial{background:rgba(184,201,176,0.2);border:1px solid rgba(138,170,128,0.25);}
+.tipo-titulo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--warm-brown);margin-bottom:6px;}
+.tipo-txt{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.tipo-req{font-size:11px;color:var(--text-light);margin-top:8px;font-style:italic;}
+
+/* NOTA */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:20px;}
+.nota strong{color:var(--warm-brown);}
+
+/* CIERRE */
+.cierre{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cierre-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.cierre-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text);line-height:1.9;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-hdr">
+    <p class="eyebrow">Herramientas · Preparación para la Confesión</p>
+    <h1 class="page-title">Examen de <em>Conciencia</em></h1>
+    <p class="page-sub">Una guía paso a paso para revisar tu vida con honestidad, sin miedo — y llegar a la Confesión con el corazón preparado.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <!-- QUÉ ES -->
+  <div class="intro-box">
+    <strong>¿Qué es el examen de conciencia?</strong> Es el momento en que te sientas en silencio y, con la ayuda de Dios, revisas honestamente cómo has vivido. No es para angustiarte ni para sentirte miserable — es para ver la realidad con claridad y poder llevarla al perdón de Dios en la Confesión. Es como limpiar la casa antes de recibir a un invitado importante.
+  </div>
+
+  <!-- CUÁNDO HACERLO -->
+  <div class="nota">
+    <strong>¿Cuándo hacerlo?</strong> Antes de ir a la Confesión — idealmente la noche anterior o unas horas antes. También puedes hacerlo cada noche como parte de tu oración, revisando el día que pasó. San Ignacio de Loyola lo recomendaba dos veces al día.
+  </div>
+
+  <!-- LOS 5 PASOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🙏</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Los <em>5 pasos</em> del examen</h2>
+  <p class="sec-sub">Sigue este orden. No te saltes ninguno — cada uno tiene su razón de ser.</p>
+
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-contenido">
+        <div class="paso-titulo">Ponerse en la presencia de Dios</div>
+        <div class="paso-txt">Antes de empezar, <strong>detente y recuerda que Dios está contigo</strong> en este momento. No estás solo revisando tu lista de errores — estás haciendo esto ante Dios, que te conoce y te ama. Puedes hacer una señal de la cruz, cerrar los ojos un momento y decir:</div>
+        <span class="paso-cita">"Señor, estoy aquí ante ti. Ilumina mi mente y mi corazón para ver la verdad de mi vida."</span>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <div class="paso-contenido">
+        <div class="paso-titulo">Dar gracias</div>
+        <div class="paso-txt">Antes de ver los pecados, <strong>recuerda las gracias que Dios te dio</strong> desde tu última confesión. ¿Qué cosas buenas pasaron? ¿Cuándo sentiste su presencia? ¿En qué momentos respondiste bien? Esto no es para ignorar el mal, sino para recordar que tu vida no es solo pecado — también hay bien, y ese bien viene de Dios.</div>
+        <span class="paso-cita">"Te doy gracias, Señor, por... [menciona algo concreto]"</span>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <div class="paso-contenido">
+        <div class="paso-titulo">Pedir luz al Espíritu Santo</div>
+        <div class="paso-txt">El examen de conciencia no es un ejercicio de memoria — es una <strong>gracia que Dios te da</strong>. Pide al Espíritu Santo que te muestre lo que necesitas ver. A veces él ilumina pecados que no habías notado; a veces te da paz sobre algo que te preocupaba. No hagas el examen solo con tu cabeza — hazlo con Dios.</div>
+        <span class="paso-cita">"Espíritu Santo, muéstrame con claridad dónde me alejé de Dios y de los demás."</span>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <div class="paso-contenido">
+        <div class="paso-titulo">Revisar la conciencia — los pecados concretos</div>
+        <div class="paso-txt">Ahora sí: <strong>revisa tu vida con honestidad</strong>. Usa las preguntas de la siguiente sección (basadas en los Mandamientos) como guía. No necesitas recordar cada detalle — lo importante es identificar qué fue grave (pecado mortal) y qué fue leve (pecado venial). <strong>No exageres ni minimices</strong> — ve la realidad tal como es.</div>
+        <span class="paso-cita">↓ Usa las preguntas de los Mandamientos más abajo ↓</span>
+      </div>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">5</div>
+      <div class="paso-contenido">
+        <div class="paso-titulo">Despertar el arrepentimiento</div>
+        <div class="paso-txt">El examen termina con <strong>dolor sincero</strong> por haber ofendido a Dios — no solo miedo al castigo, sino pena por haber lastimado una relación de amor. Y también con <strong>propósito de enmienda</strong>: la intención real de no volver a pecar. No una promesa perfecta — una intención sincera. Si no sientes arrepentimiento, pídelo. Dios también lo da.</div>
+        <span class="paso-cita">"Señor, me arrepiento de todo corazón de haberte ofendido, porque eres infinitamente bueno y el pecado te desagrada."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PECADO MORTAL VS VENIAL -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⚖️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Pecado mortal y <em>venial</em></h2>
+  <p class="sec-sub">No todos los pecados son iguales. Entender la diferencia te ayuda a confesar mejor.</p>
+
+  <div class="tipos-grid">
+    <div class="tipo-card tipo-mortal">
+      <div class="tipo-titulo">⚠️ Pecado Mortal</div>
+      <div class="tipo-txt">Rompe completamente la relación con Dios. Quita la gracia santificante del alma. <strong>Debe confesarse obligatoriamente</strong> antes de recibir la Comunión.</div>
+      <div class="tipo-req">Para que sea mortal necesita las 3 condiciones:<br>1. Materia grave · 2. Pleno conocimiento · 3. Consentimiento deliberado</div>
+    </div>
+    <div class="tipo-card tipo-venial">
+      <div class="tipo-titulo">🌿 Pecado Venial</div>
+      <div class="tipo-txt">Debilita la relación con Dios pero no la rompe. No impide recibir la Comunión, pero <strong>es muy bueno confesarlo</strong> igualmente para crecer en santidad.</div>
+      <div class="tipo-req">Se perdona también con la oración, las obras de caridad, la Eucaristía y el arrepentimiento sincero.</div>
+    </div>
+  </div>
+
+  <!-- PREGUNTAS POR MANDAMIENTO -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📋</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Preguntas por <em>Mandamiento</em></h2>
+  <p class="sec-sub">Toca cada mandamiento para ver las preguntas. No tienes que responderlas todas — son una guía para ayudarte a recordar. Sé honesta contigo misma.</p>
+
+  <!-- 1er Mandamiento -->
+  <div class="mand-card" id="m1">
+    <div class="mand-head" onclick="toggleMand('m1')">
+      <div class="mand-num">1</div>
+      <div class="mand-titulo">Amarás a Dios sobre todas las cosas</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He rezado todos los días, aunque sea un momento? ¿O los días pasan sin que piense en Dios?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He dudado de la fe o la he abandonado? ¿He participado en prácticas supersticiosas, esoterismo, tarot, brujería, ouija?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He puesto algo por encima de Dios — el dinero, el trabajo, la opinión de los demás, el placer?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He tentado a Dios — esperando milagros sin fe ni conversión?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He pertenecido o apoyado grupos o sectas que van contra la fe católica?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2do Mandamiento -->
+  <div class="mand-card" id="m2">
+    <div class="mand-head" onclick="toggleMand('m2')">
+      <div class="mand-num">2</div>
+      <div class="mand-titulo">No tomarás el nombre de Dios en vano</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He usado el nombre de Dios, de Jesús o de la Virgen como expresión de enojo, frustración o burla?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He blasfemado — dicho cosas ofensivas contra Dios, la Virgen o los Santos?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He hecho algún juramento en falso — prometido algo en nombre de Dios que no cumplí o que era mentira?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He maldecido a otras personas?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3er Mandamiento -->
+  <div class="mand-card" id="m3">
+    <div class="mand-head" onclick="toggleMand('m3')">
+      <div class="mand-num">3</div>
+      <div class="mand-titulo">Santificarás las fiestas</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He faltado a Misa el domingo o día de precepto sin causa justificada (enfermedad, trabajo necesario)?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He llegado tarde a Misa deliberadamente o me he ido antes de terminar?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He estado distraído durante la Misa — en el celular, hablando, sin participar?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He descansado y reservado el domingo como día dedicado a Dios y a la familia?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4to Mandamiento -->
+  <div class="mand-card" id="m4">
+    <div class="mand-head" onclick="toggleMand('m4')">
+      <div class="mand-num">4</div>
+      <div class="mand-titulo">Honrarás a tu padre y a tu madre</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He faltado el respeto a mis padres — con palabras, actitudes, desobediencia injustificada?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He descuidado a mis padres en su vejez, enfermedad o necesidad?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He cumplido mis responsabilidades como padre o madre — educando a mis hijos en la fe, dándoles tiempo, amor y ejemplo?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He respetado a la autoridad legítima — en el trabajo, en la sociedad, en la Iglesia?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">Si soy hijo/a: ¿he sido obediente, agradecido/a, cariñoso/a con mis padres?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5to Mandamiento -->
+  <div class="mand-card" id="m5">
+    <div class="mand-head" onclick="toggleMand('m5')">
+      <div class="mand-num">5</div>
+      <div class="mand-titulo">No matarás</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He dañado físicamente a alguien — golpes, violencia, heridas?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He deseado el mal o la muerte de alguien, aunque sea en pensamiento?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He descuidado gravemente mi salud — abusando del alcohol, drogas, o comportamientos que dañan mi cuerpo?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He participado, apoyado o animado a alguien a cometer aborto?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He guardado rencor, odio o deseos de venganza hacia alguien?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He provocado peleas, insultos graves o conflictos innecesarios?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6to y 9no Mandamiento -->
+  <div class="mand-card" id="m6">
+    <div class="mand-head" onclick="toggleMand('m6')">
+      <div class="mand-num">6–9</div>
+      <div class="mand-titulo">No cometerás actos impuros · No desearás a la mujer de tu prójimo</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He tenido relaciones sexuales fuera del matrimonio?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He visto pornografía o contenido que excita el deseo de forma desordenada?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He entretenido pensamientos impuros deliberadamente o he buscado situaciones que me llevan a pecar?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He faltado al respeto al cuerpo de otra persona — con palabras, miradas, tocamientos inapropiados?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He sido infiel en el matrimonio — en actos, en palabras o en el corazón?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He usado métodos anticonceptivos artificiales contrarios a la enseñanza de la Iglesia?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7mo y 10mo Mandamiento -->
+  <div class="mand-card" id="m7">
+    <div class="mand-head" onclick="toggleMand('m7')">
+      <div class="mand-num">7–10</div>
+      <div class="mand-titulo">No robarás · No codiciarás los bienes ajenos</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He robado algo — dinero, objetos, tiempo de trabajo que no di?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He hecho trampa — en el trabajo, en los estudios, en negocios, en impuestos?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He dañado la propiedad de alguien y no lo reparé ni pedí disculpas?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He sido tacaño con los pobres o he ignorado la necesidad de quien tengo cerca?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He sentido envidia de lo que tienen otros — al punto de desearles el mal?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He dado lo que debo — en el trabajo, en las deudas, en la familia?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8vo Mandamiento -->
+  <div class="mand-card" id="m8">
+    <div class="mand-head" onclick="toggleMand('m8')">
+      <div class="mand-num">8</div>
+      <div class="mand-titulo">No levantarás falso testimonio ni mentirás</div>
+      <span class="mand-chev">▼</span>
+    </div>
+    <div class="mand-body">
+      <div class="mand-preguntas">
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He mentido — en casa, en el trabajo, con amigos — causando daño a alguien?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He hablado mal de alguien a sus espaldas (murmuración) — contando defectos reales pero innecesariamente?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He calumniado — contando cosas falsas de alguien para dañar su reputación?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He revelado secretos que me confiaron y causé daño con eso?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He hecho daño a la reputación de alguien en redes sociales — con comentarios, fotos o información falsa?</div></div>
+        <div class="pregunta"><span class="preg-ikon">🔍</span><div class="preg-txt">¿He sido hipócrita — aparentando ser buena persona mientras en privado actúo diferente?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORACIÓN DE ARREPENTIMIENTO -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">💙</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Oraciones para <em>antes de la Confesión</em></h2>
+  <p class="sec-sub">Cuando termines el examen, reza una de estas oraciones para despertar el arrepentimiento.</p>
+
+  <div class="oracion-card">
+    <div class="oracion-lbl">Acto de Contrición</div>
+    <div class="oracion-txt">Señor mío Jesucristo,<br>Dios y hombre verdadero,<br>me pesa de todo corazón haberte ofendido,<br>porque eres infinitamente bueno<br>y el pecado te desagrada.<br>Propongo firmemente, con tu gracia,<br>enmendarme y alejarme de las ocasiones de pecar,<br>confesarme y cumplir la penitencia.<br>Confío en que me perdonarás<br>por tu infinita misericordia.<br>Amén.</div>
+  </div>
+
+  <div class="oracion-card">
+    <div class="oracion-lbl">Oración sencilla del corazón</div>
+    <div class="oracion-txt">Señor,<br>sé que te he fallado.<br>No sé si lo merezco,<br>pero quiero volver a ti.<br>Perdóname.<br>Ayúdame a no volver a caer.<br>Confío en tu misericordia.<br>Amén. 🌸</div>
+  </div>
+
+  <!-- RECORDATORIO FINAL -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✨</span><div class="sep-line"></div></div>
+
+  <div class="nota">
+    <strong>Recuerda siempre:</strong> El sacerdote en la Confesión no está para juzgarte. Está ahí para ser instrumento del perdón de Dios. No hay pecado tan grande que Dios no pueda perdonar cuando hay arrepentimiento sincero. <em>Dios no se cansa de perdonar — somos nosotros los que a veces nos cansamos de pedir perdón.</em> — Papa Francisco
+  </div>
+
+  <div class="cierre">
+    <div class="cierre-lbl">Para llevar en el corazón</div>
+    <div class="cierre-txt">
+      El examen de conciencia no es una auditoría.<br>
+      Es una conversación con quien te ama.<br>
+      Ve con sinceridad, sin miedo.<br>
+      Él ya sabe todo — y te espera igual.<br><br>
+      <em>"Aunque tus pecados sean como la escarlata,<br>quedarán blancos como la nieve."</em><br>
+      Isaías 1, 18 🌸
+    </div>
+  </div>
+
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Basado en el Catecismo de la Iglesia Católica</p></footer>
+
+<script>
+function toggleMand(id){
+  const card = document.getElementById(id);
+  const isOpen = card.classList.contains('mand-open');
+  document.querySelectorAll('.mand-card').forEach(c => c.classList.remove('mand-open'));
+  if(!isOpen) {
+    card.classList.add('mand-open');
+    setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 80);
+  }
+}
+</script>
+</body>
+</html>
