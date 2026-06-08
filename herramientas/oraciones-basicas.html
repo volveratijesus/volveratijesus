@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oraciones Básicas · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;--blue:#8ca8c8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(200,169,110,0.15) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(55px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO */
+.hero{text-align:center;padding:44px 0 36px;}
+.hero-ikon{font-size:48px;display:block;margin-bottom:14px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.hero-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,7vw,64px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.hero-titulo em{font-style:italic;color:var(--mauve);}
+.hero-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:500px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:28px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:32px 0 20px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:18px;}
+
+/* ORACIÓN CARD */
+.oracion-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:20px;overflow:hidden;margin-bottom:20px;}
+
+/* HEADER DE LA ORACIÓN */
+.or-header{padding:20px 22px 16px;}
+.or-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.or-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,5vw,40px);font-weight:300;color:var(--warm-brown);line-height:1.1;margin-bottom:6px;}
+.or-subtitulo{font-size:13px;color:var(--text-light);font-style:italic;font-weight:300;}
+
+/* CHIPS INFO */
+.or-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 16px;}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(245,230,224,0.5);border:1px solid rgba(200,169,110,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--text-light);font-weight:300;}
+.chip-ikon{font-size:13px;}
+
+/* EL TEXTO DE LA ORACIÓN */
+.or-texto-wrap{background:linear-gradient(135deg,rgba(200,169,110,0.08),rgba(232,196,184,0.12));border-top:1px solid rgba(232,196,184,0.2);border-bottom:1px solid rgba(232,196,184,0.2);padding:20px 22px;}
+.or-texto{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--warm-brown);line-height:2.2;text-align:center;}
+
+/* ACORDEÓN EXPLICACIÓN */
+.or-acord{border-top:1px solid rgba(232,196,184,0.2);}
+.or-acord-btn{width:100%;background:none;border:none;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;}
+.or-acord-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.or-acord-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;}
+.or-acord-open .or-acord-chev{transform:rotate(180deg);}
+.or-acord-body{display:none;padding:0 22px 20px;}
+.or-acord-open .or-acord-body{display:block;}
+
+/* LINEA POR LINEA */
+.lineas{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.linea{display:flex;gap:14px;align-items:flex-start;}
+.linea-txt-wrap{flex:1;}
+.linea-oracion{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--warm-brown);margin-bottom:4px;line-height:1.4;}
+.linea-significado{font-size:13px;color:var(--text);font-weight:300;line-height:1.7;}
+.linea-num{width:24px;height:24px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.25);font-size:11px;color:var(--soft-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-family:'Cormorant Garamond',serif;}
+
+/* ORIGEN Y CUANDO */
+.or-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+@media(max-width:480px){.or-info-grid{grid-template-columns:1fr;}}
+.or-info-box{background:rgba(245,230,224,0.3);border-radius:12px;padding:12px 14px;}
+.or-info-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:6px;}
+.or-info-txt{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.6;}
+
+/* SABIAS QUE */
+.sabias{background:rgba(140,168,200,0.08);border:1px solid rgba(140,168,200,0.2);border-radius:12px;padding:12px 14px;}
+.sabias-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:5px;}
+.sabias-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.7;}
+.sabias-txt strong{color:var(--warm-brown);}
+
+/* SEPARADOR */
+.sep-mini{height:1px;background:rgba(232,196,184,0.2);margin:14px 0;}
+
+/* CIERRE */
+.cierre{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:20px;}
+.cierre-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.cierre-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:1.9;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-ikon">🙏</span>
+    <p class="eyebrow">Oración y Vida · Para empezar desde cero</p>
+    <h1 class="hero-titulo">Oraciones <em>Básicas</em></h1>
+    <p class="hero-sub">Las oraciones que toda la vida rezaste — explicadas línea por línea para que por fin las entiendas de verdad.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <div class="intro-box">
+    Muchos crecimos rezando estas oraciones de memoria sin entender qué decíamos. Las palabras salían solas — pero el corazón estaba apagado. <strong>Rezar sin entender es como leer en un idioma que no conoces.</strong> Aquí vas a descubrir que estas oraciones que ya sabes son profundísimas — y que nunca las habías rezado de verdad.
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 1. PADRE NUESTRO -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 1 · La oración perfecta</div>
+      <div class="or-titulo">Padre Nuestro</div>
+      <div class="or-subtitulo">La única oración que Jesús mismo nos enseñó</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: en la Misa, el Rosario, al despertar, antes de dormir</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: Mateo 6, 9-13</span>
+      <span class="chip"><span class="chip-ikon">✝️</span> Autor: Jesús</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        Padre nuestro, que estás en el cielo,<br>
+        santificado sea tu Nombre;<br>
+        venga a nosotros tu reino;<br>
+        hágase tu voluntad<br>
+        en la tierra como en el cielo.<br>
+        Danos hoy nuestro pan de cada día;<br>
+        perdona nuestras ofensas,<br>
+        como también nosotros perdonamos<br>
+        a los que nos ofenden;<br>
+        no nos dejes caer en la tentación,<br>
+        y líbranos del mal. Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="pn">
+      <button class="or-acord-btn" onclick="toggleAcord('pn')">
+        <span class="or-acord-lbl">✦ Entender línea por línea</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">Un discípulo le pidió a Jesús: <em>"Enséñanos a orar."</em> Y Jesús les dio esta oración. Está en Mateo 6 y Lucas 11. Es la oración más rezada en la historia de la humanidad.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Cuándo rezarla</div>
+            <div class="or-info-txt">En la Misa (antes de la Comunión), en el Rosario (al inicio), al despertar, antes de dormir. Se puede rezar en cualquier momento — es la oración para siempre.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">1</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Padre nuestro"</div>
+              <div class="linea-significado">Jesús nos enseña a llamar "Padre" a Dios — no "Señor", no "Juez", no "Rey". <strong>Padre.</strong> Esto era revolucionario. Los judíos no se atrevían ni a pronunciar el nombre de Dios. Y Jesús dice: llámalo Papá (en arameo, Abba). Y nota: no dice "Padre mío" — dice <em>nuestro.</em> Cuando rezas, rezas con todos tus hermanos.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">2</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Santificado sea tu Nombre"</div>
+              <div class="linea-significado">No es información — es un deseo. <strong>Que tu nombre sea reconocido como santo.</strong> Que el mundo te conozca como quien eres. Que yo, con mi vida, haga que tu nombre sea glorificado — no deshonrado.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">3</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Venga a nosotros tu reino"</div>
+              <div class="linea-significado">El Reino de Dios es donde Dios reina — en los corazones, en la historia, en el mundo. <strong>Estamos pidiendo que Dios reine en nosotros y que su reino llegue al mundo.</strong> Es una oración de entrega: que no reine mi ego, sino Él.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">4</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Hágase tu voluntad en la tierra como en el cielo"</div>
+              <div class="linea-significado">En el Cielo, la voluntad de Dios se cumple perfectamente — los ángeles la hacen con alegría, sin resistencia. <strong>Estamos pidiendo que aquí en la tierra pase lo mismo.</strong> Empezando por nosotros. Es la oración más valiente del Padre Nuestro — renunciar a la propia voluntad.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">5</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Danos hoy nuestro pan de cada día"</div>
+              <div class="linea-significado">Pan material — lo que necesitamos para vivir. Pero también Pan eucarístico — la Eucaristía. <strong>Jesús es el "pan de vida."</strong> Estamos pidiendo lo necesario para hoy — no para toda la vida. Un acto de confianza: Dios provee día a día.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">6</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Perdona nuestras ofensas como nosotros perdonamos"</div>
+              <div class="linea-significado">La única línea donde ponemos una condición: <strong>perdónanos en la medida en que nosotros perdonamos.</strong> Ojo — no dice "perdona nuestras ofensas y además ayúdanos a perdonar." Dice <em>como</em> nosotros perdonamos. Es la línea más exigente de toda la oración.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">7</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"No nos dejes caer en la tentación"</div>
+              <div class="linea-significado">No pedimos no ser tentados — pedimos no <em>caer</em> en la tentación. <strong>Dios no tienta a nadie</strong> (Santiago 1,13) — pero sí permite las pruebas. Estamos pidiendo la gracia de salir vencedores de ellas, no de no tenerlas.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">8</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Líbranos del mal"</div>
+              <div class="linea-significado">Del Maligno — el diablo — y de todo mal. <strong>Un reconocimiento humilde: solos no podemos.</strong> Necesitamos que Dios nos libere. Es la última petición porque es la más fundamental: sin Dios, estamos a merced del mal.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">El Padre Nuestro tiene <strong>7 peticiones</strong> — el número de la plenitud en la Biblia. Las primeras tres son sobre Dios (su nombre, su reino, su voluntad). Las últimas cuatro son sobre nosotros (pan, perdón, tentación, mal). Primero Dios — luego nosotros.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 2. AVE MARÍA -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 2 · La salutación angélica</div>
+      <div class="or-titulo">Ave María</div>
+      <div class="or-subtitulo">La oración que repite las palabras del ángel Gabriel y de Isabel</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: en el Rosario, el Ángelus, para honrar a María</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: Lucas 1, 28 y 42</span>
+      <span class="chip"><span class="chip-ikon">🕊️</span> Surgió: siglo III en adelante</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        Dios te salve, María,<br>
+        llena eres de gracia;<br>
+        el Señor es contigo;<br>
+        bendita tú eres entre todas las mujeres,<br>
+        y bendito es el fruto de tu vientre, Jesús.<br>
+        Santa María, Madre de Dios,<br>
+        ruega por nosotros pecadores,<br>
+        ahora y en la hora de nuestra muerte. Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="am">
+      <button class="or-acord-btn" onclick="toggleAcord('am')">
+        <span class="or-acord-lbl">✦ Entender línea por línea</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">La primera parte son las palabras exactas del ángel Gabriel en la Anunciación (Lc 1,28) y de su prima Isabel en la Visitación (Lc 1,42). La segunda parte fue añadida por la Iglesia en los primeros siglos.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Cuándo rezarla</div>
+            <div class="or-info-txt">En el Rosario (10 veces por misterio), en el Ángelus (al mediodía), antes de dormir, cuando necesites la intercesión de María. También al pasar frente a una iglesia o imagen de la Virgen.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">1</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Dios te salve, María"</div>
+              <div class="linea-significado">En el original griego el ángel dice <em>"Kaire"</em> — que significa <em>alégrate.</em> No es solo "hola" — es un grito de gozo: <strong>¡Alégrate, María! Algo maravilloso está pasando.</strong> Cuando rezamos esta oración participamos del asombro del ángel.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">2</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Llena eres de gracia"</div>
+              <div class="linea-significado">En griego: <em>kekaritomene</em> — que significa "la que ha sido llenada de gracia de manera permanente y total." <strong>No tiene un poco de gracia — está llena.</strong> Sin vacío. Sin pecado. Es la confirmación bíblica de la Inmaculada Concepción.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">3</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"El Señor es contigo"</div>
+              <div class="linea-significado">No "el Señor estará contigo si te portas bien." <strong>El Señor ES contigo — ahora, permanentemente.</strong> Esta misma frase se usa en el Antiguo Testamento para los grandes elegidos: Moisés, Gedeón, Josué. Todos tenían una misión imposible. María también.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">4</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Bendita tú eres entre todas las mujeres"</div>
+              <div class="linea-significado">Palabras de Isabel, su prima, llena del Espíritu Santo. <strong>No es adulación — es reconocimiento profético.</strong> María es la más bendita porque llevó en su seno al Bendito por excelencia.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">5</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Santa María, Madre de Dios"</div>
+              <div class="linea-significado">Aquí cambia la voz — ya no es el ángel, somos nosotros. La llamamos <strong>Madre de Dios</strong> — el título más grande que se puede dar a un ser humano. Definido como dogma en el Concilio de Éfeso en el año 431.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">6</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Ruega por nosotros pecadores ahora y en la hora de nuestra muerte"</div>
+              <div class="linea-significado">Le pedimos que interceda — no en momentos especiales sino en los dos momentos que importan: <strong>ahora</strong> (este instante de mi vida) y <strong>en la hora de mi muerte</strong> (el momento más importante de toda mi existencia). La muerte siempre presente — para recordarnos que vivir bien importa.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">El Ave María tiene <strong>dos partes</strong> claramente distintas: la primera (hasta "Jesús") son palabras de la Biblia — del ángel y de Isabel. La segunda es la petición que la Iglesia añadió. <strong>Cuando rezas el Ave María, repites palabras que el mismo Dios inspiró.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 3. GLORIA -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 3 · La doxología</div>
+      <div class="or-titulo">Gloria</div>
+      <div class="or-subtitulo">La oración más corta y más profunda — adoración pura a la Trinidad</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: en el Rosario, al final de los Salmos, en la Misa</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: tradición apostólica</span>
+      <span class="chip"><span class="chip-ikon">⏳</span> Edad: más de 1,700 años</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        Gloria al Padre, y al Hijo,<br>
+        y al Espíritu Santo.<br>
+        Como era en el principio,<br>
+        ahora y siempre,<br>
+        por los siglos de los siglos. Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="gl">
+      <button class="or-acord-btn" onclick="toggleAcord('gl')">
+        <span class="or-acord-lbl">✦ Entender línea por línea</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">Es una <em>doxología</em> — del griego <em>doxa</em> (gloria) y <em>logos</em> (palabra). Una expresión de glorificación. Se usaba en las primeras comunidades cristianas para terminar la recitación de los Salmos.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Cuándo rezarlo</div>
+            <div class="or-info-txt">En el Rosario (al final de cada decena), en la Liturgia de las Horas, al final de los Salmos. También suelto, como jaculatoria, en cualquier momento del día.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">1</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Gloria al Padre, y al Hijo, y al Espíritu Santo"</div>
+              <div class="linea-significado">En cinco palabras nombramos a las tres Personas de la Santísima Trinidad y les damos gloria. <strong>Es la oración trinitaria más corta que existe.</strong> Cada vez que la rezas afirmas tu fe en el misterio central del cristianismo.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">2</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Como era en el principio, ahora y siempre"</div>
+              <div class="linea-significado">La gloria de Dios no comenzó cuando nosotros empezamos a rezar — <strong>existía antes de la Creación.</strong> Y continuará por la eternidad. Somos nosotros quienes nos unimos a una glorificación que ya existía y siempre existirá.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">3</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Por los siglos de los siglos. Amén."</div>
+              <div class="linea-significado"><em>In saecula saeculorum</em> en latín — literalmente "por los siglos de los siglos." <strong>Para siempre, sin fin.</strong> Y "Amén" — del hebreo <em>emunah</em>, fidelidad, firmeza. Es decir: <em>así es, así sea, en esto confío.</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">En el Cielo, los ángeles y santos glorifican a Dios eternamente. <strong>Cada vez que rezas el Gloria aquí en la tierra, te unes a esa alabanza celestial.</strong> No es solo una oración pequeña — es anticipar el Cielo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 4. EL CREDO (APOSTÓLICO) -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 4 · La profesión de fe</div>
+      <div class="or-titulo">Credo Apostólico</div>
+      <div class="or-subtitulo">Lo que creemos — dicho en voz alta, con toda la Iglesia</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: en el Rosario, en el Bautismo, en la Misa</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: tradición apostólica · siglos I-III</span>
+      <span class="chip"><span class="chip-ikon">✝️</span> Nombre: del latín <em>credo</em> — "creo"</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        Creo en Dios, Padre todopoderoso,<br>
+        Creador del cielo y de la tierra.<br>
+        Creo en Jesucristo, su único Hijo, nuestro Señor,<br>
+        que fue concebido por obra y gracia del Espíritu Santo,<br>
+        nació de Santa María Virgen,<br>
+        padeció bajo el poder de Poncio Pilato,<br>
+        fue crucificado, muerto y sepultado,<br>
+        descendió a los infiernos,<br>
+        al tercer día resucitó de entre los muertos,<br>
+        subió a los cielos<br>
+        y está sentado a la derecha de Dios Padre todopoderoso.<br>
+        Desde allí ha de venir a juzgar a vivos y muertos.<br>
+        Creo en el Espíritu Santo,<br>
+        la santa Iglesia católica,<br>
+        la comunión de los santos,<br>
+        el perdón de los pecados,<br>
+        la resurrección de la carne<br>
+        y la vida eterna. Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="cr">
+      <button class="or-acord-btn" onclick="toggleAcord('cr')">
+        <span class="or-acord-lbl">✦ Entender línea por línea</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">Se llama "apostólico" porque contiene la fe transmitida desde los apóstoles. Se usaba en el Bautismo — el que se bautizaba lo recitaba para profesar su fe. Tiene más de 1,700 años en su forma actual.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Cuándo rezarlo</div>
+            <div class="or-info-txt">Al inicio del Rosario, en el Bautismo, en la renovación de promesas bautismales. En la Misa se reza el Credo Niceno (más largo). Puedes rezarlo también cuando tengas dudas de fe — como ancla.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">1</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra"</div>
+              <div class="linea-significado">Tres afirmaciones: Dios existe. Dios es Padre — no una fuerza impersonal. Dios creó todo lo que existe. <strong>La primera línea del Credo es la base de todo lo demás.</strong></div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">2</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Descendió a los infiernos"</div>
+              <div class="linea-significado">La línea más incomprendida. No significa que Jesús fue al infierno del pecado. Significa que <strong>descendió al reino de los muertos</strong> — el Sheol hebreo — para anunciar la salvación a los justos que habían muerto antes de su venida. Fue a buscar a los que lo esperaban.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">3</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Está sentado a la derecha de Dios Padre"</div>
+              <div class="linea-significado">"La derecha" en la cultura bíblica es el lugar de honor, de poder, de intimidad. <strong>Jesús no fue a un rincón del cielo — está en el lugar más importante.</strong> Y desde ahí intercede por nosotros constantemente.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">4</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"La comunión de los santos"</div>
+              <div class="linea-significado">No solo los santos canonizados — todos los que están en gracia de Dios. <strong>Los vivos en la tierra, los que se purifican en el Purgatorio y los que gozan en el Cielo.</strong> Somos una sola Iglesia — unidos en Cristo, aunque separados por la muerte.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">5</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"La resurrección de la carne"</div>
+              <div class="linea-significado">No somos almas atrapadas en cuerpos. <strong>Somos cuerpo y alma — y los dos resucitarán.</strong> El cuerpo que tenemos ahora, transformado y glorificado, vivirá eternamente. La fe cristiana no huye del cuerpo — lo redime.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">El Credo es un <strong>resumen completo de la fe cristiana</strong>. Todo lo que creemos está ahí: la Trinidad, la Encarnación, la Pasión, la Resurrección, la Iglesia, los sacramentos, la vida eterna. Cuando lo rezas, estás recitando 2,000 años de fe.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 5. ACTO DE CONTRICIÓN -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 5 · Para la Confesión</div>
+      <div class="or-titulo">Acto de Contrición</div>
+      <div class="or-subtitulo">La oración del arrepentimiento — la más importante antes de la Confesión</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: antes y durante la Confesión</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: siglos XII-XVI</span>
+      <span class="chip"><span class="chip-ikon">🙏</span> Necesaria: para recibir el perdón</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        Señor mío Jesucristo,<br>
+        Dios y hombre verdadero,<br>
+        me pesa de todo corazón haberte ofendido,<br>
+        porque eres infinitamente bueno<br>
+        y el pecado te desagrada.<br>
+        Propongo firmemente, con tu gracia,<br>
+        enmendarme y alejarme de las ocasiones de pecar,<br>
+        confesarme y cumplir la penitencia.<br>
+        Confío en que me perdonarás<br>
+        por tu infinita misericordia.<br>
+        Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="ac">
+      <button class="or-acord-btn" onclick="toggleAcord('ac')">
+        <span class="or-acord-lbl">✦ Entender línea por línea</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">No tiene un autor único — fue desarrollada por la Iglesia en la Edad Media para que los fieles tuvieran una fórmula clara de arrepentimiento antes de la Confesión. Es una oración teológicamente precisa.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Cuándo rezarla</div>
+            <div class="or-info-txt">Antes de entrar al confesionario, y también cuando el sacerdote te pide que expreses tu arrepentimiento dentro de la Confesión. También cada noche como examen de conciencia.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">1</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Me pesa de todo corazón haberte ofendido"</div>
+              <div class="linea-significado">El dolor por el pecado tiene que ser real — no solo miedo al castigo. <strong>"De todo corazón"</strong> — no a medias, no por compromiso. La contrición perfecta nace del amor: me duele haberle fallado a quien amo.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">2</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Porque eres infinitamente bueno y el pecado te desagrada"</div>
+              <div class="linea-significado">Esta es la razón correcta del arrepentimiento: <strong>no el miedo al infierno sino el amor a Dios.</strong> Me arrepiento porque le hice daño a alguien bueno — no porque me vaya a castigar.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">3</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Propongo firmemente enmendarme"</div>
+              <div class="linea-significado"><strong>Propósito de enmienda</strong> — la intención real de no volver a pecar. No una promesa perfecta que se va a cumplir siempre. Una intención sincera. Sin esta intención, la Confesión no es válida.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">4</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"Alejarme de las ocasiones de pecar"</div>
+              <div class="linea-significado">No basta decir "no voy a pecar más." Hay que alejarse de las situaciones que llevan al pecado. <strong>Si el problema es el alcohol, no entres al bar. Si es la pornografía, pon un filtro.</strong> La conversión tiene pasos concretos.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">Hay dos tipos de contrición: <strong>perfecta</strong> (me arrepiento por amor a Dios) e <strong>imperfecta</strong> (me arrepiento por miedo al castigo). Las dos son válidas para la Confesión. Pero solo la contrición perfecta perdona los pecados graves incluso fuera de la Confesión — si hay imposibilidad de confesarse.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 6. ÁNGELUS -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 6 · La del mediodía</div>
+      <div class="or-titulo">Ángelus</div>
+      <div class="or-subtitulo">Tres veces al día con las campanas — recordar la Encarnación en medio del trabajo</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: a las 6am, 12pm y 6pm</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: siglos XIII-XVI</span>
+      <span class="chip"><span class="chip-ikon">🔔</span> Señal: al son de las campanas</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        El ángel del Señor anunció a María,<br>
+        <em>y concibió por obra del Espíritu Santo.</em><br>
+        Dios te salve, María...<br><br>
+        He aquí la esclava del Señor,<br>
+        <em>hágase en mí según tu palabra.</em><br>
+        Dios te salve, María...<br><br>
+        Y el Verbo de Dios se hizo carne,<br>
+        <em>y habitó entre nosotros.</em><br>
+        Dios te salve, María...<br><br>
+        Ruega por nosotros, Santa Madre de Dios,<br>
+        para que seamos dignos de alcanzar las promesas<br>
+        de Jesucristo. Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="an">
+      <button class="or-acord-btn" onclick="toggleAcord('an')">
+        <span class="or-acord-lbl">✦ Entender y conocer</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">El nombre "Ángelus" es la primera palabra en latín: <em>Angelus Domini</em> — "El ángel del Señor". Surgió en la Edad Media — primero se rezaba solo al atardecer; luego se añadió el mediodía y la mañana.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Por qué tres veces al día</div>
+            <div class="or-info-txt">Para santificar el día completo — la mañana, el mediodía y la tarde. Los campesinos medievales se detenían en el campo al escuchar las campanas. Era una forma de rezar en medio del trabajo.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">💡</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">¿Por qué es tan especial?</div>
+              <div class="linea-significado">El Ángelus resume en tres versículos el misterio de la Encarnación: el ángel anuncia, María acepta, el Verbo se hace carne. <strong>En dos minutos recorremos el momento más importante de la historia.</strong> El Papa Francisco lo reza con miles de personas cada domingo desde la ventana del Vaticano.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">Durante el tiempo de Pascua, el Ángelus se sustituye por el <strong>Regina Caeli</strong> — una oración a María que celebra la Resurrección. Empieza con: <em>"Alégrate, Reina del Cielo, porque el que mereciste llevar, ha resucitado como lo dijo. Aleluya."</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- 7. SEÑAL DE LA CRUZ -->
+  <!-- ══════════════════════════════════ -->
+  <div class="oracion-card">
+    <div class="or-header">
+      <div class="or-tag">Oración 7 · La más rezada del mundo</div>
+      <div class="or-titulo">Señal de la Cruz</div>
+      <div class="or-subtitulo">La oración que rezamos miles de veces — y que muchos nunca entendieron</div>
+    </div>
+    <div class="or-chips">
+      <span class="chip"><span class="chip-ikon">📅</span> Se reza: al inicio de toda oración, al entrar a una iglesia</span>
+      <span class="chip"><span class="chip-ikon">📖</span> Origen: siglos II-III</span>
+      <span class="chip"><span class="chip-ikon">✝️</span> Es: una profesión de fe con el cuerpo</span>
+    </div>
+    <div class="or-texto-wrap">
+      <div class="or-texto">
+        En el nombre del Padre,<br>
+        y del Hijo,<br>
+        y del Espíritu Santo.<br>
+        Amén.
+      </div>
+    </div>
+    <div class="or-acord" id="sc">
+      <button class="or-acord-btn" onclick="toggleAcord('sc')">
+        <span class="or-acord-lbl">✦ Entender cada gesto y cada palabra</span>
+        <span class="or-acord-chev">▼</span>
+      </button>
+      <div class="or-acord-body">
+        <div class="or-info-grid">
+          <div class="or-info-box">
+            <div class="or-info-lbl">📖 De dónde viene</div>
+            <div class="or-info-txt">Tertuliano, en el siglo III, ya describía cómo los cristianos se signaban la frente en todo momento. Es una de las prácticas más antiguas del cristianismo — anterior a muchas oraciones escritas.</div>
+          </div>
+          <div class="or-info-box">
+            <div class="or-info-lbl">⏰ Cuándo hacerla</div>
+            <div class="or-info-txt">Al inicio y fin de toda oración. Al entrar y salir de una iglesia. Al pasar frente a un altar. Antes de comer. Al despertar y al dormir. En momentos de peligro o tentación.</div>
+          </div>
+        </div>
+        <div class="sep-mini"></div>
+        <div class="lineas">
+          <div class="linea">
+            <div class="linea-num">1</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">"En el nombre" — una sola cosa</div>
+              <div class="linea-significado">Nota: no dice "en los nombres" (plural) — dice <strong>"en el nombre"</strong> (singular). Porque el Padre, el Hijo y el Espíritu Santo no son tres dioses con tres nombres — son un solo Dios con un solo nombre. La Trinidad en una sola palabra: <em>nombre.</em></div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">2</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">El gesto: de la frente al pecho</div>
+              <div class="linea-significado">La mano baja de la frente al pecho — del cielo a la tierra. <strong>Jesús bajó del cielo a la tierra.</strong> Es la Encarnación dibujada en tu cuerpo. También representa la mente que baja al corazón — la fe que se hace vida.</div>
+            </div>
+          </div>
+          <div class="linea">
+            <div class="linea-num">3</div>
+            <div class="linea-txt-wrap">
+              <div class="linea-oracion">El gesto: de hombro a hombro</div>
+              <div class="linea-significado">La línea horizontal — de izquierda a derecha (en occidente). Forma la Cruz. <strong>Al hacer la Señal de la Cruz, grabas en tu cuerpo el instrumento de la salvación.</strong> Te estás diciendo a ti mismo: soy redimido por la Cruz.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sabias">
+          <div class="sabias-lbl">💡 ¿Sabías que...</div>
+          <div class="sabias-txt">En los primeros siglos, los cristianos se signaban solo la frente con el pulgar — no la Cruz completa. La Cruz grande con toda la mano se generalizó en la Edad Media. San Juan Crisóstomo (siglo IV) escribió: <strong>"No salgas de casa sin hacer la señal de la Cruz."</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+  <div class="cierre">
+    <div class="cierre-lbl">Para llevar en el corazón</div>
+    <div class="cierre-txt">
+      Ahora que las entiendes,<br>
+      rezarlas nunca será igual.<br>
+      No son fórmulas —<br>
+      son conversaciones con Dios<br>
+      que llevan dos mil años.<br><br>
+      <em>Rézalas despacio.<br>
+      Una sola, de verdad,<br>
+      vale más que cien de memoria. 🌸</em>
+    </div>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Fuentes: Catecismo de la Iglesia Católica</p></footer>
+
+<script>
+function toggleAcord(id){
+  const card = document.getElementById(id);
+  const btn = card.querySelector('.or-acord-btn');
+  const isOpen = card.classList.contains('or-acord-open');
+  // Cerrar todos
+  document.querySelectorAll('.or-acord').forEach(a => a.classList.remove('or-acord-open'));
+  // Abrir este si estaba cerrado
+  if(!isOpen){
+    card.classList.add('or-acord-open');
+    setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),80);
+  }
+}
+</script>
+</body>
+</html>
