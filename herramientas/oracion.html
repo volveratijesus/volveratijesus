@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Oración · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;--blue:#8ca8c8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(140,168,200,0.18) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(55px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(232,196,184,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO */
+.hero{text-align:center;padding:44px 0 36px;}
+.hero-ikon{font-size:48px;display:block;margin-bottom:14px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.hero-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7vw,68px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.hero-titulo em{font-style:italic;color:var(--mauve);}
+.hero-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:500px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* CITA */
+.cita-hero{background:linear-gradient(135deg,rgba(140,168,200,0.12),rgba(232,196,184,0.15));border:1px solid rgba(140,168,200,0.25);border-radius:20px;padding:22px 26px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden;}
+.cita-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(140,168,200,0.4),var(--soft-gold),rgba(140,168,200,0.4));}
+.cita-txt{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--warm-brown);line-height:1.8;margin-bottom:8px;}
+.cita-ref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:20px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:30px 0 16px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:18px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:18px;line-height:1.7;}
+.texto{font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:14px;}
+.texto strong{color:var(--warm-brown);}
+.texto em{font-style:italic;color:var(--mauve);}
+
+/* BIBLIA */
+.biblia{background:rgba(255,255,255,0.6);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0;}
+.biblia-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+.biblia-ref{font-size:11px;color:var(--text-light);margin-top:5px;font-weight:300;}
+
+/* ERRORES COMUNES */
+.errores-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.errores-grid{grid-template-columns:1fr;}}
+.error-card{border-radius:14px;padding:14px 16px;}
+.error-mal{background:rgba(232,196,184,0.2);border:1px solid rgba(201,160,160,0.25);}
+.error-bien{background:rgba(184,201,176,0.2);border:1px solid rgba(138,170,128,0.25);}
+.error-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.lbl-mal{color:var(--mauve);}
+.lbl-bien{color:var(--sage-dark);}
+.error-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.6;}
+.error-txt strong{color:var(--warm-brown);}
+
+/* FORMAS DE ORACIÓN — ACORDEONES */
+.tipo-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:18px;overflow:hidden;margin-bottom:12px;}
+.tipo-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+.tipo-open .tipo-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.tipo-ikon{font-size:28px;flex-shrink:0;}
+.tipo-meta{flex:1;}
+.tipo-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:2px;}
+.tipo-nombre{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--warm-brown);}
+.tipo-frase{font-size:12px;color:var(--text-light);font-style:italic;margin-top:2px;font-weight:300;}
+.tipo-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.tipo-open .tipo-chev{transform:rotate(180deg);}
+.tipo-body{display:none;padding:16px 18px 20px;}
+.tipo-open .tipo-body{display:block;}
+.tipo-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:12px;}
+.tipo-txt strong{color:var(--warm-brown);}
+.tipo-ejemplo{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 10px 10px 0;padding:10px 14px;margin-top:8px;}
+.tipo-ejemplo-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:4px;}
+.tipo-ejemplo-txt{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+
+/* ETAPAS */
+.etapas{display:flex;flex-direction:column;gap:10px;margin:14px 0 24px;}
+.etapa{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.etapa-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--soft-gold),rgba(200,169,110,0.7));color:#fff;font-size:13px;font-family:'Cormorant Garamond',serif;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.etapa-titulo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);margin-bottom:4px;}
+.etapa-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.7;}
+.etapa-txt strong{color:var(--warm-brown);}
+
+/* LECTIO DIVINA */
+.lectio-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 20px;}
+@media(max-width:540px){.lectio-steps{grid-template-columns:repeat(2,1fr);}}
+.lectio-step{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 12px;text-align:center;}
+.lectio-ikon{font-size:26px;display:block;margin-bottom:8px;}
+.lectio-lat{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--soft-gold);margin-bottom:3px;}
+.lectio-esp{font-size:12px;color:var(--warm-brown);font-weight:400;margin-bottom:4px;}
+.lectio-desc{font-size:11px;color:var(--text-light);font-weight:300;line-height:1.4;}
+
+/* OBSTÁCULOS */
+.obs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.obs-grid{grid-template-columns:1fr;}}
+.obs-card{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.obs-problema{font-size:12px;color:var(--mauve);font-weight:400;margin-bottom:4px;}
+.obs-titulo{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warm-brown);margin-bottom:5px;}
+.obs-solucion{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.6;}
+
+/* NOTA */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:18px;}
+.nota strong{color:var(--warm-brown);}
+
+/* CIERRE */
+.cierre{background:linear-gradient(135deg,rgba(140,168,200,0.1),rgba(232,196,184,0.15));border:1px solid rgba(140,168,200,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:8px;position:relative;overflow:hidden;}
+.cierre::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(140,168,200,0.4),var(--soft-gold),rgba(140,168,200,0.4));}
+.cierre-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.cierre-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:2.0;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-ikon">🙏</span>
+    <p class="eyebrow">Conoce tu Fe · Vida espiritual</p>
+    <h1 class="hero-titulo">La <em>Oración</em></h1>
+    <p class="hero-sub">Qué es rezar de verdad, cómo hacerlo bien y los tipos de oración según la Iglesia Católica.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <div class="cita-hero">
+    <div class="cita-txt">La oración es la elevación del alma hacia Dios<br>o la petición a Dios de los bienes convenientes.</div>
+    <div class="cita-ref">San Juan Damasceno · siglo VIII</div>
+  </div>
+
+  <!-- QUÉ ES -->
+  <div class="intro-box">
+    <strong>¿Qué es la oración?</strong> No es recitar palabras. No es hablar al aire. Es una <strong>relación viva con Dios</strong> — el Padre, el Hijo y el Espíritu Santo. Es levantar el corazón hacia Él. Puede ser con palabras, con silencio, con el cuerpo, con la mente. Puede durar dos minutos o dos horas. Lo que no puede faltar es la fe de que Alguien escucha.
+  </div>
+
+  <p class="texto">El Catecismo de la Iglesia Católica dedica más de cien páginas a la oración. ¿Por qué tanto? Porque <strong>la oración es el corazón de la vida cristiana.</strong> Sin oración, la fe se convierte en religión cultural — costumbre sin vida. Con oración, todo cambia: el sufrimiento tiene sentido, las decisiones se iluminan, el amor crece.</p>
+
+  <div class="biblia">
+    <div class="biblia-txt">Pidan y se les dará, busquen y encontrarán, llamen y se les abrirá.</div>
+    <div class="biblia-ref">Mateo 7, 7 · Jesús sobre la oración</div>
+  </div>
+
+  <!-- MITOS Y VERDADES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⚖️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Lo que <em>creemos</em> sobre rezar (y está mal)</h2>
+  <p class="sec-sub">Muchos no rezan bien porque tienen ideas equivocadas sobre qué es la oración.</p>
+
+  <div class="errores-grid">
+    <div class="error-card error-mal">
+      <div class="error-lbl lbl-mal">❌ Mito</div>
+      <div class="error-txt"><strong>"Rezar es repetir oraciones de memoria."</strong><br>Recitar sin pensar no es rezar — es pronunciar palabras. La oración requiere corazón, no solo boca.</div>
+    </div>
+    <div class="error-card error-bien">
+      <div class="error-lbl lbl-bien">✓ Verdad</div>
+      <div class="error-txt"><strong>Las oraciones tradicionales son puntos de partida.</strong> El Padre Nuestro es perfecto — pero rezarlo bien significa entender y desear lo que se dice, no recitarlo como poema.</div>
+    </div>
+    <div class="error-card error-mal">
+      <div class="error-lbl lbl-mal">❌ Mito</div>
+      <div class="error-txt"><strong>"Si no siento nada, no sirve."</strong><br>La fe no es un sentimiento. Dios escucha aunque no sientas nada. Las épocas secas son parte de toda vida de oración.</div>
+    </div>
+    <div class="error-card error-bien">
+      <div class="error-lbl lbl-bien">✓ Verdad</div>
+      <div class="error-txt"><strong>La fidelidad vale más que el fervor.</strong> Rezar aunque estés distraído, cansado o no "sientas" a Dios — eso es fe de verdad. Los santos también vivieron años de sequedad.</div>
+    </div>
+    <div class="error-card error-mal">
+      <div class="error-lbl lbl-mal">❌ Mito</div>
+      <div class="error-txt"><strong>"No tengo tiempo para rezar."</strong><br>Todo el mundo tiene cinco minutos. El problema no es el tiempo — es la prioridad.</div>
+    </div>
+    <div class="error-card error-bien">
+      <div class="error-lbl lbl-bien">✓ Verdad</div>
+      <div class="error-txt"><strong>Santa Teresa de Ávila decía:</strong> "El que no tiene tiempo de rezar, necesita rezar el doble." Cuando más ocupado estás, más necesitas la oración para no perder el rumbo.</div>
+    </div>
+    <div class="error-card error-mal">
+      <div class="error-lbl lbl-mal">❌ Mito</div>
+      <div class="error-txt"><strong>"La oración es solo para pedir cosas."</strong><br>Pedir es una parte. Pero hay mucho más: alabar, agradecer, adorar, contemplar. Una relación que solo pide no es una relación.</div>
+    </div>
+    <div class="error-card error-bien">
+      <div class="error-lbl lbl-bien">✓ Verdad</div>
+      <div class="error-txt"><strong>La oración más alta es la contemplación.</strong> Simplemente estar con Dios, sin pedir nada. Como dos personas que se aman y no necesitan hablar para estar bien juntas.</div>
+    </div>
+  </div>
+
+  <!-- FORMAS DE ORACIÓN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📖</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Las formas de <em>oración</em> según la Iglesia</h2>
+  <p class="sec-sub">El Catecismo distingue tres formas principales. No son excluyentes — se complementan y muchas veces se mezclan en la misma oración.</p>
+
+  <div class="tipo-card tipo-open" id="t1">
+    <div class="tipo-head" onclick="toggleTipo('t1')">
+      <span class="tipo-ikon">👄</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Forma 1 · CIC 2700–2704</div>
+        <div class="tipo-nombre">Oración Vocal</div>
+        <div class="tipo-frase">Con la boca y el cuerpo — externa, comunitaria, encarnada</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">Es la oración expresada con palabras — en voz alta o en silencio interior, pero con fórmulas concretas. El Padre Nuestro, el Ave María, el Credo, los salmos. <strong>Es la forma más común y la más accesible.</strong></div>
+      <div class="tipo-txt">No es inferior a las otras formas. Jesús mismo rezó vocalmente — en la sinagoga, en el Getsemaní, desde la Cruz. El cuerpo participa: de rodillas, de pie, con las manos juntas. <strong>Somos cuerpo y alma — rezar con el cuerpo no es superficial, es humano.</strong></div>
+      <div class="tipo-txt">La tentación es recitar sin pensar. San Juan Vianney decía que rezar el Rosario mal es como mandar una carta en blanco. La clave: <strong>unir el corazón a las palabras que dice la boca.</strong></div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">Ejemplos</div>
+        <div class="tipo-ejemplo-txt">Padre Nuestro · Ave María · Rosario · Salmos · Liturgia de las Horas · Oraciones en Misa · Novenas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-card" id="t2">
+    <div class="tipo-head" onclick="toggleTipo('t2')">
+      <span class="tipo-ikon">🧠</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Forma 2 · CIC 2705–2708</div>
+        <div class="tipo-nombre">Meditación</div>
+        <div class="tipo-frase">Con la mente y el corazón — reflexión, aplicación, propósito</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">La meditación es una <strong>búsqueda orante</strong>. Tomas un texto de la Escritura, un misterio del Evangelio, un pasaje del Catecismo — y lo piensas, lo masticas, preguntas qué te dice a ti hoy. No es solo leer — es <strong>dejar que Dios hable a través de lo que lees.</strong></div>
+      <div class="tipo-txt">San Ignacio de Loyola desarrolló un método de meditación que sigue siendo uno de los más poderosos: usar los sentidos de la imaginación para entrar en las escenas del Evangelio. <strong>¿Qué ves, qué oyes, qué sientes estando ahí?</strong> Así la Escritura deja de ser texto antiguo y se convierte en encuentro vivo.</div>
+      <div class="tipo-txt">La meditación mueve la cabeza al corazón — y del corazón a la voluntad. El fruto siempre es un propósito concreto: algo que vas a hacer diferente hoy.</div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">Cómo empezar</div>
+        <div class="tipo-ejemplo-txt">Toma el Evangelio del día. Léelo despacio. Pregúntate: ¿Qué me dice esto a mí hoy? ¿Qué me pide Dios? ¿Qué voy a cambiar? Habla con Dios sobre eso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-card" id="t3">
+    <div class="tipo-head" onclick="toggleTipo('t3')">
+      <span class="tipo-ikon">🤫</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Forma 3 · CIC 2709–2719</div>
+        <div class="tipo-nombre">Contemplación</div>
+        <div class="tipo-frase">Con el silencio y el amor — la oración más alta</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">La contemplación es <strong>el don más alto de la oración</strong>. No es algo que se "hace" — es algo que se recibe. Es simplemente estar con Dios, en silencio, mirándolo con amor. Sin palabras, sin imágenes, sin razonamientos. Solo presencia.</div>
+      <div class="tipo-txt">Santa Teresa de Ávila la describe como <em>"no pensar mucho sino amar mucho."</em> San Juan de la Cruz la llama <em>"conocimiento amoroso de Dios."</em> No es para "avanzados" solamente — cualquiera puede tener momentos contemplativos. Cuando estás en Adoración al Santísimo y simplemente te quedas ahí, sin decir nada, mirando — eso es contemplación.</div>
+      <div class="tipo-txt"><strong>La contemplación no se fuerza.</strong> Se dispone: con silencio, con humildad, con deseo de Dios. Él hace el resto. Muchas personas en los últimos años de su vida llegan naturalmente a este tipo de oración — menos palabras, más presencia.</div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">Cómo disponerse</div>
+        <div class="tipo-ejemplo-txt">Siéntate en silencio ante el Santísimo o en un lugar tranquilo. Dile a Dios: "Aquí estoy. No vengo a pedir ni a hablar. Solo quiero estar contigo." Y espera. Con paciencia. Con amor.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOS POR INTENCIÓN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">💬</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Tipos de oración <em>según su intención</em></h2>
+  <p class="sec-sub">La Iglesia también distingue la oración según lo que expresamos a Dios. Son cuatro movimientos del corazón.</p>
+
+  <div class="tipo-card" id="t4">
+    <div class="tipo-head" onclick="toggleTipo('t4')">
+      <span class="tipo-ikon">👑</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Tipo A</div>
+        <div class="tipo-nombre">Adoración</div>
+        <div class="tipo-frase">Reconocer que Dios es Dios — y yo soy su criatura</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">La adoración es la actitud fundamental de quien ora. Antes de pedir, antes de agradecer — reconocer que Dios es el Señor de todo y que yo dependo completamente de Él. <strong>No porque Dios necesite que lo adoremos — sino porque nosotros necesitamos reconocer la verdad.</strong></div>
+      <div class="tipo-txt">La adoración eucarística — estar ante el Santísimo expuesto — es la forma más alta de adoración en la Iglesia. Solo estar. Solo adorar. Sin agenda.</div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">Palabras de adoración</div>
+        <div class="tipo-ejemplo-txt">"Señor, tú eres el Señor. Eres grande, eres santo, eres todo. Yo soy tuyo. Haz conmigo lo que quieras."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-card" id="t5">
+    <div class="tipo-head" onclick="toggleTipo('t5')">
+      <span class="tipo-ikon">🙌</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Tipo B</div>
+        <div class="tipo-nombre">Alabanza</div>
+        <div class="tipo-frase">Glorificar a Dios por lo que Él es — por pura alegría</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">La alabanza es <strong>el gozo desbordado ante Dios</strong>. A diferencia de la acción de gracias (que agradece lo recibido), la alabanza alaba a Dios simplemente por ser quien es — bueno, bello, eterno, misericordioso. No necesita razón particular.</div>
+      <div class="tipo-txt">Los Salmos están llenos de alabanza. <em>"Alaben al Señor todas las naciones."</em> La Misa es fundamentalmente alabanza — el Gloria, el Santo, el Aleluya. <strong>El Cielo es alabanza eterna.</strong> Practicar la alabanza aquí es empezar a vivir el Cielo.</div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">Palabras de alabanza</div>
+        <div class="tipo-ejemplo-txt">"¡Gloria a ti, Señor! Eres maravilloso. Te alabo porque eres amor, porque eres fiel, porque nunca te cansas de nosotros. ¡Aleluya!"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-card" id="t6">
+    <div class="tipo-head" onclick="toggleTipo('t6')">
+      <span class="tipo-ikon">🙏</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Tipo C</div>
+        <div class="tipo-nombre">Acción de Gracias</div>
+        <div class="tipo-frase">Dar gracias por todo — lo bueno y lo difícil</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">La acción de gracias es <strong>reconocer que todo viene de Dios</strong> — la vida, la salud, la familia, la fe, incluso las pruebas. San Pablo dice: <em>"Den gracias en toda circunstancia."</em> No en algunas — en toda. Incluyendo las difíciles.</div>
+      <div class="tipo-txt">Una persona agradecida es una persona libre. Cuando agradeces lo que tienes, dejas de estar esclavo de lo que te falta. La Eucaristía misma significa "acción de gracias" en griego. <strong>Cada Misa es el acto de gracias más grande de la Iglesia.</strong></div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">Cómo practicarla</div>
+        <div class="tipo-ejemplo-txt">Cada noche antes de dormir: nombra tres cosas concretas por las que agradeces hoy. Incluyendo algo difícil que pasaste — y busca el bien escondido en eso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tipo-card" id="t7">
+    <div class="tipo-head" onclick="toggleTipo('t7')">
+      <span class="tipo-ikon">🫳</span>
+      <div class="tipo-meta">
+        <div class="tipo-tag">Tipo D</div>
+        <div class="tipo-nombre">Súplica e Intercesión</div>
+        <div class="tipo-frase">Pedir para uno mismo y para los demás</div>
+      </div>
+      <span class="tipo-chev">▼</span>
+    </div>
+    <div class="tipo-body">
+      <div class="tipo-txt">La <strong>súplica</strong> es pedir para uno mismo. La <strong>intercesión</strong> es pedir para los demás. Las dos son completamente legítimas y necesarias. Jesús mismo dijo: "Pidan y recibirán." No dijo "no pidan."</div>
+      <div class="tipo-txt">La intercesión es una de las formas más altas de amor: llevar a otra persona ante Dios, presentarla, pedirle por ella. Abraham intercedió por Sodoma. Moisés intercedió por Israel. María intercedió en Caná. <strong>Rezar por los demás es un acto de amor concreto que cambia cosas.</strong></div>
+      <div class="tipo-txt">¿Dios siempre dice que sí? No siempre como queremos. Pero siempre responde con lo que más nos conviene, aunque no lo entendamos en el momento. La oración de petición no es magia — es confianza.</div>
+      <div class="tipo-ejemplo">
+        <div class="tipo-ejemplo-lbl">La intercesión en la práctica</div>
+        <div class="tipo-ejemplo-txt">Haz una lista de personas por las que quieres rezar. Nómbralas ante Dios cada día. Preséntale sus necesidades con confianza: "Señor, aquí está fulano. Tú lo conoces mejor que yo. Cuídalo."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LECTIO DIVINA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📜</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">La <em>Lectio Divina</em></h2>
+  <p class="sec-sub">El método de oración con la Biblia más antiguo y poderoso de la Iglesia. Tiene 1,500 años.</p>
+
+  <p class="texto">La Lectio Divina — "Lectura Divina" — es una forma de rezar con la Escritura que los monjes benedictinos desarrollaron en el siglo VI. No es solo leer la Biblia — es <strong>dejar que la Biblia te lea a ti.</strong> Cuatro pasos, cada uno más profundo que el anterior.</p>
+
+  <div class="lectio-steps">
+    <div class="lectio-step">
+      <span class="lectio-ikon">📖</span>
+      <div class="lectio-lat">Lectio</div>
+      <div class="lectio-esp">Leer</div>
+      <div class="lectio-desc">Lee el texto despacio. Varias veces si hace falta. Sin prisa. Escucha qué palabra o frase te llama la atención.</div>
+    </div>
+    <div class="lectio-step">
+      <span class="lectio-ikon">🧠</span>
+      <div class="lectio-lat">Meditatio</div>
+      <div class="lectio-esp">Meditar</div>
+      <div class="lectio-desc">Rumia esa palabra. ¿Qué significa? ¿Qué te dice hoy? ¿Qué situación de tu vida ilumina?</div>
+    </div>
+    <div class="lectio-step">
+      <span class="lectio-ikon">💬</span>
+      <div class="lectio-lat">Oratio</div>
+      <div class="lectio-esp">Orar</div>
+      <div class="lectio-desc">Habla con Dios sobre lo que meditaste. Dale gracias, pide, llora, alaba — lo que salga del corazón.</div>
+    </div>
+    <div class="lectio-step">
+      <span class="lectio-ikon">🤫</span>
+      <div class="lectio-lat">Contemplatio</div>
+      <div class="lectio-esp">Contemplar</div>
+      <div class="lectio-desc">Calla y descansa en Dios. Deja que Él hable. Sin palabras. Solo presencia y amor.</div>
+    </div>
+  </div>
+
+  <div class="nota"><strong>Para empezar:</strong> Toma el Evangelio del día (lo encuentras en la sección Evangelio del Día de este sitio). Dedícale 15 minutos. Sigue los cuatro pasos. No necesitas libros especiales ni formación — solo la Biblia y tu corazón.</div>
+
+  <!-- ETAPAS DE LA VIDA DE ORACIÓN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌱</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Las etapas de la <em>vida de oración</em></h2>
+  <p class="sec-sub">Santa Teresa de Ávila describió el camino de la oración en etapas. No todos llegan a todas — pero todos pueden crecer.</p>
+
+  <div class="etapas">
+    <div class="etapa">
+      <div class="etapa-num">1</div>
+      <div class="div">
+        <div class="etapa-titulo">Oración de principiantes</div>
+        <div class="etapa-txt">Oraciones vocales, asistencia a Misa, Rosario, lectura espiritual. Se aprende a rezar con regularidad. <strong>El esfuerzo es principalmente nuestro.</strong> Es normal distraerse mucho. No importa — vuelve cuantas veces sea necesario.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-num">2</div>
+      <div class="div">
+        <div class="etapa-titulo">Oración de recogimiento</div>
+        <div class="etapa-txt">Se empieza a meditar. La oración se interioriza. El alma comienza a recogerse — a entrar dentro de sí misma para encontrar a Dios ahí. Menos palabras, más profundidad. <strong>Aparecen períodos de sequedad</strong> — es normal y no es señal de retroceso.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-num">3</div>
+      <div class="div">
+        <div class="etapa-titulo">Oración de quietud</div>
+        <div class="etapa-txt">La voluntad se une a Dios en paz. El alma descansa en Él. Es <strong>un don de Dios</strong> — no algo que se consiga con técnica. Se experimenta paz profunda, silencio interior, presencia de Dios suave pero real.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-num">4</div>
+      <div class="div">
+        <div class="etapa-titulo">Unión contemplativa</div>
+        <div class="etapa-txt">Las potencias del alma (memoria, entendimiento, voluntad) se recogen completamente en Dios. <strong>Es experiencia mística</strong> — rara pero real. Teresa de Ávila, Juan de la Cruz, Teresita del Niño Jesús la vivieron. No se busca — se recibe cuando Dios quiere.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBSTÁCULOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🛡️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Los obstáculos más comunes<br>— y cómo <em>superarlos</em></h2>
+
+  <div class="obs-grid">
+    <div class="obs-card">
+      <div class="obs-problema">Problema frecuente</div>
+      <div class="obs-titulo">😵 La distracción</div>
+      <div class="obs-solucion">Normal e inevitable. No luches contra ella — simplemente vuelve. Cada vez que vuelves a Dios después de distraerte, eso también es oración. La fidelidad en volver vale más que nunca distraerse.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-problema">Problema frecuente</div>
+      <div class="obs-titulo">🏜️ La sequedad</div>
+      <div class="obs-solucion">No sentir nada al rezar. No es señal de que Dios se fue — es una prueba de fe. Los santos más grandes pasaron años sin "sentir" a Dios. Sigue rezando igual. La fidelidad en la sequedad es oro puro.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-problema">Problema frecuente</div>
+      <div class="obs-titulo">😴 El sueño y el cansancio</div>
+      <div class="obs-solucion">Rezar cuando estás muerto de cansancio es heroico. Cambia la hora si puedes. Reza de pie o caminando. Un minuto despierto vale más que diez dormido.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-problema">Problema frecuente</div>
+      <div class="obs-titulo">❓ "No sé cómo"</div>
+      <div class="obs-solucion">Habla con Dios como hablas con un amigo. Sin fórmulas. Cuéntale tu día, tus miedos, tus alegrías. Él no necesita lenguaje elegante — necesita tu corazón.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-problema">Problema frecuente</div>
+      <div class="obs-titulo">⏰ "No tengo tiempo"</div>
+      <div class="obs-solucion">Empieza con cinco minutos. Solo cinco. La misma hora cada día. Un lugar fijo. Con el tiempo crecerá solo — pero hay que empezar.</div>
+    </div>
+    <div class="obs-card">
+      <div class="obs-problema">Problema frecuente</div>
+      <div class="obs-titulo">😤 La resistencia interior</div>
+      <div class="obs-solucion">A veces sientes que no quieres rezar — y no sabes por qué. San Ignacio llamaba a eso "desolación". La respuesta: actuar contra el sentimiento. Reza precisamente cuando menos quieres. Eso es fe adulta.</div>
+    </div>
+  </div>
+
+  <!-- CONSEJOS PRÁCTICOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✨</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Para rezar <em>mejor</em> desde mañana</h2>
+
+  <div class="etapas">
+    <div class="etapa">
+      <div class="etapa-num">1</div>
+      <div class="div">
+        <div class="etapa-titulo">Fija una hora y un lugar</div>
+        <div class="etapa-txt">El cerebro crea hábitos por asociación. Si siempre rezas en el mismo lugar a la misma hora, el cuerpo y la mente aprenden a disponerse. <strong>Un rincón de oración en casa marca la diferencia.</strong></div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-num">2</div>
+      <div class="div">
+        <div class="etapa-titulo">Empieza por invocar al Espíritu Santo</div>
+        <div class="etapa-txt">Antes de rezar, pide al Espíritu Santo que ore en ti. <em>"Ven, Espíritu Santo."</em> No estás solo en la oración — Él mismo intercede por ti con gemidos inefables (Rom 8, 26).</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-num">3</div>
+      <div class="div">
+        <div class="etapa-titulo">Alterna las formas</div>
+        <div class="etapa-txt">No reces siempre igual. Un día el Rosario, otro el Evangelio con meditación, otro simplemente silencio ante el Santísimo. <strong>La variedad evita la rutina que mata la oración.</strong></div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-num">4</div>
+      <div class="div">
+        <div class="etapa-titulo">Termina con una resolución</div>
+        <div class="etapa-txt">La oración que no cambia la vida no es oración completa. Termina siempre preguntando: <em>"¿Qué me pides hoy, Señor?"</em> Y lleva esa respuesta contigo al resto del día.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+  <div class="cierre">
+    <div class="cierre-lbl">Para llevar en el corazón</div>
+    <div class="cierre-txt">
+      La oración no es una obligación.<br>
+      Es una cita de amor.<br>
+      Dios ya está ahí, esperándote,<br>
+      cuando tú te decides a llegar.<br><br>
+      <em>"Solo hay una tristeza:<br>no ser santos."</em><br>
+      León Bloy 🌸
+    </div>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Fuentes: Catecismo de la Iglesia Católica · Santa Teresa de Ávila</p></footer>
+
+<script>
+function toggleTipo(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('tipo-open');
+  document.querySelectorAll('.tipo-card').forEach(x=>x.classList.remove('tipo-open'));
+  if(!open){c.classList.add('tipo-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+</script>
+</body>
+</html>
