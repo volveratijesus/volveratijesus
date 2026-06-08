@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los Santos · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO */
+.hero{text-align:center;padding:44px 0 36px;}
+.hero-ikon{font-size:44px;display:block;margin-bottom:14px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.hero-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,7vw,64px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.hero-titulo em{font-style:italic;color:var(--mauve);}
+.hero-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:500px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:20px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:30px 0 16px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:18px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:18px;line-height:1.7;}
+.texto{font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:14px;}
+.texto strong{color:var(--warm-brown);}
+
+/* PASOS CANONIZACIÓN */
+.pasos-canon{display:flex;flex-direction:column;gap:0;margin:16px 0 24px;}
+.paso-c{display:flex;gap:14px;}
+.paso-c-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.paso-c-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--soft-gold),rgba(200,169,110,0.7));color:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.paso-c-line{width:1px;flex:1;background:linear-gradient(to bottom,rgba(200,169,110,0.4),transparent);margin-top:4px;}
+.paso-c:last-child .paso-c-line{display:none;}
+.paso-c-body{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;margin-bottom:10px;flex:1;}
+.paso-c-titulo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);margin-bottom:4px;}
+.paso-c-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.8;}
+.paso-c-txt strong{color:var(--warm-brown);}
+.paso-c-tag{display:inline-block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);border-radius:10px;padding:3px 10px;color:var(--soft-gold);margin-top:6px;}
+
+/* TIPOS SANTOS */
+.tipos-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.tipos-grid{grid-template-columns:1fr;}}
+.tipo{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.tipo-ikon{font-size:24px;margin-bottom:8px;display:block;}
+.tipo-nombre{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm-brown);margin-bottom:4px;}
+.tipo-txt{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.6;}
+
+/* SANTOS DESTACADOS */
+.santo-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:18px;overflow:hidden;margin-bottom:12px;}
+.santo-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+.santo-open .santo-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.santo-ikon{font-size:30px;flex-shrink:0;}
+.santo-meta{flex:1;}
+.santo-fecha{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:2px;}
+.santo-nombre{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--warm-brown);}
+.santo-frase{font-size:12px;color:var(--text-light);font-style:italic;margin-top:2px;font-weight:300;}
+.santo-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.santo-open .santo-chev{transform:rotate(180deg);}
+.santo-body{display:none;padding:16px 18px 20px;}
+.santo-open .santo-body{display:block;}
+.santo-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:10px;}
+.santo-txt strong{color:var(--warm-brown);}
+.santo-cita{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 10px 10px 0;padding:10px 14px;margin-top:8px;}
+.santo-cita-txt{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+.santo-datos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+@media(max-width:480px){.santo-datos{grid-template-columns:1fr;}}
+.santo-dato{background:rgba(245,230,224,0.3);border-radius:8px;padding:8px 10px;}
+.santo-dato-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:3px;}
+.santo-dato-val{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.4;}
+
+/* GUATEMALA */
+.gt-card{background:linear-gradient(135deg,rgba(0,107,60,0.06),rgba(200,169,110,0.1));border:1px solid rgba(0,107,60,0.15);border-radius:18px;overflow:hidden;margin-bottom:12px;}
+.gt-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+.gt-open .gt-head{border-bottom:1px solid rgba(0,107,60,0.1);}
+.gt-ikon{font-size:28px;flex-shrink:0;}
+.gt-meta{flex:1;}
+.gt-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#006b3c;margin-bottom:2px;opacity:0.7;}
+.gt-nombre{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);}
+.gt-subtitulo{font-size:12px;color:var(--text-light);font-style:italic;margin-top:2px;font-weight:300;}
+.gt-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.gt-open .gt-chev{transform:rotate(180deg);}
+.gt-body{display:none;padding:16px 18px 20px;}
+.gt-open .gt-body{display:block;}
+.gt-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:10px;}
+.gt-txt strong{color:var(--warm-brown);}
+
+/* PATRONOS */
+.patronos-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.patronos-grid{grid-template-columns:1fr;}}
+.patron{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:13px 15px;display:flex;gap:12px;align-items:flex-start;}
+.patron-ikon{font-size:22px;flex-shrink:0;}
+.patron-nombre{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warm-brown);margin-bottom:2px;}
+.patron-de{font-size:11.5px;color:var(--text-light);font-weight:300;line-height:1.4;}
+.patron-fecha{font-size:10px;color:var(--soft-gold);margin-top:3px;letter-spacing:0.5px;}
+
+/* MESES */
+.meses-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:16px;}
+@media(max-width:480px){.meses-tabs{grid-template-columns:repeat(4,1fr);}}
+.mes-tab{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.3);border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .2s;font-size:11px;color:var(--text-light);}
+.mes-tab:hover,.mes-tab.active{background:rgba(200,169,110,0.15);border-color:rgba(200,169,110,0.4);color:var(--warm-brown);}
+.mes-panel{display:none;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:16px;padding:18px;}
+.mes-panel.active{display:block;}
+.mes-titulo{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--warm-brown);margin-bottom:14px;}
+.mes-lista{display:flex;flex-direction:column;gap:8px;}
+.mes-item{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;background:rgba(245,230,224,0.3);border-radius:10px;}
+.mes-dia{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--soft-gold);width:30px;flex-shrink:0;text-align:center;line-height:1;}
+.mes-info{flex:1;}
+.mes-santo{font-size:13.5px;color:var(--warm-brown);font-weight:400;line-height:1.3;}
+.mes-desc{font-size:11.5px;color:var(--text-light);font-weight:300;margin-top:2px;}
+.mes-destacado{background:linear-gradient(135deg,rgba(200,169,110,0.15),rgba(232,196,184,0.2));border:1px solid rgba(200,169,110,0.3);}
+
+/* NOTA */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:18px;}
+.nota strong{color:var(--warm-brown);}
+
+/* CIERRE */
+.cierre{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:12px;}
+.cierre-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.cierre-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:1.9;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-ikon">✨</span>
+    <p class="eyebrow">Conoce tu Fe · Formación católica</p>
+    <h1 class="hero-titulo">Los <em>Santos</em></h1>
+    <p class="hero-sub">Personas de carne y hueso que amaron a Dios con todo — y que desde el Cielo siguen siendo nuestros amigos.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <!-- QUÉ ES UN SANTO -->
+  <div class="intro-box">
+    <strong>¿Qué es un santo?</strong> Un santo no es un superhéroe ni una persona que nunca pecó. Es alguien que, con sus defectos y todo, eligió a Dios una y otra vez — y terminó su vida en su gracia. La Iglesia los canoniza para decirnos: <strong>"Esta persona está en el Cielo. Puedes pedirle que interceda por ti."</strong> Son nuestros amigos en el Cielo.
+  </div>
+
+  <!-- CÓMO SE CANONIZA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⚖️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Cómo se <em>declara</em> un santo?</h2>
+  <p class="sec-sub">El proceso de canonización es largo, riguroso y fascinante. No es decisión de un Papa solo — es una investigación seria que puede durar siglos.</p>
+
+  <div class="pasos-canon">
+    <div class="paso-c">
+      <div class="paso-c-left"><div class="paso-c-num">1</div><div class="paso-c-line"></div></div>
+      <div class="paso-c-body">
+        <div class="paso-c-titulo">Siervo de Dios</div>
+        <div class="paso-c-txt">La diócesis local investiga la vida de la persona. Se recopilan testimonios, cartas, documentos. Se verifica que vivió las virtudes cristianas de manera ejemplar y que no hay nada contrario a la fe. <strong>Empieza la causa de beatificación.</strong></div>
+        <span class="paso-c-tag">Título: Siervo de Dios</span>
+      </div>
+    </div>
+    <div class="paso-c">
+      <div class="paso-c-left"><div class="paso-c-num">2</div><div class="paso-c-line"></div></div>
+      <div class="paso-c-body">
+        <div class="paso-c-titulo">Venerable</div>
+        <div class="paso-c-txt">El Papa reconoce que la persona vivió las virtudes heroicas — fe, esperanza, caridad, prudencia, justicia, fortaleza y templanza — de manera extraordinaria. <strong>No necesita milagro todavía.</strong> Solo prueba de virtudes heroicas.</div>
+        <span class="paso-c-tag">Título: Venerable</span>
+      </div>
+    </div>
+    <div class="paso-c">
+      <div class="paso-c-left"><div class="paso-c-num">3</div><div class="paso-c-line"></div></div>
+      <div class="paso-c-body">
+        <div class="paso-c-titulo">Beato</div>
+        <div class="paso-c-txt">Se necesita <strong>un milagro verificado</strong> ocurrido después de la muerte de la persona y atribuido a su intercesión. Médicos, científicos y teólogos lo estudian. Si se confirma que no tiene explicación natural, el Papa aprueba la beatificación. <strong>Excepción: los mártires no necesitan milagro</strong> — su muerte por la fe es suficiente.</div>
+        <span class="paso-c-tag">Título: Beato/Beata</span>
+      </div>
+    </div>
+    <div class="paso-c">
+      <div class="paso-c-left"><div class="paso-c-num">4</div></div>
+      <div class="paso-c-body" style="background:linear-gradient(135deg,rgba(200,169,110,0.12),rgba(232,196,184,0.15));border-color:rgba(200,169,110,0.35);">
+        <div class="paso-c-titulo" style="color:var(--soft-gold);">⭐ Santo / Santa — Canonización</div>
+        <div class="paso-c-txt">Se necesita <strong>un segundo milagro</strong> ocurrido después de la beatificación. Nuevamente se verifica con rigor científico. El Papa, en una ceremonia solemne, proclama a la persona santa. <strong>Es una declaración infalible:</strong> la Iglesia afirma con certeza que esa persona está en el Cielo.</div>
+        <span class="paso-c-tag">Título: Santo/Santa — veneración universal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nota"><strong>Dato curioso:</strong> Hay más de 10,000 santos canonizados en la historia de la Iglesia. Y miles más de beatos esperando el segundo milagro. El proceso más corto fue el de San Pedro de Damasco — fue canonizado el mismo día de su martirio. El más largo ha durado más de 600 años.</div>
+
+  <!-- TIPOS DE SANTOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🏷️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Tipos de <em>santos</em></h2>
+
+  <div class="tipos-grid">
+    <div class="tipo"><span class="tipo-ikon">🩸</span><div class="tipo-nombre">Mártires</div><div class="tipo-txt">Murieron por su fe. Dieron su vida antes que renegar de Cristo. Son los primeros santos de la Iglesia — desde Esteban hasta los mártires de Guatemala del siglo XX.</div></div>
+    <div class="tipo"><span class="tipo-ikon">📖</span><div class="tipo-nombre">Confesores</div><div class="tipo-txt">No murieron por la fe, pero la vivieron heroicamente. Sacerdotes, obispos, papas, laicos — que dieron testimonio con su vida entera.</div></div>
+    <div class="tipo"><span class="tipo-ikon">🌸</span><div class="tipo-nombre">Vírgenes</div><div class="tipo-txt">Consagraron su vida a Dios en celibato. Santa Teresa de Ávila, Santa Bernadette, Santa Catalina de Siena.</div></div>
+    <div class="tipo"><span class="tipo-ikon">👨‍👩‍👧</span><div class="tipo-nombre">Santos de familia</div><div class="tipo-txt">Padres, madres, esposos que fueron santos en la vida cotidiana. San José, Santa Mónica, los Santos Luis y Zélie Martin (padres de Santa Teresita).</div></div>
+    <div class="tipo"><span class="tipo-ikon">👑</span><div class="tipo-nombre">Papas y obispos</div><div class="tipo-txt">Muchos papas son santos. San Pedro, San Gregorio Magno, San León Magno, San Juan Pablo II, San Juan XXIII.</div></div>
+    <div class="tipo"><span class="tipo-ikon">🌿</span><div class="tipo-nombre">Fundadores</div><div class="tipo-txt">Fundaron órdenes religiosas. San Benito, San Francisco, Santo Domingo, San Ignacio de Loyola, San Juan Bosco.</div></div>
+  </div>
+
+  <!-- SANTOS DESTACADOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌟</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Santos que debes <em>conocer</em></h2>
+  <p class="sec-sub">Una selección de los más amados, más importantes y más cercanos a nuestra vida cotidiana.</p>
+
+  <div class="santo-card santo-open" id="s1">
+    <div class="santo-head" onclick="toggleSanto('s1')">
+      <span class="santo-ikon">🔑</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 29 de junio</div>
+        <div class="santo-nombre">San Pedro</div>
+        <div class="santo-frase">El pescador que se convirtió en roca</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">~1 a.C. — ~68 d.C.</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Canonizado</div><div class="santo-dato-val">Desde los inicios de la Iglesia</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Patrono de</div><div class="santo-dato-val">La Iglesia · Papas · Pescadores</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Símbolo</div><div class="santo-dato-val">Las llaves del Reino</div></div>
+      </div>
+      <div class="santo-txt">Simón Pedro era un pescador impulsivo, miedoso y a veces terco. <strong>Negó a Jesús tres veces.</strong> Y sin embargo Jesús lo eligió como la roca sobre la que edificaría su Iglesia. ¿Por qué? Porque Pedro se arrepintió. Se levantó. No se quedó en su caída. Fue el primer Papa y murió crucificado cabeza abajo en Roma — pidiendo que así fuera, porque no se sentía digno de morir como su Señor.</div>
+      <div class="santo-cita"><div class="santo-cita-txt">"Tú eres Pedro, y sobre esta roca edificaré mi Iglesia." — Mateo 16, 18</div></div>
+    </div>
+  </div>
+
+  <div class="santo-card" id="s2">
+    <div class="santo-head" onclick="toggleSanto('s2')">
+      <span class="santo-ikon">⚔️</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 25 de julio</div>
+        <div class="santo-nombre">Santiago Apóstol</div>
+        <div class="santo-frase">El primer apóstol mártir — patrono de Guatemala</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">~3 d.C. — ~44 d.C.</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Patrono de</div><div class="santo-dato-val">Guatemala · España · Los viajeros</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Martirio</div><div class="santo-dato-val">Decapitado por Herodes Agripa</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Santuario</div><div class="santo-dato-val">Santiago de Compostela, España</div></div>
+      </div>
+      <div class="santo-txt">Hijo del Zebedeo, hermano de Juan. Uno de los tres más cercanos a Jesús (con Pedro y Juan). Fue el <strong>primer apóstol en morir mártir</strong> — decapitado en Jerusalén hacia el año 44. Guatemala lleva su nombre en honor a él: <em>Santiago de los Caballeros de Guatemala.</em> Su santuario en Compostela, España, es uno de los destinos de peregrinación más importantes del mundo.</div>
+    </div>
+  </div>
+
+  <div class="santo-card" id="s3">
+    <div class="santo-head" onclick="toggleSanto('s3')">
+      <span class="santo-ikon">📝</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 28 de agosto</div>
+        <div class="santo-nombre">San Agustín de Hipona</div>
+        <div class="santo-frase">El pecador que se convirtió en el mayor teólogo</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">354 — 430 d.C. · África del Norte</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Canonizado</div><div class="santo-dato-val">Desde la antigüedad</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Doctor de la Iglesia</div><div class="santo-dato-val">Sí — uno de los más grandes</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Orden</div><div class="santo-dato-val">Fundó la Orden de San Agustín</div></div>
+      </div>
+      <div class="santo-txt">Agustín vivió años de vida desordenada, tuvo un hijo fuera del matrimonio y rechazó la fe de su madre Santa Mónica durante años. Pero su madre nunca dejó de rezar por él. A los 33 años se convirtió. Se convirtió en obispo, en teólogo extraordinario y en uno de los mayores santos de la historia. <strong>El Papa León XIV pertenece a su orden y lleva su espiritualidad.</strong></div>
+      <div class="santo-cita"><div class="santo-cita-txt">"Nos hiciste para ti, Señor, y nuestro corazón está inquieto hasta que descanse en ti." — Confesiones</div></div>
+    </div>
+  </div>
+
+  <div class="santo-card" id="s4">
+    <div class="santo-head" onclick="toggleSanto('s4')">
+      <span class="santo-ikon">🌹</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 1 de octubre</div>
+        <div class="santo-nombre">Santa Teresita del Niño Jesús</div>
+        <div class="santo-frase">La pequeña vía — la santidad de lo ordinario</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">1873 — 1897 · Francia</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Canonizada</div><div class="santo-dato-val">1925 — por Pío XI</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Doctora de la Iglesia</div><div class="santo-dato-val">Sí — desde 1997</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Patrona de</div><div class="santo-dato-val">Misiones · Francia · Floristas</div></div>
+      </div>
+      <div class="santo-txt">Murió a los 24 años de tuberculosis, sin salir jamás de su convento. No hizo nada "grande" en apariencia. Y sin embargo es una de las santas más amadas de la historia. Su mensaje: <strong>la santidad no es hacer cosas extraordinarias — es hacer las cosas ordinarias con amor extraordinario.</strong> Su autobiografía "Historia de un Alma" es uno de los libros espirituales más leídos del mundo.</div>
+      <div class="santo-cita"><div class="santo-cita-txt">"Mi misión empezará después de mi muerte. Haré llover rosas desde el Cielo."</div></div>
+    </div>
+  </div>
+
+  <div class="santo-card" id="s5">
+    <div class="santo-head" onclick="toggleSanto('s5')">
+      <span class="santo-ikon">🕊️</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 4 de octubre</div>
+        <div class="santo-nombre">San Francisco de Asís</div>
+        <div class="santo-frase">El pobrecillo que abrazó al leproso y al lobo</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">1182 — 1226 · Italia</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Canonizado</div><div class="santo-dato-val">1228 — solo 2 años después de morir</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Patrono de</div><div class="santo-dato-val">Ecología · Animales · Italia</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Orden</div><div class="santo-dato-val">Fundó los Franciscanos (OFM)</div></div>
+      </div>
+      <div class="santo-txt">Hijo rico que lo dejó todo. Literalmente se quitó la ropa frente a su padre y dijo: "Solo tengo un Padre, el del Cielo." Abrazó a los leprosos. Predicó a los pájaros. Recibió los estigmas (las llagas de Cristo) en su cuerpo. Fundó una de las órdenes más grandes de la Iglesia. <strong>El Papa Francisco tomó su nombre en su honor.</strong></div>
+      <div class="santo-cita"><div class="santo-cita-txt">"Señor, hazme instrumento de tu paz."</div></div>
+    </div>
+  </div>
+
+  <div class="santo-card" id="s6">
+    <div class="santo-head" onclick="toggleSanto('s6')">
+      <span class="santo-ikon">👑</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 22 de octubre</div>
+        <div class="santo-nombre">San Juan Pablo II</div>
+        <div class="santo-frase">El Papa que le dijo al mundo: "¡No tengan miedo!"</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">1920 — 2005 · Polonia</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Canonizado</div><div class="santo-dato-val">2014 — por Francisco</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Pontificado</div><div class="santo-dato-val">26 años · El más largo del siglo XX</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Visitó Guatemala</div><div class="santo-dato-val">3 veces — canonizó al Hermano Pedro</div></div>
+      </div>
+      <div class="santo-txt">Karol Wojtyla vivió bajo el nazismo y el comunismo. Perdió a su madre, hermano y padre siendo joven. Se hizo sacerdote en secreto. Fue Papa 26 años, viajó a 129 países, beatificó a más personas que todos sus predecesores juntos. Sobrevivió un atentado. Visitó Guatemala tres veces. <strong>Se consagró a María con el lema "Totus Tuus."</strong></div>
+      <div class="santo-cita"><div class="santo-cita-txt">"¡No tengan miedo! Abran de par en par las puertas a Cristo."</div></div>
+    </div>
+  </div>
+
+  <div class="santo-card" id="s7">
+    <div class="santo-head" onclick="toggleSanto('s7')">
+      <span class="santo-ikon">💙</span>
+      <div class="santo-meta">
+        <div class="santo-fecha">Fiesta: 5 de septiembre</div>
+        <div class="santo-nombre">Santa Teresa de Calcuta</div>
+        <div class="santo-frase">La santa de los más pobres entre los pobres</div>
+      </div>
+      <span class="santo-chev">▼</span>
+    </div>
+    <div class="santo-body">
+      <div class="santo-datos">
+        <div class="santo-dato"><div class="santo-dato-lbl">Vivió</div><div class="santo-dato-val">1910 — 1997 · Albania/India</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Canonizada</div><div class="santo-dato-val">2016 — por Francisco</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Fundó</div><div class="santo-dato-val">Misioneras de la Caridad</div></div>
+        <div class="santo-dato"><div class="santo-dato-lbl">Premio Nobel</div><div class="santo-dato-val">Nobel de la Paz 1979</div></div>
+      </div>
+      <div class="santo-txt">Recogió moribundos de las calles de Calcuta para que murieran con dignidad. Fundó una orden que hoy tiene más de 4,500 hermanas en 133 países. Lo que pocos saben: <strong>vivió décadas de oscuridad espiritual</strong> — sin sentir a Dios — y siguió adelante igual. Eso la hace más santa, no menos.</div>
+      <div class="santo-cita"><div class="santo-cita-txt">"No todos podemos hacer grandes cosas. Pero podemos hacer pequeñas cosas con gran amor."</div></div>
+    </div>
+  </div>
+
+  <!-- SANTOS DE GUATEMALA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🇬🇹</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Santos y Beatos de <em>Guatemala</em></h2>
+  <p class="sec-sub">Guatemala tiene su propio santo canonizado y muchos beatos — varios mártires del conflicto armado.</p>
+
+  <div class="gt-card gt-open" id="g1">
+    <div class="gt-head" onclick="toggleGt('g1')">
+      <span class="gt-ikon">⭐</span>
+      <div class="gt-meta">
+        <div class="gt-tag">El único santo de Guatemala · Canonizado en 2002</div>
+        <div class="gt-nombre">San Pedro de San José de Betancur</div>
+        <div class="gt-subtitulo">El Santo Hermano Pedro — El Francisco de Asís del Nuevo Mundo</div>
+      </div>
+      <span class="gt-chev">▼</span>
+    </div>
+    <div class="gt-body">
+      <div class="gt-txt">Nació el <strong>21 de marzo de 1626 en Vilaflor, Tenerife</strong> (Islas Canarias, España), hijo de una familia campesina muy humilde y devota. Desde joven sintió el llamado a ser misionero. Llegó a Guatemala en 1651 — tardó meses en cruzar el Atlántico y luego a pie desde México.</div>
+      <div class="gt-txt">Intentó entrar al convento franciscano pero no pudo completar los estudios. Lejos de desanimarse, <strong>fundó una escuela para niños pobres, un hospital para convalecientes, un albergue para peregrinos y una hermandad de caridad.</strong> Recorría las calles de Antigua Guatemala tocando una campana para recordarle a la gente que rezara. Cuidó enfermos, pobres, presos y moribundos.</div>
+      <div class="gt-txt">Murió el <strong>25 de abril de 1667</strong> en Antigua Guatemala. Fue beatificado en 1980 por Juan Pablo II y <strong>canonizado el 30 de julio de 2002 en Ciudad de Guatemala</strong> — la primera canonización celebrada en tierra guatemalteca. Su tumba está en la Iglesia de San Francisco, Antigua Guatemala. Se le celebra el 25 de abril.</div>
+      <div class="santo-cita" style="margin-top:10px;"><div class="santo-cita-txt">"Hacer el bien y huir del mal." — Su lema de vida</div></div>
+    </div>
+  </div>
+
+  <div class="gt-card" id="g2">
+    <div class="gt-head" onclick="toggleGt('g2')">
+      <span class="gt-ikon">🌸</span>
+      <div class="gt-meta">
+        <div class="gt-tag">Beata · Nacida en Quetzaltenango</div>
+        <div class="gt-nombre">Beata María Encarnación Rosal</div>
+        <div class="gt-subtitulo">Reformadora de la Orden Bethlemita · 1820–1886</div>
+      </div>
+      <span class="gt-chev">▼</span>
+    </div>
+    <div class="gt-body">
+      <div class="gt-txt">Nació el <strong>26 de octubre de 1820 en Quetzaltenango</strong>, Guatemala. Bautizada como María Vicenta Rosal Vásquez. Ingresó al Beatario de Belén y se convirtió en la reformadora de la Orden Bethlemita — la orden fundada precisamente por el Hermano Pedro.</div>
+      <div class="gt-txt">Fundó colegios en Quetzaltenango. Cuando el dictador Justo Rufino Barrios expulsó a las órdenes religiosas, huyó a Costa Rica y Ecuador, donde continuó su obra. Murió en 1886. Su cuerpo se conserva <strong>incorrupto</strong> en Pasto, Colombia. Fue beatificada por Juan Pablo II en 1997.</div>
+    </div>
+  </div>
+
+  <div class="gt-card" id="g3">
+    <div class="gt-head" onclick="toggleGt('g3')">
+      <span class="gt-ikon">🩸</span>
+      <div class="gt-meta">
+        <div class="gt-tag">Beatos · Mártires del conflicto armado · 2021</div>
+        <div class="gt-nombre">Los Mártires de Guatemala (1980–1991)</div>
+        <div class="gt-subtitulo">Sacerdotes, catequistas y laicos indígenas asesinados por su fe</div>
+      </div>
+      <span class="gt-chev">▼</span>
+    </div>
+    <div class="gt-body">
+      <div class="gt-txt">El <strong>23 de abril de 2021</strong>, la Iglesia beatificó a <strong>10 mártires guatemaltecos</strong> asesinados durante el conflicto armado interno entre 1980 y 1991. Es un grupo histórico: <strong>la mayoría son indígenas mayas</strong> — catequistas quichés y sacristanes ixiles — junto con tres sacerdotes españoles misioneros.</div>
+      <div class="gt-txt">Entre ellos: el <strong>Padre José María Gran Cirera</strong> (Barcelona, asesinado en 1980 en Chajul, Quiché), el <strong>Padre Juan Alonso Fernández</strong> (asturiano, asesinado en 1982) y siete laicos catequistas y sacristanes mayas que murieron por no abandonar su fe ni su trabajo pastoral. <strong>Fueron asesinados por el ejército o grupos paramilitares.</strong></div>
+      <div class="gt-txt">También fue beatificado <strong>Fray Santiago Miller (Hermano James)</strong>, de los Hermanos de La Salle, asesinado en 1982 en Huehuetenango mientras educaba a niños indígenas.</div>
+    </div>
+  </div>
+
+  <div class="gt-card" id="g4">
+    <div class="gt-head" onclick="toggleGt('g4')">
+      <span class="gt-ikon">✝️</span>
+      <div class="gt-meta">
+        <div class="gt-tag">Beatos · 2018</div>
+        <div class="gt-nombre">Beatos Luis Obdulio Arroyo y Tulio Maruzzo</div>
+        <div class="gt-subtitulo">Asesinados en Izabal en 1981 defendiendo a los campesinos</div>
+      </div>
+      <span class="gt-chev">▼</span>
+    </div>
+    <div class="gt-body">
+      <div class="gt-txt"><strong>Luis Obdulio Arroyo Navarro</strong> era guatemalteco, y <strong>Tulio Maruzzo</strong> era un sacerdote italiano. Ambos fueron asesinados el <strong>1 de julio de 1981 en Izabal, Guatemala</strong>, por su labor pastoral y su defensa de los campesinos durante el conflicto armado. El Papa Francisco los beatificó en 2018, reconociendo su martirio por odio a la fe.</div>
+    </div>
+  </div>
+
+  <!-- SANTOS PATRONOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🛡️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Santos <em>Patronos</em></h2>
+  <p class="sec-sub">Cada oficio, enfermedad, situación y país tiene un santo que intercede especialmente por él.</p>
+
+  <div class="patronos-grid">
+    <div class="patron"><span class="patron-ikon">🇬🇹</span><div><div class="patron-nombre">Santiago Apóstol</div><div class="patron-de">Patrono de Guatemala</div><div class="patron-fecha">25 de julio</div></div></div>
+    <div class="patron"><span class="patron-ikon">🌸</span><div><div class="patron-nombre">Inmaculada Concepción</div><div class="patron-de">Patrona de Guatemala (co-patrona)</div><div class="patron-fecha">8 de diciembre</div></div></div>
+    <div class="patron"><span class="patron-ikon">👨‍👩‍👧</span><div><div class="patron-nombre">San José</div><div class="patron-de">Padres de familia · Trabajadores · Moribundos</div><div class="patron-fecha">19 de marzo</div></div></div>
+    <div class="patron"><span class="patron-ikon">💊</span><div><div class="patron-nombre">San Lucas</div><div class="patron-de">Médicos · Cirujanos · Pintores</div><div class="patron-fecha">18 de octubre</div></div></div>
+    <div class="patron"><span class="patron-ikon">⚖️</span><div><div class="patron-nombre">Santo Tomás Moro</div><div class="patron-de">Abogados · Políticos · Funcionarios</div><div class="patron-fecha">22 de junio</div></div></div>
+    <div class="patron"><span class="patron-ikon">📚</span><div><div class="patron-nombre">Santo Tomás de Aquino</div><div class="patron-de">Estudiantes · Universidades · Teólogos</div><div class="patron-fecha">28 de enero</div></div></div>
+    <div class="patron"><span class="patron-ikon">🎵</span><div><div class="patron-nombre">Santa Cecilia</div><div class="patron-de">Músicos · Cantantes · Poetas</div><div class="patron-fecha">22 de noviembre</div></div></div>
+    <div class="patron"><span class="patron-ikon">🔥</span><div><div class="patron-nombre">San Sebastián</div><div class="patron-de">Soldados · Deportistas · Policías</div><div class="patron-fecha">20 de enero</div></div></div>
+    <div class="patron"><span class="patron-ikon">💑</span><div><div class="patron-nombre">San Valentín</div><div class="patron-de">Enamorados · Epilépticos</div><div class="patron-fecha">14 de febrero</div></div></div>
+    <div class="patron"><span class="patron-ikon">🌍</span><div><div class="patron-nombre">San Francisco de Asís</div><div class="patron-de">Ecología · Animales · Medio ambiente</div><div class="patron-fecha">4 de octubre</div></div></div>
+    <div class="patron"><span class="patron-ikon">🏥</span><div><div class="patron-nombre">San Camilo de Lelis</div><div class="patron-de">Enfermos · Enfermeras · Hospitales</div><div class="patron-fecha">14 de julio</div></div></div>
+    <div class="patron"><span class="patron-ikon">✈️</span><div><div class="patron-nombre">San Cristóbal</div><div class="patron-de">Viajeros · Conductores · Peregrinos</div><div class="patron-fecha">25 de julio</div></div></div>
+    <div class="patron"><span class="patron-ikon">🌹</span><div><div class="patron-nombre">Santa Rita de Casia</div><div class="patron-de">Causas imposibles · Mujeres maltratadas</div><div class="patron-fecha">22 de mayo</div></div></div>
+    <div class="patron"><span class="patron-ikon">🔑</span><div><div class="patron-nombre">San Antonio de Padua</div><div class="patron-de">Cosas perdidas · Pobres · Viajeros</div><div class="patron-fecha">13 de junio</div></div></div>
+    <div class="patron"><span class="patron-ikon">💡</span><div><div class="patron-nombre">Santa Lucía</div><div class="patron-de">Enfermos de los ojos · Ciegos</div><div class="patron-fecha">13 de diciembre</div></div></div>
+    <div class="patron"><span class="patron-ikon">🏗️</span><div><div class="patron-nombre">Santo Tomás Apóstol</div><div class="patron-de">Arquitectos · Ingenieros · Incrédulos</div><div class="patron-fecha">3 de julio</div></div></div>
+  </div>
+
+  <!-- SANTOS POR MES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📅</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Santos por <em>mes</em></h2>
+  <p class="sec-sub">Toca el mes para ver los santos más importantes de cada período del año.</p>
+
+  <div class="meses-tabs">
+    <div class="mes-tab active" onclick="mostrarMes('m1',this)">Enero</div>
+    <div class="mes-tab" onclick="mostrarMes('m2',this)">Febrero</div>
+    <div class="mes-tab" onclick="mostrarMes('m3',this)">Marzo</div>
+    <div class="mes-tab" onclick="mostrarMes('m4',this)">Abril</div>
+    <div class="mes-tab" onclick="mostrarMes('m5',this)">Mayo</div>
+    <div class="mes-tab" onclick="mostrarMes('m6',this)">Junio</div>
+    <div class="mes-tab" onclick="mostrarMes('m7',this)">Julio</div>
+    <div class="mes-tab" onclick="mostrarMes('m8',this)">Agosto</div>
+    <div class="mes-tab" onclick="mostrarMes('m9',this)">Septiembre</div>
+    <div class="mes-tab" onclick="mostrarMes('m10',this)">Octubre</div>
+    <div class="mes-tab" onclick="mostrarMes('m11',this)">Noviembre</div>
+    <div class="mes-tab" onclick="mostrarMes('m12',this)">Diciembre</div>
+  </div>
+
+  <div id="m1" class="mes-panel active">
+    <div class="mes-titulo">✨ Enero</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">1</div><div class="mes-info"><div class="mes-santo">Solemnidad de María Santísima</div><div class="mes-desc">Primer día del año bajo el manto de la Virgen · Día Mundial de la Paz</div></div></div>
+      <div class="mes-item"><div class="mes-dia">17</div><div class="mes-info"><div class="mes-santo">San Antonio Abad</div><div class="mes-desc">Fundador del monacato · Patrono de los animales</div></div></div>
+      <div class="mes-item"><div class="mes-dia">20</div><div class="mes-info"><div class="mes-santo">San Sebastián</div><div class="mes-desc">Mártir romano · Patrono de deportistas y soldados</div></div></div>
+      <div class="mes-item"><div class="mes-dia">21</div><div class="mes-info"><div class="mes-santo">Santa Inés</div><div class="mes-desc">Mártir de 12 años · Patrona de niñas y novias</div></div></div>
+      <div class="mes-item"><div class="mes-dia">24</div><div class="mes-info"><div class="mes-santo">San Francisco de Sales</div><div class="mes-desc">Patrono de periodistas y escritores · Doctor de la Iglesia</div></div></div>
+      <div class="mes-item"><div class="mes-dia">28</div><div class="mes-info"><div class="mes-santo">Santo Tomás de Aquino</div><div class="mes-desc">El mayor teólogo de la Iglesia · Patrono de estudiantes</div></div></div>
+      <div class="mes-item"><div class="mes-dia">31</div><div class="mes-info"><div class="mes-santo">San Juan Bosco</div><div class="mes-desc">Fundador de los Salesianos · Patrono de la juventud</div></div></div>
+    </div>
+  </div>
+
+  <div id="m2" class="mes-panel">
+    <div class="mes-titulo">💗 Febrero</div>
+    <div class="mes-lista">
+      <div class="mes-item"><div class="mes-dia">2</div><div class="mes-info"><div class="mes-santo">Presentación del Señor (La Candelaria)</div><div class="mes-desc">Jesús presentado en el Templo · Fiesta de la luz</div></div></div>
+      <div class="mes-item mes-destacado"><div class="mes-dia">11</div><div class="mes-info"><div class="mes-santo">Nuestra Señora de Lourdes</div><div class="mes-desc">Primera aparición a Bernadette · Día del Enfermo</div></div></div>
+      <div class="mes-item"><div class="mes-dia">14</div><div class="mes-info"><div class="mes-santo">San Valentín</div><div class="mes-desc">Mártir del siglo III · Patrono de los enamorados</div></div></div>
+      <div class="mes-item"><div class="mes-dia">22</div><div class="mes-info"><div class="mes-santo">Cátedra de San Pedro</div><div class="mes-desc">Fiesta del ministerio del Papa</div></div></div>
+    </div>
+  </div>
+
+  <div id="m3" class="mes-panel">
+    <div class="mes-titulo">🌱 Marzo</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">19</div><div class="mes-info"><div class="mes-santo">San José</div><div class="mes-desc">Esposo de María · Patrono de la Iglesia universal y de los trabajadores</div></div></div>
+      <div class="mes-item"><div class="mes-dia">25</div><div class="mes-info"><div class="mes-santo">La Anunciación del Señor</div><div class="mes-desc">El ángel Gabriel anuncia a María · 9 meses antes de Navidad</div></div></div>
+    </div>
+  </div>
+
+  <div id="m4" class="mes-panel">
+    <div class="mes-titulo">🌸 Abril</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">25</div><div class="mes-info"><div class="mes-santo">San Pedro de San José de Betancur</div><div class="mes-desc">El único santo de Guatemala · El Hermano Pedro · Antigua Guatemala</div></div></div>
+      <div class="mes-item"><div class="mes-dia">23</div><div class="mes-info"><div class="mes-santo">San Jorge</div><div class="mes-desc">Mártir · El caballero que venció al dragón · Patrono de Inglaterra</div></div></div>
+      <div class="mes-item"><div class="mes-dia">29</div><div class="mes-info"><div class="mes-santo">Santa Catalina de Siena</div><div class="mes-desc">Doctora de la Iglesia · Convenció a un Papa de regresar a Roma</div></div></div>
+    </div>
+  </div>
+
+  <div id="m5" class="mes-panel">
+    <div class="mes-titulo">🌺 Mayo</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">1</div><div class="mes-info"><div class="mes-santo">San José Obrero</div><div class="mes-desc">Patrono de los trabajadores · Día Internacional del Trabajo</div></div></div>
+      <div class="mes-item"><div class="mes-dia">13</div><div class="mes-info"><div class="mes-santo">Nuestra Señora de Fátima</div><div class="mes-desc">Primera aparición a los pastorcitos · 1917</div></div></div>
+      <div class="mes-item"><div class="mes-dia">22</div><div class="mes-info"><div class="mes-santo">Santa Rita de Casia</div><div class="mes-desc">Patrona de causas imposibles</div></div></div>
+      <div class="mes-item"><div class="mes-dia">26</div><div class="mes-info"><div class="mes-santo">San Felipe Neri</div><div class="mes-desc">El santo de la alegría · Fundador del Oratorio</div></div></div>
+      <div class="mes-item"><div class="mes-dia">31</div><div class="mes-info"><div class="mes-santo">Visitación de la Virgen María</div><div class="mes-desc">María visita a su prima Isabel · El Magnificat</div></div></div>
+    </div>
+  </div>
+
+  <div id="m6" class="mes-panel">
+    <div class="mes-titulo">☀️ Junio</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">13</div><div class="mes-info"><div class="mes-santo">San Antonio de Padua</div><div class="mes-desc">Patrono de cosas perdidas · Doctor de la Iglesia</div></div></div>
+      <div class="mes-item"><div class="mes-dia">24</div><div class="mes-info"><div class="mes-santo">Natividad de San Juan Bautista</div><div class="mes-desc">El precursor de Cristo · Solemnidad</div></div></div>
+      <div class="mes-item"><div class="mes-dia">29</div><div class="mes-info"><div class="mes-santo">San Pedro y San Pablo</div><div class="mes-desc">Los dos pilares de la Iglesia · Solemnidad</div></div></div>
+    </div>
+  </div>
+
+  <div id="m7" class="mes-panel">
+    <div class="mes-titulo">🛡️ Julio</div>
+    <div class="mes-lista">
+      <div class="mes-item"><div class="mes-dia">3</div><div class="mes-info"><div class="mes-santo">Santo Tomás Apóstol</div><div class="mes-desc">El que dudó y luego proclamó "Señor mío y Dios mío"</div></div></div>
+      <div class="mes-item"><div class="mes-dia">16</div><div class="mes-info"><div class="mes-santo">Nuestra Señora del Carmen</div><div class="mes-desc">El escapulario del Carmen · Patrona de los marineros</div></div></div>
+      <div class="mes-item"><div class="mes-dia">22</div><div class="mes-info"><div class="mes-santo">Santa María Magdalena</div><div class="mes-desc">La primera en ver al Resucitado · "Apóstol de los apóstoles"</div></div></div>
+      <div class="mes-item mes-destacado"><div class="mes-dia">25</div><div class="mes-info"><div class="mes-santo">Santiago Apóstol</div><div class="mes-desc">Patrono de Guatemala · El Camino de Santiago · Solemnidad</div></div></div>
+      <div class="mes-item"><div class="mes-dia">26</div><div class="mes-info"><div class="mes-santo">San Joaquín y Santa Ana</div><div class="mes-desc">Los padres de la Virgen María · Abuelos de Jesús</div></div></div>
+    </div>
+  </div>
+
+  <div id="m8" class="mes-panel">
+    <div class="mes-titulo">⭐ Agosto</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">15</div><div class="mes-info"><div class="mes-santo">Asunción de la Virgen María</div><div class="mes-desc">María llevada al Cielo en cuerpo y alma · Solemnidad</div></div></div>
+      <div class="mes-item"><div class="mes-dia">28</div><div class="mes-info"><div class="mes-santo">San Agustín de Hipona</div><div class="mes-desc">Doctor de la Iglesia · "Nos hiciste para ti, Señor..."</div></div></div>
+      <div class="mes-item"><div class="mes-dia">29</div><div class="mes-info"><div class="mes-santo">Martirio de San Juan Bautista</div><div class="mes-desc">Decapitado por Herodes por defender la verdad</div></div></div>
+    </div>
+  </div>
+
+  <div id="m9" class="mes-panel">
+    <div class="mes-titulo">🍂 Septiembre</div>
+    <div class="mes-lista">
+      <div class="mes-item"><div class="mes-dia">5</div><div class="mes-info"><div class="mes-santo">Santa Teresa de Calcuta</div><div class="mes-desc">La santa de los pobres · Nobel de la Paz · Canonizada 2016</div></div></div>
+      <div class="mes-item"><div class="mes-dia">8</div><div class="mes-info"><div class="mes-santo">Natividad de la Virgen María</div><div class="mes-desc">El nacimiento de María · Fiesta del 8 de septiembre</div></div></div>
+      <div class="mes-item"><div class="mes-dia">15</div><div class="mes-info"><div class="mes-santo">Nuestra Señora de los Dolores</div><div class="mes-desc">Los siete dolores de María · Muy venerada en Guatemala</div></div></div>
+      <div class="mes-item"><div class="mes-dia">29</div><div class="mes-info"><div class="mes-santo">San Miguel Arcángel</div><div class="mes-desc">El príncipe de los ejércitos celestiales · Con Gabriel y Rafael</div></div></div>
+    </div>
+  </div>
+
+  <div id="m10" class="mes-panel">
+    <div class="mes-titulo">🍁 Octubre</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">1</div><div class="mes-info"><div class="mes-santo">Santa Teresita del Niño Jesús</div><div class="mes-desc">La pequeña vía · Patrona de las misiones</div></div></div>
+      <div class="mes-item"><div class="mes-dia">4</div><div class="mes-info"><div class="mes-santo">San Francisco de Asís</div><div class="mes-desc">Patrono de la ecología · "Señor, hazme instrumento de tu paz"</div></div></div>
+      <div class="mes-item"><div class="mes-dia">7</div><div class="mes-info"><div class="mes-santo">Nuestra Señora del Rosario</div><div class="mes-desc">Fiesta del Rosario · Mes del Rosario</div></div></div>
+      <div class="mes-item"><div class="mes-dia">22</div><div class="mes-info"><div class="mes-santo">San Juan Pablo II</div><div class="mes-desc">El Papa Santo · "¡No tengan miedo!" · Canonizado 2014</div></div></div>
+    </div>
+  </div>
+
+  <div id="m11" class="mes-panel">
+    <div class="mes-titulo">🕯️ Noviembre</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">1</div><div class="mes-info"><div class="mes-santo">Todos los Santos</div><div class="mes-desc">Fiesta de todos los santos del Cielo · Solemnidad</div></div></div>
+      <div class="mes-item"><div class="mes-dia">2</div><div class="mes-info"><div class="mes-santo">Todos los Fieles Difuntos</div><div class="mes-desc">Día de rezar por los que están en el Purgatorio</div></div></div>
+      <div class="mes-item"><div class="mes-dia">13</div><div class="mes-info"><div class="mes-santo">San Homobono</div><div class="mes-desc">Comerciante santo · Patrono de los comerciantes y sastres</div></div></div>
+      <div class="mes-item"><div class="mes-dia">22</div><div class="mes-info"><div class="mes-santo">Santa Cecilia</div><div class="mes-desc">Mártir · Patrona de los músicos y cantores</div></div></div>
+    </div>
+  </div>
+
+  <div id="m12" class="mes-panel">
+    <div class="mes-titulo">⭐ Diciembre</div>
+    <div class="mes-lista">
+      <div class="mes-item mes-destacado"><div class="mes-dia">8</div><div class="mes-info"><div class="mes-santo">Inmaculada Concepción</div><div class="mes-desc">Patrona de Guatemala · María concebida sin pecado · Solemnidad</div></div></div>
+      <div class="mes-item"><div class="mes-dia">12</div><div class="mes-info"><div class="mes-santo">Nuestra Señora de Guadalupe</div><div class="mes-desc">Patrona de América Latina · Juan Diego · México</div></div></div>
+      <div class="mes-item"><div class="mes-dia">13</div><div class="mes-info"><div class="mes-santo">Santa Lucía</div><div class="mes-desc">Mártir siciliana · Patrona de los enfermos de los ojos</div></div></div>
+      <div class="mes-item"><div class="mes-dia">26</div><div class="mes-info"><div class="mes-santo">San Esteban</div><div class="mes-desc">El primer mártir cristiano · Lapidado por predicar a Cristo</div></div></div>
+      <div class="mes-item"><div class="mes-dia">27</div><div class="mes-info"><div class="mes-santo">San Juan Apóstol</div><div class="mes-desc">El discípulo amado · El único apóstol que no murió mártir</div></div></div>
+      <div class="mes-item"><div class="mes-dia">28</div><div class="mes-info"><div class="mes-santo">Santos Inocentes</div><div class="mes-desc">Los niños asesinados por Herodes · Mártires sin saberlo</div></div></div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+  <div class="cierre">
+    <div class="cierre-lbl">Para llevar en el corazón</div>
+    <div class="cierre-txt">
+      Los santos no son de otro mundo.<br>
+      Fueron de carne y hueso, como nosotros.<br>
+      Tuvieron miedo, dudaron, fallaron.<br>
+      Pero volvieron a levantarse.<br>
+      Y ahora son nuestros amigos en el Cielo.<br><br>
+      <em>Santos de Dios, rogad por nosotros. 🌸</em>
+    </div>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Fuentes: Vatican News · ACI Prensa · CEG</p></footer>
+
+<script>
+function toggleSanto(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('santo-open');
+  document.querySelectorAll('.santo-card').forEach(x=>x.classList.remove('santo-open'));
+  if(!open){c.classList.add('santo-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+function toggleGt(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('gt-open');
+  document.querySelectorAll('.gt-card').forEach(x=>x.classList.remove('gt-open'));
+  if(!open){c.classList.add('gt-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+function mostrarMes(id,tab){
+  document.querySelectorAll('.mes-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mes-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  tab.classList.add('active');
+}
+</script>
+</body>
+</html>
