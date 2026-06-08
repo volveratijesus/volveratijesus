@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Madre, la Virgen María · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;
+  --text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;
+  --rose:#e8c4b8;--blue-mary:#8ca8c8;--blue-light:rgba(140,168,200,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+
+/* BG */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(140,168,200,0.15) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* ═══ HERO ═══ */
+.hero{text-align:center;padding:48px 0 40px;position:relative;}
+.hero-estrella{font-size:48px;display:block;margin-bottom:16px;animation:float 4s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.hero-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,72px);font-weight:300;color:var(--warm-brown);line-height:1.0;}
+.hero-titulo em{font-style:italic;color:var(--mauve);}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--text-light);margin-top:12px;line-height:1.7;max-width:500px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* ═══ CITA HERO ═══ */
+.cita-hero{background:linear-gradient(135deg,var(--blue-light),rgba(232,196,184,0.15));border:1px solid rgba(140,168,200,0.3);border-radius:20px;padding:22px 26px;text-align:center;margin-bottom:32px;position:relative;overflow:hidden;}
+.cita-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(140,168,200,0.4),var(--soft-gold),rgba(140,168,200,0.4));}
+.cita-txt{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--warm-brown);line-height:1.8;margin-bottom:8px;}
+.cita-ref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+
+/* ═══ SEP ═══ */
+.sep{display:flex;align-items:center;gap:12px;margin:32px 0 18px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:18px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:20px;line-height:1.7;}
+
+/* ═══ TEXTO FLUIDO ═══ */
+.texto{font-size:14px;color:var(--text);font-weight:300;line-height:1.95;margin-bottom:16px;}
+.texto strong{color:var(--warm-brown);}
+.texto em{font-style:italic;color:var(--mauve);}
+
+/* ═══ CITA BÍBLICA ═══ */
+.biblia{background:rgba(255,255,255,0.6);border-left:3px solid var(--blue-mary);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0;}
+.biblia-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+.biblia-ref{font-size:11px;color:var(--text-light);margin-top:5px;font-weight:300;}
+
+/* ═══ INTRO BOX ═══ */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:20px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* ═══ TIMELINE VIDA ═══ */
+.timeline{display:flex;flex-direction:column;gap:0;margin:16px 0 28px;}
+.tl-item{display:flex;gap:14px;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:36px;flex-shrink:0;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--soft-gold);flex-shrink:0;border:2px solid rgba(200,169,110,0.3);}
+.tl-dot.blue{background:var(--blue-mary);border-color:rgba(140,168,200,0.3);}
+.tl-line{width:1px;flex:1;background:linear-gradient(to bottom,rgba(200,169,110,0.3),rgba(200,169,110,0.05));margin-top:4px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-content{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;margin-bottom:10px;flex:1;}
+.tl-titulo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);margin-bottom:4px;}
+.tl-desc{font-size:13px;color:var(--text);font-weight:300;line-height:1.8;}
+.tl-desc strong{color:var(--warm-brown);}
+.tl-biblia{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--blue-mary);margin-top:6px;display:block;}
+
+/* ═══ DOGMAS ═══ */
+.dogma-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:18px;overflow:hidden;margin-bottom:12px;}
+.dogma-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+.dogma-open .dogma-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.dogma-ikon{font-size:26px;flex-shrink:0;}
+.dogma-meta{flex:1;}
+.dogma-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:2px;}
+.dogma-nombre{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--warm-brown);}
+.dogma-frase{font-size:12px;color:var(--text-light);font-style:italic;margin-top:2px;font-weight:300;}
+.dogma-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.dogma-open .dogma-chev{transform:rotate(180deg);}
+.dogma-body{display:none;padding:16px 18px 20px;}
+.dogma-open .dogma-body{display:block;}
+.dogma-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:12px;}
+.dogma-txt strong{color:var(--warm-brown);}
+
+/* ═══ APARICIONES ═══ */
+.aparicion-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:18px;overflow:hidden;margin-bottom:12px;}
+.ap-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none;}
+.ap-open .ap-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.ap-ikon{font-size:26px;flex-shrink:0;}
+.ap-meta{flex:1;}
+.ap-lugar{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:2px;}
+.ap-nombre{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--warm-brown);}
+.ap-fecha{font-size:12px;color:var(--text-light);font-style:italic;margin-top:2px;font-weight:300;}
+.ap-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.ap-open .ap-chev{transform:rotate(180deg);}
+.ap-body{display:none;padding:16px 18px 20px;}
+.ap-open .ap-body{display:block;}
+.ap-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:10px;}
+.ap-txt strong{color:var(--warm-brown);}
+.ap-mensaje{background:linear-gradient(135deg,var(--blue-light),rgba(245,230,224,0.3));border:1px solid rgba(140,168,200,0.2);border-radius:10px;padding:12px 14px;margin-top:8px;}
+.ap-mensaje-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-mary);margin-bottom:5px;}
+.ap-mensaje-txt{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+
+/* ═══ TÍTULOS GRID ═══ */
+.titulos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0 24px;}
+@media(max-width:480px){.titulos-grid{grid-template-columns:1fr;}}
+.titulo-item{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;}
+.titulo-ikon{font-size:18px;flex-shrink:0;}
+.titulo-nombre{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warm-brown);margin-bottom:2px;}
+.titulo-exp{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.5;}
+
+/* ═══ INTERCESIÓN ═══ */
+.interc-item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;margin-bottom:10px;}
+.interc-ikon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.interc-titulo{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm-brown);margin-bottom:4px;}
+.interc-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.7;}
+.interc-txt strong{color:var(--warm-brown);}
+
+/* ═══ ADVOCACIONES ═══ */
+.advoc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 24px;}
+@media(max-width:540px){.advoc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:360px){.advoc-grid{grid-template-columns:1fr;}}
+.advoc{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:12px 14px;text-align:center;}
+.advoc-ikon{font-size:24px;display:block;margin-bottom:6px;}
+.advoc-nombre{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--warm-brown);margin-bottom:3px;line-height:1.3;}
+.advoc-pais{font-size:10px;color:var(--text-light);font-weight:300;}
+
+/* ═══ ORACIÓN FINAL ═══ */
+.oracion-final{background:linear-gradient(135deg,var(--blue-light),rgba(232,196,184,0.2));border:1px solid rgba(140,168,200,0.25);border-radius:24px;padding:28px 24px;text-align:center;margin-top:12px;position:relative;overflow:hidden;}
+.oracion-final::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(140,168,200,0.4),var(--soft-gold),rgba(140,168,200,0.4));}
+.oracion-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:16px;}
+.oracion-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:2.0;}
+
+/* ═══ NOTA ═══ */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:18px;}
+.nota strong{color:var(--warm-brown);}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <span class="hero-estrella">🌸</span>
+    <p class="eyebrow">Conoce tu Fe · Devoción Mariana</p>
+    <h1 class="hero-titulo">Nuestra Madre,<br>la <em>Virgen María</em></h1>
+    <p class="hero-sub">La mujer más grande que ha existido. La Madre de Dios. La nuestra.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <div class="cita-hero">
+    <div class="cita-txt">Aquí está la esclava del Señor.<br>Hágase en mí según tu palabra.</div>
+    <div class="cita-ref">Lucas 1, 38 · Las palabras que cambiaron la historia</div>
+  </div>
+
+  <!-- ═══ QUIÉN ES ═══ -->
+  <div class="intro-box">
+    <strong>¿Quién es María?</strong> Es la mujer más extraordinaria que ha pisado la tierra. No por poderes propios, sino porque Dios la eligió — desde toda la eternidad — para ser la Madre de su Hijo. Ella dijo sí cuando nadie más se lo pedía. Ese sí salvó al mundo.
+  </div>
+
+  <!-- ═══ SUS PADRES ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">👨‍👩‍👧</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Sus padres: <em>San Joaquín y Santa Ana</em></h2>
+  <p class="sec-sub">La historia de María empieza antes de María — con dos personas que amaban a Dios y que esperaron un milagro.</p>
+
+  <p class="texto">Sus padres se llamaban <strong>Joaquín y Ana</strong>. Sus nombres no aparecen en la Biblia — los conocemos por la antigua tradición de la Iglesia, recogida en el Protoevangelio de Santiago (siglo II). Eran una pareja devota y buena, pero cargaban con una tristeza enorme: <strong>no podían tener hijos</strong>. En la cultura judía, la esterilidad era vista como una desgracia, casi como una señal de que Dios no los miraba.</p>
+
+  <p class="texto">Joaquín, desesperado, se fue al desierto a ayunar y orar durante cuarenta días. Ana, en casa, lloraba y le decía a Dios: <em>"Lloro mi esterilidad."</em> Y entonces — como siempre hace Dios cuando menos se espera — un ángel se apareció a cada uno y les anunció: <strong>"Concebirán y darán a luz, y de su fruto se hablará en todo el mundo."</strong></p>
+
+  <p class="texto">Así nació María. No de un acto heroico ni de una persona perfecta — sino de <strong>la fe perseverante de dos personas normales</strong> que no dejaron de confiar en Dios aunque el tiempo pasaba y la esperanza se hacía difícil. Sus padres la llamaron Mariam. Y la prometieron al servicio de Dios.</p>
+
+  <div class="biblia">
+    <div class="biblia-txt">Dios ha oído tu ruego. Concebirás y darás a luz, y de tu descendencia se hablará en todo el mundo.</div>
+    <div class="biblia-ref">Mensaje del ángel a Santa Ana · Protoevangelio de Santiago</div>
+  </div>
+
+  <p class="texto">Cuando María tenía <strong>tres años</strong>, Joaquín y Ana cumplieron su promesa: la llevaron al Templo de Jerusalén y la entregaron al servicio de Dios. La pequeña María subió sola los escalones del Templo — sin llorar, sin dudar. Los sacerdotes la recibieron. Y allí vivió, aprendiendo las Escrituras, orando, creciendo en gracia y en sabiduría. La Iglesia celebra este momento el <strong>21 de noviembre: la Presentación de María en el Templo.</strong></p>
+
+  <!-- ═══ VIDA DE MARÍA ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✨</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Su <em>vida</em> — de Nazaret al Cielo</h2>
+  <p class="sec-sub">Una vida sencilla, escondida y extraordinaria al mismo tiempo.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">La Anunciación — el Sí que cambió todo</div>
+        <div class="tl-desc">El ángel Gabriel se le aparece en Nazaret. Le dice que será la Madre del Hijo de Dios. María no entiende todo, pero confía. <strong>Dice sí.</strong> En ese momento, el Verbo se hace carne en su seno. Es el momento más importante de la historia humana después de la Creación.</div>
+        <span class="tl-biblia">Lc 1, 26-38 · "Alégrate, llena de gracia, el Señor está contigo."</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">La Visitación — va a servir</div>
+        <div class="tl-desc">Recién embarazada, María no se queda en casa descansando. <strong>Va a ayudar a su prima Isabel</strong>, que también está embarazada (de Juan el Bautista). Camina varios días. Así es María — su primera reacción ante la gracia de Dios es salir a servir.</div>
+        <span class="tl-biblia">Lc 1, 39-56 · "¿Quién soy yo para que me visite la Madre de mi Señor?"</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">El Magnificat — el canto más hermoso</div>
+        <div class="tl-desc">Ante Isabel, María entona un canto de alabanza que la Iglesia reza hasta hoy. No habla de sí misma — habla de Dios. <strong>"Mi alma engrandece al Señor..."</strong> Una mujer joven, humilde, embarazada lejos de casa — y lo primero que hace es cantar de alegría.</div>
+        <span class="tl-biblia">Lc 1, 46-55 · El Magnificat</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Belén — da a luz en un establo</div>
+        <div class="tl-desc">Sin casa, sin cama, sin comodidades. El Hijo de Dios nace en un pesebre. <strong>María lo envuelve en pañales y lo acuesta.</strong> Una imagen de ternura infinita — la Madre de Dios cuidando a Dios como a cualquier bebé. José, los pastores, los Reyes Magos. Todo el cielo celebra.</div>
+        <span class="tl-biblia">Lc 2, 1-20 · "Y dio a luz a su hijo primogénito."</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Huida a Egipto — protege a su hijo</div>
+        <div class="tl-desc">Herodes quiere matar al niño. Un ángel avisa a José en sueños. <strong>En plena noche, María toma a Jesús y huyen.</strong> Una familia de refugiados en Egipto. María conoció el miedo, la incertidumbre, la pobreza. No fue una vida fácil ni glamorosa.</div>
+        <span class="tl-biblia">Mt 2, 13-15</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">30 años de vida escondida en Nazaret</div>
+        <div class="tl-desc">La mayor parte de la vida de Jesús fue <strong>invisible, ordinaria, callada</strong> — y María estuvo ahí. Cocinando, cosiendo, lavando, cuidando. Siendo madre. La Iglesia llama a esto "la vida oculta". María es la patrona de las madres de familia por esto mismo.</div>
+        <span class="tl-biblia">Lc 2, 51 · "Su madre conservaba todas estas cosas en su corazón."</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Las Bodas de Caná — el primer milagro</div>
+        <div class="tl-desc">En una boda, se acaba el vino. María <strong>se da cuenta antes que nadie</strong> y va con Jesús: "No tienen vino." Jesús dice que aún no es su hora. Pero María, sin dudar, le dice a los sirvientes: "Hagan lo que él les diga." <strong>Y Jesús hace el primer milagro.</strong> Porque su madre se lo pidió.</div>
+        <span class="tl-biblia">Jn 2, 1-11 · "Hagan lo que él les diga."</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot blue"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Al pie de la Cruz — el mayor dolor</div>
+        <div class="tl-desc">Mientras los discípulos huían, <strong>María se quedó.</strong> Al pie de la Cruz, vio morir a su hijo. No huyó. No cerró los ojos. Estuvo ahí. Y Jesús, desde la Cruz, le dijo a Juan: "Ahí tienes a tu madre." En ese momento, <strong>María se convirtió en madre de todos nosotros.</strong></div>
+        <span class="tl-biblia">Jn 19, 25-27 · "Mujer, ahí tienes a tu hijo."</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Pentecostés — en medio de la Iglesia naciente</div>
+        <div class="tl-desc">Después de la Resurrección, María está con los apóstoles en el Cenáculo. Cuando el Espíritu Santo desciende, <strong>ella está ahí, orando con ellos.</strong> Es la madre de la Iglesia — desde el primer día.</div>
+        <span class="tl-biblia">Hch 1, 14 · "Todos ellos, con María, perseveraban en la oración."</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot blue"></div></div>
+      <div class="tl-content" style="background:linear-gradient(135deg,var(--blue-light),rgba(245,230,224,0.3));border-color:rgba(140,168,200,0.3);">
+        <div class="tl-titulo" style="color:var(--blue-mary);">⭐ La Asunción — al Cielo en cuerpo y alma</div>
+        <div class="tl-desc">Al final de su vida terrena, María <strong>fue llevada al Cielo en cuerpo y alma</strong> — sin pasar por la corrupción del sepulcro. Es el dogma de la Asunción, proclamado en 1950. Ahora reina junto a Jesús, viva y gloriosa, como nuestra madre en el Cielo.</div>
+        <span class="tl-biblia">Dogma proclamado por el Papa Pío XII · 1 de noviembre de 1950</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ AMOR ENTRE JESÚS Y MARÍA ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">❤️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">El amor entre <em>Jesús y María</em></h2>
+
+  <p class="texto">Jesús amó a su madre con el amor más puro y completo que un hijo puede tener — porque Él mismo es el Amor encarnado. Y María amó a Jesús con todo su ser — antes de que naciera, mientras crecía, cuando predicaba, cuando moría y cuando resucitó.</p>
+
+  <div class="interc-item">
+    <span class="interc-ikon">🍼</span>
+    <div>
+      <div class="interc-titulo">Jesús se hizo bebé en sus brazos</div>
+      <div class="interc-txt">Dios, el Creador del universo, eligió pasar nueve meses en el seno de María y luego ser cargado, amamantado y arrullado por ella. <strong>No hay imagen de amor más profunda que esa.</strong></div>
+    </div>
+  </div>
+  <div class="interc-item">
+    <span class="interc-ikon">👂</span>
+    <div>
+      <div class="interc-titulo">Jesús la escuchó — el milagro de Caná</div>
+      <div class="interc-txt">Cuando María le dijo "no tienen vino", Jesús anticipó su hora pública por amor a ella. <strong>La intercesión de María funciona porque Jesús la ama y escucha.</strong></div>
+    </div>
+  </div>
+  <div class="interc-item">
+    <span class="interc-ikon">✝️</span>
+    <div>
+      <div class="interc-titulo">Desde la Cruz la cuidó</div>
+      <div class="interc-txt">Con el cuerpo destrozado, en sus últimas horas, Jesús pensó en su madre. Le confió a Juan para que la cuidara. <strong>Ese fue uno de sus últimos actos de amor antes de morir.</strong></div>
+    </div>
+  </div>
+  <div class="interc-item">
+    <span class="interc-ikon">🌅</span>
+    <div>
+      <div class="interc-titulo">La primera en verlo resucitado</div>
+      <div class="interc-txt">La tradición de la Iglesia sostiene que Jesús resucitado se apareció primero a su madre — antes que a María Magdalena, antes que a los apóstoles. <strong>El primer abrazo de la Resurrección fue para ella.</strong></div>
+    </div>
+  </div>
+
+  <!-- ═══ INTERCESIÓN ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🙏</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Cómo <em>intercede</em> por nosotros</h2>
+
+  <p class="texto">María no da gracias por cuenta propia — <strong>ella lleva nuestras peticiones a Jesús.</strong> Como en Caná, cuando ve una necesidad, no se queda callada. Va con su Hijo y le dice. Y Jesús la escucha.</p>
+
+  <div class="biblia">
+    <div class="biblia-txt">Hagan lo que él les diga.</div>
+    <div class="biblia-ref">Juan 2, 5 · Las últimas palabras de María registradas en la Biblia — y son para señalarnos a Jesús</div>
+  </div>
+
+  <p class="texto">Las últimas palabras de María en la Biblia son las más importantes que pudo decir: <em>"Hagan lo que él les diga."</em> No habla de sí misma. <strong>Señala a Jesús.</strong> Eso es la intercesión mariana — María nunca nos lleva a ella misma. Siempre nos lleva a su Hijo.</p>
+
+  <div class="interc-item">
+    <span class="interc-ikon">🌹</span>
+    <div>
+      <div class="interc-titulo">La intercesión de una madre</div>
+      <div class="interc-txt">¿Por qué pedirle a María si podemos ir directamente a Jesús? Podemos ir directamente — y debemos. Pero también podemos pedir la ayuda de una madre. <strong>Una madre que está en el Cielo, que ama a su Hijo perfectamente y que nos quiere a todos como hijos suyos.</strong></div>
+    </div>
+  </div>
+  <div class="interc-item">
+    <span class="interc-ikon">💙</span>
+    <div>
+      <div class="interc-titulo">Mediadora de todas las gracias</div>
+      <div class="interc-txt">La Iglesia la llama "Mediadora" — no porque ella sea igual a Jesús, sino porque <strong>Dios quiso que las gracias de Jesús llegaran a nosotros también a través de ella</strong>, como Jesús mismo llegó a nosotros a través de ella.</div>
+    </div>
+  </div>
+
+  <!-- ═══ DOGMAS ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⭐</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Los 4 dogmas <em>marianos</em></h2>
+  <p class="sec-sub">Son verdades que la Iglesia ha declarado de fe — no opiniones ni devociones personales. Son certezas.</p>
+
+  <div class="dogma-card dogma-open" id="d1">
+    <div class="dogma-head" onclick="toggleDogma('d1')">
+      <span class="dogma-ikon">👑</span>
+      <div class="dogma-meta">
+        <div class="dogma-num">Dogma 1</div>
+        <div class="dogma-nombre">Maternidad Divina</div>
+        <div class="dogma-frase">María es verdaderamente la Madre de Dios</div>
+      </div>
+      <span class="dogma-chev">▼</span>
+    </div>
+    <div class="dogma-body">
+      <div class="dogma-txt">María no es solo la madre del hombre Jesús — es la Madre de Dios hecho hombre. <strong>Jesús es una sola persona: Dios.</strong> Por eso la Iglesia le da a María el título de <em>Theotókos</em> (Madre de Dios), definido en el Concilio de Éfeso en el año 431. Quien niega esto, separa a Jesús en dos — y eso es herejía.</div>
+      <div class="biblia">
+        <div class="biblia-txt">¿Quién soy yo para que me visite la Madre de mi Señor?</div>
+        <div class="biblia-ref">Lucas 1, 43 · Isabel reconoce a María como Madre del Señor</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dogma-card" id="d2">
+    <div class="dogma-head" onclick="toggleDogma('d2')">
+      <span class="dogma-ikon">🕊️</span>
+      <div class="dogma-meta">
+        <div class="dogma-num">Dogma 2</div>
+        <div class="dogma-nombre">Virginidad Perpetua</div>
+        <div class="dogma-frase">Virgen antes, durante y después del parto</div>
+      </div>
+      <span class="dogma-chev">▼</span>
+    </div>
+    <div class="dogma-body">
+      <div class="dogma-txt">María fue virgen siempre — no solo cuando concibió a Jesús. <strong>Consagró su cuerpo y su vida enteramente a Dios.</strong> El Concilio de Letrán (649) definió este dogma. Es el más antiguo de los cuatro. Su virginidad no es limitación — es totalidad de entrega.</div>
+      <div class="biblia">
+        <div class="biblia-txt">¿Cómo será esto, pues no conozco varón?</div>
+        <div class="biblia-ref">Lucas 1, 34 · María pregunta al ángel</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dogma-card" id="d3">
+    <div class="dogma-head" onclick="toggleDogma('d3')">
+      <span class="dogma-ikon">🌸</span>
+      <div class="dogma-meta">
+        <div class="dogma-num">Dogma 3</div>
+        <div class="dogma-nombre">Inmaculada Concepción</div>
+        <div class="dogma-frase">Preservada del pecado original desde su concepción</div>
+      </div>
+      <span class="dogma-chev">▼</span>
+    </div>
+    <div class="dogma-body">
+      <div class="dogma-txt">María nació sin pecado original — no porque lo mereciera, sino porque <strong>Dios la preservó en previsión de los méritos de su Hijo.</strong> Era necesario que la morada del Hijo de Dios fuera inmaculada. El Papa Pío IX definió este dogma el 8 de diciembre de 1854. Cuatro años después, en Lourdes, la Virgen le dijo a Bernadette: "Yo soy la Inmaculada Concepción." — confirmando el dogma.</div>
+      <div class="biblia">
+        <div class="biblia-txt">Alégrate, llena de gracia, el Señor está contigo.</div>
+        <div class="biblia-ref">Lucas 1, 28 · "Llena de gracia" — sin vacío, sin pecado</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dogma-card" id="d4">
+    <div class="dogma-head" onclick="toggleDogma('d4')">
+      <span class="dogma-ikon">☁️</span>
+      <div class="dogma-meta">
+        <div class="dogma-num">Dogma 4</div>
+        <div class="dogma-nombre">Asunción al Cielo</div>
+        <div class="dogma-frase">Llevada al Cielo en cuerpo y alma</div>
+      </div>
+      <span class="dogma-chev">▼</span>
+    </div>
+    <div class="dogma-body">
+      <div class="dogma-txt">Al terminar su vida terrena, María <strong>fue llevada al Cielo en cuerpo y alma</strong> — sin pasar por la corrupción del sepulcro. Es anticipación de lo que nos espera a todos en la resurrección final. El Papa Pío XII definió este dogma el 1 de noviembre de 1950. Se celebra el 15 de agosto. María ya vive plenamente resucitada, junto a su Hijo, intercediendo por nosotros.</div>
+      <div class="biblia">
+        <div class="biblia-txt">Desde ahora me llamarán bienaventurada todas las generaciones.</div>
+        <div class="biblia-ref">Lucas 1, 48 · El Magnificat de María</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SUS TÍTULOS ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">👑</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Sus <em>títulos</em> más hermosos</h2>
+  <p class="sec-sub">La Iglesia le ha dado muchos títulos a María — cada uno revela algo de quién es.</p>
+
+  <div class="titulos-grid">
+    <div class="titulo-item"><span class="titulo-ikon">👑</span><div><div class="titulo-nombre">Reina del Cielo</div><div class="titulo-exp">Reina porque es Madre del Rey. Reina y Madre — no solo una.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">🌅</span><div><div class="titulo-nombre">Aurora de la Salvación</div><div class="titulo-exp">Antes de Jesús (el Sol), vino María (la aurora). Anuncia la luz.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">🌊</span><div><div class="titulo-nombre">Estrella del Mar</div><div class="titulo-exp">Guía a los navegantes en la oscuridad hacia el puerto seguro.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">🏠</span><div><div class="titulo-nombre">Arca de la Alianza</div><div class="titulo-exp">Como el Arca contenía la Ley de Dios, ella contuvo a Dios mismo.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">🌹</span><div><div class="titulo-nombre">Rosa Mística</div><div class="titulo-exp">La más bella de todas las criaturas. Rosa sin espinas del pecado.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">⛪</span><div><div class="titulo-nombre">Madre de la Iglesia</div><div class="titulo-exp">Desde la Cruz, Jesús la dio como madre a Juan — y a todos nosotros.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">🕊️</span><div><div class="titulo-nombre">Corredentora</div><div class="titulo-exp">Sufrió junto a su Hijo. No redimió, pero cooperó con amor total.</div></div></div>
+    <div class="titulo-item"><span class="titulo-ikon">🛡️</span><div><div class="titulo-nombre">Refugio de Pecadores</div><div class="titulo-exp">Nadie que acude a ella se va sin consuelo. Nadie es demasiado pecador para ella.</div></div></div>
+  </div>
+
+  <!-- ═══ APARICIONES ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✨</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Sus <em>apariciones</em></h2>
+  <p class="sec-sub">A lo largo de la historia, María ha venido a visitar a sus hijos. Siempre con el mismo mensaje: conversión, oración y paz.</p>
+
+  <div class="nota"><strong>Nota importante:</strong> Las apariciones marianas son "revelaciones privadas" — no son dogmas de fe. Un católico puede creer en ellas o no. Pero cuando la Iglesia las aprueba, es porque ha verificado su autenticidad con rigor. Y los frutos — millones de conversiones — hablan solos.</div>
+
+  <!-- Guadalupe -->
+  <div class="aparicion-card ap-open" id="a1">
+    <div class="ap-head" onclick="toggleAp('a1')">
+      <span class="ap-ikon">🇲🇽</span>
+      <div class="ap-meta">
+        <div class="ap-lugar">México · 1531</div>
+        <div class="ap-nombre">Nuestra Señora de Guadalupe</div>
+        <div class="ap-fecha">La aparición que evangelizó un continente</div>
+      </div>
+      <span class="ap-chev">▼</span>
+    </div>
+    <div class="ap-body">
+      <div class="ap-txt">La Virgen se apareció <strong>cuatro veces</strong> al indio Juan Diego en el cerro del Tepeyac, Ciudad de México. Le pidió que construyeran una iglesia. El obispo no le creyó hasta que la Virgen dejó impresa su imagen milagrosamente en el ayate (manto) de Juan Diego. <strong>Esa imagen existe hoy, 500 años después</strong>, en la Basílica de Guadalupe — la más visitada del mundo después del Vaticano.</div>
+      <div class="ap-txt">El milagro científicamente inexplicable: la imagen en el ayate no tiene pinceladas, no tiene capa de barniz y en los ojos de la Virgen pueden verse reflejadas las figuras de las personas que estaban presentes cuando Juan Diego lo abrió. <strong>Después de las apariciones, 8 millones de indígenas se convirtieron al catolicismo en 7 años.</strong></div>
+      <div class="ap-mensaje">
+        <div class="ap-mensaje-lbl">Sus palabras a Juan Diego</div>
+        <div class="ap-mensaje-txt">"¿No estoy yo aquí, que soy tu Madre? ¿No estás bajo mi sombra? ¿No soy yo tu salud? ¿No estás por ventura en mi regazo?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lourdes -->
+  <div class="aparicion-card" id="a2">
+    <div class="ap-head" onclick="toggleAp('a2')">
+      <span class="ap-ikon">🇫🇷</span>
+      <div class="ap-meta">
+        <div class="ap-lugar">Francia · 1858</div>
+        <div class="ap-nombre">Nuestra Señora de Lourdes</div>
+        <div class="ap-fecha">El agua que sana — millones de peregrinos cada año</div>
+      </div>
+      <span class="ap-chev">▼</span>
+    </div>
+    <div class="ap-body">
+      <div class="ap-txt">Se apareció <strong>18 veces</strong> a Bernadette Soubirous, una niña pobre de 14 años en una gruta de los Pirineos franceses. Bernadette era analfabeta — no podía haber inventado el mensaje teológico que recibió. La Virgen se identificó diciendo: <strong>"Yo soy la Inmaculada Concepción"</strong> — cuatro años después de que el Papa definiera ese dogma.</div>
+      <div class="ap-txt">En la gruta brotó un manantial. Desde entonces, <strong>más de 7,000 curaciones inexplicables han sido registradas en Lourdes</strong>, de las cuales la Iglesia ha reconocido oficialmente 70 como milagros. Más de 6 millones de personas visitan Lourdes cada año. Bernadette, canonizada en 1933, murió a los 35 años. Su cuerpo se conserva incorrupto.</div>
+      <div class="ap-mensaje">
+        <div class="ap-mensaje-lbl">Sus palabras en Lourdes</div>
+        <div class="ap-mensaje-txt">"Penitencia, penitencia, penitencia. Rezad a Dios por los pecadores."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fátima -->
+  <div class="aparicion-card" id="a3">
+    <div class="ap-head" onclick="toggleAp('a3')">
+      <span class="ap-ikon">🇵🇹</span>
+      <div class="ap-meta">
+        <div class="ap-lugar">Portugal · 1917</div>
+        <div class="ap-nombre">Nuestra Señora de Fátima</div>
+        <div class="ap-fecha">El mensaje más urgente para el mundo moderno</div>
+      </div>
+      <span class="ap-chev">▼</span>
+    </div>
+    <div class="ap-body">
+      <div class="ap-txt">Se apareció <strong>6 veces</strong> (los días 13 de cada mes, de mayo a octubre) a tres pastorcitos: Lucía, Francisco y Jacinta. Portugal, 1917 — en plena Primera Guerra Mundial. El mensaje fue urgente: <strong>rezar el Rosario, hacer penitencia, consagrarse al Corazón Inmaculado de María</strong> para que hubiera paz en el mundo.</div>
+      <div class="ap-txt">El 13 de octubre de 1917, ante 70,000 personas — muchos de ellos escépticos y periodistas ateos — el sol "bailó" durante varios minutos: giró, cambió de colores y pareció precipitarse hacia la tierra. <strong>"El milagro del sol"</strong> fue documentado por periódicos de todo el mundo. Los tres secretos de Fátima incluyen visiones del infierno, la conversión de Rusia y la persecución de la Iglesia.</div>
+      <div class="ap-mensaje">
+        <div class="ap-mensaje-lbl">Sus palabras en Fátima</div>
+        <div class="ap-mensaje-txt">"Rezad, rezad mucho y haced sacrificios por los pecadores, pues muchas almas van al infierno porque no hay quien se sacrifique y ruegue por ellas."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medalla Milagrosa -->
+  <div class="aparicion-card" id="a4">
+    <div class="ap-head" onclick="toggleAp('a4')">
+      <span class="ap-ikon">🏅</span>
+      <div class="ap-meta">
+        <div class="ap-lugar">Francia · 1830</div>
+        <div class="ap-nombre">La Medalla Milagrosa</div>
+        <div class="ap-fecha">La medalla que ha dado la vuelta al mundo</div>
+      </div>
+      <span class="ap-chev">▼</span>
+    </div>
+    <div class="ap-body">
+      <div class="ap-txt">La Virgen se apareció a <strong>Santa Catalina Labouré</strong>, una joven novicia de las Hijas de la Caridad en París. Le mostró una imagen de sí misma y pidió que se acuñara una medalla con esa imagen, prometiendo gracias especiales a quienes la usaran con fe.</div>
+      <div class="ap-txt"><strong>Desde 1832, se han distribuido más de mil millones de medallas</strong> en todo el mundo. Los testimonios de conversiones y curaciones son innumerables. La más famosa: el judío Alfonso Ratisbonne, que odiaba a la Virgen y apostó que la usaría por desafío — y tuvo una aparición que lo convirtió instantáneamente al catolicismo.</div>
+      <div class="ap-mensaje">
+        <div class="ap-mensaje-lbl">La promesa de María</div>
+        <div class="ap-mensaje-txt">"Todas las personas que lleven esta medalla recibirán grandes gracias. Las gracias serán abundantes para quienes la lleven con confianza."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medjugorje -->
+  <div class="aparicion-card" id="a5">
+    <div class="ap-head" onclick="toggleAp('a5')">
+      <span class="ap-ikon">🕊️</span>
+      <div class="ap-meta">
+        <div class="ap-lugar">Bosnia y Herzegovina · desde 1981</div>
+        <div class="ap-nombre">Nuestra Señora de Medjugorje</div>
+        <div class="ap-fecha">Las apariciones más largas de la historia</div>
+      </div>
+      <span class="ap-chev">▼</span>
+    </div>
+    <div class="ap-body">
+      <div class="ap-txt">Desde el 24 de junio de 1981, seis jóvenes croatas dicen ver a la Virgen en Medjugorje. Las apariciones continúan hasta hoy — más de 40 años. La Virgen se presenta como <strong>"Reina de la Paz"</strong>. Sus mensajes son siempre los mismos: oración, Rosario, ayuno, Confesión y paz.</div>
+      <div class="ap-txt">En 2024, el Papa Francisco autorizó las peregrinaciones a Medjugorje y reconoció los frutos espirituales — sin pronunciarse aún sobre la sobrenaturalidad de las apariciones mismas. <strong>Millones de personas han encontrado su fe o se han convertido allí.</strong> Es hoy uno de los centros de peregrinación más visitados del mundo.</div>
+      <div class="ap-mensaje">
+        <div class="ap-mensaje-lbl">Mensaje de la Virgen de Medjugorje</div>
+        <div class="ap-mensaje-txt">"Queridos hijos: Os llamo a la paz. Vivid la paz en vuestro corazón y en vuestro derredor, para que todos reconozcan la paz que no viene de vosotros sino de Dios."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ POR QUÉ TANTAS VÍRGENES ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌍</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Por qué hay tantas <em>Vírgenes diferentes</em>?</h2>
+
+  <div class="intro-box">
+    <strong>Hay una sola María.</strong> Lo que hay "diferente" son las distintas maneras en que ella se ha manifestado o ha sido venerada en distintos lugares y culturas. Como una madre que tiene muchos hijos — ella es la misma, pero cada hijo la conoce desde su propia experiencia.
+  </div>
+
+  <p class="texto">Cuando la Virgen se aparece en México, lleva rasgos mestizos y manto de estrellas. Cuando se aparece en Europa, lleva corona y manto azul. Cuando los pescadores la invocan, la llaman "Estrella del Mar". Cuando los enfermos la buscan, van a Lourdes. <strong>Es la misma Madre que se adapta a cada pueblo, a cada corazón, a cada necesidad.</strong></p>
+
+  <div class="advoc-grid">
+    <div class="advoc"><span class="advoc-ikon">🇲🇽</span><div class="advoc-nombre">Virgen de Guadalupe</div><div class="advoc-pais">México · 1531</div></div>
+    <div class="advoc"><span class="advoc-ikon">🇫🇷</span><div class="advoc-nombre">Ntra. Sra. de Lourdes</div><div class="advoc-pais">Francia · 1858</div></div>
+    <div class="advoc"><span class="advoc-ikon">🇵🇹</span><div class="advoc-nombre">Ntra. Sra. de Fátima</div><div class="advoc-pais">Portugal · 1917</div></div>
+    <div class="advoc"><span class="advoc-ikon">🇪🇸</span><div class="advoc-nombre">Virgen del Pilar</div><div class="advoc-pais">España · siglo I</div></div>
+    <div class="advoc"><span class="advoc-ikon">🇧🇷</span><div class="advoc-nombre">Ntra. Sra. Aparecida</div><div class="advoc-pais">Brasil · 1717</div></div>
+    <div class="advoc"><span class="advoc-ikon">🇵🇱</span><div class="advoc-nombre">Ntra. Sra. de Czestochowa</div><div class="advoc-pais">Polonia · siglo XIV</div></div>
+    <div class="advoc"><span class="advoc-ikon">🏅</span><div class="advoc-nombre">Medalla Milagrosa</div><div class="advoc-pais">Francia · 1830</div></div>
+    <div class="advoc"><span class="advoc-ikon">🕊️</span><div class="advoc-nombre">Ntra. Sra. de Medjugorje</div><div class="advoc-pais">Bosnia · 1981</div></div>
+    <div class="advoc"><span class="advoc-ikon">🌿</span><div class="advoc-nombre">Ntra. Sra. del Carmen</div><div class="advoc-pais">Monte Carmelo · siglo XIII</div></div>
+    <div class="advoc"><span class="advoc-ikon">📿</span><div class="advoc-nombre">Ntra. Sra. del Rosario</div><div class="advoc-pais">Universal · siglo XIII</div></div>
+    <div class="advoc"><span class="advoc-ikon">🌎</span><div class="advoc-nombre">Ntra. Sra. de la Paz</div><div class="advoc-pais">El Salvador · patrona</div></div>
+    <div class="advoc"><span class="advoc-ikon">🌸</span><div class="advoc-nombre">Inmaculada Concepción</div><div class="advoc-pais">Universal · patrona de Guatemala</div></div>
+  </div>
+
+  <!-- ═══ ORACIÓN FINAL ═══ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+
+  <div class="oracion-final">
+    <div class="oracion-lbl">La oración más antigua a María · Siglo III</div>
+    <div class="oracion-txt">
+      Bajo tu amparo nos acogemos,<br>
+      santa Madre de Dios.<br>
+      No deseches las súplicas<br>
+      que te dirigimos en nuestras necesidades;<br>
+      antes bien, líbranos siempre<br>
+      de todos los peligros,<br>
+      oh Virgen gloriosa y bendita.<br><br>
+      <em>Sub Tuum Praesidium</em> 🌸
+    </div>
+  </div>
+
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · A los pies de María</p></footer>
+
+<script>
+function toggleDogma(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('dogma-open');
+  document.querySelectorAll('.dogma-card').forEach(x=>x.classList.remove('dogma-open'));
+  if(!open){c.classList.add('dogma-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+function toggleAp(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('ap-open');
+  document.querySelectorAll('.aparicion-card').forEach(x=>x.classList.remove('ap-open'));
+  if(!open){c.classList.add('ap-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+</script>
+</body>
+</html>
