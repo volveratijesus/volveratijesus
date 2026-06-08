@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Espíritu Santo · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;--blue:#8ca8c8;--fire:#e8956a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,149,106,0.12) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(60px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(140,168,200,0.15) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(50px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO */
+.hero{text-align:center;padding:44px 0 36px;}
+.hero-llama{font-size:52px;display:block;margin-bottom:14px;animation:flicker 3s ease-in-out infinite;}
+@keyframes flicker{0%,100%{transform:scale(1) rotate(-2deg);}33%{transform:scale(1.08) rotate(2deg);}66%{transform:scale(0.96) rotate(-1deg);}}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.hero-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,7vw,66px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.hero-titulo em{font-style:italic;color:var(--mauve);}
+.hero-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:500px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* CITA */
+.cita-hero{background:linear-gradient(135deg,rgba(232,149,106,0.1),rgba(232,196,184,0.15));border:1px solid rgba(232,149,106,0.25);border-radius:20px;padding:22px 26px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden;}
+.cita-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(232,149,106,0.4),var(--soft-gold),rgba(232,149,106,0.4));}
+.cita-txt{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--warm-brown);line-height:1.8;margin-bottom:8px;}
+.cita-ref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:20px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:30px 0 16px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:18px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:18px;line-height:1.7;}
+.texto{font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:14px;}
+.texto strong{color:var(--warm-brown);}
+.texto em{font-style:italic;color:var(--mauve);}
+
+/* BIBLIA */
+.biblia{background:rgba(255,255,255,0.6);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0;}
+.biblia-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+.biblia-ref{font-size:11px;color:var(--text-light);margin-top:5px;font-weight:300;}
+
+/* NOMBRES GRID */
+.nombres-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.nombres-grid{grid-template-columns:1fr;}}
+.nombre-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.nombre-ikon{font-size:24px;flex-shrink:0;}
+.nombre-titulo{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm-brown);margin-bottom:3px;}
+.nombre-exp{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.6;}
+
+/* TRINIDAD */
+.trinidad-box{background:linear-gradient(135deg,rgba(232,149,106,0.08),rgba(140,168,200,0.1),rgba(184,201,176,0.1));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:20px 22px;margin:16px 0 24px;}
+.trinidad-titulo{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--warm-brown);margin-bottom:16px;text-align:center;}
+.trinidad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:480px){.trinidad-grid{grid-template-columns:1fr;}}
+.trinidad-persona{background:rgba(255,255,255,0.6);border-radius:14px;padding:14px 12px;text-align:center;}
+.trinidad-ikon{font-size:28px;display:block;margin-bottom:8px;}
+.trinidad-nombre{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm-brown);margin-bottom:4px;}
+.trinidad-desc{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.5;}
+.trinidad-esp{border:2px solid rgba(232,149,106,0.35);}
+
+/* MOMENTOS BIBLIA */
+.momento-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:16px;overflow:hidden;margin-bottom:10px;}
+.momento-head{display:flex;align-items:center;gap:14px;padding:15px 18px;cursor:pointer;user-select:none;}
+.momento-open .momento-head{border-bottom:1px solid rgba(232,196,184,0.2);}
+.momento-ikon{font-size:26px;flex-shrink:0;}
+.momento-meta{flex:1;}
+.momento-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:2px;}
+.momento-titulo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);}
+.momento-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.momento-open .momento-chev{transform:rotate(180deg);}
+.momento-body{display:none;padding:16px 18px 18px;}
+.momento-open .momento-body{display:block;}
+.momento-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:10px;}
+.momento-txt strong{color:var(--warm-brown);}
+
+/* DONES */
+.dones-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.dones-grid{grid-template-columns:1fr;}}
+.don-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.don-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:4px;}
+.don-nombre{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);margin-bottom:5px;}
+.don-exp{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.6;}
+.don-vida{font-size:12px;color:var(--sage-dark);font-style:italic;margin-top:6px;line-height:1.5;}
+
+/* FRUTOS */
+.frutos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 24px;}
+@media(max-width:540px){.frutos-grid{grid-template-columns:repeat(2,1fr);}}
+.fruto{background:rgba(255,255,255,0.6);border:1px solid rgba(184,201,176,0.3);border-radius:12px;padding:12px;text-align:center;}
+.fruto-ikon{font-size:22px;display:block;margin-bottom:6px;}
+.fruto-nombre{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--warm-brown);margin-bottom:3px;}
+.fruto-exp{font-size:11px;color:var(--text-light);font-weight:300;line-height:1.4;}
+
+/* CÓMO RECIBIRLO */
+.recibir-lista{display:flex;flex-direction:column;gap:10px;margin:14px 0 24px;}
+.recibir-item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.recibir-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(232,149,106,0.6),rgba(200,169,110,0.6));color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;}
+.recibir-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.recibir-txt strong{color:var(--warm-brown);}
+
+/* NOTA */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:18px;}
+.nota strong{color:var(--warm-brown);}
+
+/* ORACIÓN */
+.oracion-box{background:linear-gradient(135deg,rgba(232,149,106,0.1),rgba(232,196,184,0.15));border:1px solid rgba(232,149,106,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:8px;position:relative;overflow:hidden;}
+.oracion-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,rgba(232,149,106,0.4),var(--soft-gold),rgba(232,149,106,0.4));}
+.oracion-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.oracion-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:2.0;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-llama">🔥</span>
+    <p class="eyebrow">Conoce tu Fe · La Santísima Trinidad</p>
+    <h1 class="hero-titulo">El <em>Espíritu Santo</em></h1>
+    <p class="hero-sub">La tercera Persona de la Trinidad. El gran desconocido. El que vive en ti.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <div class="cita-hero">
+    <div class="cita-txt">El Espíritu del Señor llena el universo<br>y, como tiene conocimiento de todo, escucha todo.</div>
+    <div class="cita-ref">Sabiduría 1, 7</div>
+  </div>
+
+  <!-- QUÉ ES -->
+  <div class="intro-box">
+    <strong>¿Quién es el Espíritu Santo?</strong> No es una fuerza ni una energía. No es un símbolo. Es una <strong>Persona</strong> — la tercera Persona de la Santísima Trinidad. Es tan Dios como el Padre y como el Hijo. Y lo más asombroso: <strong>vive en ti</strong> desde el día de tu Bautismo. No está lejos. Está dentro.
+  </div>
+
+  <!-- LA TRINIDAD -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✝️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Su lugar en la <em>Trinidad</em></h2>
+  <p class="sec-sub">Un solo Dios, tres Personas. No tres dioses — uno solo. Es el mayor misterio de la fe cristiana.</p>
+
+  <div class="trinidad-box">
+    <div class="trinidad-titulo">La Santísima Trinidad</div>
+    <div class="trinidad-grid">
+      <div class="trinidad-persona">
+        <span class="trinidad-ikon">☀️</span>
+        <div class="trinidad-nombre">El Padre</div>
+        <div class="trinidad-desc">El origen de todo. Creador. Fuente de la Trinidad.</div>
+      </div>
+      <div class="trinidad-persona">
+        <span class="trinidad-ikon">✝️</span>
+        <div class="trinidad-nombre">El Hijo</div>
+        <div class="trinidad-desc">La Palabra hecha carne. Jesús. Redentor del mundo.</div>
+      </div>
+      <div class="trinidad-persona trinidad-esp">
+        <span class="trinidad-ikon">🔥</span>
+        <div class="trinidad-nombre">El Espíritu Santo</div>
+        <div class="trinidad-desc">El Amor entre el Padre y el Hijo. Santificador. Vive en nosotros.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="texto">El Espíritu Santo <strong>procede del Padre y del Hijo</strong> — es el amor eterno que fluye entre ellos. Si el Padre es el amante y el Hijo el amado, el Espíritu Santo es el amor mismo que los une. No es menor que el Padre ni menor que el Hijo. Es <strong>igual en dignidad, igual en gloria, igual en eternidad.</strong></p>
+
+  <div class="biblia">
+    <div class="biblia-txt">Bautizándolos en el nombre del Padre y del Hijo y del Espíritu Santo.</div>
+    <div class="biblia-ref">Mateo 28, 19 · La fórmula trinitaria del Bautismo</div>
+  </div>
+
+  <!-- SUS NOMBRES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📖</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Sus <em>nombres</em> en la Biblia</h2>
+  <p class="sec-sub">La Biblia lo llama de muchas maneras — cada nombre revela algo de quién es.</p>
+
+  <div class="nombres-grid">
+    <div class="nombre-card"><span class="nombre-ikon">🕊️</span><div><div class="nombre-titulo">Espíritu Santo</div><div class="nombre-exp">Su nombre más usado. Santo porque es Dios mismo, y porque santifica — hace santos a quienes lo acogen.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">🤝</span><div><div class="nombre-titulo">Paráclito / Consolador</div><div class="nombre-exp">Del griego Parákletos: "el llamado junto a uno". El que viene a tu lado cuando sufres, el que te defiende y consuela.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">💡</span><div><div class="nombre-titulo">Espíritu de Verdad</div><div class="nombre-exp">Jesús lo llama así. Guía a los creyentes hacia toda la verdad — ilumina la mente, no deja engañarse.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">🎁</span><div><div class="nombre-titulo">Don de Dios</div><div class="nombre-exp">El mayor regalo que Dios puede dar: darse a sí mismo. El Espíritu Santo es Dios que se regala a nosotros.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">💧</span><div><div class="nombre-titulo">Agua Viva</div><div class="nombre-exp">Jesús prometió ríos de agua viva a quien creyera — y Juan explica que hablaba del Espíritu Santo.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">🔥</span><div><div class="nombre-titulo">Fuego</div><div class="nombre-exp">En Pentecostés llegó como lenguas de fuego. Purifica, calienta, ilumina y transforma todo lo que toca.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">🌬️</span><div><div class="nombre-titulo">Viento / Soplo</div><div class="nombre-exp">"Pneuma" en griego — viento, soplo, aliento. Dios sopló vida en Adán. El Espíritu sopla nueva vida en nosotros.</div></div></div>
+    <div class="nombre-card"><span class="nombre-ikon">🫒</span><div><div class="nombre-titulo">Santo Crisma / Unción</div><div class="nombre-exp">El aceite sagrado con que se unge — Bautismo, Confirmación, Orden. Ungir es consagrar, apartar para Dios.</div></div></div>
+  </div>
+
+  <!-- EN LA BIBLIA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✨</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Sus momentos más <em>grandes en la Biblia</em></h2>
+  <p class="sec-sub">Desde la Creación hasta Pentecostés — el Espíritu Santo siempre ha estado ahí.</p>
+
+  <div class="momento-card momento-open" id="e1">
+    <div class="momento-head" onclick="toggleMomento('e1')">
+      <span class="momento-ikon">🌍</span>
+      <div class="momento-meta">
+        <div class="momento-tag">Génesis</div>
+        <div class="momento-titulo">En la Creación — al principio de todo</div>
+      </div>
+      <span class="momento-chev">▼</span>
+    </div>
+    <div class="momento-body">
+      <div class="momento-txt">El primer versículo de la Biblia lo menciona: <em>"El espíritu de Dios aleteaba sobre las aguas."</em> <strong>El Espíritu Santo estuvo en el primer momento de la Creación.</strong> No llegó después — estaba desde el principio, como Dios que es.</div>
+      <div class="biblia"><div class="biblia-txt">El espíritu de Dios aleteaba sobre la superficie de las aguas.</div><div class="biblia-ref">Génesis 1, 2</div></div>
+    </div>
+  </div>
+
+  <div class="momento-card" id="e2">
+    <div class="momento-head" onclick="toggleMomento('e2')">
+      <span class="momento-ikon">🌸</span>
+      <div class="momento-meta">
+        <div class="momento-tag">Lucas 1</div>
+        <div class="momento-titulo">La Anunciación — el momento de la Encarnación</div>
+      </div>
+      <span class="momento-chev">▼</span>
+    </div>
+    <div class="momento-body">
+      <div class="momento-txt">Cuando el ángel le anuncia a María que concebirá al Hijo de Dios, ella pregunta cómo es posible siendo virgen. El ángel responde: <strong>"El Espíritu Santo vendrá sobre ti."</strong> El Espíritu Santo hizo posible la Encarnación — Dios haciéndose hombre. Sin el Espíritu Santo, no hay Jesús.</div>
+      <div class="biblia"><div class="biblia-txt">El Espíritu Santo vendrá sobre ti y el poder del Altísimo te cubrirá con su sombra.</div><div class="biblia-ref">Lucas 1, 35</div></div>
+    </div>
+  </div>
+
+  <div class="momento-card" id="e3">
+    <div class="momento-head" onclick="toggleMomento('e3')">
+      <span class="momento-ikon">🕊️</span>
+      <div class="momento-meta">
+        <div class="momento-tag">Mateo 3</div>
+        <div class="momento-titulo">El Bautismo de Jesús — la Trinidad se revela</div>
+      </div>
+      <span class="momento-chev">▼</span>
+    </div>
+    <div class="momento-body">
+      <div class="momento-txt">Cuando Jesús es bautizado por Juan en el Jordán, <strong>el Espíritu Santo desciende sobre él en forma de paloma</strong> y se escucha la voz del Padre: <em>"Este es mi Hijo amado."</em> Es el momento más claro de la Trinidad en la Biblia: el Hijo en el agua, el Espíritu en la paloma, el Padre en la voz.</div>
+      <div class="biblia"><div class="biblia-txt">Vio al Espíritu de Dios que bajaba como una paloma y venía sobre él.</div><div class="biblia-ref">Mateo 3, 16</div></div>
+    </div>
+  </div>
+
+  <div class="momento-card" id="e4">
+    <div class="momento-head" onclick="toggleMomento('e4')">
+      <span class="momento-ikon">💬</span>
+      <div class="momento-meta">
+        <div class="momento-tag">Juan 14–16</div>
+        <div class="momento-titulo">La Última Cena — la promesa de Jesús</div>
+      </div>
+      <span class="momento-chev">▼</span>
+    </div>
+    <div class="momento-body">
+      <div class="momento-txt">En su última noche, Jesús le hace a sus discípulos la promesa más grande después de la Resurrección: <strong>"Les enviaré el Espíritu Santo."</strong> Jesús sabía que se iba. Y les prometió que no quedarían solos — el Paráclito vendría a estar con ellos para siempre. <em>"No los dejaré huérfanos."</em></div>
+      <div class="biblia"><div class="biblia-txt">El Consolador, el Espíritu Santo que el Padre enviará en mi nombre, les enseñará todo y les recordará todo lo que yo les he dicho.</div><div class="biblia-ref">Juan 14, 26</div></div>
+    </div>
+  </div>
+
+  <div class="momento-card" id="e5">
+    <div class="momento-head" onclick="toggleMomento('e5')">
+      <span class="momento-ikon">🔥</span>
+      <div class="momento-meta">
+        <div class="momento-tag">Hechos 2</div>
+        <div class="momento-titulo">Pentecostés — el nacimiento de la Iglesia</div>
+      </div>
+      <span class="momento-chev">▼</span>
+    </div>
+    <div class="momento-body">
+      <div class="momento-txt">Cincuenta días después de Pascua, los apóstoles estaban reunidos con María en el Cenáculo. <strong>De repente llegó un viento fuerte y aparecieron lenguas de fuego sobre cada uno.</strong> Todos quedaron llenos del Espíritu Santo. Pedro, que días antes había negado a Jesús tres veces por miedo, salió a predicar ante miles de personas sin temor. <strong>Ese día se bautizaron 3,000 personas.</strong> La Iglesia nació ese día.</div>
+      <div class="biblia"><div class="biblia-txt">Se llenaron todos del Espíritu Santo y se pusieron a hablar en otras lenguas, según el Espíritu les concedía expresarse.</div><div class="biblia-ref">Hechos 2, 4</div></div>
+    </div>
+  </div>
+
+  <!-- LOS 7 DONES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🎁</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Los 7 <em>Dones</em> del Espíritu Santo</h2>
+  <p class="sec-sub">Los dones son regalos permanentes que el Espíritu Santo pone en nosotros para ayudarnos a vivir como Dios quiere. Los recibimos en el Bautismo y se fortalecen en la Confirmación.</p>
+
+  <div class="nota"><strong>¿Dones o virtudes?</strong> Las virtudes las practicamos nosotros con esfuerzo. Los dones los da el Espíritu Santo — son su acción en nosotros. Él nos hace dóciles para seguir a Dios.</div>
+
+  <div class="dones-grid">
+    <div class="don-card">
+      <div class="don-num">Don 1</div>
+      <div class="don-nombre">🌟 Sabiduría</div>
+      <div class="don-exp">Ver las cosas con los ojos de Dios. Saber qué importa de verdad y qué no. Gustar de las cosas divinas por encima de las temporales.</div>
+      <div class="don-vida">En la vida: te ayuda a no perder el tiempo en lo que no vale.</div>
+    </div>
+    <div class="don-card">
+      <div class="don-num">Don 2</div>
+      <div class="don-nombre">💡 Entendimiento</div>
+      <div class="don-exp">Penetrar más hondo en las verdades de la fe. No solo creerlas — entenderlas. Ver el sentido profundo de la Escritura y los misterios de Dios.</div>
+      <div class="don-vida">En la vida: leer la Biblia y que te ilumine de verdad.</div>
+    </div>
+    <div class="don-card">
+      <div class="don-num">Don 3</div>
+      <div class="don-nombre">🧭 Consejo</div>
+      <div class="don-exp">Saber qué hacer en situaciones difíciles. Decidir bien, con prudencia sobrenatural. También: saber aconsejar a otros en el momento justo.</div>
+      <div class="don-vida">En la vida: cuando no sabes qué camino tomar y de pronto lo ves claro.</div>
+    </div>
+    <div class="don-card">
+      <div class="don-num">Don 4</div>
+      <div class="don-nombre">💪 Fortaleza</div>
+      <div class="don-exp">Fuerza sobrenatural para hacer el bien aunque cueste, para resistir el mal aunque duela, para perseverar cuando todo invita a rendirse.</div>
+      <div class="don-vida">En la vida: aguantar sin quejarse, seguir adelante con fe en la prueba.</div>
+    </div>
+    <div class="don-card">
+      <div class="don-num">Don 5</div>
+      <div class="don-nombre">🔬 Ciencia</div>
+      <div class="don-exp">Juzgar las cosas creadas a la luz de Dios. Ver el mundo, la naturaleza y los eventos como caminos que llevan a Él — o que alejan de Él.</div>
+      <div class="don-vida">En la vida: ver a Dios en la creación, en la historia, en tu propia vida.</div>
+    </div>
+    <div class="don-card">
+      <div class="don-num">Don 6</div>
+      <div class="don-nombre">🙏 Piedad</div>
+      <div class="don-exp">Amor filial hacia Dios — tratarlo como Padre, no como jefe. Y con ese mismo amor, ver a los demás como hermanos. Hace la oración fácil y dulce.</div>
+      <div class="don-vida">En la vida: rezar con ganas, sentir a Dios como Papá.</div>
+    </div>
+    <div class="don-card" style="grid-column:span 2;">
+      <div class="don-num">Don 7</div>
+      <div class="don-nombre">🌿 Temor de Dios</div>
+      <div class="don-exp">No es miedo al castigo — es reverencia profunda ante la grandeza de Dios. Es odiar el pecado porque ofende a quien amamos, no por miedo al infierno. Es reconocer que sin Dios no somos nada.</div>
+      <div class="don-vida">En la vida: pensar dos veces antes de pecar porque amas a Dios y no quieres alejarte de Él.</div>
+    </div>
+  </div>
+
+  <!-- LOS 12 FRUTOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌿</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Los 12 <em>Frutos</em> del Espíritu Santo</h2>
+  <p class="sec-sub">Los frutos son lo que se ve cuando el Espíritu Santo actúa libremente en una persona. Son las señales de que alguien vive de verdad en el Espíritu.</p>
+
+  <div class="biblia">
+    <div class="biblia-txt">El fruto del Espíritu es: amor, alegría, paz, paciencia, afabilidad, bondad, fidelidad, mansedumbre, dominio de sí.</div>
+    <div class="biblia-ref">Gálatas 5, 22-23 · San Pablo</div>
+  </div>
+
+  <div class="frutos-grid">
+    <div class="fruto"><span class="fruto-ikon">❤️</span><div class="fruto-nombre">Amor</div><div class="fruto-exp">El primero y la raíz de todos. Amar a Dios y al prójimo de verdad.</div></div>
+    <div class="fruto"><span class="fruto-ikon">😊</span><div class="fruto-nombre">Alegría</div><div class="fruto-exp">Gozo interior que no depende de las circunstancias. Paz del alma.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🕊️</span><div class="fruto-nombre">Paz</div><div class="fruto-exp">Serenidad interior. No ausencia de problemas — sino orden en el alma.</div></div>
+    <div class="fruto"><span class="fruto-ikon">⏳</span><div class="fruto-nombre">Paciencia</div><div class="fruto-exp">Aguantar el sufrimiento y a las personas difíciles sin perder la calma.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🌱</span><div class="fruto-nombre">Longanimidad</div><div class="fruto-exp">Constancia en el bien a largo plazo. No rendirse aunque tarda.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🤲</span><div class="fruto-nombre">Bondad</div><div class="fruto-exp">Hacer el bien activamente. No solo no hacer mal — hacer bien.</div></div>
+    <div class="fruto"><span class="fruto-ikon">💛</span><div class="fruto-nombre">Benignidad</div><div class="fruto-exp">Dulzura y amabilidad con todos. Trato cálido, palabras suaves.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🌿</span><div class="fruto-nombre">Mansedumbre</div><div class="fruto-exp">Dominar el genio. No reaccionar con ira. Suavidad en el trato.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🤝</span><div class="fruto-nombre">Fidelidad</div><div class="fruto-exp">Cumplir la palabra. Ser constante en la fe, en las promesas, en los compromisos.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🪞</span><div class="fruto-nombre">Modestia</div><div class="fruto-exp">Humildad en el comportamiento, en el hablar, en el vestir.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🛡️</span><div class="fruto-nombre">Continencia</div><div class="fruto-exp">Dominio de los instintos y apetitos. No esclavo de los deseos.</div></div>
+    <div class="fruto"><span class="fruto-ikon">🌸</span><div class="fruto-nombre">Castidad</div><div class="fruto-exp">Vivir la sexualidad según el estado de vida. Pureza de corazón.</div></div>
+  </div>
+
+  <!-- CÓMO RECIBIRLO MÁS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">💙</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Cómo abrirse más al <em>Espíritu Santo</em>?</h2>
+  <p class="sec-sub">El Espíritu Santo ya vive en ti si estás bautizado. La pregunta no es cómo conseguirlo — es cómo dejar de bloquearlo.</p>
+
+  <div class="recibir-lista">
+    <div class="recibir-item">
+      <div class="recibir-num">1</div>
+      <div class="recibir-txt"><strong>Pídelo.</strong> Así de simple. Jesús dijo: "Si ustedes, siendo malos, saben dar cosas buenas a sus hijos, ¿cuánto más el Padre celestial dará el Espíritu Santo a los que se lo pidan?" — Lucas 11, 13. Empieza cada día pidiendo al Espíritu Santo que te guíe.</div>
+    </div>
+    <div class="recibir-item">
+      <div class="recibir-num">2</div>
+      <div class="recibir-txt"><strong>Vive en gracia.</strong> El pecado grave bloquea la acción del Espíritu. La Confesión frecuente limpia el alma y deja más espacio para que Él actúe. No hay secreto más simple que ese.</div>
+    </div>
+    <div class="recibir-item">
+      <div class="recibir-num">3</div>
+      <div class="recibir-txt"><strong>Recibe la Eucaristía.</strong> Jesús viene a ti en la Comunión y con Él viene el Espíritu. Comulgar con fe y preparación es abrirle la puerta de par en par.</div>
+    </div>
+    <div class="recibir-item">
+      <div class="recibir-num">4</div>
+      <div class="recibir-txt"><strong>Lee la Escritura.</strong> El Espíritu Santo es el autor de la Biblia — cuando la lees con fe, Él habla. No es un libro muerto. Es Palabra viva que el Espíritu ilumina para ti hoy.</div>
+    </div>
+    <div class="recibir-item">
+      <div class="recibir-num">5</div>
+      <div class="recibir-txt"><strong>Obedece sus mociones.</strong> A veces sientes un impulso de bien — llamar a alguien, perdonar, rezar, hacer una obra de caridad. Eso es el Espíritu. <strong>Hazle caso.</strong> La docilidad al Espíritu se aprende haciéndole caso en las cosas pequeñas.</div>
+    </div>
+    <div class="recibir-item">
+      <div class="recibir-num">6</div>
+      <div class="recibir-txt"><strong>Haz silencio.</strong> El Espíritu habla suavemente — en el susurro, no en el estruendo. Es difícil escucharlo cuando la vida es puro ruido. Unos minutos de silencio al día pueden cambiarlo todo.</div>
+    </div>
+  </div>
+
+  <!-- ORACIÓN AL ESPÍRITU SANTO -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🔥</span><div class="sep-line"></div></div>
+
+  <div class="oracion-box">
+    <div class="oracion-lbl">Ven, Espíritu Santo</div>
+    <div class="oracion-txt">
+      Ven, Espíritu Santo,<br>
+      llena los corazones de tus fieles<br>
+      y enciende en ellos el fuego de tu amor.<br><br>
+      Envía tu Espíritu y serán creadas todas las cosas<br>
+      y renovarás la faz de la tierra.<br><br>
+      Oh Dios, que has instruido los corazones<br>
+      de tus fieles con la luz del Espíritu Santo,<br>
+      concédenos que, guiados por el mismo Espíritu,<br>
+      sintamos rectamente<br>
+      y gocemos siempre de su divino consuelo.<br><br>
+      <em>Por Jesucristo Nuestro Señor. Amén. 🔥</em>
+    </div>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Fuentes: Catecismo de la Iglesia Católica</p></footer>
+
+<script>
+function toggleMomento(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('momento-open');
+  document.querySelectorAll('.momento-card').forEach(x=>x.classList.remove('momento-open'));
+  if(!open){c.classList.add('momento-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+</script>
+</body>
+</html>
