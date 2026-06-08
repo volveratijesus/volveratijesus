@@ -168,8 +168,7 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
 <nav>
   <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
   <ul class="nav-links">
-    <li><a href="#herramientas">Herramientas</a>
-    <a href="#conocetufe">Conoce tu Fe</a></li>
+    <li><a href="#oracion">Oración y Vida</a></li>
     <li><a href="#conocetufe">Conoce tu Fe</a></li>
     <li><a href="#conoceme">Conóceme</a></li>
     <li><a href="#proyectos">Donativos</a></li>
@@ -178,7 +177,7 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
   <button class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#herramientas" onclick="toggleMenu()">Herramientas</a>
+  <a href="#oracion" onclick="toggleMenu()">Oración y Vida</a>
   <a href="#conocetufe" onclick="toggleMenu()">Conoce tu Fe</a>
   <a href="#conoceme" onclick="toggleMenu()">Conóceme</a>
   <a href="#proyectos" onclick="toggleMenu()">Donativos</a>
@@ -200,9 +199,13 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
   </div>
   <!-- Botones de navegación rápida -->
   <div class="hero-nav-grid">
-    <a href="#herramientas" class="hero-nav-btn">
-      <span class="hero-nav-icon">📖</span>
-      <span class="hero-nav-label">Herramientas</span>
+    <a href="#oracion" class="hero-nav-btn">
+      <span class="hero-nav-icon">🙏</span>
+      <span class="hero-nav-label">Oración y Vida</span>
+    </a>
+    <a href="#conocetufe" class="hero-nav-btn">
+      <span class="hero-nav-icon">📚</span>
+      <span class="hero-nav-label">Conoce tu Fe</span>
     </a>
     <a href="#conoceme" class="hero-nav-btn">
       <span class="hero-nav-icon">🌸</span>
@@ -212,10 +215,6 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
       <span class="hero-nav-icon">🤲</span>
       <span class="hero-nav-label">Donativos</span>
     </a>
-    <a href="#conocetufe" class="hero-nav-btn">
-      <span class="hero-nav-icon">📚</span>
-      <span class="hero-nav-label">Conoce tu Fe</span>
-    </a>
     <a href="iglesias/index.html" class="hero-nav-btn">
       <span class="hero-nav-icon">⛪</span>
       <span class="hero-nav-label">Iglesias GT</span>
@@ -223,17 +222,17 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
   </div>
 </section>
 
-<!-- HERRAMIENTAS -->
-<section id="herramientas">
+<!-- ORACIÓN Y VIDA -->
+<section id="oracion">
   <div class="section-inner">
     <p class="section-label reveal">Recursos gratuitos</p>
-    <h2 class="section-title reveal">Herramientas para <em>crecer</em></h2>
+    <h2 class="section-title reveal">Oración y <em>Vida</em></h2>
     <p class="section-sub reveal">Todo el contenido es gratuito y siempre lo será.</p>
     <div class="tools-grid">
-      <div class="tool-card reveal" onclick="window.location='catecismo/index.html'">
-        <span class="tool-icon">📖</span>
-        <h3 class="tool-title">Catecismo explicado</h3>
-        <p class="tool-desc">El Catecismo párrafo por párrafo, en lenguaje sencillo.</p>
+      <div class="tool-card reveal" onclick="window.location='evangelios/index.html'">
+        <span class="tool-icon">🌅</span>
+        <h3 class="tool-title">Evangelio del día</h3>
+        <p class="tool-desc">El evangelio litúrgico diario con explicación y reflexión.</p>
         <span class="tool-badge">Disponible</span>
       </div>
       <div class="tool-card reveal" onclick="window.location='rosario/index.html'">
@@ -242,23 +241,17 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
         <p class="tool-desc">Los 4 misterios completos con oraciones y explicaciones.</p>
         <span class="tool-badge">Disponible</span>
       </div>
-      <div class="tool-card reveal" onclick="window.location='evangelios/index.html'">
-        <span class="tool-icon">🌅</span>
-        <h3 class="tool-title">Evangelio del día</h3>
-        <p class="tool-desc">El evangelio litúrgico diario con explicación y reflexión.</p>
-        <span class="tool-badge">Disponible</span>
-      </div>
       <div class="tool-card reveal" onclick="window.location='calendario/index.html'">
         <span class="tool-icon">📅</span>
         <h3 class="tool-title">Calendario Litúrgico</h3>
         <p class="tool-desc">Cada día del año: qué se celebra y qué color litúrgico.</p>
         <span class="tool-badge">Disponible</span>
       </div>
-      <div class="tool-card reveal" style="pointer-events:none;opacity:0.6;">
-        <span class="tool-icon">📚</span>
-        <h3 class="tool-title">Resúmenes de libros</h3>
-        <p class="tool-desc">Los mejores libros de espiritualidad resumidos.</p>
-        <span class="tool-badge pronto">Próximamente</span>
+      <div class="tool-card reveal" onclick="window.location='herramientas/examen-conciencia.html'">
+        <span class="tool-icon">🪞</span>
+        <h3 class="tool-title">Examen de Conciencia</h3>
+        <p class="tool-desc">Guía paso a paso para prepararte para la Confesión.</p>
+        <span class="tool-badge">Disponible</span>
       </div>
     </div>
   </div>
@@ -269,8 +262,14 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
   <div class="section-inner">
     <p class="section-label reveal">Formación católica</p>
     <h2 class="section-title reveal">Conoce tu <em>Fe</em></h2>
-    <p class="section-sub reveal">Artículos para entender la Iglesia, sus pastores y su historia — explicados para todos.</p>
+    <p class="section-sub reveal">Artículos para entender la fe, la Iglesia y sus misterios — explicados para todos.</p>
     <div class="tools-grid">
+      <div class="tool-card reveal" onclick="window.location='catecismo/index.html'">
+        <span class="tool-icon">📖</span>
+        <h3 class="tool-title">Catecismo explicado</h3>
+        <p class="tool-desc">El Catecismo párrafo por párrafo, en lenguaje sencillo.</p>
+        <span class="tool-badge">Disponible</span>
+      </div>
       <div class="tool-card reveal" onclick="window.location='herramientas/papa-leon-xiv.html'">
         <span class="tool-icon">👑</span>
         <h3 class="tool-title">Papa León XIV</h3>
@@ -289,12 +288,6 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
         <p class="tool-desc">Qué son, cuántos hay y por qué importan en nuestra vida.</p>
         <span class="tool-badge">Disponible</span>
       </div>
-      <div class="tool-card reveal" onclick="window.location='herramientas/santos.html'">
-        <span class="tool-icon">✨</span>
-        <h3 class="tool-title">Los Santos</h3>
-        <p class="tool-desc">Canonización, santos de Guatemala, patronos y santos de cada mes.</p>
-        <span class="tool-badge">Disponible</span>
-      </div>
       <div class="tool-card reveal" onclick="window.location='herramientas/virgen-maria.html'">
         <span class="tool-icon">🌸</span>
         <h3 class="tool-title">Nuestra Madre María</h3>
@@ -302,15 +295,15 @@ footer{position:relative;z-index:1;background:rgba(245,230,224,0.3);border-top:1
         <span class="tool-badge">Disponible</span>
       </div>
       <div class="tool-card reveal" onclick="window.location='herramientas/consagracion-maria.html'">
-        <span class="tool-icon">🌸</span>
+        <span class="tool-icon">🙏</span>
         <h3 class="tool-title">Consagración a Jesús por María</h3>
-        <p class="tool-desc">33 días para entregarte a Jesús de la mano de María. Explicado desde cero.</p>
+        <p class="tool-desc">33 días para entregarte a Jesús de la mano de María.</p>
         <span class="tool-badge">Disponible</span>
       </div>
-      <div class="tool-card reveal" onclick="window.location='herramientas/examen-conciencia.html'">
-        <span class="tool-icon">🪞</span>
-        <h3 class="tool-title">Examen de Conciencia</h3>
-        <p class="tool-desc">Guía paso a paso para prepararte para la Confesión.</p>
+      <div class="tool-card reveal" onclick="window.location='herramientas/santos.html'">
+        <span class="tool-icon">✨</span>
+        <h3 class="tool-title">Los Santos</h3>
+        <p class="tool-desc">Canonización, santos de Guatemala, patronos y santos de cada mes.</p>
         <span class="tool-badge">Disponible</span>
       </div>
     </div>
