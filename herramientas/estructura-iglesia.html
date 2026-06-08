@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estructura de la Iglesia Católica en Guatemala · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+.page-hdr{text-align:center;padding:36px 0 32px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:300;color:var(--warm-brown);line-height:1.1;}
+.page-title em{font-style:italic;color:var(--mauve);}
+.page-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:540px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto 0;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+.seccion{margin-bottom:12px;}
+.sec-btn{width:100%;background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.35);border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s;text-align:left;}
+.sec-btn:hover{border-color:rgba(200,169,110,0.4);box-shadow:0 4px 16px rgba(201,160,160,0.1);}
+.sec-open .sec-btn{border-radius:16px 16px 0 0;border-bottom-color:transparent;background:rgba(255,255,255,0.85);}
+.sec-ikon{font-size:24px;flex-shrink:0;}
+.sec-info{flex:1;}
+.sec-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:3px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--warm-brown);}
+.sec-desc{font-size:12px;color:var(--text-light);font-weight:300;margin-top:2px;}
+.sec-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.sec-open .sec-chev{transform:rotate(180deg);}
+.sec-body{display:none;background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.3);border-top:none;border-radius:0 0 16px 16px;padding:20px 20px 24px;}
+.sec-open .sec-body{display:block;}
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 10px 10px 0;padding:14px 16px;font-size:14px;color:var(--text);font-weight:300;line-height:1.8;margin-bottom:16px;}
+.intro-box strong{color:var(--warm-brown);}
+.piramide{display:flex;flex-direction:column;gap:6px;margin:16px 0;}
+.nivel{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.3);border-radius:12px;padding:12px 16px;}
+.nivel-ikon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.nivel-titulo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--warm-brown);}
+.nivel-desc{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.5;margin-top:2px;}
+.nivel-papa{background:linear-gradient(135deg,rgba(200,169,110,0.15),rgba(232,196,184,0.15));border-color:rgba(200,169,110,0.4);}
+.tabla-wrap{overflow-x:auto;margin:16px 0;border-radius:12px;border:1px solid rgba(232,196,184,0.3);}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{background:rgba(245,230,224,0.6);padding:10px 12px;text-align:left;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);font-weight:400;border-bottom:1px solid rgba(232,196,184,0.3);}
+td{padding:10px 12px;border-bottom:1px solid rgba(232,196,184,0.15);color:var(--text);font-weight:300;vertical-align:top;line-height:1.5;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(245,230,224,0.2);}
+.tipo-arq{color:var(--soft-gold);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.tipo-dio{color:var(--mauve);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.tipo-vic{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#8aaa80;}
+.cong-grupo{margin-bottom:16px;}
+.cong-titulo{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.cong-titulo::after{content:'';flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.cong-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:480px){.cong-grid{grid-template-columns:1fr;}}
+.cong-card{background:rgba(255,255,255,0.5);border:1px solid rgba(232,196,184,0.25);border-radius:10px;padding:10px 12px;}
+.cong-nombre{font-size:13px;font-weight:400;color:var(--warm-brown);margin-bottom:3px;}
+.cong-que{font-size:11.5px;color:var(--text-light);font-weight:300;line-height:1.5;}
+.past-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
+@media(max-width:480px){.past-grid{grid-template-columns:1fr;}}
+.past-item{background:rgba(245,230,224,0.3);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;}
+.past-ikon{font-size:18px;flex-shrink:0;}
+.past-txt{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.5;}
+.past-txt strong{color:var(--warm-brown);display:block;margin-bottom:2px;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0;}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr 1fr;}}
+.stat-box{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.3);border-radius:12px;padding:14px 10px;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--warm-brown);line-height:1;}
+.stat-lbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-top:4px;line-height:1.4;}
+.pasos{display:flex;flex-direction:column;gap:10px;}
+.paso{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.5);border-radius:12px;padding:14px 16px;}
+.paso-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--soft-gold),rgba(200,169,110,0.7));color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.paso-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.paso-txt strong{color:var(--warm-brown);}
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:12px;color:var(--text-light);font-weight:300;line-height:1.7;margin-top:16px;}
+.nota a{color:var(--soft-gold);}
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Herramientas · Conoce tu fe</p>
+    <h1 class="page-title">La Iglesia Católica<br>en <em>Guatemala</em></h1>
+    <p class="page-sub">Arzobispados, diócesis, parroquias, congregaciones y más — explicado para todos.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <div class="seccion sec-open" id="s1">
+    <div class="sec-btn" onclick="toggle('s1')">
+      <span class="sec-ikon">✝️</span>
+      <div class="sec-info">
+        <div class="sec-num">01</div>
+        <div class="sec-titulo">¿Cómo está organizada?</div>
+        <div class="sec-desc">La gran familia de la Iglesia en Guatemala</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="intro-box">La Iglesia Católica en Guatemala es como una <strong>gran familia organizada</strong>. Todo tiene un orden para poder llegar a la gente: celebrar misas, enseñar la fe, ayudar a los pobres y acompañar a las familias. Esta organización viene desde el Papa en Roma hasta tu iglesia del barrio. No es un montón de iglesias sueltas — es un equipo unido.</div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl">Arquidiócesis</div></div>
+        <div class="stat-box"><div class="stat-num">10</div><div class="stat-lbl">Diócesis</div></div>
+        <div class="stat-box"><div class="stat-num">~500</div><div class="stat-lbl">Parroquias</div></div>
+        <div class="stat-box"><div class="stat-num">508</div><div class="stat-lbl">Sacerdotes diocesanos</div></div>
+        <div class="stat-box"><div class="stat-num">484</div><div class="stat-lbl">Sacerdotes religiosos</div></div>
+        <div class="stat-box"><div class="stat-num">150+</div><div class="stat-lbl">Congregaciones</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s2">
+    <div class="sec-btn" onclick="toggle('s2')">
+      <span class="sec-ikon">🏛️</span>
+      <div class="sec-info">
+        <div class="sec-num">02</div>
+        <div class="sec-titulo">La jerarquía — de arriba a abajo</div>
+        <div class="sec-desc">Del Papa hasta tu parroquia del barrio</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="intro-box">Piénsalo como una empresa bien organizada: hay un jefe máximo, gerentes regionales y equipos locales. Cada nivel tiene su misión.</div>
+      <div class="piramide">
+        <div class="nivel nivel-papa">
+          <span class="nivel-ikon">👑</span>
+          <div><div class="nivel-titulo">Papa — El jefe máximo</div><div class="nivel-desc">El sucesor de San Pedro. Guía a toda la Iglesia universal desde Roma. Actualmente: <strong>León XIV</strong>.</div></div>
+        </div>
+        <div class="nivel">
+          <span class="nivel-ikon">⛪</span>
+          <div><div class="nivel-titulo">Arzobispos y Obispos — Los gerentes regionales</div><div class="nivel-desc">Cada uno cuida una zona grande del país. En Guatemala hay 2 arzobispos y 10 obispos.</div></div>
+        </div>
+        <div class="nivel">
+          <span class="nivel-ikon">🕯️</span>
+          <div><div class="nivel-titulo">Sacerdotes (Párrocos) — Los pastores locales</div><div class="nivel-desc">Trabajan en las iglesias del barrio. Celebran misas, bautizos, matrimonios y acompañan a la gente.</div></div>
+        </div>
+        <div class="nivel">
+          <span class="nivel-ikon">🙏</span>
+          <div><div class="nivel-titulo">Laicos — La base (¡tú y yo!)</div><div class="nivel-desc">Somos la mayoría. Participamos en grupos, catequesis, voluntariado y oración. Sin laicos no hay Iglesia viva.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s3">
+    <div class="sec-btn" onclick="toggle('s3')">
+      <span class="sec-ikon">🇬🇹</span>
+      <div class="sec-info">
+        <div class="sec-num">03</div>
+        <div class="sec-titulo">La Conferencia Episcopal de Guatemala</div>
+        <div class="sec-desc">La reunión de todos los obispos del país</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="intro-box">Es el "consejo de directores" de la Iglesia en Guatemala. Todos los obispos se reúnen para hablar de temas importantes: educación, familia, ayuda social, política, etc. Hablan con una sola voz en nombre de todos los católicos guatemaltecos.</div>
+      <div class="nivel">
+        <span class="nivel-ikon">🌐</span>
+        <div><div class="nivel-titulo">Sitio oficial</div><div class="nivel-desc"><a href="https://www.iglesiacatolica.org.gt" target="_blank" style="color:var(--soft-gold);">www.iglesiacatolica.org.gt</a></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s4">
+    <div class="sec-btn" onclick="toggle('s4')">
+      <span class="sec-ikon">🗺️</span>
+      <div class="sec-info">
+        <div class="sec-num">04</div>
+        <div class="sec-titulo">Las dos provincias eclesiásticas</div>
+        <div class="sec-desc">Guatemala dividida en dos grandes zonas</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="intro-box">Guatemala está dividida en <strong>2 provincias eclesiásticas</strong> — como dos equipos grandes que cubren todo el país.</div>
+      <div class="piramide">
+        <div class="nivel nivel-papa">
+          <span class="nivel-ikon">🏙️</span>
+          <div><div class="nivel-titulo">Provincia de Guatemala — Centro y Oriente</div><div class="nivel-desc">Arquidiócesis de Santiago de Guatemala + diócesis de Escuintla, Jalapa, Jutiapa, La Verapaz, Santa Rosa de Lima, Zacapa y Santo Cristo de Esquipulas. También los Vicariatos de Petén e Izabal.</div></div>
+        </div>
+        <div class="nivel">
+          <span class="nivel-ikon">⛰️</span>
+          <div><div class="nivel-titulo">Provincia de Los Altos — Occidente</div><div class="nivel-desc">Arquidiócesis de Los Altos Quetzaltenango-Totonicapán + diócesis de Huehuetenango, Quiché, San Marcos, Sololá-Chimaltenango y Suchitepéquez-Retalhuleu.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s5">
+    <div class="sec-btn" onclick="toggle('s5')">
+      <span class="sec-ikon">👤</span>
+      <div class="sec-info">
+        <div class="sec-num">05</div>
+        <div class="sec-titulo">Arquidiócesis y Diócesis — Obispos actuales</div>
+        <div class="sec-desc">Lista completa de las 16 sedes con sus pastores</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="tabla-wrap">
+        <table>
+          <thead><tr><th>Diócesis / Sede</th><th>Obispo / Arzobispo</th><th>Tipo</th></tr></thead>
+          <tbody>
+            <tr><td colspan="3" style="background:rgba(200,169,110,0.08);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);padding:8px 12px;">Provincia Eclesiástica de Guatemala</td></tr>
+            <tr><td><strong>Arquidiócesis de Santiago de Guatemala</strong><br><span style="font-size:11px;color:var(--text-light);">Guatemala y Sacatepéquez</span></td><td>Mons. Gonzalo de Villa y Vásquez, S.J.</td><td><span class="tipo-arq">Arzobispo</span></td></tr>
+            <tr><td><strong>Diócesis de Escuintla</strong></td><td>Mons. Víctor Hugo Palma Paúl</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de Jalapa</strong></td><td>Mons. José Benedicto Moscoso Miranda</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de San Francisco de Asís de Jutiapa</strong></td><td>Mons. Félix Eduardo Antonio Calderón Cruz</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de La Verapaz</strong></td><td>Mons. Rodolfo Valenzuela Núñez</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de Santa Rosa de Lima</strong></td><td>Mons. Bernabé de Jesús Sagastume Lemus</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de Zacapa y Santo Cristo de Esquipulas</strong></td><td>Mons. Ángel Antonio Recinos Lemuz</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Vicariato Apostólico de Petén</strong></td><td>Mons. Rosolino Bianchetti Boffelli</td><td><span class="tipo-vic">Vicario</span></td></tr>
+            <tr><td><strong>Vicariato Apostólico de Izabal</strong></td><td>Mons. Raúl Antonio Martínez Paredes</td><td><span class="tipo-vic">Vicario</span></td></tr>
+            <tr><td colspan="3" style="background:rgba(184,201,176,0.1);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8aaa80;padding:8px 12px;">Provincia Eclesiástica de Los Altos</td></tr>
+            <tr><td><strong>Arquidiócesis de Los Altos Quetzaltenango-Totonicapán</strong></td><td>Mons. Mario Alberto Molina Palma</td><td><span class="tipo-arq">Arzobispo</span></td></tr>
+            <tr><td><strong>Diócesis de Huehuetenango</strong></td><td>Mons. Rogelio Cabrera López</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de Quiché</strong></td><td>Mons. Álvaro Leonel Ramazzini Imeri</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de San Marcos</strong></td><td>Mons. Óscar Julio Vian Morales</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de Sololá-Chimaltenango</strong></td><td>Mons. Domingo Buezo Leiva</td><td><span class="tipo-dio">Obispo</span></td></tr>
+            <tr><td><strong>Diócesis de Suchitepéquez-Retalhuleu</strong></td><td>Mons. Pablo Vizcaíno Prado</td><td><span class="tipo-dio">Obispo</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nota">⚠️ Los nombramientos pueden cambiar. Verifica siempre en: <a href="https://www.iglesiacatolica.org.gt/dobispos.htm" target="_blank">iglesiacatolica.org.gt/dobispos.htm</a></div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s6">
+    <div class="sec-btn" onclick="toggle('s6')">
+      <span class="sec-ikon">🏘️</span>
+      <div class="sec-info">
+        <div class="sec-num">06</div>
+        <div class="sec-titulo">Parroquias, Decanatos y Pastorales</div>
+        <div class="sec-desc">Las iglesias de tu barrio y los grupos que trabajan en ellas</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="intro-box">Dentro de cada diócesis, el territorio se divide en <strong>decanatos o vicarías</strong>, y dentro de cada decanato hay varias <strong>parroquias</strong> — las iglesias de tu barrio o pueblo.</div>
+      <div class="piramide" style="margin-bottom:20px;">
+        <div class="nivel"><span class="nivel-ikon">🗂️</span><div><div class="nivel-titulo">Decanatos / Vicarías</div><div class="nivel-desc">Zonas medianas dentro de la diócesis. Agrupan varias parroquias cercanas.</div></div></div>
+        <div class="nivel"><span class="nivel-ikon">⛪</span><div><div class="nivel-titulo">Parroquias (~500 en Guatemala)</div><div class="nivel-desc">La iglesia local de tu barrio o pueblo. Cada una tiene su párroco. La Arquidiócesis de Guatemala tiene más de 160.</div></div></div>
+      </div>
+      <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:12px;">Grupos pastorales en las parroquias</p>
+      <div class="past-grid">
+        <div class="past-item"><span class="past-ikon">🧑‍🤝‍🧑</span><div class="past-txt"><strong>Pastoral Juvenil</strong>Para jóvenes que quieren vivir su fe.</div></div>
+        <div class="past-item"><span class="past-ikon">👨‍👩‍👧</span><div class="past-txt"><strong>Pastoral Familiar</strong>Apoyo a matrimonios y familias.</div></div>
+        <div class="past-item"><span class="past-ikon">🤝</span><div class="past-txt"><strong>Pastoral Social / Cáritas</strong>Ayuda a pobres, migrantes y en desastres.</div></div>
+        <div class="past-item"><span class="past-ikon">✨</span><div class="past-txt"><strong>Pastoral Vocacional</strong>Para quien siente llamado al sacerdocio o vida religiosa.</div></div>
+        <div class="past-item"><span class="past-ikon">📖</span><div class="past-txt"><strong>Catequesis</strong>Enseñanza de la fe para niños, jóvenes y adultos.</div></div>
+        <div class="past-item"><span class="past-ikon">🎵</span><div class="past-txt"><strong>Ministerios varios</strong>Coros, acólitos, lectores, ministros de la Eucaristía.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s7">
+    <div class="sec-btn" onclick="toggle('s7')">
+      <span class="sec-ikon">🌿</span>
+      <div class="sec-info">
+        <div class="sec-num">07</div>
+        <div class="sec-titulo">Congregaciones y Vida Consagrada</div>
+        <div class="sec-desc">Más de 150 congregaciones de sacerdotes, hermanos y monjas</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="intro-box">Son como <strong>"familias especiales"</strong> dentro de la Iglesia. Grupos de sacerdotes, hermanos o monjas que viven juntos, siguen una regla de vida y tienen un estilo propio de servicio. En Guatemala hay más de 150 congregaciones agrupadas en <strong>CONFREGUA</strong>.</div>
+      <div class="cong-grupo">
+        <div class="cong-titulo">✦ Masculinas (sacerdotes y hermanos)</div>
+        <div class="cong-grid">
+          <div class="cong-card"><div class="cong-nombre">⚜️ Jesuitas (S.J.)</div><div class="cong-que">Educación, Universidad Rafael Landívar, pastoral social.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🎓 La Salle</div><div class="cong-que">Educación de niños y jóvenes.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🔔 Salesianos (Don Bosco)</div><div class="cong-que">Pastoral juvenil, educación y formación técnica.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🕊️ Franciscanos (OFM)</div><div class="cong-que">Evangelización, pobres y medio ambiente.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🌹 Carmelitas Descalzos</div><div class="cong-que">Oración, vida contemplativa y acompañamiento espiritual.</div></div>
+          <div class="cong-card"><div class="cong-nombre">📚 Dominicos (O.P.)</div><div class="cong-que">Predicación, educación y teología.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🌍 Combonianos</div><div class="cong-que">Misiones y trabajo con comunidades indígenas.</div></div>
+          <div class="cong-card"><div class="cong-nombre">💙 Vicentinos (C.M.)</div><div class="cong-que">Atención a pobres y formación del clero.</div></div>
+          <div class="cong-card"><div class="cong-nombre">✝️ Somascos (C.R.S.)</div><div class="cong-que">Atención a huérfanos, educación y pobres.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🏥 Bethlemitas</div><div class="cong-que">Hospitalidad y enfermos. ¡Fundada en Guatemala por Santo Hermano Pedro!</div></div>
+        </div>
+      </div>
+      <div class="cong-grupo">
+        <div class="cong-titulo">✦ Femeninas (monjas y hermanas)</div>
+        <div class="cong-grid">
+          <div class="cong-card"><div class="cong-nombre">🌸 Terciarias Capuchinas</div><div class="cong-que">Educación y servicio a los más necesitados.</div></div>
+          <div class="cong-card"><div class="cong-nombre">💊 Caridad del Verbo Encarnado</div><div class="cong-que">Salud, hospitales y atención a pobres.</div></div>
+          <div class="cong-card"><div class="cong-nombre">📿 Carmelitas Misioneras</div><div class="cong-que">Misiones y educación.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🙏 Dominicas de la Anunciata</div><div class="cong-que">Educación y pastoral.</div></div>
+          <div class="cong-card"><div class="cong-nombre">❤️ Misioneras del Sagrado Corazón</div><div class="cong-que">Misiones y servicio social.</div></div>
+          <div class="cong-card"><div class="cong-nombre">👶 Hijas de San José</div><div class="cong-que">Educación y pastoral familiar.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🏫 Bethlemitas Hijas del S. Corazón</div><div class="cong-que">Educación y atención integral.</div></div>
+          <div class="cong-card"><div class="cong-nombre">🤲 Fraternidad Misionera de María</div><div class="cong-que">Misiones en parroquias de Guatemala.</div></div>
+        </div>
+      </div>
+      <div class="nota">Más congregaciones en: <a href="https://www.confregua.org" target="_blank">confregua.org</a></div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s8">
+    <div class="sec-btn" onclick="toggle('s8')">
+      <span class="sec-ikon">🤲</span>
+      <div class="sec-info">
+        <div class="sec-num">08</div>
+        <div class="sec-titulo">Otras organizaciones importantes</div>
+        <div class="sec-desc">Cáritas, universidades, colegios y más</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="piramide">
+        <div class="nivel nivel-papa"><span class="nivel-ikon">❤️</span><div><div class="nivel-titulo">Cáritas Guatemala</div><div class="nivel-desc">La organización de ayuda social más grande de la Iglesia. Trabaja en emergencias, desarrollo, nutrición y migrantes.</div></div></div>
+        <div class="nivel"><span class="nivel-ikon">🎓</span><div><div class="nivel-titulo">Universidad Rafael Landívar (Jesuitas)</div><div class="nivel-desc">La principal universidad católica de Guatemala.</div></div></div>
+        <div class="nivel"><span class="nivel-ikon">🏫</span><div><div class="nivel-titulo">Colegios católicos</div><div class="nivel-desc">Cientos de colegios dirigidos por congregaciones en todo el país: La Salle, Salesianos, Maristas, Dominicas y más.</div></div></div>
+        <div class="nivel"><span class="nivel-ikon">🏥</span><div><div class="nivel-titulo">Hospitales y centros de salud</div><div class="nivel-desc">Varios hospitales y clínicas dirigidos por congregaciones religiosas, especialmente en zonas rurales.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion" id="s9">
+    <div class="sec-btn" onclick="toggle('s9')">
+      <span class="sec-ikon">🚀</span>
+      <div class="sec-info">
+        <div class="sec-num">09</div>
+        <div class="sec-titulo">¿Cómo puedo participar?</div>
+        <div class="sec-desc">Pasos concretos para involucrarte en tu parroquia</div>
+      </div>
+      <span class="sec-chev">▼</span>
+    </div>
+    <div class="sec-body">
+      <div class="pasos">
+        <div class="paso"><div class="paso-num">1</div><div class="paso-txt"><strong>Busca tu parroquia más cercana</strong> — usa el <a href="../iglesias/index.html" style="color:var(--soft-gold);">Directorio de Iglesias</a> de este sitio.</div></div>
+        <div class="paso"><div class="paso-num">2</div><div class="paso-txt"><strong>Llega a una misa</strong> — es el mejor primer paso. No necesitas estar "listo" ni saber todo.</div></div>
+        <div class="paso"><div class="paso-num">3</div><div class="paso-txt"><strong>Pregunta por los grupos pastorales</strong> — juvenil, Cáritas, catequesis, coro. Hay espacio para todos.</div></div>
+        <div class="paso"><div class="paso-num">4</div><div class="paso-txt"><strong>Contacta a tu diócesis</strong> — cada una tiene su propio directorio y actividades.</div></div>
+      </div>
+      <div class="nota" style="text-align:center;">"No tengas miedo. Yo estoy contigo." — Isaías 41, 10 🌸</div>
+    </div>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script>
+function toggle(id){document.getElementById(id).classList.toggle('sec-open');}
+</script>
+</body>
+</html>

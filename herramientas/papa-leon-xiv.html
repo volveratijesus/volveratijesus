@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conoce al Papa León XIV · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+
+/* BG */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO PAPA */
+.papa-hero{text-align:center;padding:40px 0 36px;position:relative;}
+.papa-cruz{font-size:36px;margin-bottom:16px;display:block;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.papa-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,64px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.papa-titulo em{font-style:italic;color:var(--mauve);}
+.papa-subtitulo{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--text-light);margin-top:10px;line-height:1.6;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* LEMA CARD */
+.lema-card{background:linear-gradient(135deg,rgba(200,169,110,0.12),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:24px 28px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden;}
+.lema-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--soft-gold),rgba(200,169,110,0.2));}
+.lema-latin{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,32px);font-style:italic;color:var(--warm-brown);margin-bottom:8px;}
+.lema-trad{font-size:13px;color:var(--text-light);font-weight:300;line-height:1.7;}
+.lema-fuente{font-size:11px;color:var(--soft-gold);letter-spacing:1px;margin-top:6px;}
+
+/* DATOS RÁPIDOS */
+.datos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px;}
+@media(max-width:480px){.datos-grid{grid-template-columns:1fr;}}
+.dato{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.dato-ikon{font-size:20px;flex-shrink:0;}
+.dato-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:3px;}
+.dato-val{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.5;}
+.dato-val strong{color:var(--warm-brown);}
+
+/* SECCIONES */
+.sec-titulo-grande{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo-grande em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:20px;line-height:1.7;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;margin:16px 0 28px;}
+.tl-item{display:flex;gap:16px;position:relative;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.tl-anio{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;color:var(--soft-gold);text-align:center;line-height:1;margin-bottom:6px;white-space:nowrap;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--soft-gold);flex-shrink:0;margin-top:2px;}
+.tl-line{width:1px;flex:1;background:linear-gradient(to bottom,rgba(200,169,110,0.4),rgba(200,169,110,0.1));margin-top:4px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-content{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;margin-bottom:10px;flex:1;}
+.tl-titulo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--warm-brown);margin-bottom:4px;}
+.tl-desc{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.tl-lugar{display:inline-block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mauve);margin-top:5px;}
+
+/* FRASES */
+.frases{display:flex;flex-direction:column;gap:14px;margin:16px 0 28px;}
+.frase-card{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:16px;padding:18px 20px;position:relative;padding-left:36px;}
+.frase-card::before{content:'"';position:absolute;left:14px;top:10px;font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(200,169,110,0.25);line-height:1;}
+.frase-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.7;margin-bottom:6px;}
+.frase-ctx{font-size:11px;color:var(--text-light);font-weight:300;}
+
+/* CURIOSIDADES */
+.curio-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 28px;}
+@media(max-width:480px){.curio-grid{grid-template-columns:1fr;}}
+.curio{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.curio-ikon{font-size:24px;margin-bottom:8px;display:block;}
+.curio-titulo{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;color:var(--warm-brown);margin-bottom:4px;}
+.curio-txt{font-size:12px;color:var(--text);font-weight:300;line-height:1.6;}
+
+/* ESCUDO */
+.escudo-box{background:linear-gradient(135deg,rgba(245,230,224,0.5),rgba(184,201,176,0.2));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:20px 22px;margin:16px 0 28px;}
+.escudo-titulo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);margin-bottom:14px;}
+.escudo-items{display:flex;flex-direction:column;gap:10px;}
+.escudo-item{display:flex;gap:12px;align-items:flex-start;}
+.escudo-ikon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.escudo-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.6;}
+.escudo-txt strong{color:var(--warm-brown);}
+
+/* CONEXION LATAM */
+.latam-card{background:linear-gradient(135deg,rgba(184,201,176,0.2),rgba(245,230,224,0.3));border:1px solid rgba(138,170,128,0.3);border-radius:20px;padding:22px;margin:16px 0 28px;}
+.latam-titulo{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--warm-brown);margin-bottom:14px;}
+.latam-items{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:480px){.latam-items{grid-template-columns:1fr;}}
+.latam-item{background:rgba(255,255,255,0.5);border-radius:12px;padding:12px 14px;}
+.latam-pais{font-size:13px;font-weight:400;color:var(--warm-brown);margin-bottom:3px;}
+.latam-desc{font-size:11.5px;color:var(--text-light);font-weight:300;line-height:1.5;}
+
+/* ORACIÓN */
+.oracion-box{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:20px;}
+.oracion-titulo{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.oracion-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text);line-height:1.9;}
+
+/* SEPARADOR */
+.sep{display:flex;align-items:center;gap:12px;margin:28px 0 20px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:16px;color:rgba(200,169,110,0.4);}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="papa-hero">
+    <span class="papa-cruz">✝️</span>
+    <p class="eyebrow">267° Papa de la Iglesia Católica</p>
+    <h1 class="papa-titulo">Papa <em>León XIV</em></h1>
+    <p class="papa-subtitulo">Robert Francis Prevost<br>El Papa del corazón agustiniano y alma latinoamericana</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <!-- LEMA -->
+  <div class="lema-card">
+    <div class="lema-latin">❝ In Illo Uno Unum ❞</div>
+    <div class="lema-trad">En Él que es Uno, somos uno — su lema pontificio</div>
+    <div class="lema-fuente">San Agustín · Exposición sobre el Salmo 127</div>
+  </div>
+
+  <!-- DATOS RÁPIDOS -->
+  <div class="datos-grid">
+    <div class="dato"><span class="dato-ikon">📍</span><div><div class="dato-lbl">Nació</div><div class="dato-val"><strong>Chicago, Illinois</strong><br>14 de septiembre de 1955</div></div></div>
+    <div class="dato"><span class="dato-ikon">🇺🇸🇵🇪</span><div><div class="dato-lbl">Nacionalidades</div><div class="dato-val"><strong>Estadounidense y Peruano</strong><br>El primer Papa con doble nacionalidad</div></div></div>
+    <div class="dato"><span class="dato-ikon">✝️</span><div><div class="dato-lbl">Orden religiosa</div><div class="dato-val"><strong>Agustinos (O.S.A.)</strong><br>El primer Papa agustino de la historia</div></div></div>
+    <div class="dato"><span class="dato-ikon">👑</span><div><div class="dato-lbl">Elegido Papa</div><div class="dato-val"><strong>8 de mayo de 2025</strong><br>4ta votación del Cónclave</div></div></div>
+    <div class="dato"><span class="dato-ikon">🌍</span><div><div class="dato-lbl">Idiomas</div><div class="dato-val"><strong>6 idiomas</strong><br>Inglés, español, italiano, francés, portugués y latín</div></div></div>
+    <div class="dato"><span class="dato-ikon">📚</span><div><div class="dato-lbl">Estudios</div><div class="dato-val"><strong>Matemáticas, Teología</strong><br>y Doctorado en Derecho Canónico (Roma)</div></div></div>
+  </div>
+
+  <!-- QUIÉN ES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🕊️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo-grande">¿Quién es <em>León XIV</em>?</h2>
+  <p class="sec-sub">Para entenderlo en pocas palabras: es un hombre que nació en Chicago pero entregó su corazón a América Latina. Misionero, maestro, obispo y ahora Papa — toda su vida ha sido un servicio callado y profundo.</p>
+
+  <div style="background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:16px;padding:18px 20px;margin-bottom:28px;">
+    <p style="font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:12px;">Robert Francis Prevost creció en una familia profundamente católica. Sus cuatro abuelos fueron inmigrantes — con raíces francesas, italianas y españolas — y sus padres estaban muy involucrados en la vida parroquial. Desde pequeño, la Iglesia no era un edificio sino una familia.</p>
+    <p style="font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:12px;">A los 22 años entró al noviciado de los Agustinos. Se formó en Chicago, luego en Roma, donde obtuvo su doctorado. Pero su alma no era de ciudad sino de misión — y en 1985, con 30 años, se embarcó hacia Perú. Ese viaje lo cambiaría para siempre.</p>
+    <p style="font-size:14px;color:var(--text);font-weight:300;line-height:1.9;">Pasó casi dos tercios de su vida fuera de Estados Unidos. Vivió en Perú el terrorismo de Sendero Luminoso, la crisis del Fujishock, la pandemia. No como turista — sino como pastor, caminando junto a su gente. Cuando lo eligieron Papa, su primer saludo en español fue para su <em>"querida diócesis de Chiclayo"</em>. La plaza entera lloró.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⏳</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo-grande">Su <em>trayectoria</em></h2>
+  <p class="sec-sub">Una vida entregada paso a paso — desde Chicago hasta la Plaza de San Pedro.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">1955</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Nace en Chicago</div>
+        <div class="tl-desc">Robert Francis Prevost nace el 14 de septiembre en Chicago, Illinois. Sus padres son devueltos católicos con raíces europeas. Crece en una familia donde la fe es el centro.</div>
+        <span class="tl-lugar">📍 Chicago, Illinois, EE.UU.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">1977</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Entra a los Agustinos</div>
+        <div class="tl-desc">Ingresa al noviciado de la Orden de San Agustín. En 1981 hace sus votos solemnes. La espiritualidad agustiniana — que busca a Dios en la interioridad y en la comunidad — marcaría toda su vida.</div>
+        <span class="tl-lugar">✝️ Orden de San Agustín (O.S.A.)</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">1982</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Ordenado sacerdote</div>
+        <div class="tl-desc">Es ordenado sacerdote. Se forma en Teología en Chicago y luego viaja a Roma para hacer su doctorado en Derecho Canónico en la Pontificia Universidad Santo Tomás de Aquino.</div>
+        <span class="tl-lugar">🎓 Roma, Italia</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">1985</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Primera misión en Perú 🇵🇪</div>
+        <div class="tl-desc">Llega a Chulucanas, Piura, como misionero agustino. Es su primer contacto con América Latina. Convive con la pobreza, aprende español y descubre su vocación misionera.</div>
+        <span class="tl-lugar">📍 Chulucanas, Piura, Perú</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">1988</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Diez años en Trujillo</div>
+        <div class="tl-desc">Regresa a Perú y se instala en Trujillo. Dirige el seminario agustiniano, enseña Derecho Canónico, es párroco, vicario judicial y maestro de profesos. Vive el terrorismo de Sendero Luminoso y la crisis económica junto a su pueblo.</div>
+        <span class="tl-lugar">📍 Trujillo, La Libertad, Perú</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">2001</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Prior General de los Agustinos</div>
+        <div class="tl-desc">Es elegido Prior General de toda la Orden de San Agustín — el jefe de todos los agustinos del mundo. Ejerce el cargo durante dos mandatos (12 años), viajando por los cinco continentes.</div>
+        <span class="tl-lugar">🌍 Roma — con misiones en todo el mundo</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">2014</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Obispo de Chiclayo</div>
+        <div class="tl-desc">El Papa Francisco lo nombra Obispo de Chiclayo, Perú. En 2015 obtiene la nacionalidad peruana. Pastoral cercana a los pobres, con un estilo sencillo y cercano. En 2020 enfrenta la pandemia junto a su diócesis.</div>
+        <span class="tl-lugar">📍 Chiclayo, Lambayeque, Perú</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">2023</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-titulo">Cardenal — mano derecha del Papa Francisco</div>
+        <div class="tl-desc">Francisco lo nombra Prefecto del Dicasterio para los Obispos: el cargo que supervisa la selección de obispos en todo el mundo. En septiembre es creado Cardenal.</div>
+        <span class="tl-lugar">🔴 Ciudad del Vaticano</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-anio">2025</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content" style="background:linear-gradient(135deg,rgba(200,169,110,0.15),rgba(232,196,184,0.15));border-color:rgba(200,169,110,0.35);">
+        <div class="tl-titulo" style="color:var(--soft-gold);">⭐ Elegido Papa León XIV</div>
+        <div class="tl-desc">El 8 de mayo de 2025, en la cuarta votación del Cónclave, es elegido el 267° Sucesor de San Pedro. Sale al balcón de la Basílica de San Pedro y su primer saludo en español es para Chiclayo. El mundo llora de emoción.</div>
+        <span class="tl-lugar">🌍 Ciudad del Vaticano · 8 de mayo de 2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONEXIÓN CON LATINOAMÉRICA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌎</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo-grande">Su alma <em>latinoamericana</em></h2>
+  <p class="sec-sub">Pasó casi cuarenta años en América Latina. No como visitante — como uno más del pueblo.</p>
+
+  <div class="latam-card">
+    <div class="latam-titulo">🇵🇪 Un corazón peruano</div>
+    <div style="font-size:13.5px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:16px;">
+      Cuando le preguntaron a quién apoyaría en un Mundial de fútbol entre Estados Unidos y Perú, respondió sin dudar: <em>"Probablemente a Perú"</em>. En los años que vivió en el norte del Perú conoció la pobreza de cerca, aprendió a comer ceviche, a hablar con el acento norteño y a querer a su pueblo con un amor que no es de turista sino de pastor.
+    </div>
+    <div class="latam-items">
+      <div class="latam-item"><div class="latam-pais">📍 Chulucanas, Piura</div><div class="latam-desc">Su primera misión. Llegó en 1985 como joven sacerdote agustino.</div></div>
+      <div class="latam-item"><div class="latam-pais">📍 Trujillo, La Libertad</div><div class="latam-desc">Diez años como formador y vicario. Vivió el terrorismo y la crisis económica.</div></div>
+      <div class="latam-item"><div class="latam-pais">📍 Chiclayo, Lambayeque</div><div class="latam-desc">Obispo desde 2014. Su diócesis del corazón. Tiene nacionalidad peruana desde 2015.</div></div>
+      <div class="latam-item"><div class="latam-pais">🌎 América Latina</div><div class="latam-desc">Planea visitar la región en 2026. Confirmó su intención de incluir a Argentina en una gira.</div></div>
+    </div>
+  </div>
+
+  <!-- SU NOMBRE Y ESCUDO -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🛡️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo-grande">¿Por qué eligió el nombre <em>León</em>?</h2>
+  <p class="sec-sub">Los papas eligen su nombre con mucho cuidado — es un mensaje al mundo sobre cómo quieren ser.</p>
+
+  <div class="escudo-box">
+    <div class="escudo-titulo">El nombre León y el escudo pontificio</div>
+    <div class="escudo-items">
+      <div class="escudo-item"><span class="escudo-ikon">🦁</span><div class="escudo-txt"><strong>León = fortaleza y doctrina.</strong> El más famoso fue León I "El Grande" (siglo V), quien defendió la fe frente a las herejías y se enfrentó a Atila. El último León fue León XIII (1903), famoso por la encíclica <em>Rerum Novarum</em> sobre los derechos de los trabajadores. León XIV retoma ese nombre como símbolo de liderazgo firme y compasivo.</div></div>
+      <div class="escudo-item"><span class="escudo-ikon">❤️‍🔥</span><div class="escudo-txt"><strong>El corazón flameante</strong> — símbolo de San Agustín. Representa la búsqueda incansable de Dios y el amor ardiente. La flecha clavada es la "herida del amor divino" que Agustín describe en sus Confesiones.</div></div>
+      <div class="escudo-item"><span class="escudo-ikon">🌸</span><div class="escudo-txt"><strong>La flor de Santa Mónica</strong> — la madre de San Agustín, que rezó por su conversión durante treinta años. Un símbolo de perseverancia y amor materno en la fe.</div></div>
+      <div class="escudo-item"><span class="escudo-ikon">🌊</span><div class="escudo-txt"><strong>Las olas del mar</strong> en el lado derecho del escudo representan su diócesis de Chiclayo — una ciudad costera del norte de Perú. Su manera de llevar siempre a Chiclayo en el corazón.</div></div>
+    </div>
+  </div>
+
+  <!-- SUS FRASES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">💬</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo-grande">Sus palabras más <em>hermosas</em></h2>
+  <p class="sec-sub">Lo que dice revela quién es. Estas son algunas de sus frases más recordadas.</p>
+
+  <div class="frases">
+    <div class="frase-card">
+      <div class="frase-txt">Si me permiten también una palabra, un saludo a todos y en modo particular a mi querida diócesis de Chiclayo, en el Perú, donde un pueblo fiel ha acompañado a su obispo, ha compartido su fe y ha dado tanto, tanto, para seguir siendo Iglesia fiel de Jesucristo.</div>
+      <div class="frase-ctx">Sus primeras palabras desde el balcón de San Pedro · 8 de mayo de 2025</div>
+    </div>
+    <div class="frase-card">
+      <div class="frase-txt">Ustedes me han llamado a cargar esa cruz y a ser bendecido con esa misión. Y sé que puedo contar con todos y cada uno de ustedes para caminar conmigo, mientras continuamos, como Iglesia, como comunidad de amigos de Jesús.</div>
+      <div class="frase-ctx">Discurso de inicio de pontificado</div>
+    </div>
+    <div class="frase-card">
+      <div class="frase-txt">Yo vengo aquí a predicar el Evangelio y es a mi conciencia a quien tengo que dar cuenta.</div>
+      <div class="frase-ctx">Respondiendo a presiones políticas durante su episcopado en Perú</div>
+    </div>
+    <div class="frase-card">
+      <div class="frase-txt">Yo sigo hablando contra la guerra, tratando de promover la paz, el diálogo, y el multilateralismo con los estados para encontrar soluciones a los problemas.</div>
+      <div class="frase-ctx">Sobre su misión de paz como Papa</div>
+    </div>
+    <div class="frase-card">
+      <div class="frase-txt">Hoy son muchos los contextos en los que la fe cristiana se retiene un absurdo... pero la fe no es para personas débiles. Es para personas que buscan la verdad.</div>
+      <div class="frase-ctx">Homilía de inicio de pontificado · 18 de mayo de 2025</div>
+    </div>
+  </div>
+
+  <!-- CURIOSIDADES -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✨</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo-grande">Cosas que quizás no <em>sabías</em></h2>
+
+  <div class="curio-grid">
+    <div class="curio">
+      <span class="curio-ikon">🧮</span>
+      <div class="curio-titulo">Estudió Matemáticas</div>
+      <div class="curio-txt">Antes de dedicarse a la teología y el derecho canónico, estudió Matemáticas. Un Papa con mente analítica y corazón pastoral.</div>
+    </div>
+    <div class="curio">
+      <span class="curio-ikon">⚽</span>
+      <div class="curio-titulo">Hincha del Perú</div>
+      <div class="curio-txt">Le preguntaron a quién apoyaría en un Mundial entre EE.UU. y Perú. Respondió sin dudar: "Probablemente a Perú".</div>
+    </div>
+    <div class="curio">
+      <span class="curio-ikon">🇪🇸</span>
+      <div class="curio-titulo">Raíces españolas</div>
+      <div class="curio-txt">Su madre, Mildred Martínez, tenía ascendencia española. Estudios genealógicos apuntan a raíces en Galicia y posiblemente Canarias.</div>
+    </div>
+    <div class="curio">
+      <span class="curio-ikon">🗣️</span>
+      <div class="curio-titulo">Habla 6 idiomas</div>
+      <div class="curio-txt">Inglés, español, italiano, francés, portugués y latín. Habla el español con acento norteño peruano que aprendió en Trujillo y Chiclayo.</div>
+    </div>
+    <div class="curio">
+      <span class="curio-ikon">🕊️</span>
+      <div class="curio-titulo">Primer Papa agustino</div>
+      <div class="curio-txt">En 2000 años de historia de la Iglesia, nunca antes un agustino había sido Papa. León XIV es el primero.</div>
+    </div>
+    <div class="curio">
+      <span class="curio-ikon">🇵🇪🇺🇸</span>
+      <div class="curio-titulo">Primer Papa peruano</div>
+      <div class="curio-txt">Aunque nació en Chicago, obtuvo la nacionalidad peruana en 2015. Es el primer Papa con nacionalidad peruana y el primer estadounidense en serlo.</div>
+    </div>
+  </div>
+
+  <!-- ORACIÓN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🙏</span><div class="sep-line"></div></div>
+  <div class="oracion-box">
+    <div class="oracion-titulo">Una oración por el Papa León XIV</div>
+    <div class="oracion-txt">
+      Señor Jesús,<br>
+      guarda y fortalece a nuestro Papa León XIV.<br>
+      Que su corazón agustiniano siga ardiendo<br>
+      en búsqueda de ti y en amor a los pobres.<br>
+      Que sus palabras traigan paz<br>
+      y que su vida siga siendo<br>
+      testimonio de que en ti somos uno.<br><br>
+      <em>In Illo Uno Unum.</em> 🌸
+    </div>
+  </div>
+
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Fuentes: Vatican News · Infobae · Wikipedia</p></footer>
+</body>
+</html>
