@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Santo Rosario · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush:#f5e6e0; --rose:#e8c4b8; --mauve:#c9a0a0;
+    --sage:#b8c9b0; --sage-dark:#8aaa80; --cream:#fdf8f4;
+    --warm-brown:#7a5c58; --soft-gold:#c8a96e;
+    --text:#4a3a38; --text-light:#7a6560;
+    --gozosos:#e8c4b8; --luminosos:#c5d9e8; --dolorosos:#d4c5e2; --gloriosos:#c9d4b8;
+    --gozosos-dark:#7a5c58; --luminosos-dark:#4a7090; --dolorosos-dark:#6a5078; --gloriosos-dark:#4a6a38;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;min-height:100vh;}
+
+  .bg-blob{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .bg-blob::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.28) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(45px);}
+  .bg-blob::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.22) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(40px);}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);text-decoration:none;}
+  .nav-logo em{font-style:italic;color:var(--mauve);}
+  .nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);text-decoration:none;}
+  .nav-back:hover{color:var(--warm-brown);}
+
+  .page{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:100px 24px 80px;}
+
+  /* HEADER */
+  .page-header{text-align:center;margin-bottom:40px;animation:fadeUp 0.8s ease forwards 0.2s;opacity:0;}
+  .page-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:12px;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,52px);font-weight:300;color:var(--warm-brown);line-height:1.1;}
+  .page-title em{font-style:italic;color:var(--mauve);}
+  .page-sub{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-light);margin-top:10px;line-height:1.6;}
+
+  /* DÍAS DE HOY */
+  .hoy-box{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.4);border-radius:16px;padding:18px 22px;margin-bottom:32px;text-align:center;animation:fadeUp 0.8s ease forwards 0.4s;opacity:0;}
+  .hoy-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:6px;}
+  .hoy-misterio{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--warm-brown);font-weight:400;}
+
+  /* BOTONES MISTERIOS */
+  .misterios-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px;animation:fadeUp 0.8s ease forwards 0.5s;opacity:0;}
+  @media(max-width:440px){.misterios-tabs{grid-template-columns:1fr;}}
+  .tab-btn{border:none;border-radius:14px;padding:16px 12px;cursor:pointer;text-align:left;transition:all 0.25s;position:relative;overflow:hidden;}
+  .tab-btn .tab-emoji{font-size:24px;display:block;margin-bottom:8px;}
+  .tab-btn .tab-nombre{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;display:block;margin-bottom:3px;}
+  .tab-btn .tab-dias{font-size:11px;letter-spacing:1px;opacity:0.7;}
+  .tab-btn.gozosos{background:rgba(232,196,184,0.25);border:1px solid rgba(232,196,184,0.4);color:var(--gozosos-dark);}
+  .tab-btn.luminosos{background:rgba(197,217,232,0.25);border:1px solid rgba(197,217,232,0.4);color:var(--luminosos-dark);}
+  .tab-btn.dolorosos{background:rgba(212,197,226,0.25);border:1px solid rgba(212,197,226,0.4);color:var(--dolorosos-dark);}
+  .tab-btn.gloriosos{background:rgba(201,212,184,0.25);border:1px solid rgba(201,212,184,0.4);color:var(--gloriosos-dark);}
+  .tab-btn.active.gozosos{background:rgba(232,196,184,0.5);border-color:rgba(200,150,130,0.6);box-shadow:0 4px 16px rgba(232,196,184,0.4);}
+  .tab-btn.active.luminosos{background:rgba(197,217,232,0.5);border-color:rgba(100,160,200,0.5);box-shadow:0 4px 16px rgba(197,217,232,0.4);}
+  .tab-btn.active.dolorosos{background:rgba(212,197,226,0.5);border-color:rgba(160,130,190,0.5);box-shadow:0 4px 16px rgba(212,197,226,0.4);}
+  .tab-btn.active.gloriosos{background:rgba(201,212,184,0.5);border-color:rgba(120,160,100,0.5);box-shadow:0 4px 16px rgba(201,212,184,0.4);}
+  .tab-btn .tab-check{position:absolute;top:10px;right:12px;font-size:14px;opacity:0;transition:opacity 0.2s;}
+  .tab-btn.active .tab-check{opacity:1;}
+
+  /* SECCIÓN MISTERIOS */
+  .misterios-section{display:none;}
+  .misterios-section.active{display:block;animation:fadeUp 0.5s ease forwards;}
+
+  /* Oraciones iniciales */
+  .oraciones-iniciales{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.35);border-radius:20px;margin-bottom:24px;overflow:hidden;}
+  .oraciones-header{padding:18px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+  .oraciones-header-text{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);}
+  .oraciones-header-icon{font-size:16px;color:var(--mauve);transition:transform 0.3s;}
+  .oraciones-header.open .oraciones-header-icon{transform:rotate(180deg);}
+  .oraciones-body{display:none;padding:0 22px 22px;}
+  .oraciones-body.open{display:block;}
+
+  /* Misterio card */
+  .misterio-card{border-radius:18px;overflow:hidden;border:1px solid rgba(232,196,184,0.3);margin-bottom:16px;}
+  .misterio-header{padding:18px 22px;cursor:pointer;display:flex;align-items:center;gap:14px;user-select:none;transition:all 0.2s;}
+  .misterio-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;line-height:1;flex-shrink:0;width:32px;text-align:center;}
+  .misterio-header-info{flex:1;}
+  .misterio-nombre{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:var(--warm-brown);line-height:1.3;margin-bottom:2px;}
+  .misterio-fruto{font-size:12px;color:var(--text-light);font-weight:300;}
+  .misterio-arrow{font-size:16px;color:var(--mauve);transition:transform 0.3s;flex-shrink:0;}
+  .misterio-card.open .misterio-arrow{transform:rotate(180deg);}
+
+  /* Misterio body */
+  .misterio-body{display:none;padding:0 22px 22px;}
+  .misterio-body.open{display:block;}
+  .misterio-explicacion{font-size:14.5px;line-height:1.9;color:var(--text);font-weight:300;margin-bottom:18px;padding:16px 18px;background:rgba(255,255,255,0.5);border-radius:12px;}
+  .misterio-explicacion strong{color:var(--warm-brown);font-weight:400;}
+
+  /* Oraciones del misterio */
+  .oracion-block{margin-bottom:14px;}
+  .oracion-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .oracion-tag::after{content:'';flex:1;height:1px;background:rgba(200,169,110,0.25);}
+  .oracion-texto{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.8;background:rgba(245,230,224,0.3);border-radius:10px;padding:14px 16px;}
+  .oracion-texto.respuesta{background:rgba(240,246,237,0.4);border-left:3px solid var(--sage-dark);border-radius:0 10px 10px 0;color:#3a6a34;}
+  .decena-info{font-size:12px;color:var(--text-light);font-weight:300;margin:10px 0 6px;font-style:italic;}
+
+  /* Colores por misterio */
+  .gozosos .misterio-header{background:rgba(232,196,184,0.15);}
+  .gozosos .misterio-num{color:var(--gozosos-dark);}
+  .luminosos .misterio-header{background:rgba(197,217,232,0.15);}
+  .luminosos .misterio-num{color:var(--luminosos-dark);}
+  .dolorosos .misterio-header{background:rgba(212,197,226,0.15);}
+  .dolorosos .misterio-num{color:var(--dolorosos-dark);}
+  .gloriosos .misterio-header{background:rgba(201,212,184,0.15);}
+  .gloriosos .misterio-num{color:var(--gloriosos-dark);}
+
+  /* Oraciones finales */
+  .oraciones-finales{background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.3);border-radius:18px;padding:24px 24px;margin-top:8px;}
+  .fin-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:16px;}
+
+  /* Footer */
+  .floral-tr{position:fixed;top:0;right:0;width:190px;opacity:0.42;pointer-events:none;z-index:0;}
+  .floral-bl{position:fixed;bottom:0;left:0;width:170px;opacity:0.35;pointer-events:none;z-index:0;transform:rotate(180deg);}
+  footer{position:relative;z-index:1;text-align:center;padding:28px 24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+  footer p{font-size:12px;color:var(--mauve);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="bg-blob"></div>
+<svg class="floral-tr" viewBox="0 0 300 300" fill="none"><circle cx="220" cy="60" r="38" fill="rgba(232,196,184,0.35)"/><circle cx="248" cy="45" r="26" fill="rgba(245,230,224,0.42)"/><ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(232,196,184,0.38)" transform="rotate(-20 230 55)"/><ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.4)" transform="rotate(40 175 85)"/></svg>
+<svg class="floral-bl" viewBox="0 0 300 300" fill="none"><circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.28)"/><circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.34)"/><ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.36)" transform="rotate(-15 75 245)"/></svg>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <p class="page-eyebrow">Volver a Ti, Jesús</p>
+    <h1 class="page-title">El Santo <em>Rosario</em></h1>
+    <p class="page-sub">Oraciones completas, misterios explicados<br>y reflexión para cada día.</p>
+  </div>
+
+  <!-- HOY -->
+  <div class="hoy-box" id="hoy-box">
+    <p class="hoy-label">✦ Hoy corresponden los misterios</p>
+    <p class="hoy-misterio" id="hoy-misterio">...</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="misterios-tabs">
+    <button class="tab-btn gozosos" onclick="mostrar('gozosos')">
+      <span class="tab-check">✓</span>
+      <span class="tab-emoji">🌸</span>
+      <span class="tab-nombre">Gozosos</span>
+      <span class="tab-dias">Lunes y Sábado</span>
+    </button>
+    <button class="tab-btn luminosos" onclick="mostrar('luminosos')">
+      <span class="tab-check">✓</span>
+      <span class="tab-emoji">☀️</span>
+      <span class="tab-nombre">Luminosos</span>
+      <span class="tab-dias">Jueves</span>
+    </button>
+    <button class="tab-btn dolorosos" onclick="mostrar('dolorosos')">
+      <span class="tab-check">✓</span>
+      <span class="tab-emoji">🕊️</span>
+      <span class="tab-nombre">Dolorosos</span>
+      <span class="tab-dias">Martes y Viernes</span>
+    </button>
+    <button class="tab-btn gloriosos" onclick="mostrar('gloriosos')">
+      <span class="tab-check">✓</span>
+      <span class="tab-emoji">✨</span>
+      <span class="tab-nombre">Gloriosos</span>
+      <span class="tab-dias">Miércoles y Domingo</span>
+    </button>
+  </div>
+
+  <!-- ════════ MISTERIOS GOZOSOS ════════ -->
+  <div class="misterios-section" id="sec-gozosos">
+
+    <div class="oraciones-iniciales">
+      <div class="oraciones-header" onclick="toggleOraciones(this)">
+        <span class="oraciones-header-text">📿 Oraciones iniciales</span>
+        <span class="oraciones-header-icon">▼</span>
+      </div>
+      <div class="oraciones-body">
+        <div class="oracion-block">
+          <div class="oracion-tag">Señal de la Cruz</div>
+          <div class="oracion-texto">Por la señal de la Santa Cruz, de nuestros enemigos, líbranos, Señor, Dios nuestro. En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.</div>
+        </div>
+        <div class="oracion-block">
+          <div class="oracion-tag">Credo de los Apóstoles</div>
+          <div class="oracion-texto">Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, Nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.</div>
+        </div>
+        <div class="oracion-block">
+          <div class="oracion-tag">1 Padrenuestro · 3 Avemarías · Gloria</div>
+          <div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div>
+        </div>
+        <div class="oracion-block">
+          <div class="oracion-tag">Avemaría (rezar 3 veces)</div>
+          <div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div>
+        </div>
+        <div class="oracion-block">
+          <div class="oracion-tag">Gloria</div>
+          <div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Misterio 1 -->
+    <div class="misterio-card gozosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">I</div>
+        <div class="misterio-header-info">
+          <div class="misterio-nombre">La Anunciación del Ángel a María</div>
+          <div class="misterio-fruto">Fruto: Humildad</div>
+        </div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">El ángel Gabriel visita a María en Nazaret y le anuncia que será la Madre del Hijo de Dios. María, con fe y humildad, responde: <strong>"Hágase en mí según tu palabra."</strong> En ese momento, Jesús se encarna en su vientre por obra del Espíritu Santo. La salvación del mundo comienza con el sí de una joven que confió completamente en Dios.</div>
+        <div class="oracion-block">
+          <div class="oracion-tag">Padrenuestro</div>
+          <div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div>
+        </div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block">
+          <div class="oracion-tag">Avemaría (× 10)</div>
+          <div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div>
+        </div>
+        <div class="oracion-block">
+          <div class="oracion-tag">Gloria</div>
+          <div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</div>
+        </div>
+        <div class="oracion-block">
+          <div class="oracion-tag">Oración de Fátima</div>
+          <div class="oracion-texto">Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Misterio 2 -->
+    <div class="misterio-card gozosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">II</div>
+        <div class="misterio-header-info">
+          <div class="misterio-nombre">La Visitación de María a Isabel</div>
+          <div class="misterio-fruto">Fruto: Amor al prójimo</div>
+        </div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Después de la Anunciación, María va a visitar a su prima Isabel, que también está embarazada a pesar de su avanzada edad. Cuando se encuentran, el bebé en el vientre de Isabel <strong>(Juan el Bautista) salta de alegría</strong> al sentir la presencia de Jesús. Isabel exclama: "¿Quién soy yo para que me visite la Madre de mi Señor?" María responde con el Magnificat, una oración de alabanza a Dios.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Oración de Fátima</div><div class="oracion-texto">Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <!-- Misterio 3 -->
+    <div class="misterio-card gozosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">III</div>
+        <div class="misterio-header-info">
+          <div class="misterio-nombre">El Nacimiento de Jesús en Belén</div>
+          <div class="misterio-fruto">Fruto: Pobreza de espíritu</div>
+        </div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Jesús, el Hijo de Dios, nace en un establo en Belén porque no había lugar en la posada. <strong>El Creador del universo llega al mundo en la pobreza más absoluta</strong>, entre pastores y animales. Los ángeles anuncian su nacimiento: "Os anuncio una gran alegría: os ha nacido un Salvador." Los Reyes Magos lo visitan guiados por una estrella y le ofrecen oro, incienso y mirra.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Oración de Fátima</div><div class="oracion-texto">Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <!-- Misterio 4 -->
+    <div class="misterio-card gozosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">IV</div>
+        <div class="misterio-header-info">
+          <div class="misterio-nombre">La Presentación de Jesús en el Templo</div>
+          <div class="misterio-fruto">Fruto: Obediencia</div>
+        </div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Cuarenta días después del nacimiento, María y José llevan al niño Jesús al Templo de Jerusalén, cumpliendo la ley de Moisés. Allí los recibe el anciano Simeón, quien había prometido no morir antes de ver al Mesías. Al tener a Jesús en brazos exclama: <strong>"Ahora, Señor, puedes dejar que tu siervo se vaya en paz."</strong> También está la profetisa Ana, que da gracias a Dios y habla del niño a todos.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Oración de Fátima</div><div class="oracion-texto">Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <!-- Misterio 5 -->
+    <div class="misterio-card gozosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">V</div>
+        <div class="misterio-header-info">
+          <div class="misterio-nombre">El Niño Jesús perdido y hallado en el Templo</div>
+          <div class="misterio-fruto">Fruto: Buscar a Dios</div>
+        </div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Jesús tenía doce años cuando la familia fue a Jerusalén. Al volver, sus padres notaron que no estaba. Lo buscaron durante tres días con angustia hasta encontrarlo en el Templo, conversando con los maestros que quedaban asombrados por su sabiduría. María le pregunta: "Hijo, ¿por qué nos has hecho esto?" Y Jesús responde: <strong>"¿No sabían que debo ocuparme de las cosas de mi Padre?"</strong></div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Oración de Fátima</div><div class="oracion-texto">Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <!-- Oraciones finales -->
+    <div class="oraciones-finales">
+      <p class="fin-label">✦ Para terminar</p>
+      <div class="oracion-block"><div class="oracion-tag">Salve Regina</div><div class="oracion-texto">Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra. Dios te salve. A ti llamamos los desterrados hijos de Eva. A ti suspiramos, gimiendo y llorando en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos. Y después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce siempre Virgen María! Ruega por nosotros, Santa Madre de Dios, para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo. Amén.</div></div>
+      <div class="oracion-block"><div class="oracion-tag">Letanías Lauretanas (opcional)</div><div class="oracion-texto">Señor, ten piedad. Cristo, ten piedad. Señor, ten piedad. Cristo, óyenos. Cristo, escúchanos. Dios Padre celestial, ten misericordia de nosotros. Dios Hijo, Redentor del mundo, ten misericordia de nosotros. Dios Espíritu Santo, ten misericordia de nosotros. Santa Trinidad, un solo Dios, ten misericordia de nosotros. Santa María, ruega por nosotros. Santa Madre de Dios, ruega por nosotros. Santa Virgen de las vírgenes, ruega por nosotros. Madre de Cristo, ruega por nosotros. Madre de la Iglesia, ruega por nosotros. Madre de la divina gracia, ruega por nosotros. Madre purísima, ruega por nosotros. Reina de todos los santos, ruega por nosotros. Reina concebida sin pecado original, ruega por nosotros. Cordero de Dios, que quitas el pecado del mundo, perdónanos, Señor. Cordero de Dios, que quitas el pecado del mundo, escúchanos, Señor. Cordero de Dios, que quitas el pecado del mundo, ten misericordia de nosotros.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════ MISTERIOS LUMINOSOS ════════ -->
+  <div class="misterios-section" id="sec-luminosos">
+    <div class="oraciones-iniciales">
+      <div class="oraciones-header" onclick="toggleOraciones(this)">
+        <span class="oraciones-header-text">📿 Oraciones iniciales</span>
+        <span class="oraciones-header-icon">▼</span>
+      </div>
+      <div class="oraciones-body">
+        <div class="oracion-block"><div class="oracion-tag">Señal de la Cruz</div><div class="oracion-texto">Por la señal de la Santa Cruz, de nuestros enemigos, líbranos, Señor, Dios nuestro. En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Credo</div><div class="oracion-texto">Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, Nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro · 3 Avemarías · Gloria</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card luminosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">I</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">El Bautismo de Jesús en el Jordán</div><div class="misterio-fruto">Fruto: Apertura al Espíritu Santo</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Jesús, siendo ya adulto, se presenta ante Juan el Bautista en el río Jordán para ser bautizado. Juan le dice: "Soy yo quien necesita ser bautizado por ti." Pero Jesús insiste. Al salir del agua, <strong>el cielo se abre, el Espíritu Santo baja en forma de paloma y una voz dice: "Este es mi Hijo amado, en quien me complazco."</strong> Es la primera revelación pública de la Trinidad.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card luminosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">II</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">Las Bodas de Caná</div><div class="misterio-fruto">Fruto: Intercesión de María</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">En una boda en Caná, el vino se acaba. María le dice a Jesús: "No tienen vino." Jesús responde que su hora aún no ha llegado, pero María le dice a los sirvientes: <strong>"Hagan lo que Él les diga."</strong> Jesús convierte el agua en vino — su primer milagro público. Este misterio nos enseña la poderosa intercesión de María y la obediencia que nos lleva a los milagros de Dios.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card luminosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">III</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">El Anuncio del Reino de Dios</div><div class="misterio-fruto">Fruto: Conversión y confianza en Dios</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Durante tres años, Jesús recorre Galilea y Judea predicando el Reino de Dios y llamando a la conversión. Sana enfermos, perdona pecadores, come con los excluidos y desafía las estructuras injustas. <strong>"El tiempo se ha cumplido, el Reino de Dios está cerca. Convertíos y creed en el Evangelio."</strong> Llama a doce apóstoles para continuar su misión y enseña las Bienaventuranzas.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card luminosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">IV</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Transfiguración de Jesús</div><div class="misterio-fruto">Fruto: Deseo del cielo</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Jesús sube al monte Tabor con Pedro, Santiago y Juan. Ante ellos <strong>su rostro resplandece como el sol y sus vestidos se vuelven blancos como la luz.</strong> Aparecen Moisés y Elías hablando con Él. Una nube los cubre y la voz del Padre dice: "Este es mi Hijo amado, escuchadlo." Los apóstoles caen aterrorizados. Jesús los levanta diciendo: "Levantaos, no temáis."</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card luminosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">V</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Institución de la Eucaristía</div><div class="misterio-fruto">Fruto: Adoración eucarística</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">En la Última Cena, la noche antes de su pasión, Jesús toma el pan, da gracias, lo parte y dice: <strong>"Esto es mi Cuerpo, que se entrega por vosotros."</strong> Luego toma el cáliz y dice: "Esta es mi Sangre, la sangre de la nueva Alianza, derramada por muchos para el perdón de los pecados." Así instituyó la Eucaristía — el sacramento más grande — y el sacerdocio ministerial.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="oraciones-finales">
+      <p class="fin-label">✦ Para terminar</p>
+      <div class="oracion-block"><div class="oracion-tag">Salve Regina</div><div class="oracion-texto">Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra. Dios te salve. A ti llamamos los desterrados hijos de Eva. A ti suspiramos, gimiendo y llorando en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos. Y después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce siempre Virgen María! Ruega por nosotros, Santa Madre de Dios, para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo. Amén.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════ MISTERIOS DOLOROSOS ════════ -->
+  <div class="misterios-section" id="sec-dolorosos">
+    <div class="oraciones-iniciales">
+      <div class="oraciones-header" onclick="toggleOraciones(this)">
+        <span class="oraciones-header-text">📿 Oraciones iniciales</span>
+        <span class="oraciones-header-icon">▼</span>
+      </div>
+      <div class="oraciones-body">
+        <div class="oracion-block"><div class="oracion-tag">Señal de la Cruz + Credo + Padrenuestro + 3 Avemarías + Gloria</div><div class="oracion-texto">Por la señal de la Santa Cruz... — Creo en Dios, Padre todopoderoso... — Padre nuestro, que estás en el cielo... — Dios te salve, María (× 3)... — Gloria al Padre...</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card dolorosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">I</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Oración de Jesús en el Huerto</div><div class="misterio-fruto">Fruto: Conformidad con la voluntad de Dios</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Después de la Última Cena, Jesús va al Huerto de Getsemaní con sus discípulos. Sabiendo lo que le espera, ora al Padre con angustia tan grande que <strong>su sudor se convierte en gotas de sangre.</strong> Ora: "Padre, si quieres, aparta de mí este cáliz; pero no se haga mi voluntad, sino la tuya." Sus apóstoles se duermen mientras Él agoniza. Un ángel baja a confortarlo. Luego llegan los soldados con Judas.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card dolorosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">II</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Flagelación de Jesús</div><div class="misterio-fruto">Fruto: Mortificación de los sentidos</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Jesús es entregado a Pilato, quien no encuentra delito en Él. Para aplacar a la multitud que pide su muerte, Pilato manda azotarlo. Los soldados azotan cruelmente a Jesús atado a una columna. <strong>Cada golpe fue sufrido por amor a nosotros, para sanar nuestras heridas.</strong> El profeta Isaías lo anunció: "Por sus llagas fuimos curados." Jesús aguanta todo en silencio, con paciencia y amor.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card dolorosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">III</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Coronación de Espinas</div><div class="misterio-fruto">Fruto: Fortaleza moral</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Los soldados trenzaron una corona de espinas y la clavaron en la cabeza de Jesús. Le pusieron un manto de púrpura y se burlaban arrodillándose ante Él, diciendo: <strong>"¡Salve, Rey de los judíos!"</strong> y le daban bofetadas. Jesús que es el Rey del universo, soporta la humillación más profunda. Esta escena nos habla de cuánto nos amó y cuánto vale nuestra dignidad ante Dios.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card dolorosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">IV</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">Jesús con la Cruz a cuestas camino al Calvario</div><div class="misterio-fruto">Fruto: Paciencia en el sufrimiento</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Jesús carga la pesada cruz desde el Pretorio hasta el Calvario, atravesando las calles de Jerusalén. Cae varias veces por el agotamiento. Encuentra a su Madre en el camino. El Cireneo Simón es obligado a ayudarlo. La Verónica le limpia el rostro y la imagen queda impresa en el paño. <strong>Jesús carga nuestra cruz con paciencia y amor.</strong> Nos dice: "El que quiera seguirme, que cargue con su cruz."</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card dolorosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">V</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Crucifixión y Muerte de Jesús</div><div class="misterio-fruto">Fruto: Salvación y perdón</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">En el Calvario, Jesús es clavado en la cruz entre dos ladrones. Durante tres horas agoniza. Perdona a quienes lo crucifican: <strong>"Padre, perdónalos, porque no saben lo que hacen."</strong> Al buen ladrón le promete el paraíso. Encomienda a su Madre a Juan. Al final grita: "Todo está consumado" e inclina la cabeza. El velo del Templo se rasga, la tierra tiembla. María recibe el cuerpo de su Hijo en sus brazos.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="oraciones-finales">
+      <p class="fin-label">✦ Para terminar</p>
+      <div class="oracion-block"><div class="oracion-tag">Salve Regina</div><div class="oracion-texto">Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra. Dios te salve. A ti llamamos los desterrados hijos de Eva. A ti suspiramos, gimiendo y llorando en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos. Y después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce siempre Virgen María! Ruega por nosotros, Santa Madre de Dios, para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo. Amén.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════ MISTERIOS GLORIOSOS ════════ -->
+  <div class="misterios-section" id="sec-gloriosos">
+    <div class="oraciones-iniciales">
+      <div class="oraciones-header" onclick="toggleOraciones(this)">
+        <span class="oraciones-header-text">📿 Oraciones iniciales</span>
+        <span class="oraciones-header-icon">▼</span>
+      </div>
+      <div class="oraciones-body">
+        <div class="oracion-block"><div class="oracion-tag">Señal de la Cruz + Credo + Padrenuestro + 3 Avemarías + Gloria</div><div class="oracion-texto">Por la señal de la Santa Cruz... — Creo en Dios, Padre todopoderoso... — Padre nuestro, que estás en el cielo... — Dios te salve, María (× 3)... — Gloria al Padre...</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card gloriosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">I</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Resurrección de Jesús</div><div class="misterio-fruto">Fruto: Fe viva</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Al tercer día después de su muerte, el sepulcro está vacío. Un ángel anuncia a las mujeres: <strong>"No está aquí, ha resucitado."</strong> Jesús se aparece a María Magdalena, a los discípulos de Emaús, y a los apóstoles reunidos. La Resurrección es el centro de la fe cristiana — sin ella, nuestra fe sería vana. Jesús venció a la muerte y nos abrió las puertas de la vida eterna.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card gloriosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">II</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Ascensión de Jesús al Cielo</div><div class="misterio-fruto">Fruto: Esperanza del cielo</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Cuarenta días después de la Resurrección, Jesús reúne a sus apóstoles en el Monte de los Olivos. Les da el mandato misionero: "Id y haced discípulos a todas las naciones." Luego <strong>asciende al cielo ante sus ojos hasta que una nube lo oculta.</strong> Dos ángeles les dicen: "Este mismo Jesús que ha sido llevado al cielo, vendrá del mismo modo que lo habéis visto subir."</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card gloriosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">III</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Venida del Espíritu Santo en Pentecostés</div><div class="misterio-fruto">Fruto: Dones del Espíritu Santo</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Cincuenta días después de la Resurrección, los apóstoles están reunidos con María en el Cenáculo. De repente <strong>un viento fuerte llena la casa y llamas de fuego se posan sobre cada uno.</strong> Quedan llenos del Espíritu Santo y empiezan a hablar en otras lenguas. Pedro sale a predicar y ese día se bautizan tres mil personas. Es el nacimiento de la Iglesia. El mismo Espíritu vive en nosotros desde el Bautismo.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card gloriosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">IV</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Asunción de María al Cielo</div><div class="misterio-fruto">Fruto: Gracia de una buena muerte</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">Al terminar su vida terrenal, María fue llevada en cuerpo y alma al cielo. La Iglesia enseña que, por ser la Madre de Dios y haber participado tan íntimamente en la obra de la Redención, <strong>María no experimentó la corrupción del sepulcro.</strong> Su Asunción es una anticipación de la resurrección que todos esperamos. Ella ya está donde nosotros esperamos llegar.</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="misterio-card gloriosos">
+      <div class="misterio-header" onclick="toggleMisterio(this)">
+        <div class="misterio-num">V</div>
+        <div class="misterio-header-info"><div class="misterio-nombre">La Coronación de María como Reina del Cielo</div><div class="misterio-fruto">Fruto: Confianza en María</div></div>
+        <span class="misterio-arrow">▼</span>
+      </div>
+      <div class="misterio-body">
+        <div class="misterio-explicacion">En el cielo, María es coronada Reina por su Hijo Jesucristo, <strong>Reina de todos los ángeles y santos, Reina del Cielo y de la tierra.</strong> Como Madre del Rey, recibe el honor más alto después de la Santísima Trinidad. Desde el cielo intercede por nosotros sin cesar. El Apocalipsis la describe: "Una mujer vestida de sol, con la luna bajo sus pies y una corona de doce estrellas sobre su cabeza."</div>
+        <div class="oracion-block"><div class="oracion-tag">Padrenuestro</div><div class="oracion-texto">Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en tentación, y líbranos del mal. Amén.</div></div>
+        <p class="decena-info">Rezar 10 Avemarías meditando en este misterio:</p>
+        <div class="oracion-block"><div class="oracion-tag">Avemaría (× 10)</div><div class="oracion-texto">Dios te salve, María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres, y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros, pecadores, ahora y en la hora de nuestra muerte. Amén.</div></div>
+        <div class="oracion-block"><div class="oracion-tag">Gloria + Oración de Fátima</div><div class="oracion-texto">Gloria al Padre, y al Hijo, y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén. — Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva al cielo a todas las almas, especialmente a las más necesitadas de tu misericordia. Amén.</div></div>
+      </div>
+    </div>
+
+    <div class="oraciones-finales">
+      <p class="fin-label">✦ Para terminar</p>
+      <div class="oracion-block"><div class="oracion-tag">Salve Regina</div><div class="oracion-texto">Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra. Dios te salve. A ti llamamos los desterrados hijos de Eva. A ti suspiramos, gimiendo y llorando en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos. Y después de este destierro, muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce siempre Virgen María! Ruega por nosotros, Santa Madre de Dios, para que seamos dignos de alcanzar las promesas de Nuestro Señor Jesucristo. Amén.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+
+<script>
+// ── Misterio del día ──
+const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const misteriosPorDia = {
+  0: {nombre:'Gloriosos ✨', id:'gloriosos'},
+  1: {nombre:'Gozosos 🌸', id:'gozosos'},
+  2: {nombre:'Dolorosos 🕊️', id:'dolorosos'},
+  3: {nombre:'Gloriosos ✨', id:'gloriosos'},
+  4: {nombre:'Luminosos ☀️', id:'luminosos'},
+  5: {nombre:'Dolorosos 🕊️', id:'dolorosos'},
+  6: {nombre:'Gozosos 🌸', id:'gozosos'}
+};
+const hoy = new Date();
+const diaSemana = hoy.getDay();
+const mHoy = misteriosPorDia[diaSemana];
+document.getElementById('hoy-misterio').textContent = `${DIAS[diaSemana]} — Misterios ${mHoy.nombre}`;
+
+// Auto-abrir misterios de hoy
+mostrar(mHoy.id);
+
+// ── Mostrar sección ──
+function mostrar(id) {
+  document.querySelectorAll('.misterios-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelector('.tab-btn.' + id).classList.add('active');
+  document.getElementById('sec-' + id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── Toggle misterio ──
+function toggleMisterio(header) {
+  const card = header.parentElement;
+  const body = card.querySelector('.misterio-body');
+  const isOpen = card.classList.contains('open');
+  // Cerrar todos
+  document.querySelectorAll('.misterio-card').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.misterio-body').classList.remove('open');
+  });
+  // Abrir si estaba cerrado
+  if (!isOpen) {
+    card.classList.add('open');
+    body.classList.add('open');
+    setTimeout(() => body.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+  }
+}
+
+// ── Toggle oraciones iniciales ──
+function toggleOraciones(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

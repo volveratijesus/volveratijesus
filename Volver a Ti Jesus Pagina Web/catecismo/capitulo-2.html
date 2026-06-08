@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catecismo — Primera Parte · Capítulo II</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--blush:#f5e6e0;--rose:#e8c4b8;--mauve:#c9a0a0;--sage:#b8c9b0;--sage-dark:#8aaa80;--cream:#fdf8f4;--warm-brown:#7a5c58;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sky:#c5d9e8;--sky-dark:#4a7090;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);min-height:100vh;overflow-x:hidden;}
+.bg-wash{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-wash::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(197,217,232,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(45px);}
+.bg-wash::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(40px);}
+.flower-top-right{position:fixed;top:0;right:0;width:260px;opacity:0.5;pointer-events:none;z-index:0;}
+.flower-bottom-left{position:fixed;bottom:0;left:0;width:220px;opacity:0.4;pointer-events:none;z-index:0;transform:rotate(180deg);}
+.page{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:60px 44px 100px;}
+@media(max-width:600px){.page{padding:40px 22px 80px;}}
+
+/* PORTADA */
+.section-cover{min-height:85vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0 80px;}
+.breadcrumb{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:28px;animation:fadeUp 1s ease forwards 0.1s;opacity:0;}
+.part-number{font-family:'Cormorant Garamond',serif;font-size:clamp(60px,10vw,100px);font-weight:300;color:rgba(197,217,232,0.35);line-height:1;animation:fadeUp 1s ease forwards 0.2s;opacity:0;}
+.part-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,50px);font-weight:300;color:var(--warm-brown);line-height:1.15;margin-top:-10px;animation:fadeUp 1s ease forwards 0.35s;opacity:0;}
+.part-subtitle{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);margin-top:12px;line-height:1.5;animation:fadeUp 1s ease forwards 0.5s;opacity:0;}
+.cover-divider{display:flex;align-items:center;gap:14px;margin:36px auto;width:fit-content;animation:fadeUp 1s ease forwards 0.65s;opacity:0;}
+.cover-divider-line{width:70px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}
+.cover-divider-line.r{background:linear-gradient(to left,transparent,var(--rose));}
+.cover-divider-dot{width:5px;height:5px;border-radius:50%;background:var(--soft-gold);}
+.cover-intro{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-light);line-height:1.8;max-width:480px;animation:fadeUp 1s ease forwards 0.8s;opacity:0;}
+
+/* NAV INTERNA */
+.chapter-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:28px 0 0;animation:fadeUp 1s ease forwards 1s;opacity:0;}
+.nav-pill{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.4);border-radius:20px;padding:7px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-brown);text-decoration:none;transition:all 0.2s;}
+.nav-pill:hover{background:rgba(245,230,224,0.7);border-color:rgba(200,169,110,0.4);}
+
+/* SECCIONES */
+.chapter-section{margin-bottom:60px;}
+.section-header{margin-bottom:32px;padding-top:40px;border-top:1px solid rgba(232,196,184,0.3);}
+.section-tag{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:8px;}
+.section-num-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(197,217,232,0.15);border:1px solid rgba(197,217,232,0.3);border-radius:20px;padding:5px 14px;margin-bottom:12px;font-size:11px;letter-spacing:1px;color:var(--sky-dark);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:300;color:var(--warm-brown);line-height:1.2;margin-bottom:8px;}
+.section-title em{font-style:italic;color:var(--mauve);}
+.section-subtitle{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text-light);line-height:1.6;}
+
+/* PÁRRAFO DEL CATECISMO */
+.ccc-block{background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);border:1px solid rgba(232,196,184,0.35);border-left:3px solid var(--soft-gold);border-radius:0 14px 14px 0;padding:18px 22px;margin:20px 0;position:relative;}
+.ccc-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.ccc-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.85;}
+
+/* EXPLICACIÓN */
+.exp-block{margin:16px 0 28px;}
+.exp-text{font-size:14.5px;line-height:1.95;color:var(--text);font-weight:300;}
+.exp-text p{margin-bottom:12px;}
+.exp-text p:last-child{margin-bottom:0;}
+.exp-text strong{color:var(--warm-brown);font-weight:400;}
+.exp-text em{font-style:italic;color:var(--text-light);}
+
+/* IDEA CLAVE */
+.idea-card{background:linear-gradient(135deg,rgba(245,230,224,0.5),rgba(240,246,237,0.4));border:1px solid rgba(200,169,110,0.25);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.idea-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:10px;}
+.idea-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--warm-brown);line-height:1.65;}
+
+/* ANALOGÍA */
+.analogy-card{background:rgba(197,217,232,0.12);border:1px solid rgba(197,217,232,0.3);border-radius:14px;padding:18px 22px;margin:16px 0;}
+.analogy-icon{font-size:22px;margin-bottom:8px;display:block;}
+.analogy-text{font-size:14px;color:var(--text-light);font-weight:300;line-height:1.8;}
+
+/* TABLA */
+.tabla-wrap{overflow-x:auto;margin:20px 0;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{background:rgba(245,230,224,0.5);color:var(--warm-brown);font-weight:400;font-family:'Cormorant Garamond',serif;font-size:15px;padding:10px 14px;text-align:left;border-bottom:2px solid rgba(200,169,110,0.3);}
+td{padding:10px 14px;border-bottom:1px solid rgba(232,196,184,0.2);color:var(--text);font-weight:300;line-height:1.6;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.3);}
+
+/* LISTA */
+.lista-bonita{list-style:none;margin:12px 0;padding:0;}
+.lista-bonita li{padding:8px 0 8px 24px;font-size:14px;color:var(--text);font-weight:300;line-height:1.7;border-bottom:1px solid rgba(232,196,184,0.15);position:relative;}
+.lista-bonita li:last-child{border-bottom:none;}
+.lista-bonita li::before{content:'✦';position:absolute;left:0;color:var(--soft-gold);font-size:11px;top:10px;}
+
+/* PILAR CARD */
+.tres-pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;}
+@media(max-width:500px){.tres-pilares{grid-template-columns:1fr;}}
+.pilar-card{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.35);border-radius:14px;padding:18px 16px;text-align:center;}
+.pilar-icon{font-size:26px;margin-bottom:10px;display:block;}
+.pilar-nombre{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--warm-brown);margin-bottom:6px;}
+.pilar-desc{font-size:12px;color:var(--text-light);font-weight:300;line-height:1.6;}
+
+/* CITA */
+.cita-block{background:rgba(255,255,255,0.45);border-left:3px solid var(--mauve);border-radius:0 12px 12px 0;padding:16px 20px;margin:16px 0;font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text-light);line-height:1.75;}
+.cita-autor{font-size:12px;color:var(--mauve);margin-top:8px;font-style:normal;letter-spacing:1px;}
+
+/* ETIQUETA HISTORIA */
+.historia-step{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px;}
+.historia-num{background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--soft-gold);flex-shrink:0;}
+.historia-content{flex:1;padding-top:4px;}
+.historia-titulo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--warm-brown);margin-bottom:4px;}
+.historia-desc{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.75;}
+
+/* SEPARADOR */
+.sep{display:flex;align-items:center;gap:14px;margin:40px 0 32px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.4);}
+.sep-text{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);}
+
+/* RESUMEN BOX */
+.resumen-box{background:rgba(245,230,224,0.4);border:1px solid rgba(200,169,110,0.25);border-radius:18px;padding:28px 30px;margin:32px 0;}
+.resumen-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--warm-brown);margin-bottom:16px;}
+.resumen-item{display:flex;gap:14px;margin-bottom:12px;align-items:flex-start;}
+.resumen-item:last-child{margin-bottom:0;}
+.resumen-num{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--soft-gold);flex-shrink:0;width:24px;}
+.resumen-text{font-size:14px;color:var(--text);font-weight:300;line-height:1.75;}
+
+/* QUIZ */
+.quiz-card{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.35);border-radius:18px;padding:24px 26px;margin-bottom:20px;transition:all 0.3s ease;}
+.quiz-q-num{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:10px;}
+.quiz-q-text{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);line-height:1.5;margin-bottom:16px;font-weight:400;}
+.quiz-options{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{background:rgba(255,255,255,0.5);border:1px solid rgba(232,196,184,0.4);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--text);font-weight:300;cursor:pointer;text-align:left;line-height:1.5;transition:all 0.25s ease;font-family:'Lato',sans-serif;}
+.quiz-opt:hover:not(:disabled){background:rgba(245,230,224,0.5);border-color:rgba(200,169,110,0.4);transform:translateX(3px);}
+.quiz-opt.correct{background:rgba(184,201,176,0.35)!important;border-color:rgba(138,170,128,0.6)!important;color:#3a6a34!important;}
+.quiz-opt.wrong{background:rgba(240,180,170,0.25)!important;border-color:rgba(200,120,110,0.4)!important;color:#8a4a44!important;}
+.quiz-opt.reveal{background:rgba(184,201,176,0.2)!important;border-color:rgba(138,170,128,0.3)!important;color:#4a7a44!important;opacity:0.75;}
+.quiz-opt:disabled{cursor:default;}
+.quiz-explanation{display:none;margin-top:14px;background:rgba(240,246,237,0.5);border-left:3px solid var(--sage-dark);border-radius:0 12px 12px 0;padding:14px 18px;font-size:13.5px;color:var(--text);font-weight:300;line-height:1.75;}
+.quiz-explanation.show{display:block;}
+.quiz-explanation strong{color:var(--warm-brown);font-weight:400;}
+.quiz-score-bar{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.3);border-radius:14px;padding:14px 20px;margin-bottom:28px;}
+.score-text{font-size:13px;color:var(--text-light);font-weight:300;}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--warm-brown);margin-left:auto;}
+.result-card{display:none;background:linear-gradient(135deg,rgba(245,230,224,0.6),rgba(240,246,237,0.5));border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:32px;text-align:center;margin-top:24px;}
+.result-emoji{font-size:40px;margin-bottom:14px;display:block;}
+.result-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--warm-brown);margin-bottom:10px;}
+.result-sub{font-size:14px;color:var(--text-light);font-weight:300;line-height:1.75;margin-bottom:20px;}
+.btn-reset{background:linear-gradient(135deg,rgba(200,169,110,0.9),rgba(180,140,80,0.95));color:#fff;border:none;border-radius:50px;padding:12px 28px;font-family:'Lato',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;}
+.btn-reset:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,169,110,0.35);}
+
+/* FOOTER */
+.page-footer{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(232,196,184,0.3);margin-top:60px;}
+.footer-text{font-size:11px;letter-spacing:1px;color:var(--mauve);}
+.page-num{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--soft-gold);}
+
+/* NAV CAPÍTULOS */
+.cap-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:40px;flex-wrap:wrap;}
+.cap-nav a{display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.4);border-radius:50px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-brown);text-decoration:none;transition:all 0.2s;}
+.cap-nav a:hover{background:rgba(245,230,224,0.7);transform:translateY(-2px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="bg-wash"></div>
+<svg class="flower-top-right" viewBox="0 0 300 300" fill="none"><circle cx="220" cy="60" r="38" fill="rgba(197,217,232,0.3)"/><circle cx="248" cy="45" r="26" fill="rgba(220,235,245,0.38)"/><ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(197,217,232,0.35)" transform="rotate(-20 230 55)"/><ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.4)" transform="rotate(40 175 85)"/><path d="M200 120 Q210 90 230 55" stroke="rgba(184,201,176,0.38)" stroke-width="1.5" fill="none"/></svg>
+<svg class="flower-bottom-left" viewBox="0 0 300 300" fill="none"><circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.28)"/><circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.34)"/><ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.36)" transform="rotate(-15 75 245)"/><path d="M100 180 Q90 210 80 240" stroke="rgba(184,201,176,0.36)" stroke-width="1.5" fill="none"/></svg>
+
+<div class="page">
+
+<!-- ══════════ PORTADA ══════════ -->
+<div class="section-cover">
+  <p class="breadcrumb">Catecismo de la Iglesia Católica · Primera Parte</p>
+  <div class="part-number">II</div>
+  <h1 class="part-title">Dios al encuentro<br>del hombre</h1>
+  <p class="part-subtitle">La Revelación · La Transmisión · La Sagrada Escritura<br>§§ 50 – 141</p>
+  <div class="cover-divider">
+    <div class="cover-divider-line"></div>
+    <div class="cover-divider-dot"></div>
+    <div class="cover-divider-dot" style="background:var(--rose)"></div>
+    <div class="cover-divider-dot"></div>
+    <div class="cover-divider-line r"></div>
+  </div>
+  <p class="cover-intro">Dios no espera escondido a que lo encontremos. Él sale continuamente al encuentro del hombre para compartir con él su propia vida.</p>
+  <div class="chapter-nav">
+    <a href="#art1" class="nav-pill">Art. 1 · La Revelación</a>
+    <a href="#historia" class="nav-pill">Historia de la Salvación</a>
+    <a href="#art2" class="nav-pill">Art. 2 · La Transmisión</a>
+    <a href="#art3" class="nav-pill">Art. 3 · La Escritura</a>
+    <a href="#quiz-section" class="nav-pill">📝 Examen</a>
+  </div>
+</div>
+
+<!-- ══════════ ARTÍCULO 1: LA REVELACIÓN ══════════ -->
+<div class="chapter-section" id="art1">
+  <div class="section-header reveal">
+    <div class="section-tag">Artículo 1</div>
+    <div class="section-num-badge">§§ 50 – 53</div>
+    <h2 class="section-title">Dios revela su <em>designio amoroso</em></h2>
+    <p class="section-subtitle">La Revelación: Dios toma la iniciativa</p>
+  </div>
+
+  <div class="idea-card reveal">
+    <p class="idea-label">La palabra clave</p>
+    <p class="idea-text">REVELACIÓN — no significa que el hombre descubrió a Dios.<br>Significa que <strong>Dios tomó la iniciativa de darse a conocer.</strong></p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 50</p>
+    <p class="ccc-text">"Mediante la razón natural, el hombre puede conocer a Dios con certeza a partir de sus obras. Pero existe otro orden de conocimiento que el hombre no puede alcanzar por sus propias fuerzas: el de la Revelación divina. Por una decisión enteramente libre, Dios se revela y da al hombre. Revela plenamente su designio enviando a su Hijo amado y al Espíritu Santo."</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>La razón puede descubrir que Dios existe — eso fue el Capítulo I. Pero hay cosas sobre Dios que jamás podríamos descubrir solos: que es Trinidad, que quiere hacernos sus hijos, que Jesús se encarnaría. Por eso Dios tuvo que revelarlo.</p>
+      <p><strong>"Por una decisión enteramente libre, Dios se revela."</strong> No estaba obligado. Lo hizo porque quiso. Porque ama. La Revelación alcanza su punto máximo en Jesús — quien no solo habla de Dios sino que muestra quién es Dios.</p>
+    </div>
+    <div class="analogy-card reveal">
+      <span class="analogy-icon">💭</span>
+      <p class="analogy-text">Puedes conocer algunas cosas de una persona observándola. Pero para conocer su corazón, esa persona tiene que abrirse. <strong>Eso es la Revelación.</strong></p>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 51 · El designio amoroso de Dios</p>
+    <p class="ccc-text">"Dispuso Dios en su sabiduría revelarse a sí mismo y dar a conocer el misterio de su voluntad, mediante el cual los hombres por medio de Cristo tienen acceso al Padre en el Espíritu Santo y se hacen consortes de la naturaleza divina." (DV 2)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p><strong>DESIGNIO</strong> = plan / propósito / intención. Dios tiene un plan para la humanidad y quiere que lo conozcamos.</p>
+      <p>"Los hombres tienen acceso al Padre por medio de Cristo." → Jesús es el puente. No llegamos al Padre solos.</p>
+      <p>"Se hacen consortes de la naturaleza divina." → Dios quiere compartir su propia vida con nosotros. No que nos volvamos dioses — sino que <strong>participemos de su vida.</strong></p>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 52</p>
+    <p class="ccc-text">Dios "habita una luz inaccesible" (1 Tm 6,16), quiere comunicar su propia vida divina a los hombres libremente creados por Él, para hacer de ellos hijos adoptivos en su Hijo único, capaces de conocerle y de amarle más allá de lo que ellos serían capaces por sus propias fuerzas.</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>Dios es tan grande que jamás podríamos alcanzarlo completamente. PERO quiere acercarse. Quiere compartir su vida contigo.</p>
+      <p>No solo criaturas. No solo siervos. <strong>HIJOS.</strong></p>
+      <p>Dios no solo se revela — también nos da la capacidad de responderle. Como si dijera "Aquí estoy" y además te ayudara a acercarte.</p>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 53 · Pedagogía divina</p>
+    <p class="ccc-text">"El designio divino de la revelación se realiza a la vez 'mediante acciones y palabras'. Este designio comporta una 'pedagogía divina' particular: Dios se comunica gradualmente al hombre, lo prepara por etapas para acoger la Revelación sobrenatural que culminará en la Persona y la misión del Verbo encarnado, Jesucristo."</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>Dios no solo habla — también <strong>actúa.</strong> No solo libera a Israel de Egipto — también explica por qué. No solo envía a Jesús — también explica quién es.</p>
+      <p><strong>"Dios se comunica gradualmente."</strong> Como una mamá que enseña a su hija: primero cosas sencillas, luego más profundas. Y todo culmina en Jesús.</p>
+    </div>
+    <div class="cita-block">
+      <em>"El Verbo de Dios ha habitado en el hombre y se ha hecho Hijo del hombre para acostumbrar al hombre a comprender a Dios y para acostumbrar a Dios a habitar en el hombre, según la voluntad del Padre."</em>
+      <p class="cita-autor">— San Ireneo de Lyon</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ HISTORIA DE LA SALVACIÓN ══════════ -->
+<div class="chapter-section" id="historia">
+  <div class="section-header reveal">
+    <div class="section-tag">Artículo 1 · II</div>
+    <div class="section-num-badge">§§ 54 – 66</div>
+    <h2 class="section-title">Las etapas de la <em>Revelación</em></h2>
+    <p class="section-subtitle">De Adán a Cristo: toda la historia de la salvación</p>
+  </div>
+
+  <div class="exp-block reveal">
+    <div class="exp-text"><p>La relación entre Dios y el hombre no empieza con Abraham ni con Moisés ni con Jesús. <strong>Empieza desde el principio.</strong></p></div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">1</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Adán y Eva — §54 · Comunión íntima</div>
+      <div class="historia-desc">Dios se manifestó a nuestros primeros padres y los invitó a una <strong>comunión íntima</strong> con Él. No una relación distante — cercana.</div>
+    </div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">2</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Después del pecado — §55 · El plan no se detuvo</div>
+      <div class="historia-desc">Adán y Eva pecaron. Pero Dios no dijo "se acabó." <strong>El pecado no fue más fuerte que el amor de Dios.</strong> "Después de su caída alentó en ellos la esperanza de la salvación con la promesa de la redención."</div>
+    </div>
+  </div>
+
+  <div class="cita-block reveal"><em>"Cuando por desobediencia perdiste tu amistad, no lo abandonaste al poder de la muerte... Reiteraste, además, tu alianza a los hombres."</em><p class="cita-autor">— Plegaria Eucarística IV</p></div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">3</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Babel — §57 · El orgullo que divide</div>
+      <div class="historia-desc">Los hombres quieren construir una unidad SIN Dios. Babel simboliza lo que sigue pasando hoy. <strong>Cuando el hombre intenta ocupar el lugar de Dios, termina dividiéndose.</strong></div>
+    </div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">4</div>
+    <div class="historia-content">
+      <div class="historia-titulo">La alianza con Noé — §56 · Para toda la humanidad</div>
+      <div class="historia-desc">Dios hace alianza con Noé. No es para una familia ni para un pueblo — <strong>es para toda la humanidad.</strong> Figuras como Abel, Melquisedec, Noé, Job, Daniel muestran que Dios actuaba incluso fuera de Israel.</div>
+    </div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">5</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Abraham — §59 · "Sal de tu tierra"</div>
+      <div class="historia-desc">Dios le pide confianza pura — no le da todos los detalles: <strong>confía en mí.</strong> La promesa: "En ti serán benditas todas las naciones." Abraham fue elegido para que algún día todas las naciones recibieran bendición — que llegará por Jesús.</div>
+    </div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">6</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Israel y Moisés — §62 · La Ley y la Alianza del Sinaí</div>
+      <div class="historia-desc">Dios libera a Israel de Egipto porque la salvación en la Biblia siempre empieza con una liberación. Luego da la Ley — no solo los Diez Mandamientos sino toda la enseñanza de cómo vivir como pueblo de Dios. <strong>Dios no solo libera — también enseña cómo vivir.</strong></div>
+    </div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">7</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Los Profetas — §64 · La espera de la nueva alianza</div>
+      <div class="historia-desc">Anuncian dos cosas: una nueva alianza grabada en los corazones (Jeremías 31) y un Salvador definitivo. Las mujeres santas del AT — Sara, Rebeca, Raquel, Miriam, Débora, Ana, Judit, Ester — mantuvieron viva la esperanza. <em>"De ellas la figura más pura es María"</em> (§64).</div>
+    </div>
+  </div>
+
+  <div class="historia-step reveal">
+    <div class="historia-num">8</div>
+    <div class="historia-content">
+      <div class="historia-titulo">Cristo — §65 · Mediador y plenitud de toda la Revelación</div>
+      <div class="historia-desc">Todo lo anterior apuntaba hacia Jesús. Abraham → Jesús. Moisés → Jesús. Profetas → Jesús. <strong>Todo converge en Él.</strong></div>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 65</p>
+    <p class="ccc-text">"De una manera fragmentaria y de muchos modos habló Dios en el pasado a nuestros Padres por medio de los Profetas; en estos últimos tiempos nos ha hablado por su Hijo" (Hb 1,1-2). Cristo, el Hijo de Dios hecho hombre, es la Palabra única, perfecta e insuperable del Padre. En Él lo dice todo, no habrá otra palabra más que ésta.</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 66 · No habrá otra revelación pública</p>
+    <p class="ccc-text">"La economía cristiana, por ser alianza nueva y definitiva, nunca pasará; ni hay que esperar otra revelación pública antes de la gloriosa manifestación de nuestro Señor Jesucristo."</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>La Revelación pública terminó con Cristo y los Apóstoles. Eso <strong>NO significa</strong> que Dios ya no actúe o inspire o haga milagros. Significa que no vendrá una nueva verdad que complete o sustituya a Jesús.</p>
+      <p>Las apariciones aprobadas (Fátima, Lourdes, Guadalupe) ayudan a vivir mejor el Evangelio — pero no añaden nuevas doctrinas. <strong>Todo lo necesario para la salvación ya fue revelado en Cristo.</strong></p>
+    </div>
+  </div>
+
+  <div class="resumen-box reveal">
+    <p class="resumen-title">Resumen: La historia de la salvación</p>
+    <div class="resumen-item"><span class="resumen-num">1</span><span class="resumen-text">El hombre puede descubrir que Dios existe por la razón.</span></div>
+    <div class="resumen-item"><span class="resumen-num">2</span><span class="resumen-text">Pero Dios quiso revelarse mucho más profundamente — por amor.</span></div>
+    <div class="resumen-item"><span class="resumen-num">3</span><span class="resumen-text">Desde el principio Dios ha buscado al hombre: Adán, Noé, Abraham, Israel, Profetas.</span></div>
+    <div class="resumen-item"><span class="resumen-num">4</span><span class="resumen-text">Ni siquiera el pecado detuvo ese plan.</span></div>
+    <div class="resumen-item"><span class="resumen-num">5</span><span class="resumen-text">La Revelación alcanza su plenitud en Jesús. No habrá revelación mayor.</span></div>
+  </div>
+
+  <div class="idea-card reveal">
+    <p class="idea-label">❤️ La frase que lo resume todo</p>
+    <p class="idea-text">"Dios no espera escondido a que lo encontremos; Él sale continuamente al encuentro del hombre para compartir con él su propia vida." ✝️</p>
+  </div>
+</div>
+
+<!-- ══════════ ARTÍCULO 2: LA TRANSMISIÓN ══════════ -->
+<div class="chapter-section" id="art2">
+  <div class="section-header reveal">
+    <div class="section-tag">Artículo 2</div>
+    <div class="section-num-badge">§§ 74 – 100</div>
+    <h2 class="section-title">La transmisión de la <em>Revelación Divina</em></h2>
+    <p class="section-subtitle">¿Cómo llegó la enseñanza de Jesús hasta nosotros 2,000 años después?</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 74 · Dios quiere que todos se salven</p>
+    <p class="ccc-text">Dios "quiere que todos los hombres se salven y lleguen al conocimiento de la verdad" (1 Tm 2,4). Es preciso, pues, que Cristo sea anunciado a todos los pueblos. "Dios quiso que lo que había revelado para salvación de todos los pueblos se conservara por siempre íntegro y fuera transmitido a todas las edades."</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 76 · Dos formas de transmitir el Evangelio ⚡</p>
+    <p class="ccc-text">La transmisión del Evangelio se hizo de dos maneras:<br><br><strong>Oralmente:</strong> "los apóstoles, con su predicación, sus ejemplos, sus instituciones, transmitieron de palabra lo que habían aprendido de las obras y palabras de Cristo."<br><br><strong>Por escrito:</strong> "los mismos apóstoles y otros de su generación pusieron por escrito el mensaje de la salvación inspirados por el Espíritu Santo." (DV 7)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="tabla-wrap">
+      <table>
+        <tr><th>Creencia popular</th><th>Lo que enseña el Catecismo</th></tr>
+        <tr><td>Biblia primero → Iglesia después</td><td><strong>Iglesia primero → Biblia después</strong></td></tr>
+        <tr><td>La Biblia fue el primer paso del cristianismo</td><td>Primero existió la predicación oral de los Apóstoles</td></tr>
+        <tr><td>Los Evangelios se escribieron inmediatamente</td><td>Jesús murió ~año 30. Los Evangelios se escribieron décadas después</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 77 · La Sucesión Apostólica</p>
+    <p class="ccc-text">"Para que este Evangelio se conservara siempre vivo y entero en la Iglesia, los apóstoles nombraron como sucesores a los obispos, 'dejándoles su cargo en el magisterio'. La predicación apostólica se ha de conservar por transmisión continua hasta el fin de los tiempos." (DV 7-8)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text"><p>Los obispos no aparecen siglos después. Vienen de una cadena continua desde los Apóstoles. Pedro → sucesores. Juan → sucesores. Esa cadena continúa hasta hoy. A esto se llama <strong>Sucesión Apostólica.</strong></p></div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 78 · La Tradición Apostólica</p>
+    <p class="ccc-text">Esta transmisión viva, llevada a cabo en el Espíritu Santo, es llamada la Tradición en cuanto distinta de la Sagrada Escritura.</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p><strong>TRADICIÓN</strong> no significa costumbres humanas ni adornos. Tradición Apostólica = la transmisión viva de la fe. Todo lo que los Apóstoles recibieron de Cristo y transmitieron a la Iglesia.</p>
+      <p>Antes de que existiera el NT completo, los cristianos ya bautizaban, celebraban la Eucaristía, rezaban y enseñaban la fe. <strong>Eso forma parte de la Tradición Apostólica.</strong></p>
+    </div>
+  </div>
+
+  <div class="sep reveal"><div class="sep-line"></div><span class="sep-text">La relación entre Tradición, Escritura y Magisterio</span><div class="sep-line"></div></div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 80 · Una fuente común</p>
+    <p class="ccc-text">"La Tradición y la Sagrada Escritura están íntimamente unidas y compenetradas. Porque surgiendo ambas de la misma fuente, se funden en cierto modo y tienden a un mismo fin." (DV 9)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="analogy-card">
+      <span class="analogy-icon">🌊</span>
+      <p class="analogy-text">Imagina un río. El agua puede llegar por dos canales distintos. Pero viene del mismo nacimiento. Así: Escritura y Tradición vienen de Cristo. Las dos buscan llevarnos a Dios.</p>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 83 · Tradición Apostólica ≠ Tradiciones eclesiales</p>
+    <p class="ccc-text">La Tradición de que hablamos es la que viene de los apóstoles. Es preciso distinguir de ella las "tradiciones" teológicas, litúrgicas o devocionales nacidas en el transcurso del tiempo. Estas pueden ser mantenidas, modificadas o también abandonadas bajo la guía del Magisterio.</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="tabla-wrap">
+      <table>
+        <tr><th>Tradición Apostólica</th><th>Tradiciones eclesiales</th></tr>
+        <tr><td>Viene de Cristo y los Apóstoles</td><td>Surgieron después en la historia</td></tr>
+        <tr><td><strong>NO cambia</strong></td><td><strong>Sí pueden cambiar</strong></td></tr>
+        <tr><td>Bautismo, Eucaristía, Trinidad, Sucesión Apostólica</td><td>Rosario, algunas devociones, ciertas fiestas, costumbres locales</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 85 · El Magisterio de la Iglesia</p>
+    <p class="ccc-text">"El oficio de interpretar auténticamente la palabra de Dios, oral o escrita, ha sido encomendado sólo al Magisterio vivo de la Iglesia, el cual lo ejerce en nombre de Jesucristo", es decir, a los obispos en comunión con el sucesor de Pedro, el obispo de Roma. (DV 10)</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 86 · El Magisterio sirve a la Palabra, no la domina</p>
+    <p class="ccc-text">"El Magisterio no está por encima de la palabra de Dios, sino a su servicio, para enseñar puramente lo transmitido; lo escucha devotamente, lo custodia celosamente, lo explica fielmente." (DV 10)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text"><p>El Magisterio <strong>no puede inventar doctrinas.</strong> Su tarea: escuchar + custodiar + explicar. Es SERVIDOR de la Palabra — no dueño de ella.</p></div>
+  </div>
+
+  <div class="tres-pilares reveal">
+    <div class="pilar-card">
+      <span class="pilar-icon">📖</span>
+      <div class="pilar-nombre">Escritura</div>
+      <div class="pilar-desc">La Palabra de Dios escrita por inspiración del Espíritu Santo</div>
+    </div>
+    <div class="pilar-card">
+      <span class="pilar-icon">🕊️</span>
+      <div class="pilar-nombre">Tradición</div>
+      <div class="pilar-desc">La transmisión viva de la fe desde los Apóstoles</div>
+    </div>
+    <div class="pilar-card">
+      <span class="pilar-icon">⛪</span>
+      <div class="pilar-nombre">Magisterio</div>
+      <div class="pilar-desc">La autoridad de interpretación: Papa y obispos unidos</div>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 95 · Los tres pilares — inseparables</p>
+    <p class="ccc-text">"La Tradición, la Escritura y el Magisterio de la Iglesia, según el plan prudente de Dios, están unidos y ligados, de modo que ninguno puede subsistir sin los otros; los tres, cada uno según su carácter, y bajo la acción del único Espíritu Santo, contribuyen eficazmente a la salvación de las almas." (DV 10,3)</p>
+  </div>
+  <div class="idea-card reveal">
+    <p class="idea-label">✦ La imagen del taburete de tres patas</p>
+    <p class="idea-text">Si quitas una pata → todo pierde equilibrio. Los tres vienen de Dios. Los tres trabajan juntos. <strong>Ninguno puede subsistir sin los otros.</strong></p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 88 · Los dogmas de la fe</p>
+    <p class="ccc-text">El Magisterio ejerce plenamente la autoridad que tiene de Cristo cuando define dogmas, es decir, cuando propone, de una forma que obliga al pueblo cristiano a una adhesión irrevocable de fe, verdades contenidas en la Revelación divina.</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>DOGMA = una verdad revelada por Dios declarada oficialmente por la Iglesia como parte de la fe. No es opinión, ni tradición local, ni algo opcional.</p>
+    </div>
+    <div class="analogy-card">
+      <span class="analogy-icon">🛣️</span>
+      <p class="analogy-text">Los dogmas son como los rótulos en una carretera de montaña. No te limitan — te ayudan a no caer al barranco. Los dogmas conectan con nuestra vida: si Cristo realmente es Dios, puedo confiar totalmente en Él. Si la Resurrección es verdadera, la muerte no tiene la última palabra.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ARTÍCULO 3: LA SAGRADA ESCRITURA ══════════ -->
+<div class="chapter-section" id="art3">
+  <div class="section-header reveal">
+    <div class="section-tag">Artículo 3</div>
+    <div class="section-num-badge">§§ 101 – 141</div>
+    <h2 class="section-title">La Sagrada <em>Escritura</em></h2>
+    <p class="section-subtitle">¿Qué es exactamente la Biblia?</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 102 · Cristo: la Palabra única</p>
+    <p class="ccc-text">A través de todas las palabras de la Sagrada Escritura, Dios dice sólo una palabra, su Verbo único, en quien él se dice en plenitud. San Agustín: "Recordad que es una misma Palabra de Dios la que se extiende en todas las escrituras, que es un mismo Verbo que resuena en la boca de todos los escritores sagrados."</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 103 · Las dos mesas de la Misa</p>
+    <p class="ccc-text">La Iglesia ha venerado siempre las divinas Escrituras como venera también el Cuerpo del Señor. No cesa de presentar a los fieles el Pan de vida que se distribuye en la mesa de la Palabra de Dios y del Cuerpo de Cristo. (DV 21)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="tabla-wrap">
+      <table>
+        <tr><th colspan="2" style="text-align:center;">Las dos mesas de cada Misa</th></tr>
+        <tr><td><strong>Mesa de la Palabra</strong></td><td>Las lecturas y el Evangelio</td></tr>
+        <tr><td><strong>Mesa de la Eucaristía</strong></td><td>El Cuerpo y Sangre de Cristo</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 105-106 · Dios es el autor principal</p>
+    <p class="ccc-text">"Dios es el autor de la Sagrada Escritura. Las verdades reveladas por Dios se consignaron por inspiración del Espíritu Santo." "Dios se valió de hombres elegidos, que usaban de todas sus facultades y talentos; de este modo, obrando Dios en ellos y por ellos, como verdaderos autores, pusieron por escrito todo y solo lo que Dios quería." (DV 11)</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>No fueron robots, ni secretarios, ni médiums. Son autores <strong>verdaderos</strong> inspirados por Dios. Moisés escribe como Moisés. Lucas como Lucas. Pablo como Pablo. Dios no les quitó su personalidad — trabajó <strong>a través</strong> de ella.</p>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 107 · Los libros inspirados enseñan la verdad</p>
+    <p class="ccc-text">"Los libros sagrados enseñan sólidamente, fielmente y sin error la verdad que Dios hizo consignar en dichos libros para salvación nuestra." (DV 11)</p>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 108 · El cristianismo no es una religión del libro ⚡</p>
+    <p class="ccc-text">Sin embargo, la fe cristiana no es una "religión del Libro". El cristianismo es la religión de la "Palabra" de Dios, "no de un verbo escrito y mudo, sino del Verbo encarnado y vivo" (S. Bernardo). Para que las Escrituras no queden en letra muerta, es preciso que Cristo, por el Espíritu Santo, nos abra el espíritu a la inteligencia de las mismas.</p>
+  </div>
+  <div class="idea-card reveal">
+    <p class="idea-label">✦ Distinción fundamental</p>
+    <p class="idea-text">No adoramos la Biblia — adoramos a Dios. El centro del cristianismo no es un libro — es una Persona: <strong>Jesucristo.</strong> La Biblia es importantísima, pero apunta hacia Él.</p>
+  </div>
+
+  <div class="sep reveal"><div class="sep-line"></div><span class="sep-text">¿Cómo interpretar la Biblia?</span><div class="sep-line"></div></div>
+
+  <div class="exp-block reveal">
+    <div class="exp-text"><p>El Catecismo da <strong>tres reglas fundamentales</strong> para leer bien la Biblia:</p></div>
+    <ul class="lista-bonita reveal">
+      <li><strong>Regla 1 (§112):</strong> Ver la unidad de toda la Escritura. No sacar un versículo aislado — ver cómo toda la Biblia apunta a Cristo.</li>
+      <li><strong>Regla 2 (§113):</strong> Leer dentro de la Tradición viva de la Iglesia. "La Sagrada Escritura está más en el corazón de la Iglesia que en los libros escritos."</li>
+      <li><strong>Regla 3 (§114):</strong> La analogía de la fe. Ninguna enseñanza de la Biblia puede contradecir otra verdad revelada por Dios — porque Dios no se contradice.</li>
+    </ul>
+  </div>
+
+  <div class="sep reveal"><div class="sep-line"></div><span class="sep-text">Los cuatro sentidos de la Escritura (§§115-118)</span><div class="sep-line"></div></div>
+
+  <div class="exp-block reveal">
+    <div class="tabla-wrap">
+      <table>
+        <tr><th>Sentido</th><th>¿Qué enseña?</th><th>Ejemplo: Mar Rojo</th></tr>
+        <tr><td><strong>Literal</strong></td><td>Lo que el texto dice directamente</td><td>Israel escapó de Egipto</td></tr>
+        <tr><td><strong>Alegórico</strong></td><td>Cómo apunta a Cristo o la Iglesia</td><td>Prefigura el Bautismo</td></tr>
+        <tr><td><strong>Moral</strong></td><td>Qué enseñanza deja para nuestra vida</td><td>Abandonar el pecado</td></tr>
+        <tr><td><strong>Anagógico</strong></td><td>Hacia dónde nos conduce: el Cielo</td><td>La vida eterna que Dios ofrece</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cita-block reveal">
+    <em>"Littera gesta docet, quid credas allegoria, Moralis quid agas, quo tendas anagogia."</em>
+    <p class="cita-autor">— Dístico medieval · La letra enseña los hechos; la alegoría lo que debes creer; la moral lo que debes hacer; la anagogía hacia dónde te diriges.</p>
+  </div>
+
+  <div class="exp-block reveal">
+    <p style="font-size:14px;font-weight:400;color:var(--warm-brown);margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-size:17px;">Ejemplo: El Arca de Noé con los 4 sentidos</p>
+    <div class="tabla-wrap">
+      <table>
+        <tr><th>Sentido</th><th>Significado</th></tr>
+        <tr><td>Literal</td><td>Noé se salva del diluvio</td></tr>
+        <tr><td>Alegórico</td><td>La Iglesia salva del pecado</td></tr>
+        <tr><td>Moral</td><td>Obedecer a Dios en tiempos difíciles</td></tr>
+        <tr><td>Anagógico</td><td>La salvación eterna que Dios ofrece</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sep reveal"><div class="sep-line"></div><span class="sep-text">El Canon de las Escrituras (§§120-121)</span><div class="sep-line"></div></div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 120 · ¿Quién decidió qué libros pertenecen a la Biblia?</p>
+    <p class="ccc-text">La Tradición apostólica hizo discernir a la Iglesia qué escritos constituyen la lista de los Libros Santos. Esta lista integral es llamada "Canon" de las Escrituras. Comprende para el Antiguo Testamento 46 escritos, y 27 para el Nuevo.</p>
+  </div>
+  <div class="exp-block reveal">
+    <div class="exp-text">
+      <p>La Biblia no trae índice inspirado. No cayó del cielo encuadernada. La Iglesia tuvo que discernir cuáles libros eran realmente inspirados por Dios.</p>
+    </div>
+    <div class="tabla-wrap reveal">
+      <table>
+        <tr><th>Parte</th><th>Libros</th><th>Nota</th></tr>
+        <tr><td>Antiguo Testamento</td><td><strong>46 libros</strong></td><td>Los 7 deuterocanónicos solo están en la Biblia católica</td></tr>
+        <tr><td>Nuevo Testamento</td><td><strong>27 libros</strong></td><td>Los 4 Evangelios, Hechos, cartas, Apocalipsis</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>73 libros</strong></td><td>La Biblia católica completa</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sep reveal"><div class="sep-line"></div><span class="sep-text">La unidad del AT y el NT — Tipología (§§128-130)</span><div class="sep-line"></div></div>
+
+  <div class="cita-block reveal">
+    <em>"Novum in Vetere latet et in Novo Vetus patet."<br>"El Nuevo Testamento está oculto en el Antiguo, mientras que el Antiguo se hace manifiesto en el Nuevo."</em>
+    <p class="cita-autor">— San Agustín · §129</p>
+  </div>
+
+  <div class="exp-block reveal">
+    <div class="tabla-wrap">
+      <table>
+        <tr><th>Figura del Antiguo Testamento</th><th>Cumplimiento en Cristo</th></tr>
+        <tr><td>Adán</td><td>Figura de Cristo — el nuevo Adán</td></tr>
+        <tr><td>El cordero pascual</td><td>Figura de Jesús, Cordero de Dios</td></tr>
+        <tr><td>El maná del desierto</td><td>Figura de la Eucaristía</td></tr>
+        <tr><td>Moisés liberador</td><td>Figura de Cristo que nos libera del pecado</td></tr>
+        <tr><td>Jonás (3 días en el pez)</td><td>Figura de los 3 días de Jesús en el sepulcro</td></tr>
+        <tr><td>El sacrificio de Isaac</td><td>Figura del sacrificio del Hijo de Dios</td></tr>
+        <tr><td>La Tierra Prometida</td><td>Figura de la vida eterna</td></tr>
+        <tr><td>El Arca de Noé</td><td>Figura de la Iglesia</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ccc-block reveal">
+    <p class="ccc-num">§ 131 · Los fieles deben tener fácil acceso a la Biblia</p>
+    <p class="ccc-text">"Es tan grande el poder y la fuerza de la palabra de Dios, que constituye sustento y vigor de la Iglesia, firmeza de fe para sus hijos, alimento del alma, fuente límpida y perenne de vida espiritual." (DV 21)</p>
+  </div>
+
+  <div class="cita-block reveal">
+    <em>"Ignorar las Escrituras es ignorar a Cristo."</em>
+    <p class="cita-autor">— San Jerónimo · §133</p>
+  </div>
+
+  <div class="resumen-box reveal">
+    <p class="resumen-title">Resumen final del Capítulo II (§§134-141)</p>
+    <div class="resumen-item"><span class="resumen-num">134</span><span class="resumen-text">Toda la Escritura habla de Cristo, aunque tenga muchos autores y muchos libros.</span></div>
+    <div class="resumen-item"><span class="resumen-num">135</span><span class="resumen-text">"Toda la Escritura divina es un libro y este libro es Cristo." (Hugo de San Víctor)</span></div>
+    <div class="resumen-item"><span class="resumen-num">137</span><span class="resumen-text">La interpretación de las Escrituras debe estar atenta a lo que Dios quiere revelarnos para nuestra salvación.</span></div>
+    <div class="resumen-item"><span class="resumen-num">139</span><span class="resumen-text">Los cuatro Evangelios ocupan un lugar central — su centro es Cristo Jesús.</span></div>
+    <div class="resumen-item"><span class="resumen-num">140</span><span class="resumen-text">AT y NT forman una sola historia: el AT prepara, el NT cumple. Los dos se esclarecen mutuamente.</span></div>
+    <div class="resumen-item"><span class="resumen-num">141</span><span class="resumen-text">"Para mis pies antorcha es tu palabra, luz para mi sendero." (Sal 119,105)</span></div>
+  </div>
+</div>
+
+<!-- ══════════ QUIZ ══════════ -->
+<div class="chapter-section" id="quiz-section">
+  <div class="section-header reveal">
+    <div class="section-tag">Examen</div>
+    <div class="section-num-badge">§§ 50 – 141</div>
+    <h2 class="section-title">Comprueba lo que <em>aprendiste</em></h2>
+    <p class="section-subtitle">10 preguntas sobre el Capítulo II · Responde y lee la explicación</p>
+  </div>
+  <div id="quiz-container"></div>
+  <div class="result-card" id="quiz-result">
+    <span class="result-emoji" id="result-emoji"></span>
+    <p class="result-title" id="result-text"></p>
+    <p class="result-sub" id="result-sub"></p>
+    <button class="btn-reset" onclick="resetQuiz()">Volver a intentar</button>
+  </div>
+</div>
+
+<!-- NAV CAPÍTULOS -->
+<div class="cap-nav reveal">
+  <a href="capitulo-1.html">← Capítulo I</a>
+  <a href="index.html">↑ Índice</a>
+  <a href="#">Capítulo III →</a>
+</div>
+
+<footer class="page-footer reveal">
+  <span class="footer-text">Fe que se entiende · Primera Parte · §§ 50–141 · Cap. II completo</span>
+  <span class="page-num">Cap. II ✦</span>
+</footer>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q: "¿Qué significa exactamente 'Revelación' en el Catecismo?",
+    opts:[
+      "Que el hombre descubrió a Dios usando la razón.",
+      "Una visión mística que tienen solo algunos santos.",
+      "Que Dios tomó la iniciativa de darse a conocer por amor, sin estar obligado a ello.",
+      "La lectura de la Biblia en la liturgia."
+    ],
+    correct: 2,
+    explanation: "La <strong>Revelación</strong> (§50) no es el hombre descubriendo a Dios — es Dios saliendo a su encuentro. 'Por una decisión enteramente libre, Dios se revela.' No estaba obligado. Lo hizo porque quiso, porque ama. Es como si alguien muy importante abriera la puerta de su casa y dijera: 'Ven, quiero que me conozcas.'"
+  },
+  {
+    q: "¿A qué llama el Catecismo 'pedagogía divina' (§53)?",
+    opts:[
+      "Un método de enseñanza catequética para niños.",
+      "La forma gradual en que Dios se fue revelando a lo largo de la historia, preparando por etapas.",
+      "Las clases de religión en las escuelas católicas.",
+      "Los libros del Magisterio publicados para los fieles."
+    ],
+    correct: 1,
+    explanation: "La <strong>pedagogía divina</strong> (§53) es el método de Dios: comunicarse gradualmente. No reveló todo de golpe. Como una mamá que enseña a su hija: primero cosas sencillas, luego más profundas. Dios preparó a la humanidad por etapas — Adán, Noé, Abraham, Moisés, Profetas — y todo culminó en Jesús."
+  },
+  {
+    q: "¿Por qué Abraham fue elegido por Dios según el §59?",
+    opts:[
+      "Porque era el hombre más virtuoso de su tiempo.",
+      "Porque era el más rico e influyente de su región.",
+      "Para comenzar un pueblo que prepararía la venida del Mesías para toda la humanidad.",
+      "Porque vivía en la Tierra Prometida."
+    ],
+    correct: 2,
+    explanation: "Dios no elige a Abraham porque sea perfecto. Lo elige para <strong>comenzar un pueblo</strong> que sería instrumento de su plan de salvación universal. La promesa 'en ti serán benditas todas las naciones' muestra que desde el principio Dios pensaba en <em>toda</em> la humanidad — no solo en Israel."
+  },
+  {
+    q: "Según el §65, ¿qué hace único a Jesús respecto a todos los profetas anteriores?",
+    opts:[
+      "Que fue el más sabio de los maestros de la historia.",
+      "Que Dios no solo habló por Él sino que ES su Palabra única, perfecta e insuperable.",
+      "Que escribió personalmente los cuatro Evangelios.",
+      "Que fue el primer profeta en hablar de la vida eterna."
+    ],
+    correct: 1,
+    explanation: "El §65 enseña que Dios 'nos ha hablado por su Hijo' — no por otro profeta más. <strong>Cristo es la Palabra única, perfecta e insuperable del Padre.</strong> En Él Dios lo dice todo. 'No habrá otra palabra más que ésta.' San Juan de la Cruz escribió: 'Todo nos lo habló junto y de una vez en esta sola Palabra, que es su Hijo.'"
+  },
+  {
+    q: "¿Cuáles son las DOS formas en que los Apóstoles transmitieron el Evangelio según el §76?",
+    opts:[
+      "Por milagros y por apariciones.",
+      "A través de concilios y de decretos papales.",
+      "Oralmente (predicación, ejemplo, instituciones) y por escrito (los libros del NT).",
+      "Por la liturgia y por las catacumbas."
+    ],
+    correct: 2,
+    explanation: "El §76 es fundamental: la transmisión del Evangelio se hizo <strong>oralmente</strong> — predicación, ejemplo, instituciones — y <strong>por escrito</strong> — los Evangelios y cartas. Lo más importante: la predicación oral vino PRIMERO. Jesús murió ~año 30 y los Evangelios se escribieron décadas después. Primero existió la Iglesia predicando."
+  },
+  {
+    q: "¿Qué enseña el §95 sobre los tres pilares de la fe católica?",
+    opts:[
+      "Que la Biblia es superior a la Tradición y al Magisterio.",
+      "Que el Magisterio puede inventar doctrinas nuevas si lo necesita.",
+      "Que Tradición, Escritura y Magisterio están unidos y ninguno puede subsistir sin los otros.",
+      "Que solo los sacerdotes pueden leer la Biblia correctamente."
+    ],
+    correct: 2,
+    explanation: "El §95 es uno de los más importantes del Capítulo II: Tradición, Escritura y Magisterio están '<strong>unidos y ligados, de modo que ninguno puede subsistir sin los otros</strong>'. Los tres vienen de Dios, los tres trabajan juntos, los tres contribuyen a la salvación. Es como un taburete de tres patas: si quitas una, todo pierde equilibrio."
+  },
+  {
+    q: "¿Qué significa que el Magisterio 'no está por encima de la Palabra de Dios' (§86)?",
+    opts:[
+      "Que el Papa no tiene ninguna autoridad real en la Iglesia.",
+      "Que el Magisterio es servidor de la Palabra: escucha, custodia y explica — pero no inventa doctrinas.",
+      "Que los fieles pueden ignorar las enseñanzas del Papa.",
+      "Que la Biblia siempre tiene razón contra el Magisterio."
+    ],
+    correct: 1,
+    explanation: "El §86 pone un límite claro: el Magisterio es <strong>servidor</strong> de la Palabra, no su dueño. Su tarea es escuchar devotamente, custodiar celosamente y explicar fielmente. No puede inventar doctrinas. El Papa no puede decir mañana 'Jesús no resucitó' — eso contradiría el depósito de la fe que está ahí para ser transmitido, no alterado."
+  },
+  {
+    q: "¿Por qué el §108 dice que el cristianismo NO es una 'religión del Libro'?",
+    opts:[
+      "Porque los católicos no deben leer la Biblia.",
+      "Porque el centro del cristianismo no es un libro sino una Persona viva: Jesucristo.",
+      "Porque la Tradición es más importante que la Escritura.",
+      "Porque la Biblia fue escrita por hombres y no por Dios."
+    ],
+    correct: 1,
+    explanation: "El §108 sorprende a muchos. La Biblia es importantísima, pero el <strong>centro del cristianismo es una Persona: Jesucristo.</strong> La Biblia apunta hacia Él. San Bernardo: 'No de un verbo escrito y mudo, sino del Verbo encarnado y vivo.' Sin Cristo abriéndonos el espíritu, la Escritura quedaría en letra muerta."
+  },
+  {
+    q: "¿Qué es la 'tipología' que menciona el §128?",
+    opts:[
+      "Un método de imprenta para los libros sagrados.",
+      "Una clasificación de los distintos tipos de pecado.",
+      "Personas, objetos o hechos del AT que prefiguran y anuncian lo que se cumple en Cristo.",
+      "El estudio de los manuscritos bíblicos más antiguos."
+    ],
+    correct: 2,
+    explanation: "La <strong>tipología</strong> (§128) es uno de los descubrimientos más hermosos al leer la Biblia. Personas y hechos del AT son figuras que apuntan a Cristo: el cordero pascual → Jesús; el maná → la Eucaristía; Jonás 3 días en el pez → Jesús 3 días en el sepulcro; el sacrificio de Isaac → el sacrificio del Hijo de Dios. Por eso San Agustín dijo: 'El Nuevo Testamento está oculto en el Antiguo.'"
+  },
+  {
+    q: "Según el §121, ¿qué enseña la Iglesia sobre el Antiguo Testamento?",
+    opts:[
+      "Que quedó completamente obsoleto con la venida de Cristo.",
+      "Que solo los sacerdotes deben leerlo porque puede confundir.",
+      "Que es una parte de la Sagrada Escritura de la que no se puede prescindir — la Antigua Alianza no fue revocada.",
+      "Que fue escrito antes de que Dios existiera en la historia."
+    ],
+    correct: 2,
+    explanation: "El §121 es contundente: '<strong>El Antiguo Testamento es una parte de la Sagrada Escritura de la que no se puede prescindir</strong>. Sus libros son divinamente inspirados y conservan un valor permanente porque la Antigua Alianza no ha sido revocada.' Sin el AT no entendemos a Abraham, Moisés, la Pascua, los Profetas, el Mesías, la Eucaristía, la Cruz ni a Jesús."
+  }
+];
+
+let answered = new Array(questions.length).fill(false);
+let score = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  const bar = document.createElement('div');
+  bar.className = 'quiz-score-bar';
+  bar.innerHTML = `<span class="score-text">Respuestas correctas</span><span class="score-num" id="live-score">0 / ${questions.length}</span>`;
+  container.appendChild(bar);
+  questions.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.id = `card-${qi}`;
+    const num = document.createElement('p');
+    num.className = 'quiz-q-num';
+    num.textContent = `Pregunta ${qi + 1} de ${questions.length}`;
+    card.appendChild(num);
+    const qtext = document.createElement('p');
+    qtext.className = 'quiz-q-text';
+    qtext.textContent = q.q;
+    card.appendChild(qtext);
+    const opts = document.createElement('div');
+    opts.className = 'quiz-options';
+    const exp = document.createElement('div');
+    exp.className = 'quiz-explanation';
+    q.opts.forEach((opt, oi) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.onclick = () => handleAnswer(qi, oi, btn, opts, exp);
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+    card.appendChild(exp);
+    container.appendChild(card);
+  });
+}
+
+function handleAnswer(qi, oi, btn, opts, exp) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  const allBtns = opts.querySelectorAll('.quiz-opt');
+  allBtns.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add('correct');
+    else if (i === oi && oi !== q.correct) b.classList.add('wrong');
+    else b.classList.add('reveal');
+  });
+  if (oi === q.correct) {
+    score++;
+    exp.innerHTML = `<strong>✦ ¡Correcto!</strong><br><br>${q.explanation}`;
+    exp.style.background = 'rgba(184,201,176,0.25)';
+    exp.style.borderColor = 'var(--sage-dark)';
+  } else {
+    exp.innerHTML = `<strong>No es esa.</strong> La respuesta correcta está marcada en verde.<br><br>${q.explanation}`;
+    exp.style.background = 'rgba(245,230,224,0.4)';
+    exp.style.borderColor = 'rgba(200,120,110,0.4)';
+  }
+  exp.classList.add('show');
+  document.getElementById('live-score').textContent = `${score} / ${questions.length}`;
+  if (answered.every(a => a)) showResult();
+}
+
+function showResult() {
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+  const pct = score / questions.length;
+  let emoji, text, sub;
+  if (pct === 1) {
+    emoji = '🌸'; text = `¡Perfecto! ${score} de ${questions.length}`;
+    sub = 'Dominaste el Capítulo II completo. Entiendes la Revelación, la Transmisión, la Tradición Apostólica, el Magisterio, los sentidos de la Escritura y la tipología. ¡Al Capítulo III!';
+  } else if (pct >= 0.7) {
+    emoji = '✝️'; text = `Muy bien — ${score} de ${questions.length}`;
+    sub = 'Entendiste los conceptos fundamentales del Capítulo II. Repasa las preguntas que fallaste — la explicación está ahí para ayudarte.';
+  } else if (pct >= 0.5) {
+    emoji = '📖'; text = `Vas bien — ${score} de ${questions.length}`;
+    sub = 'Ya tienes la base. El Capítulo II tiene ideas muy profundas — especialmente los tres pilares y la tipología. Una segunda lectura siempre suma.';
+  } else {
+    emoji = '🕊️'; text = `Sigue adelante — ${score} de ${questions.length}`;
+    sub = 'Este capítulo es uno de los más ricos del Catecismo. Te recomiendo releerlo sección por sección. ¡Cada repaso lo hace más claro!';
+  }
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-text').textContent = text;
+  document.getElementById('result-sub').textContent = sub;
+  res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+  answered = new Array(questions.length).fill(false);
+  score = 0;
+  document.getElementById('quiz-result').style.display = 'none';
+  buildQuiz();
+  document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+buildQuiz();
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 40);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

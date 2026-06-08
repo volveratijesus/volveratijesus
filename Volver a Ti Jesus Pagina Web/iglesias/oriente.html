@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesias — Oriente y Norte · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="directorio.css">
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Municipios</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Arquidiócesis de Guatemala — Vicaría VI</p>
+    <h1 class="page-title">Oriente <em>&amp; Norte</em></h1>
+    <p class="page-sub">San José Pinula · Santa Catarina Pinula · Palencia · San Pedro Ayampuc · San José del Golfo</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+  <div class="search-wrap"><input type="text" id="buscador" placeholder="🔍  Buscar por nombre o municipio..." oninput="filtrar('buscador','lista')"></div>
+  <div class="nota">⚠️ Horarios sujetos a cambio. Fuente: <a href="https://directorio.arzobispadodeguatemala.org" target="_blank">Arzobispado de Guatemala</a></div>
+  <div id="lista"></div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script src="directorio.js"></script>
+<script>
+const secciones = [
+  { label: 'San José Pinula — Decanato 7', items: [
+    {nombre:'Parroquia San José (San José Pinula)',cong:'Presbítero diocesano',dir:'1a. Calle 3-02, Zona 2, San José Pinula',oficina:'Lun–Vie 8:30–12:30 y 14:30–17:00 · Sáb 8:00–12:00',misas:'Lun,Jue,Vie: 6:30 · 10:00 · 18:00 | Mar,Mié: 6:30 · 18:00 | Sáb: 6:30 · 10:00 · 18:00 · 19:30 (Neo) | Dom: 6:30 · 8:00 · 10:00 · 18:00',conf:'Jue: 16:00 · 19:00',hs:'Jue: 16:00 · 19:00',tel:'6634-3221',mail:'psanjosepinula.2024@gmail.com',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Maynor René Santizo Vásquez',info:'Guatemalteco · Ord. 29/01/2022'},{cargo:'VICARIO',nombre:'Pbro. William Alexander Poyón Lara',info:'Guatemalteco · Ord. 07/12/2024'}],
+    filiales:[
+      {n:'San Luis Letrán',d:'Aldea San Luis Letrán',h:'Dom 6:30'},
+      {n:'San Luis Puerta Negra',d:'Aldea San Luis Puerta Negra',h:'Dom 8:00'},
+      {n:'Santa Sofía',d:'Col. Santa Sofía',h:'Dom 10:30'},
+      {n:'Residenciales San José',d:'Residenciales San José',h:'Dom 11:00'},
+      {n:'Hacienda Nueva',d:'Hacienda Nueva Country Club',h:'Dom 12:00'},
+      {n:'Concepción Pinula',d:'Aldea Concepción Pinula',h:'Dom 12:30 (3er dom)'},
+      {n:'El Sombrerito',d:'Aldea El Sombrerito',h:'Dom 11:00 (3er dom)'},
+      {n:'Valle Platanar',d:'Aldea Valle del Platanar',h:'Dom 9:00 (3er dom)'},
+      {n:'El Platanar',d:'Aldea El Platanar',h:'Dom 7:00 (3er dom)'},
+      {n:'Joya de los Cedros',d:'Aldea Joya de los Cedros',h:'Dom 7:00 (1er dom)'},
+      {n:'El Colorado',d:'Aldea El Colorado',h:'Dom 9:00 (1er dom)'},
+      {n:'El Capulinar',d:'Aldea El Capulinar',h:'Dom 10:30 (1er dom)'},
+      {n:'El Rodeo',d:'Aldea El Rodeo',h:'Dom 11:30 (1er dom)'},
+      {n:'El Manzano',d:'Aldea El Manzano',h:'Dom 14:00 (2do dom)'},
+      {n:'Río Frío',d:'Aldea Río Frío',h:'Dom 12:00 (2do dom)'},
+      {n:'El Carmen',d:'Aldea El Carmen',h:'Dom 10:00 (2do dom)'},
+      {n:'El Socorro',d:'Aldea El Socorro',h:'Dom 8:00 (2do dom)'},
+      {n:'Monte Redondo',d:'Aldea Monte Redondo',h:'Dom 14:30 (4to dom)'},
+      {n:'El Zapote',d:'Aldea El Zapote',h:'Dom 12:00 (4to dom)'},
+      {n:'Santa Teresita de los Ríos',d:'Aldea Santa Teresita de los Ríos',h:'Dom 8:00 (4to dom)'},
+      {n:'Los Cerezos',d:'Aldea Los Cerezos',h:'Dom 10:00 (4to dom)'}
+    ]}
+  ]},
+
+  { label: 'Santa Catarina Pinula — Decanato 21', items: [
+    {nombre:'Parroquia Santa Catarina de Alejandría',cong:'Presbítero diocesano',dir:'3a. Avenida 0-25, Zona 1, Santa Catarina Pinula',oficina:'Lun–Vie 8:00–12:00 y 14:00–18:00 · Sáb 8:00–12:00',misas:'Lun–Vie: 8:00 · 19:00 | Sáb: 8:00 · 18:00 | Dom: 6:00 · 7:30 · 11:00 · 18:00',conf:'Jue: 16:00 · 20:00',hs:'Jue: 20:00',tel:'2363-2463 · 5959-9387',mail:'parr.catapinula@gmail.com',web:'www.parroquiasantacatarinadealejandria.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Lester Humberto García Monterroso',info:'Guatemalteco · Ord. 03/07/2010'},{cargo:'VICARIO',nombre:'Pbro. Bryan Daniel Furlan Garzaro',info:'Guatemalteco · Ord. 30/11/2024'}],
+    filiales:[
+      {n:'Santiago Apóstol',d:'Zona 3, Santa Catarina Pinula',h:'Dom 9:00 | HS: Jue 18:00'},
+      {n:'Divino Salvador del Mundo',d:'Salvadora 1 y 2, Santa Catarina Pinula',h:'Dom 9:00 | HS: Jue 20:00'},
+      {n:'Inmaculada Concepción',d:'Km. 8.5, Carretera Muxbal, Santa Catarina Pinula',h:'Dom 7:00 | HS: Jue 20:00'}
+    ]},
+
+    {nombre:'Parroquia Ntra. Sra. del Carmen (Aldea El Carmen)',cong:'Presbítero diocesano',dir:'Sector Central 4, Lote 55, Zona 10, Aldea El Carmen, Santa Catarina Pinula',oficina:'Lun–Vie 8:30–12:00 y 14:00–18:00 · Sáb 8:30–12:00',misas:'Dom: 7:00 · 18:00 | Lun,Mar,Sáb: 19:00 | Vie: 7:00 | Jue: 20:00',conf:'Vie: 9:00–17:00 · Jue: 19:00',hs:'Jue: 19:00',tel:'6675-6854 · 4891-7625',mail:'parroquiaelcarmensp2014@gmail.com',web:'www.parroquiaelcarmen.org',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. José Roberto Cotzojay Top',info:'Guatemalteco · Ord. 25/09/2021'}],
+    filiales:[
+      {n:'Ntra. Sra. de Candelaria, Cuchilla del Carmen',d:'Cuchilla de El Carmen',h:'Dom 9:00 · Lun,Mar,Sáb 8:00 | HS: Jue 17:00'},
+      {n:'Ntra. Sra. de Fátima El Caminero',d:'2da. Av. 2-92, Z.10, Col. Lomas de Santa Catarina Pinula',h:'Dom 11:00 · Jue 18:00 (2do jue) | HS: Jue 17:00'}
+    ]}
+  ]},
+
+  { label: 'Palencia — Decanato 7', items: [
+    {nombre:'Parroquia San José (Palencia)',cong:'Presbítero diocesano',dir:'Calle Real, Km. 19, Cantón Agua Tibia, Zona 0, Palencia',oficina:'Lun–Vie 8:00–13:00 y 14:00–17:00 · Sáb 8:00–12:00',misas:'Dom: 7:00 · 11:00 · 18:00 | Lun–Vie: 18:00 | Sáb: 18:00 | Jue: 7:00 (Aldea Los Mixcos)',conf:'Jue: 8:30–13:00 y 15:00–18:00',hs:'Jue: 16:00',tel:'6640-0313 · 3328-6648',mail:'psanjosepalencia@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Roberson Cecilio Rodriguez Samayoa',info:'Guatemalteco · Ord. 30/01/2010'},{cargo:'VICARIO',nombre:'R.P. Clemente Lemus Villeda, F.M.M.',info:'Guatemalteco · Ord. 22/05/1999'},{cargo:'VICARIO',nombre:'Pbro. Edwin Aroldo Molina Alonzo',info:'Guatemalteco · Ord. 30/11/2024'}],
+    filiales:[
+      {n:'Aldea Los Mixcos',d:'Palencia',h:'Dom 9:00 · Jue 7:00 · Sáb 18:00'}
+    ]},
+
+    {nombre:'Parroquia La Resurrección del Señor (El Paraíso, Palencia)',cong:'Presbítero diocesano',dir:'8va. Avenida, Lote 5, Zona 0, Aldea El Paraíso, Palencia',oficina:'Lun–Vie 9:00–12:00 y 14:00–17:00 · Sáb 9:00–12:00',misas:'Dom: 6:30 · 8:30 | Sáb: 17:00 · 19:00 (Aldea Contreras) | Mar–Vie: 18:00',conf:'Jue: 14:30–17:30',hs:'Jue: 17:00',tel:'5755-8099',mail:'parroquialaresureccionparaiso@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Pbro. Santos Mucur Ixcajoc',info:'Guatemalteco · Ord. 14/11/2020'}],
+    filiales:[
+      {n:'Beata Imelda',d:'La Plazuela, Aldea El Paraíso, Palencia',h:'Dom 18:00 | HS: Jue 17:00'},
+      {n:'Ntra. Sra. de Candelaria',d:'Aldea Los Planes, Palencia',h:'Dom 10:30 | HS: Jue 17:00'},
+      {n:'La Medalla Milagrosa',d:'Aldea Los Tecomates, Palencia',h:'Dom 8:15 | HS: Jue 17:00'},
+      {n:'Jesucristo Rey del Universo',d:'Caserío Sacabastal, Palencia',h:'Dom 15:00 (1er dom) | HS: Jue 16:00'},
+      {n:'San José Patriarca',d:'Caserío Las Nubitas',h:'Dom 15:00 (4to dom)'},
+      {n:'Ntra. Sra. del Rosario',d:'Aldea Contreras, San José Pinula',h:'Sáb 19:00 | HS: Jue 17:00'},
+      {n:'Divino Niño de Jesús',d:'Caserío El Tablón, Aldea Contreras, San José Pinula',h:'Vie 15:00 (3er vie)'},
+      {n:'Ntra. Sra. de Lourdes',d:'Caserío Las Flores, San José Pinula',h:'Dom 16:00 (1er y 3er dom)'},
+      {n:'Santa Rita',d:'Aldea Santa Rita, San José Pinula',h:'Dom 12:00 | HS: Jue 17:00'}
+    ]}
+  ]},
+
+  { label: 'San Pedro Ayampuc — Decanato 10', items: [
+    {nombre:'Parroquia San Pedro y San Pablo (San Pedro Ayampuc)',cong:'Fraternidad Misionera de María',dir:'5ta. Calle A 03-82, Cantón El Centro, Zona 1, San Pedro Ayampuc',oficina:'Mar–Vie 8:00–12:00 y 14:00–17:30 · Sáb 8:00–12:00',misas:'Mar–Sáb: 18:00 | Dom: 7:00 · 9:00',conf:'',hs:'Jue: 18:30',tel:'66366574',mail:'josepthjeobannysanchez@hotmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. Juan José Alvarado Tecú, F.M.M.',info:'Guatemalteco · Ord. 25/10/1997'},{cargo:'VICARIO',nombre:'R.P. José María Velásquez Flores, F.M.M.',info:'Guatemalteco · Ord. 28/08/2010'},{cargo:'VICARIO',nombre:'R.P. Nicolás Vásquez Reanda, F.M.M.',info:'Guatemalteco · Ord. 25/05/1996'}],
+    filiales:[]},
+
+    {nombre:'Parroquia San José (San José del Golfo)',cong:'Fraternidad Misionera de María',dir:'1ra. Avenida 3-02, Zona 1, San José del Golfo',oficina:'Mar–Sáb 9:00–13:00 y 15:00–17:00',misas:'Mar–Jue: 18:00 | Dom: 9:00 · 18:00',conf:'Jue: 10:00',hs:'Jue: 17:00',tel:'66416203 · 56995750',mail:'parroquiasanjose0319@gmail.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'R.P. José Domingo Rodríguez Chavajay, F.M.M.',info:'Guatemalteco · Ord. 29/09/1992'},{cargo:'VICARIO',nombre:'R.P. Darío Apén Chogüix, F.M.M.',info:'Guatemalteco · Ord. 25/05/1996'}],
+    filiales:[]}
+  ]}
+];
+
+renderSections(secciones, 'lista');
+</script>
+</body>
+</html>

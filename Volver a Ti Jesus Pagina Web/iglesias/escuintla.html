@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesias — Escuintla · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="directorio.css">
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <a href="../index.html" class="nav-logo">Volver a Ti, <em>Jesús</em></a>
+  <a href="index.html" class="nav-back">← Municipios</a>
+</nav>
+<div class="page">
+  <div class="page-hdr">
+    <p class="eyebrow">Diócesis de Escuintla</p>
+    <h1 class="page-title"><em>Escuintla</em></h1>
+    <p class="page-sub">Catedral · Puerto San José · Iztapa · Palín · Santa Lucía Cotzumalguapa y más</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+  <div class="search-wrap"><input type="text" id="buscador" placeholder="🔍  Buscar por nombre o municipio..." oninput="filtrar('buscador','lista')"></div>
+  <div class="nota-obispo" style="background:rgba(245,230,224,0.5);border:1px solid rgba(200,169,110,0.3);border-radius:14px;padding:14px 18px;margin-bottom:16px;font-size:13px;color:var(--text-light);line-height:1.7;">
+    <strong style="color:var(--warm-brown)">Obispado de Escuintla</strong> · Mons. Víctor Hugo Palma Paúl, Obispo Diocesano<br>
+    3a. Calle "A" 2-36, Zona 1, Escuintla · Tel: 7888-0276 · obispado@diocesisdeescuintla.com
+  </div>
+  <div class="nota">⚠️ Horarios sujetos a cambio. Fuente: <a href="https://www.diocesisdeescuintla.com" target="_blank">Diócesis de Escuintla</a></div>
+  <div id="lista"></div>
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+<script src="directorio.js"></script>
+<script>
+const secciones = [
+  { label: 'Escuintla — Ciudad', items: [
+    {nombre:'Parroquia Ntra. Sra. de Concepción — Catedral de Escuintla',cong:'Catedral · Diócesis de Escuintla',dir:'9a. Calle 3-10, Zona 1, Escuintla',misas:'Lun–Dom: 6:00 · 18:00 | Dom además: 8:00 · 10:00 · 16:00',tel:'7888-0170',mail:'catedral@diocesisdeescuintla.com',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Ruperto Marroquín',info:''},{cargo:'VICARIO',nombre:'Padre Juan José Marroquín',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia Ntra. Sra. de Guadalupe — Zona 2 de Escuintla',cong:'Diócesis de Escuintla',dir:'Zona 2, Escuintla',misas:'Consultar con la parroquia',tel:'7884-1782',mail:'guadalupe@diocesisdeescuintla.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Tito Muralles',info:''},{cargo:'VICARIO',nombre:'Padre Dexther Elías',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia San Pablo Apóstol — Zona 3 de Escuintla',cong:'Diócesis de Escuintla',dir:'3a. Avenida 5-10, Zona 3, Col. Las Golondrinas, Escuintla',misas:'Consultar con la parroquia',tel:'7889-6814',mail:'sanpablo@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'ADMINISTRADOR',nombre:'Padre Walter García',info:''},{cargo:'VICARIO',nombre:'Padre Gerson Barrios',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia Ntra. Sra. del Rosario — Zona 3 de Escuintla',cong:'Diócesis de Escuintla',dir:'Zona 3, Escuintla',misas:'Consultar con la parroquia',tel:'7889-0470',mail:'rosario@diocesisdeescuintla.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Emilton González Gil',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia San Juan Pablo II — Zona 3 de Escuintla',cong:'Diócesis de Escuintla',dir:'Zona 3, Escuintla',misas:'Consultar con la parroquia',mail:'juanpabloii@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Pedro Chachal',info:''}],
+    filiales:[]}
+  ]},
+
+  { label: 'Palín y San Vicente Pacaya', items: [
+    {nombre:'Parroquia San Cristóbal (Palín)',cong:'Diócesis de Escuintla',dir:'Palín, Escuintla',misas:'Dom: 6:00 · 10:00 · 18:30 | Lun–Sáb: 7:00 · 17:00',tel:'7838-9232',mail:'sancristobal@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Martín Sirín',info:''},{cargo:'DIÁCONO',nombre:'Abel Osorio',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia San Vicente Mártir (San Vicente Pacaya)',cong:'Diócesis de Escuintla',dir:'San Vicente Pacaya, Escuintla',misas:'Consultar con la parroquia',tel:'7889-3626',mail:'sanvicente@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Martín Sirín',info:''}],
+    filiales:[]}
+  ]},
+
+  { label: 'Puerto San José e Iztapa', items: [
+    {nombre:'Parroquia San José Esposo de la Virgen María (Puerto San José)',cong:'Diócesis de Escuintla',dir:'6a. Calle, Avenida 30 de Junio, Puerto de San José, Escuintla',misas:'Dom: 6:00 · 8:00 · 10:00 · 19:00 | Lun: 6:00 | Mar–Vie: 18:00 | Sáb: 17:00 · 19:00',tel:'7881-1613',mail:'sanjose@diocesisdeescuintla.com',ikon:'⛪',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Leonel Barahona',info:''},{cargo:'VICARIO',nombre:'Padre Carlos Santizo',info:''},{cargo:'VICARIO',nombre:'Padre Francisco Morales',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia San Rafael Arcángel (Puerto Iztapa)',cong:'Diócesis de Escuintla',dir:'Parque Central, Zona 1, Iztapa, Escuintla',misas:'Dom: 6:30 (Atitán) · 8:00 (Puerto Viejo) · 9:00 (Templo) · 17:00 (Guayabo) · 19:00 (Templo) | Mar,Jue: 19:00 | Mié,Vie: 6:30 | Sáb: 18:00 (Templo) · 19:30 (Puerta de Hierro)',tel:'7791-9686',mail:'sanrafael@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre José Paiz',info:''}],
+    filiales:[]}
+  ]},
+
+  { label: 'Costa Sur — Masagua, Guanagazapa, La Democracia', items: [
+    {nombre:'Parroquia Ntra. Sra. de Candelaria (Masagua)',cong:'Diócesis de Escuintla',dir:'Masagua, Escuintla',misas:'Consultar con la parroquia',tel:'7884-8718',mail:'candelaria@diocesisdeescuintla.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Jairo Quibajá Pac',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia San Lorenzo Mártir (Guanagazapa)',cong:'Diócesis de Escuintla',dir:'Guanagazapa, Escuintla',misas:'Consultar con la parroquia',mail:'sanlorenzo@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Mario Ruano',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia San Benito de Palermo (La Democracia)',cong:'Diócesis de Escuintla',dir:'La Democracia, Escuintla',misas:'Consultar con la parroquia',tel:'7880-3146',mail:'sanbenito@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Giovanni Ordóñez',info:''}],
+    filiales:[]}
+  ]},
+
+  { label: 'La Gomera', items: [
+    {nombre:'Parroquia San Diego de Alcalá (La Gomera)',cong:'Diócesis de Escuintla',dir:'La Gomera, Escuintla',misas:'Dom: 10:30 | Mar–Dom: 19:00',tel:'7880-0331',mail:'sandiego@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre José Menjívar',info:''}],
+    filiales:[]}
+  ]},
+
+  { label: 'Santa Lucía Cotzumalguapa', items: [
+    {nombre:'Parroquia Santa Lucía Virgen y Mártir (Santa Lucía Cotzumalguapa)',cong:'Diócesis de Escuintla',dir:'Santa Lucía Cotzumalguapa, Escuintla',misas:'Consultar con la parroquia',tel:'7882-5281',mail:'santalucia@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Erky Pino',info:''},{cargo:'VICARIO',nombre:'Padre Edgar Pablo',info:''},{cargo:'COLABORADOR',nombre:'Padre Dionel Marroquín',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia Santa Catalina de Alejandría (Siquinalá)',cong:'Diócesis de Escuintla',dir:'Siquinalá, Escuintla',misas:'Consultar con la parroquia',tel:'7882-5281',mail:'santacatalina@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Francisco Martínez',info:''}],
+    filiales:[]}
+  ]},
+
+  { label: 'Tiquisate y Nueva Concepción', items: [
+    {nombre:'Parroquia Sagrado Corazón de Jesús (Tiquisate)',cong:'Diócesis de Escuintla',dir:'Tiquisate, Escuintla',misas:'Consultar con la parroquia',tel:'7884-7269',mail:'sagradocorazon@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Edgar Azurdia',info:''},{cargo:'VICARIO',nombre:'Padre Mario Jolón',info:''}],
+    filiales:[]},
+
+    {nombre:'Parroquia La Inmaculada Concepción (Nueva Concepción)',cong:'Diócesis de Escuintla',dir:'Nueva Concepción, Escuintla',misas:'Consultar con la parroquia',tel:'7882-8222',mail:'concepcion@diocesisdeescuintla.com',ikon:'🌸',
+    sac:[{cargo:'PÁRROCO',nombre:'Padre Edgar del Cid',info:''},{cargo:'COLABORADOR',nombre:'Padre Edgar Ortiz',info:''}],
+    filiales:[]},
+
+    {nombre:'Cuasiparroquia San Francisco de Asís (Tecojate, Nueva Concepción)',cong:'Diócesis de Escuintla',dir:'Tecojate, Nueva Concepción, Escuintla',misas:'Consultar con la parroquia',tel:'5690-7257',mail:'sanfrancisco@diocesisdeescuintla.com',ikon:'✝️',
+    sac:[{cargo:'CUASI-PÁRROCO',nombre:'Padre Carlos Rivera',info:''}],
+    filiales:[]}
+  ]}
+];
+
+renderSections(secciones, 'lista');
+</script>
+</body>
+</html>
