@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novenas · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;--blue:#8ca8c8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(200,169,110,0.15) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(55px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HERO */
+.hero{text-align:center;padding:44px 0 36px;}
+.hero-ikon{font-size:48px;display:block;margin-bottom:14px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.hero-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,68px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.hero-titulo em{font-style:italic;color:var(--mauve);}
+.hero-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:500px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* INTRO */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:20px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEP */
+.sep{display:flex;align-items:center;gap:12px;margin:30px 0 16px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:18px;}
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:18px;line-height:1.7;}
+.texto{font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:14px;}
+.texto strong{color:var(--warm-brown);}
+
+/* BIBLIA */
+.biblia{background:rgba(255,255,255,0.6);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0 20px;}
+.biblia-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.7;}
+.biblia-ref{font-size:11px;color:var(--text-light);margin-top:5px;font-weight:300;}
+
+/* TIPOS NOVENAS */
+.tipos-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 24px;}
+@media(max-width:480px){.tipos-grid{grid-template-columns:1fr;}}
+.tipo-nov{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:14px;padding:14px 16px;}
+.tipo-ikon{font-size:22px;margin-bottom:8px;display:block;}
+.tipo-nombre{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--warm-brown);margin-bottom:4px;}
+.tipo-desc{font-size:12.5px;color:var(--text);font-weight:300;line-height:1.6;}
+.tipo-ej{font-size:11px;color:var(--soft-gold);font-style:italic;margin-top:5px;}
+
+/* PASOS CÓMO REZAR */
+.pasos{display:flex;flex-direction:column;gap:10px;margin:14px 0 24px;}
+.paso{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.25);border-radius:14px;padding:14px 16px;}
+.paso-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--soft-gold),rgba(200,169,110,0.7));color:#fff;font-size:13px;font-family:'Cormorant Garamond',serif;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.paso-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.7;}
+.paso-txt strong{color:var(--warm-brown);}
+
+/* NOTA */
+.nota{background:rgba(245,230,224,0.35);border:1px solid rgba(200,169,110,0.2);border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:20px;}
+.nota strong{color:var(--warm-brown);}
+
+/* ══════════════════════════════════════ */
+/* NOVENA CARD — COMPLETA */
+/* ══════════════════════════════════════ */
+.novena-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:20px;overflow:hidden;margin-bottom:20px;}
+
+.nov-header{padding:20px 22px 14px;}
+.nov-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.nov-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,5vw,36px);font-weight:300;color:var(--warm-brown);line-height:1.1;margin-bottom:5px;}
+.nov-subtitulo{font-size:13px;color:var(--text-light);font-style:italic;font-weight:300;}
+
+.nov-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 16px;}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(245,230,224,0.5);border:1px solid rgba(200,169,110,0.2);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--text-light);font-weight:300;}
+
+.nov-quien{background:rgba(245,230,224,0.3);border-top:1px solid rgba(232,196,184,0.2);border-bottom:1px solid rgba(232,196,184,0.2);padding:14px 22px;font-size:13.5px;color:var(--text);font-weight:300;line-height:1.8;}
+.nov-quien strong{color:var(--warm-brown);}
+
+/* ACORDEÓN NOVENA */
+.nov-acord{border-top:1px solid rgba(232,196,184,0.2);}
+.nov-acord-btn{width:100%;background:none;border:none;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;}
+.nov-acord-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.nov-acord-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;}
+.nov-open .nov-acord-chev{transform:rotate(180deg);}
+.nov-acord-body{display:none;padding:0 22px 24px;}
+.nov-open .nov-acord-body{display:block;}
+
+/* ESTRUCTURA REZO */
+.rezo-estructura{background:rgba(245,230,224,0.3);border-radius:12px;padding:14px 16px;margin-bottom:16px;}
+.rezo-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.rezo-txt{font-size:13px;color:var(--text);font-weight:300;line-height:1.8;}
+.rezo-txt strong{color:var(--warm-brown);}
+
+/* DÍAS */
+.dias-acordeon{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.dia-item{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.2);border-radius:12px;overflow:hidden;}
+.dia-btn{width:100%;background:none;border:none;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;}
+.dia-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);}
+.dia-titulo{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--warm-brown);margin-top:2px;}
+.dia-chev{font-size:10px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.dia-open .dia-chev{transform:rotate(180deg);}
+.dia-body{display:none;padding:0 16px 14px;border-top:1px solid rgba(232,196,184,0.15);}
+.dia-open .dia-body{display:block;padding-top:12px;}
+.dia-meditacion{font-size:13px;color:var(--text);font-weight:300;line-height:1.8;margin-bottom:10px;}
+.dia-meditacion em{font-style:italic;color:var(--mauve);}
+.dia-oracion{background:linear-gradient(135deg,rgba(200,169,110,0.08),rgba(232,196,184,0.12));border-radius:10px;padding:12px 14px;}
+.dia-oracion-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:6px;}
+.dia-oracion-txt{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--text);line-height:1.9;}
+
+/* ORACIÓN CENTRAL */
+.oracion-central{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:14px;padding:16px 18px;margin:14px 0;}
+.oracion-central-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.oracion-central-txt{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--text);line-height:1.9;}
+
+/* CIERRE */
+.cierre{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:20px;}
+.cierre-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.cierre-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:1.9;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-ikon">🕯️</span>
+    <p class="eyebrow">Oración y Vida · Devoción popular</p>
+    <h1 class="hero-titulo">Las <em>Novenas</em></h1>
+    <p class="hero-sub">Qué son, por qué 9 días, cómo rezarlas — y las más populares completas para rezar.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <!-- QUÉ ES -->
+  <div class="intro-box">
+    <strong>¿Qué es una novena?</strong> Es rezar durante <strong>9 días seguidos</strong> con una intención especial — pidiendo una gracia, preparándose para una fiesta, o acompañando a alguien que murió. No es magia ni superstición. Es perseverancia en la oración, confiando en que Dios escucha a quien llama con fe y constancia.
+  </div>
+
+  <!-- POR QUÉ 9 DÍAS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🔢</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Por qué <em>9 días</em>?</h2>
+
+  <p class="texto">La primera novena de la historia no la inventó nadie — la <strong>vivieron los Apóstoles.</strong> Jesús ascendió al cielo y les dijo que esperaran al Espíritu Santo. Entonces María y los Once se encerraron en el Cenáculo y rezaron. ¿Cuánto tiempo? <strong>Exactamente 9 días</strong> — los que hay entre la Ascensión y Pentecostés. Al décimo día llegó el Espíritu Santo.</p>
+
+  <div class="biblia">
+    <div class="biblia-txt">Todos ellos perseveraban en la oración, con un mismo espíritu, junto con María, la madre de Jesús.</div>
+    <div class="biblia-ref">Hechos 1, 14 · La primera novena de la historia</div>
+  </div>
+
+  <p class="texto">El número 9 también tiene otros significados en la tradición: <strong>los 9 meses del embarazo de María</strong> (por eso la novena de Navidad empieza el 16 de diciembre), la novena hora como hora especial de oración en Israel, y el simbolismo de un período completo de espera y preparación antes de recibir algo grande.</p>
+
+  <!-- TIPOS -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📋</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Tipos de <em>novenas</em></h2>
+  <p class="sec-sub">No todas las novenas son iguales — depende de su propósito.</p>
+
+  <div class="tipos-grid">
+    <div class="tipo-nov">
+      <span class="tipo-ikon">🎄</span>
+      <div class="tipo-nombre">Novenas de preparación</div>
+      <div class="tipo-desc">Se rezan los 9 días antes de una fiesta importante para preparar el corazón.</div>
+      <div class="tipo-ej">Ej: Novena de Aguinaldos (16-24 dic), Novena a la Inmaculada (29 nov-7 dic)</div>
+    </div>
+    <div class="tipo-nov">
+      <span class="tipo-ikon">🙏</span>
+      <div class="tipo-nombre">Novenas de petición</div>
+      <div class="tipo-desc">Se rezan cuando necesitas una gracia especial — salud, trabajo, familia, una situación difícil.</div>
+      <div class="tipo-ej">Ej: Novena a San Judas, Novena al Hermano Pedro</div>
+    </div>
+    <div class="tipo-nov">
+      <span class="tipo-ikon">🕯️</span>
+      <div class="tipo-nombre">Novenas de difuntos</div>
+      <div class="tipo-desc">Se rezan los 9 días después del fallecimiento de alguien, para pedir por su alma y consolar a la familia.</div>
+      <div class="tipo-ej">Ej: Novenario de difuntos — muy común en Guatemala</div>
+    </div>
+    <div class="tipo-nov">
+      <span class="tipo-ikon">📅</span>
+      <div class="tipo-nombre">Novenas de intervalos</div>
+      <div class="tipo-desc">No siempre son 9 días consecutivos — pueden ser 9 viernes, 9 primeros viernes del mes, etc.</div>
+      <div class="tipo-ej">Ej: Novena al Sagrado Corazón — primeros 9 viernes</div>
+    </div>
+  </div>
+
+  <!-- CÓMO SE REZA -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🕊️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">¿Cómo se <em>reza</em> una novena?</h2>
+  <p class="sec-sub">La estructura básica es siempre la misma — simple y accesible para todos.</p>
+
+  <div class="pasos">
+    <div class="paso"><div class="paso-num">1</div><div class="paso-txt"><strong>Señal de la Cruz</strong> — para comenzar en el nombre de Dios.</div></div>
+    <div class="paso"><div class="paso-num">2</div><div class="paso-txt"><strong>Padre Nuestro, Ave María y Gloria</strong> — las oraciones básicas de apertura.</div></div>
+    <div class="paso"><div class="paso-num">3</div><div class="paso-txt"><strong>La oración propia de la novena</strong> — la que pide al santo o a Dios la gracia que buscas. Aquí nombras tu intención.</div></div>
+    <div class="paso"><div class="paso-num">4</div><div class="paso-txt"><strong>La meditación del día</strong> — muchas novenas tienen una reflexión distinta para cada uno de los 9 días.</div></div>
+    <div class="paso"><div class="paso-num">5</div><div class="paso-txt"><strong>Cierre</strong> — Padre Nuestro, Ave María y Gloria final. Señal de la Cruz.</div></div>
+  </div>
+
+  <div class="nota"><strong>¿Y si me salto un día?</strong> No pasa nada — continúas al día siguiente. Lo importante es la fe y la constancia, no la perfección. Dios ve el corazón, no el calendario. También se puede rezar en familia, en grupo, o solo. No hay una única manera correcta.</div>
+
+  <!-- ══════════════════ NOVENA 1: HERMANO PEDRO ══════════════════ -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">⭐</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Las novenas más populares<br>en <em>Guatemala</em></h2>
+
+  <div class="novena-card">
+    <div class="nov-header">
+      <div class="nov-tag">El único santo de Guatemala</div>
+      <div class="nov-titulo">Novena al Santo Hermano Pedro</div>
+      <div class="nov-subtitulo">San Pedro de San José de Betancur · Patrono de Guatemala</div>
+    </div>
+    <div class="nov-chips">
+      <span class="chip">📅 Fiesta: 25 de abril</span>
+      <span class="chip">📍 Antigua Guatemala</span>
+      <span class="chip">🙏 Para: toda necesidad</span>
+    </div>
+    <div class="nov-quien">
+      <strong>¿Quién es?</strong> Pedro de San José de Betancur nació en Tenerife en 1626 y llegó a Guatemala en 1651. Fundó hospitales, escuelas y albergues para los pobres. Murió en Antigua el 25 de abril de 1667. Juan Pablo II lo canonizó en Guatemala el 30 de julio de 2002 — el único santo de Guatemala y Centroamérica.
+    </div>
+    <div class="nov-acord" id="n1">
+      <button class="nov-acord-btn" onclick="toggleNov('n1')">
+        <span class="nov-acord-lbl">✦ Ver novena completa — 9 días</span>
+        <span class="nov-acord-chev">▼</span>
+      </button>
+      <div class="nov-acord-body">
+        <div class="rezo-estructura">
+          <div class="rezo-lbl">Estructura cada día</div>
+          <div class="rezo-txt">Señal de la Cruz → Padre Nuestro, Ave María y Gloria → <strong>Oración al Hermano Pedro</strong> → Meditación del día → Padre Nuestro, Ave María y Gloria → Señal de la Cruz</div>
+        </div>
+        <div class="oracion-central">
+          <div class="oracion-central-lbl">Oración central — se reza todos los días</div>
+          <div class="oracion-central-txt">
+            Oh glorioso Santo Hermano Pedro,<br>
+            que con tanta caridad y humildad<br>
+            serviste a los pobres y enfermos de Guatemala,<br>
+            y cuya vida fue un continuo acto de amor a Dios<br>
+            y al prójimo necesitado:<br>
+            intercede por mí ante el Señor<br>
+            para que me conceda la gracia que te pido<br>
+            en esta novena. <em>(Menciona tu intención)</em><br><br>
+            Que tu ejemplo de caridad y sencillez<br>
+            me inspire a vivir más cerca de Dios<br>
+            y de los hermanos que sufren.<br>
+            Amén.
+          </div>
+        </div>
+        <div class="dias-acordeon">
+          <div class="dia-item" id="hp1">
+            <button class="dia-btn" onclick="toggleDia('hp1')">
+              <div><div class="dia-num">Día 1</div><div class="dia-titulo">Su llegada a Guatemala</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Pedro dejó todo en Tenerife y cruzó el Atlántico con nada. Llegó a Guatemala sin dinero, sin conocidos, sin plan. Tuvo que mendigar para comer. <em>Y sin embargo no se rindió.</em> Su confianza en Dios era más grande que su miedo.</div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, dame tu confianza ciega en Dios cuando mi camino se vea imposible. Que aprenda a dar el primer paso aunque no vea el camino completo. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp2">
+            <button class="dia-btn" onclick="toggleDia('hp2')">
+              <div><div class="dia-num">Día 2</div><div class="dia-titulo">Su amor a los pobres</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Recorría las calles de Antigua tocando una campana para que la gente rezara. Cuidaba enfermos, daba de comer a los hambrientos, visitaba presos. <em>Veía el rostro de Cristo en cada persona que sufría.</em></div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, abre mis ojos para ver a Cristo en los pobres y necesitados que tengo cerca. Que no pase de largo. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp3">
+            <button class="dia-btn" onclick="toggleDia('hp3')">
+              <div><div class="dia-num">Día 3</div><div class="dia-titulo">Su humildad</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Intentó ser sacerdote y no pudo terminar los estudios. En lugar de amargarse, aceptó ser hermano laico. <em>No buscó el título — buscó servir.</em> Su grandeza vino de su pequeñez.</div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, líbrame del orgullo que me impide servir en lo pequeño. Que no espere reconocimiento para dar lo mejor de mí. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp4">
+            <button class="dia-btn" onclick="toggleDia('hp4')">
+              <div><div class="dia-num">Día 4</div><div class="dia-titulo">Su hospital para los pobres</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Fundó el primer hospital de convalecientes de Guatemala — para los que, al mejorar, no tenían dónde ir y eran expulsados. <em>Vio la grieta del sistema y la tapó con amor.</em></div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, intercede por los enfermos y olvidados de Guatemala. Que la Iglesia siga siendo hospital para los que sufren. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp5">
+            <button class="dia-btn" onclick="toggleDia('hp5')">
+              <div><div class="dia-num">Día 5</div><div class="dia-titulo">Su escuela para los niños</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Fundó la primera escuela nocturna de Guatemala para niños pobres que trabajaban de día. <em>Entendió que la educación era una obra de caridad tan importante como el pan.</em></div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, intercede por los niños de Guatemala que no tienen acceso a educación. Que nadie quede sin la luz del conocimiento por falta de recursos. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp6">
+            <button class="dia-btn" onclick="toggleDia('hp6')">
+              <div><div class="dia-num">Día 6</div><div class="dia-titulo">Su vida de oración</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Todo lo que el Hermano Pedro hacía nacía de horas largas de oración. Se levantaba de noche a rezar. <em>La caridad era el fruto — la oración era la raíz.</em> Sin oración, no hay servicio verdadero.</div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, enséñame a unir la oración y la acción. Que todo lo que haga nazca del tiempo que paso con Dios. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp7">
+            <button class="dia-btn" onclick="toggleDia('hp7')">
+              <div><div class="dia-num">Día 7</div><div class="dia-titulo">Su devoción a la Virgen</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">El Hermano Pedro tenía una devoción profundísima a la Virgen María. La procesión que él instituyó cada noche del 16 al 24 de diciembre se convirtió en la tradición de las Posadas — todavía viva en Guatemala hoy.</div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, que tu amor a María me inspire a buscar también la intercesión de nuestra Madre en todas mis necesidades. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp8">
+            <button class="dia-btn" onclick="toggleDia('hp8')">
+              <div><div class="dia-num">Día 8</div><div class="dia-titulo">Su muerte santa</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Murió el 25 de abril de 1667, agotado de tanto servir. Tenía solo 41 años. Murió como vivió — dando, sirviendo, amando. <em>Su cuerpo está en la Iglesia de San Francisco en Antigua Guatemala.</em></div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día</div><div class="dia-oracion-txt">Hermano Pedro, que cuando llegue mi hora, pueda también yo decir que viví para Dios y para los demás. Amén.</div></div>
+            </div>
+          </div>
+          <div class="dia-item" id="hp9">
+            <button class="dia-btn" onclick="toggleDia('hp9')">
+              <div><div class="dia-num">Día 9</div><div class="dia-titulo">Su intercesión desde el Cielo</div></div>
+              <span class="dia-chev">▼</span>
+            </button>
+            <div class="dia-body">
+              <div class="dia-meditacion">Juan Pablo II lo canonizó en Guatemala en 2002. Desde el Cielo, el Hermano Pedro sigue caminando por las calles de Antigua — ahora como intercesor poderoso ante Dios por su pueblo guatemalteco.</div>
+              <div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día 9 — especial</div><div class="dia-oracion-txt">Santo Hermano Pedro, primer santo de Guatemala, intercede por nuestra patria. Por los pobres, los enfermos, los niños sin educación, las familias rotas. Que tu ejemplo siga inspirando a guatemaltecos a servir con tu mismo amor. Amén.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ NOVENA 2: SAN JUDAS ══════════════════ -->
+  <div class="novena-card">
+    <div class="nov-header">
+      <div class="nov-tag">El patrono de los casos imposibles</div>
+      <div class="nov-titulo">Novena a San Judas Tadeo</div>
+      <div class="nov-subtitulo">Apóstol de Jesús · Patrono de causas difíciles y desesperadas</div>
+    </div>
+    <div class="nov-chips">
+      <span class="chip">📅 Fiesta: 28 de octubre</span>
+      <span class="chip">🙏 Para: causas imposibles</span>
+      <span class="chip">✝️ Primo de Jesús</span>
+    </div>
+    <div class="nov-quien">
+      <strong>¿Quién es?</strong> San Judas Tadeo fue uno de los 12 apóstoles y primo de Jesús. Por su nombre similar al del traidor Judas Iscariote, fue olvidado durante siglos. Se convirtió en el patrono de las <em>causas difíciles y desesperadas</em> precisamente porque la gente acudía a él como último recurso — cuando todos los demás santos ya habían sido invocados.
+    </div>
+    <div class="nov-acord" id="n2">
+      <button class="nov-acord-btn" onclick="toggleNov('n2')">
+        <span class="nov-acord-lbl">✦ Ver novena completa — 9 días</span>
+        <span class="nov-acord-chev">▼</span>
+      </button>
+      <div class="nov-acord-body">
+        <div class="rezo-estructura">
+          <div class="rezo-lbl">Estructura cada día</div>
+          <div class="rezo-txt">Señal de la Cruz → Padre Nuestro, Ave María y Gloria → <strong>Oración a San Judas</strong> → Meditación del día → Padre Nuestro, Ave María y Gloria → Señal de la Cruz</div>
+        </div>
+        <div class="oracion-central">
+          <div class="oracion-central-lbl">Oración central — se reza todos los días</div>
+          <div class="oracion-central-txt">
+            ¡Oh glorioso Apóstol San Judas Tadeo,<br>
+            discípulo fiel y amigo del Señor Jesús!<br>
+            Te invocamos como patrono<br>
+            en los casos difíciles y humanamente desesperados.<br>
+            Ruega por mí a Dios Todopoderoso,<br>
+            pues me hallo necesitado de tu intercesión<br>
+            por <em>(menciona tu intención)</em>.<br>
+            Socórreme, si es para gloria de Dios<br>
+            y bien de mi alma.<br>
+            Glorioso San Judas Tadeo,<br>
+            abogado de los casos desesperados,<br>
+            ruega por nosotros.<br>
+            Amén.
+          </div>
+        </div>
+        <div class="dias-acordeon">
+          <div class="dia-item" id="sj1"><button class="dia-btn" onclick="toggleDia('sj1')"><div><div class="dia-num">Día 1</div><div class="dia-titulo">Su vocación apostólica</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Jesús lo llamó y él lo dejó todo. No preguntó a dónde iban ni qué les esperaba. <em>La llamada de Cristo fue suficiente.</em></div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, dame la generosidad de responder al llamado de Dios sin calcular el costo. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj2"><button class="dia-btn" onclick="toggleDia('sj2')"><div><div class="dia-num">Día 2</div><div class="dia-titulo">Su fidelidad a Jesús</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Cuando muchos abandonaron a Jesús, Judas Tadeo se quedó. Su nombre no lo ayudaba — pero su corazón sí. <em>Fue fiel hasta el martirio.</em></div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, dame fidelidad a Cristo aunque el camino sea difícil o incomprendido. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj3"><button class="dia-btn" onclick="toggleDia('sj3')"><div><div class="dia-num">Día 3</div><div class="dia-titulo">Su pregunta en la Última Cena</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">En la Última Cena, Judas Tadeo le preguntó a Jesús: <em>"Señor, ¿cómo es que vas a manifestarte a nosotros y no al mundo?"</em> Era un hombre que quería entender, que buscaba la verdad con humildad.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, dame hambre de conocer a Dios más profundamente. Que nunca deje de buscarle. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj4"><button class="dia-btn" onclick="toggleDia('sj4')"><div><div class="dia-num">Día 4</div><div class="dia-titulo">Su misión predicando</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Predicó en Judea, Samaria, Siria, Armenia y Persia. Miles se bautizaron por su testimonio. <em>Llevó la Buena Noticia hasta donde nadie más había llegado.</em></div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, dame valentía para dar testimonio de mi fe donde estoy, sin esperar condiciones perfectas. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj5"><button class="dia-btn" onclick="toggleDia('sj5')"><div><div class="dia-num">Día 5</div><div class="dia-titulo">Su paciencia en la prueba</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Durante siglos su nombre fue evitado por confundirse con el traidor. <em>Fue el santo olvidado.</em> Pero Dios no lo olvidó — y hoy es uno de los más invocados del mundo.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, cuando me sienta olvidado o incomprendido, recuérdame que Dios nunca olvida a sus hijos. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj6"><button class="dia-btn" onclick="toggleDia('sj6')"><div><div class="dia-num">Día 6</div><div class="dia-titulo">Patrono de los desesperados</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">La gente empezó a rezarle precisamente cuando ya no tenía a quién más acudir. <em>Y él respondía.</em> Dios puede hacer lo imposible — a través de la intercesión de sus amigos.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, en este momento en que siento que ya no hay salida, confío en que con Dios todo es posible. Intercede por mí. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj7"><button class="dia-btn" onclick="toggleDia('sj7')"><div><div class="dia-num">Día 7</div><div class="dia-titulo">Su carta en la Biblia</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">San Judas Tadeo escribió una carta que está en la Biblia — la Epístola de San Judas. En ella llama a los creyentes a mantenerse firmes en la fe y a no dejarse llevar por los que distorsionan el Evangelio. <em>Su mensaje es tan urgente hoy como entonces.</em></div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, que la Palabra de Dios sea mi ancla cuando el mundo me quiera alejar de la fe. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj8"><button class="dia-btn" onclick="toggleDia('sj8')"><div><div class="dia-num">Día 8</div><div class="dia-titulo">Su martirio</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Murió mártir en Persia junto a San Simón, alrededor del año 65 d.C. Lo mataron con una alabarda — el arma que aparece siempre en sus imágenes. <em>Dio su vida por Aquel que lo había dado todo por él.</em></div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">San Judas, dame la fortaleza de anteponer a Dios sobre todo — incluyendo mi propia comodidad. Amén.</div></div></div></div>
+          <div class="dia-item" id="sj9"><button class="dia-btn" onclick="toggleDia('sj9')"><div><div class="dia-num">Día 9</div><div class="dia-titulo">Gracias y promesa</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Al terminar esta novena, tanto si recibiste lo que pediste como si no, algo ha cambiado: has perseverado 9 días en la oración. Eso en sí mismo ya es un regalo.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración del día 9</div><div class="dia-oracion-txt">Glorioso San Judas Tadeo, te doy gracias por tu intercesión. Confío en que Dios escuchó mi oración y me dará lo que más me conviene para mi bien y su gloria. Amén.</div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ NOVENA 3: GUADALUPE ══════════════════ -->
+  <div class="novena-card">
+    <div class="nov-header">
+      <div class="nov-tag">Preparación · 29 noviembre – 7 diciembre</div>
+      <div class="nov-titulo">Novena a la Inmaculada Concepción</div>
+      <div class="nov-subtitulo">Patrona de Guatemala · Fiesta el 8 de diciembre</div>
+    </div>
+    <div class="nov-chips">
+      <span class="chip">📅 Se reza: 29 nov – 7 dic</span>
+      <span class="chip">🇬🇹 Patrona de Guatemala</span>
+      <span class="chip">🌸 Fiesta: 8 de diciembre</span>
+    </div>
+    <div class="nov-quien">
+      <strong>¿Por qué el 8 de diciembre?</strong> Es la solemnidad de la Inmaculada Concepción — el dogma que proclama que María fue preservada del pecado original desde su concepción. Es patrona de Guatemala y de muchos países. La novena empieza 9 días antes, el 29 de noviembre.
+    </div>
+    <div class="nov-acord" id="n3">
+      <button class="nov-acord-btn" onclick="toggleNov('n3')">
+        <span class="nov-acord-lbl">✦ Ver novena completa — 9 días</span>
+        <span class="nov-acord-chev">▼</span>
+      </button>
+      <div class="nov-acord-body">
+        <div class="rezo-estructura">
+          <div class="rezo-lbl">Estructura cada día</div>
+          <div class="rezo-txt">Señal de la Cruz → Padre Nuestro, Ave María y Gloria → <strong>Oración a la Inmaculada</strong> → Meditación del día → Padre Nuestro, Ave María y Gloria → Señal de la Cruz</div>
+        </div>
+        <div class="oracion-central">
+          <div class="oracion-central-lbl">Oración central — se reza todos los días</div>
+          <div class="oracion-central-txt">
+            Oh María, sin pecado concebida,<br>
+            ruega por nosotros que recurrimos a ti.<br><br>
+            Santísima Virgen María,<br>
+            tú que fuiste preservada de toda mancha de pecado<br>
+            por singular gracia y privilegio de Dios,<br>
+            intercede por mí ante tu Hijo Jesús<br>
+            para que me conceda la gracia que necesito.<br>
+            <em>(Menciona tu intención)</em><br><br>
+            Llena de gracia, ruega por nosotros pecadores<br>
+            ahora y en la hora de nuestra muerte.<br>
+            Amén.
+          </div>
+        </div>
+        <div class="dias-acordeon">
+          <div class="dia-item" id="ic1"><button class="dia-btn" onclick="toggleDia('ic1')"><div><div class="dia-num">Día 1</div><div class="dia-titulo">María, llena de gracia desde el principio</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Desde el primer instante de su existencia, María fue preservada del pecado. <em>Dios la preparó para recibir a su Hijo.</em> La morada de Dios tenía que ser inmaculada.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">María Inmaculada, que tu pureza me inspire a buscar la limpieza de corazón que Dios desea de mí. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic2"><button class="dia-btn" onclick="toggleDia('ic2')"><div><div class="dia-num">Día 2</div><div class="dia-titulo">María, nueva Eva</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Eva dijo no a Dios y trajo el pecado. María dijo sí — <em>"hágase en mí según tu palabra"</em> — y trajo la salvación. Dos mujeres, dos respuestas, dos mundos diferentes.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">Madre, ayúdame a decir sí a Dios cuando me cueste, como tú lo dijiste sin condiciones. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic3"><button class="dia-btn" onclick="toggleDia('ic3')"><div><div class="dia-num">Día 3</div><div class="dia-titulo">El dogma confirmado en Lourdes</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Cuatro años después de que el Papa Pío IX definió el dogma, la Virgen se apareció a Bernadette y le dijo: <em>"Yo soy la Inmaculada Concepción."</em> Bernadette no sabía qué significaba esa frase. Era un mensaje del Cielo confirmando la verdad.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">María Inmaculada, fortalece mi fe en los dogmas de la Iglesia. Que confíe en lo que Dios ha revelado aunque no lo entienda todo. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic4"><button class="dia-btn" onclick="toggleDia('ic4')"><div><div class="dia-num">Día 4</div><div class="dia-titulo">María, patrona de Guatemala</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Guatemala tiene a María Inmaculada como patrona. <em>Toda la nación está puesta bajo su manto.</em> Rezar esta novena es también rezar por nuestro país — por sus gobernantes, sus pobres, sus niños.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">Inmaculada, patrona de Guatemala, cubre a nuestra nación con tu manto. Protege a nuestros niños, consuela a los pobres, convierte los corazones de los que gobiernan. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic5"><button class="dia-btn" onclick="toggleDia('ic5')"><div><div class="dia-num">Día 5</div><div class="dia-titulo">María, modelo de pureza</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">La pureza de María no fue pasividad — fue un amor total, sin divisiones, sin reservas. <em>Toda ella era de Dios.</em> La pureza cristiana no es rigidez sino totalidad de entrega.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">María, ayúdame a amar a Dios con todo mi corazón, sin reservarme nada. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic6"><button class="dia-btn" onclick="toggleDia('ic6')"><div><div class="dia-num">Día 6</div><div class="dia-titulo">María, madre misericordiosa</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">La que fue preservada del pecado es también la que más comprende nuestra fragilidad, porque la vio en su Hijo sufriendo por ella. <em>No hay madre más compasiva con los que caen.</em></div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">Madre Inmaculada, no me avergüenzo de acudir a ti con mis pecados y faltas. Llévame a la misericordia de tu Hijo. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic7"><button class="dia-btn" onclick="toggleDia('ic7')"><div><div class="dia-num">Día 7</div><div class="dia-titulo">La Medalla Milagrosa</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">En 1830 la Virgen se apareció a Santa Catalina Labouré con una imagen rodeada de estas palabras: <em>"Oh María, sin pecado concebida, ruega por nosotros que recurrimos a ti."</em> Es la oración más poderosa a la Inmaculada.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">Oh María, sin pecado concebida, ruega por nosotros que recurrimos a ti. (x3) Amén.</div></div></div></div>
+          <div class="dia-item" id="ic8"><button class="dia-btn" onclick="toggleDia('ic8')"><div><div class="dia-num">Día 8</div><div class="dia-titulo">Vigilia de la fiesta</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Mañana es el 8 de diciembre. <em>La víspera de la fiesta de nuestra Patrona.</em> Hoy es día de preparar el corazón — con una confesión si es posible, con un acto de amor a María, con gratitud por haberla tenido como Madre.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración</div><div class="dia-oracion-txt">María, prepara mi corazón para recibir tu fiesta de mañana con alegría y fe renovada. Amén.</div></div></div></div>
+          <div class="dia-item" id="ic9"><button class="dia-btn" onclick="toggleDia('ic9')"><div><div class="dia-num">Día 9 · 7 de diciembre</div><div class="dia-titulo">¡Mañana es tu fiesta, Madre!</div></div><span class="dia-chev">▼</span></button><div class="dia-body"><div class="dia-meditacion">Hoy terminamos la novena con el corazón lleno de gratitud. Mañana, 8 de diciembre, es la fiesta de la Inmaculada. <em>Ve a Misa. Comulga. Lleva flores a tu altar de la Virgen si tienes uno.</em> Celebra a tu Madre.</div><div class="dia-oracion"><div class="dia-oracion-lbl">Oración final de la novena</div><div class="dia-oracion-txt">Santísima Virgen María, Inmaculada Concepción, patrona de Guatemala: gracias por ser nuestra Madre. Recibe estas oraciones de 9 días como ofrenda de amor. Llévanos a tu Hijo Jesús, que es todo lo que necesitamos. Amén.</div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">🌸</span><div class="sep-line"></div></div>
+  <div class="cierre">
+    <div class="cierre-lbl">Para llevar en el corazón</div>
+    <div class="cierre-txt">
+      Una novena no es magia.<br>
+      Es perseverancia.<br>
+      Es decirle a Dios cada día:<br>
+      <em>"Aquí sigo. Confío en ti."</em><br><br>
+      Y eso — la confianza constante —<br>
+      es exactamente lo que Él espera de nosotros. 🌸
+    </div>
+  </div>
+
+</div>
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸</p></footer>
+
+<script>
+function toggleNov(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('nov-open');
+  document.querySelectorAll('.nov-acord').forEach(x=>x.classList.remove('nov-open'));
+  if(!open){c.classList.add('nov-open');setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),80);}
+}
+function toggleDia(id){
+  const c=document.getElementById(id);
+  const open=c.classList.contains('dia-open');
+  c.classList.toggle('dia-open');
+}
+</script>
+</body>
+</html>
