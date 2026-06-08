@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los Sacramentos · Volver a Ti, Jesús</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fdf8f4;--warm-brown:#7a5c58;--mauve:#c9a0a0;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sage:#b8c9b0;--sage-dark:#8aaa80;--rose:#e8c4b8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(232,196,184,0.25) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(50px);}
+.bg::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(45px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,196,184,0.25);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);}
+.nav-logo em{font-style:italic;color:var(--mauve);}
+.nav-back{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);}
+.page{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:88px 20px 80px;}
+
+/* HEADER */
+.page-hdr{text-align:center;padding:40px 0 32px;}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,7vw,62px);font-weight:300;color:var(--warm-brown);line-height:1.05;}
+.page-title em{font-style:italic;color:var(--mauve);}
+.page-sub{font-size:14px;color:var(--text-light);font-weight:300;margin-top:12px;line-height:1.8;max-width:520px;margin-left:auto;margin-right:auto;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px auto;width:fit-content;}
+.dl{width:50px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}.dlr{background:linear-gradient(to left,transparent,var(--rose));}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--soft-gold);}
+
+/* INTRO BOX */
+.intro-box{background:rgba(245,230,224,0.4);border-left:3px solid var(--soft-gold);border-radius:0 12px 12px 0;padding:16px 18px;font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:24px;}
+.intro-box strong{color:var(--warm-brown);}
+
+/* SEPARADOR */
+.sep{display:flex;align-items:center;gap:12px;margin:28px 0 20px;}
+.sep-line{flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.sep-icon{font-size:16px;}
+
+/* LOS 7 SACRAMENTOS — RESUMEN */
+.siete-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:16px 0 28px;}
+@media(max-width:600px){.siete-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:380px){.siete-grid{grid-template-columns:repeat(3,1fr);}}
+.siete-item{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;}
+.siete-item:hover{transform:translateY(-2px);border-color:rgba(200,169,110,0.4);}
+.siete-ikon{font-size:22px;display:block;margin-bottom:4px;}
+.siete-nombre{font-size:9px;letter-spacing:0.5px;color:var(--warm-brown);line-height:1.3;font-weight:400;}
+
+/* GRUPOS */
+.grupo-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin:24px 0 12px;display:flex;align-items:center;gap:10px;}
+.grupo-lbl::after{content:'';flex:1;height:1px;background:rgba(232,196,184,0.3);}
+.grupo-iniciacion{color:var(--soft-gold);}
+.grupo-curacion{color:var(--mauve);}
+.grupo-servicio{color:var(--sage-dark);}
+
+/* SACRAMENTO CARD */
+.sac-card{background:rgba(255,255,255,0.65);border:1px solid rgba(232,196,184,0.3);border-radius:18px;overflow:hidden;margin-bottom:12px;transition:all .2s;}
+.sac-card:hover{border-color:rgba(200,169,110,0.35);box-shadow:0 4px 16px rgba(201,160,160,0.1);}
+.sac-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;}
+.sac-open .sac-head{padding-bottom:14px;}
+.sac-ikon{font-size:28px;flex-shrink:0;}
+.sac-meta{flex:1;}
+.sac-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:2px;}
+.sac-nombre{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--warm-brown);line-height:1.2;}
+.sac-frase{font-size:12px;color:var(--text-light);font-style:italic;margin-top:2px;font-weight:300;}
+.sac-chev{font-size:11px;color:rgba(201,160,160,0.5);transition:transform .2s;flex-shrink:0;}
+.sac-open .sac-chev{transform:rotate(180deg);}
+.sac-body{display:none;padding:0 18px 20px;border-top:1px solid rgba(232,196,184,0.2);}
+.sac-open .sac-body{display:block;padding-top:16px;}
+
+/* CONTENIDO SACRAMENTO */
+.sac-que{font-size:14px;color:var(--text);font-weight:300;line-height:1.9;margin-bottom:14px;}
+.sac-que strong{color:var(--warm-brown);}
+
+.sac-datos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+@media(max-width:480px){.sac-datos{grid-template-columns:1fr;}}
+.sac-dato{background:rgba(245,230,224,0.3);border-radius:10px;padding:10px 12px;}
+.sac-dato-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:4px;}
+.sac-dato-val{font-size:13px;color:var(--text);font-weight:300;line-height:1.5;}
+
+.sac-vida{background:linear-gradient(135deg,rgba(184,201,176,0.2),rgba(245,230,224,0.3));border:1px solid rgba(138,170,128,0.2);border-radius:12px;padding:12px 14px;margin-bottom:14px;}
+.sac-vida-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--sage-dark);margin-bottom:6px;}
+.sac-vida-txt{font-size:13.5px;color:var(--text);font-weight:300;line-height:1.7;}
+
+.sac-cita{background:rgba(255,255,255,0.5);border-left:3px solid var(--mauve);border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:4px;}
+.sac-cita-txt{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+.sac-cita-ref{font-size:11px;color:var(--text-light);margin-top:4px;font-weight:300;}
+
+/* TABLA RESUMEN */
+.tabla-resumen{overflow-x:auto;border-radius:14px;border:1px solid rgba(232,196,184,0.3);margin:16px 0 28px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{background:rgba(245,230,224,0.6);padding:10px 12px;text-align:left;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);font-weight:400;border-bottom:1px solid rgba(232,196,184,0.3);}
+td{padding:10px 12px;border-bottom:1px solid rgba(232,196,184,0.12);color:var(--text);font-weight:300;vertical-align:top;line-height:1.5;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(245,230,224,0.15);}
+
+/* REFLEXIÓN FINAL */
+.reflexion{background:linear-gradient(135deg,rgba(200,169,110,0.1),rgba(232,196,184,0.15));border:1px solid rgba(200,169,110,0.25);border-radius:20px;padding:24px;text-align:center;margin-top:12px;}
+.reflexion-titulo{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:14px;}
+.reflexion-txt{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text);line-height:1.9;}
+
+/* SEC TITULO */
+.sec-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);margin-bottom:6px;}
+.sec-titulo em{font-style:italic;color:var(--mauve);}
+.sec-sub{font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:20px;line-height:1.7;}
+
+footer{position:relative;z-index:1;text-align:center;padding:24px;border-top:1px solid rgba(232,196,184,0.2);margin-top:20px;}
+footer p{font-size:12px;color:var(--mauve);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="nav-logo">Volver a Ti, <em>Jesús</em></div>
+  <a href="../index.html" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-hdr">
+    <p class="eyebrow">Conoce tu Fe · Formación católica</p>
+    <h1 class="page-title">Los <em>Sacramentos</em></h1>
+    <p class="page-sub">Jesús no solo habló — también tocó, sanó y transformó. Los sacramentos son esos momentos en que Dios nos toca a nosotros hoy.</p>
+    <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
+  </div>
+
+  <!-- QUÉ ES UN SACRAMENTO -->
+  <div class="intro-box">
+    <strong>¿Qué es un sacramento?</strong> Es un signo visible — agua, aceite, pan, palabras — a través del cual Dios actúa de verdad en nuestra vida. No es solo un símbolo bonito. <strong>Cuando recibes un sacramento, algo real ocurre:</strong> eres perdonado, fortalecido, unido a Dios. Jesús instituyó los 7 sacramentos para que su gracia llegara a nosotros de forma concreta, tangible, humana — porque somos cuerpo y alma.
+  </div>
+
+  <!-- LOS 7 EN RESUMEN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">✝️</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Los <em>7 Sacramentos</em></h2>
+  <p class="sec-sub">La Iglesia tiene exactamente 7 sacramentos — ni más ni menos. Cada uno acompaña un momento clave de la vida.</p>
+
+  <div class="siete-grid">
+    <div class="siete-item" onclick="abrirSac('bautismo')"><span class="siete-ikon">💧</span><div class="siete-nombre">Bautismo</div></div>
+    <div class="siete-item" onclick="abrirSac('confirmacion')"><span class="siete-ikon">🔥</span><div class="siete-nombre">Confirmación</div></div>
+    <div class="siete-item" onclick="abrirSac('eucaristia')"><span class="siete-ikon">🍞</span><div class="siete-nombre">Eucaristía</div></div>
+    <div class="siete-item" onclick="abrirSac('confesion')"><span class="siete-ikon">🙏</span><div class="siete-nombre">Penitencia</div></div>
+    <div class="siete-item" onclick="abrirSac('uncion')"><span class="siete-ikon">🕯️</span><div class="siete-nombre">Unción</div></div>
+    <div class="siete-item" onclick="abrirSac('orden')"><span class="siete-ikon">✝️</span><div class="siete-nombre">Orden</div></div>
+    <div class="siete-item" onclick="abrirSac('matrimonio')"><span class="siete-ikon">💍</span><div class="siete-nombre">Matrimonio</div></div>
+  </div>
+
+  <!-- INICIACIÓN -->
+  <div class="grupo-lbl grupo-iniciacion">✦ Sacramentos de Iniciación Cristiana</div>
+  <p style="font-size:13px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:16px;">Son los tres primeros. Nos hacen parte de la Iglesia, nos fortalecen y nos alimentan. Sin ellos no podemos recibir los otros.</p>
+
+  <!-- 1. BAUTISMO -->
+  <div class="sac-card" id="bautismo">
+    <div class="sac-head" onclick="toggle('bautismo')">
+      <span class="sac-ikon">💧</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 1 de 7</div>
+        <div class="sac-nombre">Bautismo</div>
+        <div class="sac-frase">El sacramento que nos hace hijos de Dios</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">El Bautismo es la <strong>puerta de entrada</strong> a la vida cristiana. Es el primer y más importante de todos los sacramentos. Sin él, no se pueden recibir los demás.</p>
+      <p class="sac-que">¿Qué pasa cuando te bautizan? Tres cosas enormes: <strong>el pecado original es borrado</strong>, te conviertes en <strong>hijo o hija de Dios</strong>, y pasas a ser <strong>miembro de la Iglesia</strong>. El agua no es un símbolo — es el canal de una gracia real que transforma tu alma.</p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Signo visible</div><div class="sac-dato-val">Agua derramada sobre la cabeza (o inmersión) + las palabras: <em>"Yo te bautizo en el nombre del Padre, del Hijo y del Espíritu Santo."</em></div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Quién lo celebra</div><div class="sac-dato-val">Normalmente el sacerdote o diácono. En peligro de muerte, cualquier persona puede bautizar.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Se puede recibir</div><div class="sac-dato-val">Solo una vez en la vida. Deja una marca permanente en el alma — eres hijo de Dios para siempre.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Para quién</div><div class="sac-dato-val">Para cualquier persona que no ha sido bautizada — bebés, niños y adultos.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">El Bautismo no es solo una ceremonia bonita con bolo y fiesta. Es el momento en que Dios te llama por nombre y dice: <em>"Eres mío."</em> Todo lo demás en la vida cristiana viene de ahí. Si alguna vez te preguntas si Dios te quiere, recuerda tu bautismo — ahí quedó sellado.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">El que crea y se bautice, se salvará.</div>
+        <div class="sac-cita-ref">Marcos 16, 16</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CONFIRMACIÓN -->
+  <div class="sac-card" id="confirmacion">
+    <div class="sac-head" onclick="toggle('confirmacion')">
+      <span class="sac-ikon">🔥</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 2 de 7</div>
+        <div class="sac-nombre">Confirmación</div>
+        <div class="sac-frase">El sacramento que nos fortalece con el Espíritu Santo</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">La Confirmación es como el <strong>"sí" adulto a la fe</strong>. En el Bautismo fuimos recibidos en la Iglesia — muchas veces cuando éramos bebés. En la Confirmación, <strong>nosotros mismos decimos sí</strong>. Confirmo lo que soy: católico, hijo de Dios, seguidor de Jesús.</p>
+      <p class="sac-que">En este sacramento recibimos <strong>los 7 dones del Espíritu Santo</strong> — sabiduría, entendimiento, consejo, fortaleza, ciencia, piedad y temor de Dios — para vivir la fe con valentía y madurez.</p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Signo visible</div><div class="sac-dato-val">La imposición de manos del obispo y la unción con el Santo Crisma (aceite consagrado) en la frente.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Quién lo celebra</div><div class="sac-dato-val">Normalmente el obispo de la diócesis. Es el pastor quien confirma a sus hijos.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Se puede recibir</div><div class="sac-dato-val">Solo una vez en la vida. Deja también una marca permanente en el alma.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Para quién</div><div class="sac-dato-val">Para los bautizados que están preparados para asumir su fe con madurez.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">Muchos jóvenes se confirman y luego desaparecen de la Iglesia. Pero eso es un malentendido — la Confirmación no es el "sacramento de graduación". Es el comienzo de una fe adulta, de ser testigo de Jesús en el trabajo, en la familia, en las decisiones difíciles. El Espíritu Santo que recibes te da la fuerza para eso.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">Recibirán la fuerza del Espíritu Santo, que vendrá sobre ustedes, y serán mis testigos.</div>
+        <div class="sac-cita-ref">Hechos 1, 8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. EUCARISTÍA -->
+  <div class="sac-card" id="eucaristia">
+    <div class="sac-head" onclick="toggle('eucaristia')">
+      <span class="sac-ikon">🍞</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 3 de 7</div>
+        <div class="sac-nombre">Eucaristía</div>
+        <div class="sac-frase">El sacramento más grande — Jesús mismo</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">La Eucaristía es <strong>el corazón de toda la vida cristiana</strong>. Es el sacramento más importante de todos. Cuando vas a misa y recibes la Comunión, no estás recibiendo un símbolo de Jesús — estás recibiendo a <strong>Jesús mismo</strong>: su cuerpo, su sangre, su alma y su divinidad.</p>
+      <p class="sac-que">Esto se llama <strong>transubstanciación</strong> — la sustancia del pan y del vino se convierte realmente en el Cuerpo y Sangre de Cristo. Parece pan, huele a pan, sabe a pan — pero ya no es pan. Es Él.</p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Signo visible</div><div class="sac-dato-val">El pan (hostia) y el vino que se convierten en el Cuerpo y Sangre de Cristo durante la consagración de la Misa.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Quién lo celebra</div><div class="sac-dato-val">Solo un sacerdote ordenado puede celebrar la Eucaristía. Sin sacerdote, no hay Misa.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Se puede recibir</div><div class="sac-dato-val">Muchas veces — de hecho, se recomienda recibirla cada vez que vayas a misa (en estado de gracia).</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Para quién</div><div class="sac-dato-val">Para los bautizados y confirmados, que no tengan pecado grave y hayan hecho su Primera Comunión.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">Jesús dijo: <em>"Yo soy el pan de vida."</em> Así como necesitamos comida para vivir, necesitamos la Eucaristía para nuestra vida espiritual. Cuando la recibes con fe, te une a Jesús de la manera más íntima posible aquí en la tierra. También te une a toda la Iglesia — cuando comulgas, comulgas con todos los católicos del mundo y de todos los siglos.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">Yo soy el pan vivo bajado del cielo. Quien come de este pan vivirá para siempre.</div>
+        <div class="sac-cita-ref">Juan 6, 51</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURACIÓN -->
+  <div class="grupo-lbl grupo-curacion">✦ Sacramentos de Curación</div>
+  <p style="font-size:13px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:16px;">Todos fallamos y todos sufrimos. Estos dos sacramentos son la respuesta de Dios a ambas realidades — el perdón para el pecado y la fuerza para la enfermedad.</p>
+
+  <!-- 4. CONFESIÓN -->
+  <div class="sac-card" id="confesion">
+    <div class="sac-head" onclick="toggle('confesion')">
+      <span class="sac-ikon">🙏</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 4 de 7</div>
+        <div class="sac-nombre">Penitencia y Reconciliación</div>
+        <div class="sac-frase">El sacramento del perdón — también llamado Confesión</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">La Confesión es uno de los regalos más hermosos que Jesús nos dejó. Es el sacramento por el cual <strong>Dios nos perdona los pecados</strong> cometidos después del Bautismo. No es hablar con un hombre — es hablar con Dios a través de su ministro.</p>
+      <p class="sac-que">Cuando el sacerdote dice <em>"yo te absuelvo"</em>, no son sus palabras — son las palabras de Cristo. <strong>Tus pecados quedan perdonados de verdad.</strong> No hay pecado tan grande que Dios no pueda perdonar si hay arrepentimiento sincero.</p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Cómo se recibe</div><div class="sac-dato-val">1. Examen de conciencia · 2. Arrepentimiento · 3. Confesión al sacerdote · 4. Penitencia · 5. Absolución</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">El secreto de confesión</div><div class="sac-dato-val">El sacerdote está obligado a guardar absoluto secreto. Nunca puede revelar lo que escuchó en confesión — jamás, bajo ninguna circunstancia.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Se puede recibir</div><div class="sac-dato-val">Todas las veces que sea necesario. Se recomienda al menos una vez al mes.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Cuándo es obligatoria</div><div class="sac-dato-val">Al menos una vez al año, y siempre que tengamos un pecado grave (mortal) antes de comulgar.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">Muchas personas no se confiesan porque tienen miedo o vergüenza. Pero el sacerdote no está ahí para juzgarte — está ahí para ser instrumento del perdón de Dios. La Confesión no es un tribunal. Es un abrazo del Padre. Jesús lo dijo claramente con la parábola del Hijo Pródigo: el Padre corre hacia nosotros cuando regresamos, no espera que nos arrastremos.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">A quienes les perdonen los pecados, les quedan perdonados.</div>
+        <div class="sac-cita-ref">Juan 20, 23</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. UNCIÓN -->
+  <div class="sac-card" id="uncion">
+    <div class="sac-head" onclick="toggle('uncion')">
+      <span class="sac-ikon">🕯️</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 5 de 7</div>
+        <div class="sac-nombre">Unción de los Enfermos</div>
+        <div class="sac-frase">El sacramento de la fuerza en la enfermedad y el final de la vida</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">Antes se llamaba <em>"Extremaunción"</em> y mucha gente piensa que es solo para cuando alguien está a punto de morir. <strong>Eso es un error.</strong> La Unción de los Enfermos es para toda persona que enfrenta una <strong>enfermedad seria, una operación importante, la vejez avanzada o el peligro de muerte.</strong></p>
+      <p class="sac-que">No es el "sacramento de la muerte" — es el <strong>sacramento de la fuerza</strong>. Da paz, fortaleza espiritual, y a veces incluso mejora física si es la voluntad de Dios. También puede perdonar los pecados si el enfermo no puede confesarse.</p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Signo visible</div><div class="sac-dato-val">El sacerdote impone las manos y unge al enfermo en la frente y las manos con el óleo de los enfermos.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Quién lo recibe</div><div class="sac-dato-val">Todo católico con enfermedad grave, antes de una operación importante, en la vejez o en peligro de muerte.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Importante</div><div class="sac-dato-val">No esperar al último momento. Se puede recibir varias veces en distintas enfermedades graves.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Efectos</div><div class="sac-dato-val">Paz y fortaleza espiritual · Unión con la Pasión de Cristo · Perdón de pecados · A veces, curación física.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">Si tienes un familiar enfermo o vas a operarte, no dudes en llamar al sacerdote. No esperes a que esté agonizando. Pedir la Unción es un acto de fe que dice: "Dios, me entrego a ti en este momento difícil." Muchas personas que lo reciben sienten una paz inexplicable — no porque sea magia, sino porque Dios realmente actúa.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">¿Está enfermo alguno de ustedes? Llame a los presbíteros de la Iglesia, que oren sobre él y le unjan con óleo en el nombre del Señor.</div>
+        <div class="sac-cita-ref">Santiago 5, 14</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIO -->
+  <div class="grupo-lbl grupo-servicio">✦ Sacramentos al Servicio de la Comunidad</div>
+  <p style="font-size:13px;color:var(--text-light);font-weight:300;line-height:1.7;margin-bottom:16px;">Estos dos sacramentos no son principalmente para el que los recibe — son para servir a los demás. Ordenan la vida en comunidad y hacen crecer a la Iglesia.</p>
+
+  <!-- 6. ORDEN -->
+  <div class="sac-card" id="orden">
+    <div class="sac-head" onclick="toggle('orden')">
+      <span class="sac-ikon">✝️</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 6 de 7</div>
+        <div class="sac-nombre">Orden Sacerdotal</div>
+        <div class="sac-frase">El sacramento que hace sacerdotes, diáconos y obispos</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">El Orden Sacerdotal es el sacramento por el cual un hombre es <strong>consagrado para servir a Dios y a su pueblo</strong> como diácono, sacerdote u obispo. No es un trabajo ni una profesión — es una vocación, un llamado de Dios.</p>
+      <p class="sac-que">Gracias a este sacramento, los sacerdotes pueden celebrar la Eucaristía, dar la absolución en la Confesión y ungir a los enfermos. <strong>Sin el Orden Sacerdotal, muchos otros sacramentos no serían posibles.</strong></p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Tres grados</div><div class="sac-dato-val"><strong>Diácono:</strong> sirve, predica y asiste · <strong>Sacerdote (presbítero):</strong> celebra sacramentos · <strong>Obispo:</strong> la plenitud del sacerdocio</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Signo visible</div><div class="sac-dato-val">La imposición de manos del obispo sobre la cabeza del ordenado, seguida de la oración de consagración.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Se puede recibir</div><div class="sac-dato-val">Solo una vez para cada grado. Deja una marca permanente e imborrable en el alma.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Para quién</div><div class="sac-dato-val">Solo para hombres bautizados y confirmados que sienten el llamado de Dios y son aceptados por la Iglesia.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">Cada vez que un sacerdote celebra misa, te confiesa o te visita en el hospital, está ejerciendo el Orden Sacerdotal en favor tuyo. Reza por tus sacerdotes — cargan una responsabilidad enorme. Y si conoces a algún joven que podría tener vocación, anímalo. La Iglesia necesita pastores.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">No son ustedes quienes me eligieron a mí, sino yo quien los elegí a ustedes y los destiné para que vayan y den fruto.</div>
+        <div class="sac-cita-ref">Juan 15, 16</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. MATRIMONIO -->
+  <div class="sac-card" id="matrimonio">
+    <div class="sac-head" onclick="toggle('matrimonio')">
+      <span class="sac-ikon">💍</span>
+      <div class="sac-meta">
+        <div class="sac-num">Sacramento 7 de 7</div>
+        <div class="sac-nombre">Matrimonio</div>
+        <div class="sac-frase">El sacramento del amor que refleja el amor de Cristo a su Iglesia</div>
+      </div>
+      <span class="sac-chev">▼</span>
+    </div>
+    <div class="sac-body">
+      <p class="sac-que">El Matrimonio es el único sacramento en que <strong>los esposos son los ministros</strong> — no el sacerdote. El sacerdote es el testigo oficial de la Iglesia, pero son el esposo y la esposa quienes se dan el sacramento mutuamente con sus votos.</p>
+      <p class="sac-que">El matrimonio cristiano no es solo un contrato legal ni una promesa bonita. Es un <strong>pacto sagrado, para toda la vida, fiel y abierto a la vida</strong>. Jesús elevó el matrimonio a sacramento para que los esposos recibieran la gracia de amarse como Él ama a su Iglesia — sin condiciones, hasta el final.</p>
+      <div class="sac-datos">
+        <div class="sac-dato"><div class="sac-dato-lbl">Tres características esenciales</div><div class="sac-dato-val"><strong>Unidad:</strong> un hombre y una mujer · <strong>Indisolubilidad:</strong> para siempre · <strong>Apertura a la vida:</strong> abiertos a los hijos</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Signo visible</div><div class="sac-dato-val">Los votos matrimoniales expresados libremente por los esposos ante la Iglesia.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Se puede recibir</div><div class="sac-dato-val">Una sola vez. Si uno de los cónyuges muere, el viudo o viuda puede casarse de nuevo.</div></div>
+        <div class="sac-dato"><div class="sac-dato-lbl">Preparación</div><div class="sac-dato-val">Se requiere preparación prematrimonial en la parroquia — cursos, entrevistas y tiempo de reflexión.</div></div>
+      </div>
+      <div class="sac-vida">
+        <div class="sac-vida-lbl">¿Por qué importa en mi vida?</div>
+        <div class="sac-vida-txt">El matrimonio no es un punto de llegada — es un camino. La gracia del sacramento no se da solo el día de la boda. Se renueva cada día, en cada decisión de elegir al otro, en las dificultades, en la fidelidad cotidiana. Una pareja casada por la Iglesia tiene acceso a una gracia especial para amarse y sostenerse. Usarla — rezando juntos, recibiendo sacramentos — hace toda la diferencia.</div>
+      </div>
+      <div class="sac-cita">
+        <div class="sac-cita-txt">Lo que Dios ha unido, que no lo separe el hombre.</div>
+        <div class="sac-cita-ref">Mateo 19, 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA RESUMEN -->
+  <div class="sep"><div class="sep-line"></div><span class="sep-icon">📋</span><div class="sep-line"></div></div>
+  <h2 class="sec-titulo">Resumen de los <em>7 Sacramentos</em></h2>
+  <p class="sec-sub">Todo de un vistazo.</p>
+
+  <div class="tabla-resumen">
+    <table>
+      <thead><tr><th>#</th><th>Sacramento</th><th>Signo</th><th>¿Cuántas veces?</th><th>Grupo</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>💧 Bautismo</strong></td><td>Agua</td><td>Una vez</td><td style="color:var(--soft-gold);font-size:11px;">Iniciación</td></tr>
+        <tr><td>2</td><td><strong>🔥 Confirmación</strong></td><td>Crisma + manos</td><td>Una vez</td><td style="color:var(--soft-gold);font-size:11px;">Iniciación</td></tr>
+        <tr><td>3</td><td><strong>🍞 Eucaristía</strong></td><td>Pan y vino</td><td>Muchas veces</td><td style="color:var(--soft-gold);font-size:11px;">Iniciación</td></tr>
+        <tr><td>4</td><td><strong>🙏 Penitencia</strong></td><td>Palabras + absolución</td><td>Muchas veces</td><td style="color:var(--mauve);font-size:11px;">Curación</td></tr>
+        <tr><td>5</td><td><strong>🕯️ Unción</strong></td><td>Óleo + manos</td><td>En c/enfermedad grave</td><td style="color:var(--mauve);font-size:11px;">Curación</td></tr>
+        <tr><td>6</td><td><strong>✝️ Orden Sacerdotal</strong></td><td>Imposición de manos</td><td>Una vez (por grado)</td><td style="color:var(--sage-dark);font-size:11px;">Servicio</td></tr>
+        <tr><td>7</td><td><strong>💍 Matrimonio</strong></td><td>Los votos</td><td>Una vez</td><td style="color:var(--sage-dark);font-size:11px;">Servicio</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REFLEXIÓN FINAL -->
+  <div class="reflexion">
+    <div class="reflexion-titulo">Para llevar en el corazón</div>
+    <div class="reflexion-txt">
+      Dios pudo habernos amado desde lejos.<br>
+      Pero nos ama de cerca — con agua, aceite, pan, palabras.<br>
+      Con cosas que se tocan, que se sienten, que se ven.<br>
+      Los sacramentos son su forma de decirnos:<br>
+      <em>"Estoy aquí. Contigo. En esto."</em><br><br>
+      No los dejes ir. Úsalos. Vívelos. 🌸
+    </div>
+  </div>
+
+</div>
+
+<footer><p>Volver a Ti, Jesús · Guatemala 🌸 · Fuentes: Catecismo de la Iglesia Católica</p></footer>
+
+<script>
+function toggle(id){
+  const card = document.getElementById(id);
+  const isOpen = card.classList.contains('sac-open');
+  document.querySelectorAll('.sac-card').forEach(c => c.classList.remove('sac-open'));
+  if(!isOpen) {
+    card.classList.add('sac-open');
+    setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
+  }
+}
+function abrirSac(id){
+  const card = document.getElementById(id);
+  card.classList.add('sac-open');
+  setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+}
+</script>
+</body>
+</html>
