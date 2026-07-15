@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catecismo — Primera Parte · Capítulo III</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f5e6e0;
+    --rose: #e8c4b8;
+    --mauve: #c9a0a0;
+    --sage: #b8c9b0;
+    --sage-dark: #8aaa80;
+    --cream: #fdf8f4;
+    --warm-brown: #7a5c58;
+    --soft-gold: #c8a96e;
+    --text: #4a3a38;
+    --text-light: #7a6560;
+    --sky: #c5d9e8;
+    --sky-dark: #4a7090;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--cream);
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── WATERCOLOR BG ── */
+  .bg-wash { position:fixed; inset:0; z-index:0; pointer-events:none; }
+  .bg-wash::before {
+    content:''; position:absolute; top:-10%; right:-5%;
+    width:55%; height:60%;
+    background:radial-gradient(ellipse, rgba(232,196,184,0.25) 0%, transparent 70%);
+    border-radius:60% 40% 70% 30%; filter:blur(45px);
+  }
+  .bg-wash::after {
+    content:''; position:absolute; bottom:5%; left:-8%;
+    width:50%; height:55%;
+    background:radial-gradient(ellipse, rgba(184,201,176,0.2) 0%, transparent 70%);
+    border-radius:40% 60% 30% 70%; filter:blur(40px);
+  }
+
+  /* ── FLORALS ── */
+  .flower-top-right { position:fixed; top:0; right:0; width:260px; opacity:0.5; pointer-events:none; z-index:0; }
+  .flower-bottom-left { position:fixed; bottom:0; left:0; width:220px; opacity:0.4; pointer-events:none; z-index:0; transform:rotate(180deg); }
+
+  /* ── LAYOUT ── */
+  .page { position:relative; z-index:1; max-width:720px; margin:0 auto; padding:60px 44px 100px; }
+
+  /* ── PORTADA ── */
+  .section-cover {
+    min-height:85vh; display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    text-align:center; padding:60px 0 80px;
+  }
+  .breadcrumb {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:28px;
+    animation: fadeUp 1s ease forwards 0.1s; opacity:0;
+  }
+  .part-number {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(60px,10vw,100px);
+    font-weight:300; color:rgba(201,160,160,0.28); line-height:1;
+    animation: fadeUp 1s ease forwards 0.2s; opacity:0;
+  }
+  .part-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,50px);
+    font-weight:300; color:var(--warm-brown); line-height:1.15; margin-top:-10px;
+    animation: fadeUp 1s ease forwards 0.35s; opacity:0;
+  }
+  .part-subtitle {
+    font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic;
+    color:var(--mauve); margin-top:12px; line-height:1.5;
+    animation: fadeUp 1s ease forwards 0.5s; opacity:0;
+  }
+  .cover-divider {
+    display:flex; align-items:center; gap:14px; margin:36px auto;
+    animation: fadeUp 1s ease forwards 0.65s; opacity:0;
+  }
+  .cover-divider-line { width:55px; height:1px; background:linear-gradient(to right, transparent, var(--rose)); }
+  .cover-divider-line.r { background:linear-gradient(to left, transparent, var(--rose)); }
+  .cover-dot { width:5px; height:5px; border-radius:50%; background:var(--mauve); opacity:0.6; }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    max-width:540px; text-align:left;
+    background:rgba(255,255,255,0.6); backdrop-filter:blur(10px);
+    border:1px solid rgba(232,196,184,0.4); border-radius:22px;
+    padding:32px 36px;
+    animation: fadeUp 1s ease forwards 0.8s; opacity:0;
+  }
+  .intro-card .intro-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:14px;
+  }
+  .intro-card p { font-size:14.5px; line-height:1.9; color:var(--text); font-weight:300; }
+  .intro-card strong { color:var(--warm-brown); font-weight:400; }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter-header { text-align:center; margin:80px 0 50px; }
+  .chapter-eyebrow {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:10px;
+  }
+  .chapter-number {
+    font-family:'Cormorant Garamond',serif; font-size:80px; font-weight:300;
+    color:rgba(201,160,160,0.15); line-height:1; display:block;
+  }
+  .chapter-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(24px,4vw,36px);
+    font-weight:300; color:var(--warm-brown); line-height:1.2; margin-top:-12px;
+  }
+  .chapter-sub {
+    font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic;
+    color:var(--mauve); margin-top:8px;
+  }
+
+  /* ── SECTION TAG ── */
+  .section-tag { display:flex; align-items:center; gap:12px; margin:48px 0 28px; }
+  .section-tag-line { flex:1; height:1px; background:rgba(201,160,160,0.25); }
+  .section-tag-text {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mauve); white-space:nowrap;
+  }
+
+  /* ── PARAGRAPH BLOCK ── */
+  .para-block { margin-bottom:52px; }
+  .para-badge {
+    display:inline-flex; align-items:center;
+    background:rgba(200,169,110,0.1); border:1px solid rgba(200,169,110,0.3);
+    border-radius:20px; padding:4px 16px; margin-bottom:16px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:13px; letter-spacing:1px; color:var(--soft-gold); font-weight:600;
+  }
+  .para-text {
+    font-size:15.5px; line-height:1.95; color:var(--text); font-weight:300; margin-bottom:14px;
+  }
+
+  /* ── PHRASE BREAKDOWN ── */
+  .phrase-item {
+    display:grid; grid-template-columns:auto 1fr; gap:0;
+    margin-bottom:14px; border-radius:14px; overflow:hidden;
+    border:1px solid rgba(232,196,184,0.3);
+  }
+  .phrase-original {
+    background:rgba(232,196,184,0.2); padding:14px 16px;
+    font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic;
+    color:var(--warm-brown); line-height:1.5;
+    border-right:1px solid rgba(232,196,184,0.3);
+    min-width:160px; max-width:200px;
+  }
+  .phrase-explain {
+    background:rgba(255,255,255,0.5); padding:14px 18px;
+    font-size:14px; line-height:1.75; color:var(--text); font-weight:300;
+  }
+  .phrase-explain strong { color:var(--warm-brown); font-weight:400; }
+
+  /* ── INSIGHT ── */
+  .insight {
+    background:rgba(184,201,176,0.2); border-left:3px solid var(--sage-dark);
+    padding:14px 20px; border-radius:0 12px 12px 0; margin:16px 0;
+    font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic;
+    color:#4a7a44; line-height:1.65;
+  }
+
+  /* ── ANALOGY CARD ── */
+  .analogy-card {
+    background:linear-gradient(135deg, rgba(245,230,224,0.45), rgba(240,246,237,0.45));
+    border:1px solid rgba(200,169,110,0.2); border-radius:16px;
+    padding:22px 26px; margin:16px 0;
+    font-family:'Cormorant Garamond',serif; font-size:16px;
+    font-style:italic; color:var(--text); line-height:1.8;
+  }
+  .analogy-card .analogy-label {
+    font-style:normal; font-size:10px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--soft-gold); margin-bottom:8px; display:block;
+  }
+
+  /* ── HIGHLIGHT BANNER ── */
+  .highlight-banner {
+    background:linear-gradient(135deg, rgba(245,230,224,0.6), rgba(240,246,237,0.6));
+    border-left:4px solid var(--soft-gold); border-radius:0 16px 16px 0;
+    padding:18px 24px; margin:20px 0;
+    font-family:'Cormorant Garamond',serif; font-size:18px;
+    line-height:1.6; color:var(--warm-brown);
+  }
+
+  /* ── MYTH BUSTER ── */
+  .myth-buster {
+    background:rgba(255,255,255,0.55); border:1px solid rgba(232,196,184,0.35);
+    border-radius:16px; padding:20px 24px; margin:16px 0;
+  }
+  .myth-buster .myth-label {
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:10px;
+  }
+  .myth-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:8px; font-size:14px; line-height:1.65; }
+  .myth-icon { font-size:16px; flex-shrink:0; margin-top:2px; }
+  .myth-row .myth-text { color:var(--text); font-weight:300; }
+
+  /* ── STEPS LIST ── */
+  .step-item { display:flex; gap:14px; align-items:flex-start; margin-bottom:12px; }
+  .step-num {
+    flex-shrink:0; width:28px; height:28px; border-radius:50%;
+    background:rgba(200,169,110,0.2); border:1px solid rgba(200,169,110,0.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--soft-gold); font-weight:600;
+  }
+  .step-text { font-size:15px; line-height:1.75; color:var(--text); font-weight:300; padding-top:3px; }
+  .step-text strong { color:var(--warm-brown); font-weight:400; }
+
+  /* ── CENTRAL QUOTE ── */
+  .central-quote {
+    text-align:center; background:rgba(255,255,255,0.65); backdrop-filter:blur(10px);
+    border:1px solid rgba(232,196,184,0.45); border-radius:22px;
+    padding:40px 36px; margin:30px 0; position:relative; overflow:hidden;
+  }
+  .central-quote::before {
+    content:'\201C'; position:absolute; top:-15px; left:18px;
+    font-family:'Cormorant Garamond',serif; font-size:130px;
+    color:rgba(201,160,160,0.2); line-height:1; pointer-events:none;
+  }
+  .central-quote .cq-text {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(20px,3.5vw,26px);
+    font-style:italic; font-weight:300; color:var(--warm-brown);
+    line-height:1.5; position:relative; z-index:1;
+  }
+  .central-quote .cq-ref {
+    display:block; margin-top:14px;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--mauve); position:relative; z-index:1;
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-table { margin:18px 0; border-radius:16px; overflow:hidden; border:1px solid rgba(232,196,184,0.35); }
+  .summary-row { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid rgba(232,196,184,0.2); }
+  .summary-row:last-child { border-bottom:none; }
+  .summary-q {
+    background:rgba(245,230,224,0.4); padding:14px 18px;
+    font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic;
+    color:var(--warm-brown); line-height:1.5;
+    border-right:1px solid rgba(232,196,184,0.2);
+  }
+  .summary-a {
+    background:rgba(255,255,255,0.45); padding:14px 18px;
+    font-size:13.5px; color:var(--text); font-weight:300; line-height:1.6;
+  }
+
+  /* ── TAKEAWAY ── */
+  .takeaway-box {
+    background:linear-gradient(135deg, rgba(248,234,228,0.75), rgba(240,246,237,0.75));
+    border:1px solid rgba(200,169,110,0.3); border-radius:20px;
+    padding:36px 40px; margin-top:60px; text-align:center;
+  }
+  .takeaway-icon { font-size:30px; margin-bottom:12px; display:block; }
+  .takeaway-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mauve); margin-bottom:14px;
+  }
+  .takeaway-text {
+    font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic;
+    color:var(--warm-brown); line-height:1.6;
+  }
+  .takeaway-sub { margin-top:16px; font-size:13.5px; color:var(--text-light); font-weight:300; line-height:1.8; }
+
+  /* ── MINI DIVIDER ── */
+  .mini-divider { width:40px; height:1px; background:rgba(201,160,160,0.35); margin:28px auto; }
+
+  /* ── PAGE FOOTER ── */
+  .page-footer {
+    margin-top:70px; display:flex; justify-content:space-between; align-items:center;
+    padding-top:20px; border-top:1px solid rgba(201,160,160,0.2);
+  }
+  .footer-text { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); font-weight:300; }
+  .page-num { font-family:'Cormorant Garamond',serif; font-size:22px; color:rgba(201,160,160,0.4); }
+
+  /* ── QUIZ ── */
+  #quiz-section { margin-top:80px; }
+  .quiz-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,36px);
+    font-weight:300; color:var(--warm-brown); text-align:center; margin-bottom:8px;
+  }
+  .quiz-sub {
+    text-align:center; font-size:13px; color:var(--text-light);
+    font-weight:300; margin-bottom:36px;
+  }
+  .quiz-score-bar {
+    display:flex; justify-content:space-between; align-items:center;
+    background:rgba(255,255,255,0.6); border:1px solid rgba(232,196,184,0.3);
+    border-radius:12px; padding:12px 20px; margin-bottom:24px;
+  }
+  .score-text { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); }
+  .score-num { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--soft-gold); font-weight:600; }
+  .quiz-card {
+    background:rgba(255,255,255,0.6); backdrop-filter:blur(8px);
+    border:1px solid rgba(232,196,184,0.3); border-radius:18px;
+    padding:26px 28px; margin-bottom:18px;
+  }
+  .quiz-q-num { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin-bottom:10px; }
+  .quiz-q-text { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--warm-brown); line-height:1.45; margin-bottom:18px; font-weight:400; }
+  .quiz-options { display:flex; flex-direction:column; gap:8px; }
+  .quiz-opt {
+    background:rgba(253,248,244,0.8); border:1px solid rgba(232,196,184,0.4);
+    border-radius:10px; padding:12px 16px; text-align:left;
+    font-family:'Lato',sans-serif; font-size:14px; color:var(--text);
+    cursor:pointer; transition:all 0.2s; font-weight:300; line-height:1.5;
+  }
+  .quiz-opt:hover:not(:disabled) { background:rgba(232,196,184,0.2); border-color:rgba(200,169,110,0.4); }
+  .quiz-opt.correct { background:rgba(184,201,176,0.3); border-color:var(--sage-dark); color:#3a6a34; font-weight:400; }
+  .quiz-opt.wrong { background:rgba(245,210,200,0.35); border-color:rgba(200,120,110,0.4); color:#8a4a40; }
+  .quiz-opt.reveal { opacity:0.55; }
+  .quiz-explanation {
+    margin-top:16px; padding:16px 18px;
+    border-radius:12px; border:1px solid rgba(232,196,184,0.3);
+    font-size:13.5px; line-height:1.8; color:var(--text); font-weight:300;
+    display:none;
+  }
+  .quiz-explanation.show { display:block; }
+  .quiz-explanation strong { color:var(--warm-brown); font-weight:400; }
+  #quiz-result {
+    display:none; text-align:center;
+    background:linear-gradient(135deg, rgba(248,234,228,0.8), rgba(240,246,237,0.8));
+    border:1px solid rgba(200,169,110,0.3); border-radius:22px;
+    padding:40px; margin-top:28px;
+  }
+  .result-emoji { font-size:40px; display:block; margin-bottom:12px; }
+  .result-text { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--warm-brown); margin-bottom:10px; }
+  .result-sub { font-size:14px; color:var(--text-light); font-weight:300; line-height:1.8; max-width:440px; margin:0 auto 20px; }
+  .result-btn {
+    background:rgba(200,169,110,0.2); border:1px solid rgba(200,169,110,0.4);
+    border-radius:30px; padding:10px 28px; font-size:12px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--warm-brown); cursor:pointer; font-family:'Lato',sans-serif;
+    transition:all 0.2s;
+  }
+  .result-btn:hover { background:rgba(200,169,110,0.35); }
+
+  /* ── PRINT BUTTON ── */
+  #print-btn {
+    position:fixed; bottom:28px; right:28px; z-index:999;
+    background:linear-gradient(135deg,rgba(122,92,88,0.9),rgba(90,65,62,0.95));
+    color:#fff; border:none; border-radius:50px;
+    padding:12px 24px; font-family:'Lato',sans-serif;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; box-shadow:0 4px 20px rgba(122,92,88,0.4);
+    transition:all 0.25s ease;
+  }
+  #print-btn:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(122,92,88,0.5); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    @page { size: letter; margin: 18mm 16mm 18mm 16mm; }
+    #print-btn, .bg-wash, .flower-top-right, .flower-bottom-left { display:none !important; }
+    body { background:#fff !important; font-size:11pt; color:#2a1a18 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page { max-width:100% !important; padding:0 !important; margin:0 !important; }
+    * { animation:none !important; opacity:1 !important; transform:none !important; }
+    .part-title { font-size:24pt !important; }
+    .chapter-title { font-size:20pt !important; }
+    .para-text { font-size:10.5pt !important; line-height:1.7 !important; }
+    .para-block, .phrase-item, .myth-buster, .analogy-card, .highlight-banner,
+    .summary-table, .takeaway-box, .central-quote, .step-item { page-break-inside:avoid; }
+    .section-cover { page-break-after:always; min-height:auto !important; padding:40px 0 !important; }
+    #quiz-section { display:none !important; }
+    .insight { background:#eef5eb !important; border-left:3px solid #8aaa80 !important; }
+    .myth-buster { background:#fdf8f4 !important; border:1px solid #e8c4b8 !important; }
+    .analogy-card { background:#fdf6f0 !important; border:1px solid #d4b88a !important; }
+    .highlight-banner { background:#fdf4ee !important; border-left:4px solid #c8a96e !important; }
+    .takeaway-box { background:#fdf4f0 !important; border:1px solid #c8a96e !important; }
+    .summary-table { border:1px solid #e8c4b8 !important; }
+    .summary-q { background:#fdf0ea !important; }
+    .summary-a { background:#fff !important; }
+    .phrase-item { border:1px solid #e8c4b8 !important; }
+    .phrase-original { background:#fdf0ea !important; }
+    .phrase-explain { background:#fff !important; }
+    .para-badge { background:#fdf6e8 !important; border:1px solid #d4b88a !important; }
+    .central-quote { background:#fdf8f4 !important; border:1px solid #e8c4b8 !important; backdrop-filter:none !important; }
+    .intro-card { background:#fdf8f4 !important; border:1px solid #e8c4b8 !important; backdrop-filter:none !important; }
+    .page-footer { border-top:1px solid #e8c4b8 !important; margin-top:20px !important; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 50px 20px 80px; }
+    .phrase-item { grid-template-columns: 1fr; }
+    .phrase-original { max-width:100%; border-right:none; border-bottom:1px solid rgba(232,196,184,0.3); }
+    .summary-row { grid-template-columns: 1fr; }
+    .summary-q { border-right:none; border-bottom:1px solid rgba(232,196,184,0.2); }
+  }
+</style>
+</head>
+<body>
+
+<button id="print-btn" onclick="window.print()">🖨 Guardar como PDF</button>
+
+<div class="bg-wash"></div>
+
+<svg class="flower-top-right" viewBox="0 0 300 300" fill="none">
+  <circle cx="220" cy="60" r="38" fill="rgba(232,196,184,0.3)"/>
+  <circle cx="248" cy="45" r="26" fill="rgba(245,230,224,0.4)"/>
+  <circle cx="200" cy="40" r="20" fill="rgba(201,160,160,0.2)"/>
+  <ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(232,196,184,0.38)" transform="rotate(-20 230 55)"/>
+  <ellipse cx="215" cy="70" rx="10" ry="20" fill="rgba(245,230,224,0.45)" transform="rotate(30 215 70)"/>
+  <ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.4)" transform="rotate(40 175 85)"/>
+  <circle cx="180" cy="50" r="10" fill="rgba(232,196,184,0.3)"/>
+</svg>
+<svg class="flower-bottom-left" viewBox="0 0 300 300" fill="none">
+  <circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.28)"/>
+  <circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.34)"/>
+  <ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.36)" transform="rotate(-15 75 245)"/>
+  <circle cx="120" cy="250" r="9" fill="rgba(232,196,184,0.25)"/>
+</svg>
+
+<div class="page">
+
+  <!-- ══ PORTADA ══ -->
+  <div class="section-cover">
+    <p class="breadcrumb">Fe que se entiende · Catecismo de la Iglesia Católica</p>
+    <div class="part-number">III</div>
+    <h1 class="part-title">La respuesta del<br>hombre a Dios</h1>
+    <p class="part-subtitle">Primera Parte · Capítulo Tercero · §§ 142–184</p>
+    <div class="cover-divider">
+      <div class="cover-divider-line"></div>
+      <div class="cover-dot"></div>
+      <span style="font-size:20px;">✝️</span>
+      <div class="cover-dot"></div>
+      <div class="cover-divider-line r"></div>
+    </div>
+    <div class="intro-card">
+      <p class="intro-label">De qué trata este capítulo</p>
+      <p>Ya vimos que el hombre busca a Dios (Cap. I) y que Dios se revela al hombre (Cap. II). Ahora llega la pregunta decisiva:</p>
+      <br>
+      <p><strong>¿Cómo responde el hombre a ese Dios que le habla?</strong></p>
+      <br>
+      <p>La respuesta tiene un nombre: <strong>la fe.</strong> Este capítulo explica qué es creer de verdad — no como una idea, sino como una relación personal con Dios.</p>
+      <br>
+      <p style="font-size:13px; color:var(--text-light);">§§ 142–184 · Artículos: Creo · Creemos · La profesión de la fe cristiana</p>
+    </div>
+    <div style="margin-top:44px; animation: fadeUp 1s ease forwards 1s; opacity:0;">
+      <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve);">Comienza aquí ↓</p>
+    </div>
+  </div>
+
+  <div style="width:100%; height:1px; background:linear-gradient(to right, transparent, rgba(201,160,160,0.35), transparent); margin-bottom:70px;"></div>
+
+  <!-- ══ §§ 142–143 ══ -->
+  <div class="chapter-header">
+    <p class="chapter-eyebrow">Capítulo Tercero</p>
+    <span class="chapter-number">III</span>
+    <h2 class="chapter-title">La respuesta del<br>hombre a Dios</h2>
+    <p class="chapter-sub">Dios habla. El hombre responde. Eso es la fe.</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 142</div>
+    <p class="para-text">Dios no habla como quien transmite información. Habla como amigo — movido por amor, queriendo que el hombre viva en su compañía. La respuesta adecuada a esa invitación es la fe.</p>
+    <div class="phrase-item">
+      <div class="phrase-original">"Dios invisible habla a los hombres como amigo"</div>
+      <div class="phrase-explain">No es un jefe que da órdenes ni un maestro que dicta lecciones. Es alguien que <strong>se acerca.</strong> Y cuando alguien que te ama se acerca, la respuesta natural no es el argumento — es la confianza.</div>
+    </div>
+    <div class="insight">La fe no es la respuesta a una demostración. Es la respuesta a una persona que te habla.</div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 143</div>
+    <p class="para-text">Por la fe, el hombre somete completamente su inteligencia y su voluntad a Dios. La Sagrada Escritura llama a esto "obediencia de la fe".</p>
+    <div class="myth-buster">
+      <p class="myth-label">¿Qué significa "someter la inteligencia"?</p>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No significa apagar el cerebro.</span></div>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No significa creer sin pensar.</span></div>
+      <div class="myth-row" style="margin-top:6px;"><span class="myth-icon">✦</span><span class="myth-text"><strong>Sí significa:</strong> reconocer que Dios sabe más que yo, y confiarle mi vida aunque no entienda todo.</span></div>
+    </div>
+    <div class="analogy-card">
+      <span class="analogy-label">Una imagen para entenderlo</span>
+      Cuando un niño pequeño toma la mano de su padre para cruzar la calle, no entiende el tráfico ni los semáforos. Pero confía. No es ignorancia — es <strong>confianza razonada.</strong> La fe funciona igual: no anula la razón, la pone al servicio del amor.
+    </div>
+  </div>
+
+  <!-- ══ ARTÍCULO 1: CREO ══ -->
+  <div class="section-tag">
+    <div class="section-tag-line"></div>
+    <span class="section-tag-text">Artículo 1 · Creo</span>
+    <div class="section-tag-line"></div>
+  </div>
+
+  <!-- I. La obediencia de la fe -->
+  <div style="text-align:center; margin:0 0 32px;">
+    <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-bottom:6px;">I</p>
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; color:var(--warm-brown);">La obediencia de la fe</h3>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 144</div>
+    <p class="para-text">Obedecer en la fe es someterse libremente a la Palabra escuchada, porque su verdad está garantizada por Dios, la Verdad misma. El modelo de esta obediencia es Abraham. La realización más perfecta, la Virgen María.</p>
+    <div class="highlight-banner">
+      La obediencia de la fe no es rendirse a una autoridad que nos aplasta. Es confiar en alguien cuya palabra vale infinitamente más que cualquier duda nuestra.
+    </div>
+  </div>
+
+  <!-- Abraham -->
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--mauve);">Abraham, "el padre de todos los creyentes"</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 145</div>
+    <p class="para-text">La carta a los Hebreos, en el gran elogio de la fe de los antepasados, insiste en la fe de Abraham: obedeció y salió sin saber adónde iba. Vivió como extranjero. Creyó que tendría un hijo cuando parecía imposible. Y al final estuvo dispuesto a ofrecer a Isaac.</p>
+
+    <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mauve); margin:20px 0 12px;">Lo que la Iglesia destaca de Abraham no son sus logros, sino su confianza</p>
+    <div style="display:flex; flex-direction:column; gap:0; border-radius:14px; overflow:hidden; border:1px solid rgba(232,196,184,0.3);">
+      <div style="display:flex; align-items:flex-start; gap:14px; padding:14px 18px; background:rgba(245,230,224,0.3); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🚶</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">Salió sin saber adónde iba</strong>
+          <p style="font-size:13px; color:var(--text-light); font-weight:300; margin-top:3px; line-height:1.6;">Dejó su tierra, su familia, su seguridad. Solo con la Palabra de Dios.</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:14px; padding:14px 18px; background:rgba(255,255,255,0.4); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🌿</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">Vivió como extranjero en la Tierra Prometida</strong>
+          <p style="font-size:13px; color:var(--text-light); font-weight:300; margin-top:3px; line-height:1.6;">Nunca vio el cumplimiento completo. Creyó en algo que no veía todavía.</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:14px; padding:14px 18px; background:rgba(240,246,237,0.3); border-bottom:1px solid rgba(232,196,184,0.2);">
+        <span style="font-size:20px; flex-shrink:0; margin-top:2px;">⭐</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">Creyó que Sara concebiría</strong>
+          <p style="font-size:13px; color:var(--text-light); font-weight:300; margin-top:3px; line-height:1.6;">Era humanamente imposible. Pero la promesa de Dios pesó más que la biología.</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:14px; padding:14px 18px; background:rgba(245,230,224,0.2);">
+        <span style="font-size:20px; flex-shrink:0; margin-top:2px;">🙏</span>
+        <div>
+          <strong style="font-size:13px; color:var(--warm-brown);">Ofreció a Isaac</strong>
+          <p style="font-size:13px; color:var(--text-light); font-weight:300; margin-top:3px; line-height:1.6;">Lo que más amaba. Confió en que Dios sabía lo que hacía.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 146</div>
+    <p class="para-text">Abraham realiza la definición de la fe dada por la carta a los Hebreos: "La fe es garantía de lo que se espera; la prueba de las realidades que no se ven." Gracias a esta fe poderosa, Abraham vino a ser "el padre de todos los creyentes".</p>
+    <div class="central-quote">
+      <p class="cq-text">"La fe es garantía de lo que se espera;<br>la prueba de las realidades que no se ven."</p>
+      <span class="cq-ref">Hebreos 11, 1</span>
+    </div>
+    <div class="insight">Fe no es ingenuidad. Es apostar la vida en alguien cuya Palabra nunca ha fallado.</div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 147</div>
+    <p class="para-text">El Antiguo Testamento está lleno de testimonios de esta fe. Pero la Iglesia enseña que todo apuntaba a algo más grande: la gracia de creer en el Hijo Jesús, "el que inicia y consuma la fe".</p>
+    <div class="analogy-card">
+      <span class="analogy-label">Cómo leer el Antiguo Testamento</span>
+      Los santos del Antiguo Testamento son como personas que caminan hacia un amanecer que aún no ven. Su fe es real y heroica — pero el Sol que se acerca es Cristo. Cuando Él llega, todo cobra su sentido pleno.
+    </div>
+  </div>
+
+  <!-- María -->
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--mauve);">María: "Dichosa la que ha creído"</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 148</div>
+    <p class="para-text">La Virgen María realiza de la manera más perfecta la obediencia de la fe. En la Anunciación, María acogió el mensaje del ángel creyendo que "nada es imposible para Dios", y dio su asentimiento: "Hágase en mí según tu palabra."</p>
+    <div class="myth-buster">
+      <p class="myth-label">Lo que hace heroica la fe de María</p>
+      <div class="myth-row"><span class="myth-icon">🌸</span><span class="myth-text">No entendía cómo sería posible. Pero dijo que sí.</span></div>
+      <div class="myth-row"><span class="myth-icon">🌸</span><span class="myth-text">No veía el futuro. Pero confió en la Palabra.</span></div>
+      <div class="myth-row"><span class="myth-icon">🌸</span><span class="myth-text">No tenía garantías humanas. Solo la promesa de Dios.</span></div>
+    </div>
+    <div class="highlight-banner">
+      "Hágase en mí según tu palabra." — Esas seis palabras son el modelo perfecto de la fe cristiana.
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 149</div>
+    <p class="para-text">La fe de María no terminó en la Anunciación. Durante toda su vida — la huida a Egipto, la vida en Nazaret, la Pasión — siguió creyendo. Al pie de la cruz, cuando todo parecía perdido, María continuó creyendo. Por eso la Iglesia la venera como la realización más pura de la fe.</p>
+    <div class="analogy-card">
+      <span class="analogy-label">La fe de María en la oscuridad</span>
+      No es difícil creer cuando todo va bien. La grandeza de María es que creyó en el peor momento: cuando su Hijo moría como un criminal, cuando parecía que Dios había fallado. Eso es fe perfecta.
+    </div>
+  </div>
+
+  <!-- II. Creer sólo en Dios -->
+  <div class="section-tag">
+    <div class="section-tag-line"></div>
+    <span class="section-tag-text">II · "Yo sé en quién tengo puesta mi fe"</span>
+    <div class="section-tag-line"></div>
+  </div>
+
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:15px; font-style:italic; color:var(--text-light);">2 Tm 1, 12</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 150</div>
+    <p class="para-text">La fe es ante todo una adhesión personal del hombre a Dios; y al mismo tiempo e inseparablemente, el asentimiento a toda la verdad que Dios ha revelado. La fe cristiana no es creer en una idea — es confiar en una Persona.</p>
+    <div class="summary-table">
+      <div class="summary-row">
+        <div class="summary-q">¿En qué creo?</div>
+        <div class="summary-a">En Dios — no en una filosofía ni en una institución.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Por qué creo?</div>
+        <div class="summary-a">Porque Dios es digno de confianza total.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">¿Qué creo?</div>
+        <div class="summary-a">Todo lo que Dios ha revelado, porque Él lo ha dicho.</div>
+      </div>
+    </div>
+    <div class="insight">La fe cristiana no es un sistema de ideas. Es una relación personal con el Dios vivo.</div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 151</div>
+    <p class="para-text">Para el cristiano, creer en Dios es inseparablemente creer en Jesucristo. Dios nos ha hablado en su Hijo. Jesús es el Verbo hecho carne, el Hijo único que da a conocer al Padre. No se puede creer en el Padre rechazando al Hijo.</p>
+    <div class="phrase-item">
+      <div class="phrase-original">"El que me ha visto a mí, ha visto al Padre"</div>
+      <div class="phrase-explain">Jesús no es solo un maestro que habla <em>de</em> Dios. <strong>Es Dios que se hace visible.</strong> Por eso creer en Dios incluye necesariamente creer en Jesús.</div>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 152</div>
+    <p class="para-text">No se puede creer en Jesucristo sin tener parte en su Espíritu. Es el Espíritu Santo quien revela a los hombres quién es Jesús. "Nadie puede decir: Jesús es Señor sino bajo la acción del Espíritu Santo." Creemos en el Espíritu Santo porque es el Espíritu de Dios que nos abre los ojos.</p>
+    <div class="analogy-card">
+      <span class="analogy-label">¿Por qué necesito al Espíritu Santo para creer?</span>
+      Imagina intentar ver el sol con los ojos cerrados. La fe en Jesús es así: no importa cuánto te lo expliquen, si el Espíritu Santo no te abre los ojos interiores, no lo verás. La fe siempre es una obra de Dios en nosotros.
+    </div>
+    <div class="insight">La fe no se fabrica. Se recibe. Y el que la da es el Espíritu Santo.</div>
+  </div>
+
+  <!-- ══ III: Características de la fe ══ -->
+  <div class="section-tag">
+    <div class="section-tag-line"></div>
+    <span class="section-tag-text">III · Las características de la fe</span>
+    <div class="section-tag-line"></div>
+  </div>
+
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--warm-brown);">La fe es una gracia</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 153</div>
+    <p class="para-text">Cuando San Pedro confesó que Jesús era el Cristo, el Hijo de Dios vivo, Jesús le respondió: "Eso no te lo reveló la carne ni la sangre, sino mi Padre que está en los cielos." La fe es un don de Dios, una virtud sobrenatural infundida por Él.</p>
+    <div class="highlight-banner">
+      Nadie llega a la fe solo con su inteligencia. Dios tiene que abrirte los ojos — y ese es precisamente el regalo más grande que puede hacerte.
+    </div>
+  </div>
+
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--warm-brown);">La fe es un acto humano</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 154</div>
+    <p class="para-text">Aunque la fe es don de Dios, creer es también un acto auténticamente humano. No es contrario a la libertad ni a la inteligencia del hombre depositar la confianza en Dios. En las relaciones humanas también confiamos en las personas que amamos — y eso nos hace más plenamente humanos, no menos.</p>
+    <div class="myth-buster">
+      <p class="myth-label">La fe no anula tu humanidad</p>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es un acto de tu inteligencia:</strong> reconoces que Dios es digno de toda confianza.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es un acto de tu voluntad:</strong> decides libremente confiar.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es completamente tuyo:</strong> Dios no te fuerza. Te invita.</span></div>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 155</div>
+    <p class="para-text">En la fe, la inteligencia y la voluntad humanas cooperan con la gracia divina. Creer es un acto del entendimiento que asiente a la verdad divina por imperio de la voluntad movida por Dios mediante la gracia.</p>
+    <div class="insight">Creer no es un salto al vacío. Es un paso firme sobre un suelo que ya estaba ahí antes de que lo pisaras.</div>
+  </div>
+
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--warm-brown);">La fe y la inteligencia</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 156</div>
+    <p class="para-text">¿Por qué creer? No porque las verdades de la fe sean "evidentes" para la razón, sino porque Dios las ha revelado, y Dios no puede mentir. Sin embargo, Dios también ha querido que existan motivos exteriores que ayuden: los milagros de Cristo, los santos, la propagación y estabilidad de la Iglesia. Señales que muestran que la fe no es un movimiento ciego del espíritu.</p>
+    <div class="summary-table">
+      <div class="summary-row">
+        <div class="summary-q">La razón principal para creer</div>
+        <div class="summary-a">La autoridad de Dios que revela — porque Él no puede engañarse ni engañarnos.</div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-q">Señales que ayudan desde fuera</div>
+        <div class="summary-a">Los milagros, los santos, la historia de la Iglesia, la santidad de sus frutos.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 157</div>
+    <p class="para-text">La fe es cierta — más cierta que todo conocimiento humano — porque se funda en la Palabra misma de Dios, que no puede fallar. Las verdades reveladas pueden parecer oscuras a la razón y a la experiencia, pero la certeza que da la luz divina es mayor que la que da la luz de la razón natural.</p>
+    <div class="central-quote">
+      <p class="cq-text">"Diez mil dificultades no hacen una sola duda."</p>
+      <span class="cq-ref">John Henry Newman</span>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 158</div>
+    <p class="para-text">La fe busca comprender. Es inherente a la fe que el creyente desee conocer mejor aquello en lo que ha puesto su fe. Un conocimiento más penetrante suscitará a su vez una fe más encendida de amor. Por eso la Iglesia cita el gran principio de San Agustín:</p>
+    <div class="highlight-banner">
+      "Creo para comprender, y comprendo para creer mejor." — San Agustín
+    </div>
+    <p class="para-text" style="margin-top:16px;">La fe y la razón no son enemigas. Se necesitan mutuamente. La fe sin razón se vuelve superstición. La razón sin fe se vuelve soberbia.</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 159</div>
+    <p class="para-text">Fe y ciencia: aunque la fe esté por encima de la razón, jamás puede haber desacuerdo entre ellas. Puesto que el mismo Dios que revela los misterios e infunde la fe ha puesto en el hombre la luz de la razón, Dios no podría negarse a sí mismo. La investigación científica, si procede de modo verdaderamente científico, nunca estará en oposición real con la fe.</p>
+    <div class="myth-buster">
+      <p class="myth-label">¿La fe choca con la ciencia?</p>
+      <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No. Si parece que hay conflicto, es porque algo se está interpretando mal.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Dios es el autor tanto de la naturaleza como de la Revelación. No puede contradecirse.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Quien busca la verdad con honestidad — en la ciencia o en la fe — se acerca a Dios.</span></div>
+    </div>
+  </div>
+
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--warm-brown);">La libertad de la fe</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 160</div>
+    <p class="para-text">Al creer, el hombre debe responder voluntariamente a Dios. Nadie debe ser obligado contra su voluntad a abrazar la fe. Dios llama a los hombres a servirle en espíritu y en verdad, y por ello quedan vinculados por su conciencia, pero no coaccionados. Jesús nunca impuso la fe a nadie.</p>
+    <div class="analogy-card">
+      <span class="analogy-label">Cómo invitó Jesús a creer</span>
+      Jesús habló. Hizo milagros. Testificó con su vida. Murió perdonando. Resucitó. Y luego esperó. Nunca forzó. Nunca amenazó con la fe como condición para ser amado. El reino de Cristo crece por el amor — no por la presión.
+    </div>
+  </div>
+
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--warm-brown);">La necesidad de la fe</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 161</div>
+    <p class="para-text">Creer en Cristo Jesús y en Aquel que lo envió para salvarnos es necesario para obtener la salvación. Sin fe es imposible agradar a Dios. Quien haya perseverado en ella hasta el fin, obtendrá la vida eterna.</p>
+    <div class="highlight-banner">
+      La fe no es un requisito burocrático. Es la puerta de una relación. Sin ella, no hay encuentro real con Dios — igual que no puede haber amistad real sin confianza.
+    </div>
+  </div>
+
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--warm-brown);">La perseverancia en la fe</p>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 162</div>
+    <p class="para-text">La fe es un don gratuito que Dios hace al hombre, pero es un don que hay que cuidar. San Pablo advierte que es posible perderla. Para vivir, crecer y perseverar hasta el fin en la fe, debemos alimentarla con la Palabra de Dios, nutrirla con la caridad y anclarla en la esperanza.</p>
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Alimentarla:</strong> leer y meditar la Palabra de Dios.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Nutrirla:</strong> vivirla con caridad — el amor concreto al prójimo.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Pedirla:</strong> la fe que no se pide se enfría. "Señor, auméntanos la fe."</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Protegerla:</strong> vivir rectamente — las malas decisiones oscurecen la fe poco a poco.</div>
+    </div>
+    <div class="insight">La fe no se guarda en un cajón. Vive mientras la ejercitas.</div>
+  </div>
+
+  <!-- ══ ARTÍCULO 2: CREEMOS ══ -->
+  <div class="section-tag">
+    <div class="section-tag-line"></div>
+    <span class="section-tag-text">Artículo 2 · Creemos</span>
+    <div class="section-tag-line"></div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 163–165</div>
+    <p class="para-text">La fe nos hace gustar de antemano el gozo y la luz de la visión beatífica. Pero "caminamos en fe, no en visión" — conocemos a Dios "como en un espejo, de manera confusa." La fe puede ser puesta a prueba. El mundo en que vivimos parece frecuentemente muy lejos de lo que la fe nos asegura. Entonces es cuando debemos volver hacia los testigos de la fe: Abraham, María, y toda la gran nube de testigos.</p>
+    <div class="central-quote">
+      <p class="cq-text">"Esperando contra toda esperanza"</p>
+      <span class="cq-ref">Romanos 4, 18 — De Abraham, en la oscuridad</span>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 166–167</div>
+    <p class="para-text">La fe es un acto personal — la respuesta libre del hombre a Dios — pero la fe no es un acto aislado. Nadie puede creer solo, como nadie puede vivir solo. La fe de cada creyente está sostenida por la fe de la Iglesia. Cuando digo "Creo", estoy diciendo también "creemos" — me uno a la gran cadena de creyentes de todos los tiempos.</p>
+    <div class="myth-buster">
+      <p class="myth-label">¿Por qué no puedo tener "mi fe personal" sin la Iglesia?</p>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Nadie se ha dado la vida a sí mismo — la recibimos de otros.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">La fe también la recibiste de alguien: tu familia, tu comunidad, la Iglesia.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Y tú, con tu fe, sostienes la fe de otros. Somos eslabones de una misma cadena.</span></div>
+    </div>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 168–169</div>
+    <p class="para-text">La Iglesia es la primera que cree, y así conduce, alimenta y sostiene mi fe. La Iglesia es nuestra Madre: en ella recibimos la fe y la vida nueva en Cristo por el Bautismo. Como nuestra madre, es también la educadora de nuestra fe. Por eso San Cipriano decía: "Nadie puede tener a Dios por Padre si no tiene a la Iglesia por Madre."</p>
+    <div class="highlight-banner">
+      "¿Qué pides a la Iglesia de Dios?" — "La fe." — "¿Qué te da la fe?" — "La vida eterna." · Ritual Romano del Bautismo
+    </div>
+  </div>
+
+  <!-- EL LENGUAJE DE LA FE -->
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-bottom:6px;">II</p>
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; color:var(--warm-brown);">El lenguaje de la fe</h3>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 170–171</div>
+    <p class="para-text">No creemos en las fórmulas, sino en las realidades que ellas expresan y que la fe nos permite "tocar." El acto de fe del creyente no se detiene en el enunciado, sino en la realidad. Sin embargo, nos acercamos a esas realidades con la ayuda de las formulaciones de la fe. La Iglesia guarda fielmente la fe transmitida a los apóstoles una vez para siempre.</p>
+    <div class="analogy-card">
+      <span class="analogy-label">Las fórmulas son como mapas</span>
+      Un mapa no es el territorio — pero sin mapa, te pierdes. Las fórmulas del Credo no son Dios — pero sin ellas, la fe de todos sería diferente, personal e incomunicable. Las fórmulas nos permiten creer juntos, proteger la verdad y transmitirla.
+    </div>
+  </div>
+
+  <!-- UNA SOLA FE -->
+  <div class="mini-divider"></div>
+  <div style="text-align:center; margin:0 0 24px;">
+    <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-bottom:6px;">III</p>
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; color:var(--warm-brown);">Una sola fe</h3>
+  </div>
+
+  <div class="para-block">
+    <div class="para-badge">§ 172–175</div>
+    <p class="para-text">Desde siglos, a través de muchas lenguas, culturas, pueblos y naciones, la Iglesia no cesa de confesar su única fe en un solo Señor, transmitida por un solo bautismo. La Iglesia, aunque dispersa por el mundo, guarda la fe con cuidado — como si no tuviera más que una sola alma y un solo corazón, la predica y la transmite con una voz unánime.</p>
+    <div class="insight">No importa si eres guatemalteca o japonesa, del siglo IV o del XXI: la fe que profesas es la misma. Eso es un milagro en sí mismo.</div>
+  </div>
+
+  <!-- ══ RESUMEN FINAL ══ -->
+  <div class="takeaway-box">
+    <span class="takeaway-icon">✝️</span>
+    <p class="takeaway-label">La idea central de este capítulo</p>
+    <p class="takeaway-text">"La fe no es saber cosas sobre Dios;<br>es confiar en Dios porque Él nos ha hablado."</p>
+    <p class="takeaway-sub">
+      Dios toma la iniciativa. El hombre responde con fe. Esa fe es un don gratuito que se recibe, se cuida, se comparte y crece — nunca en soledad, siempre en la Iglesia.
+    </p>
+  </div>
+
+  <!-- Resumen numerado -->
+  <div style="margin-top:48px;">
+    <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--mauve); margin-bottom:20px; text-align:center;">Lo que la Iglesia enseña en este capítulo</p>
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Dios nos busca primero.</strong> La fe es nuestra respuesta a su iniciativa.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>La fe es confiar totalmente en Dios</strong> — con la inteligencia y con la voluntad.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Abraham</strong> es el modelo de fe: obedeció sin ver el resultado.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>María</strong> es el modelo perfecto: creyó en el peor momento.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>Creer en Dios</strong> implica creer en Jesucristo y en el Espíritu Santo.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">6</div>
+      <div class="step-text"><strong>La fe es un don</strong> — pero hay que cuidarla, pedirla y vivirla.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">7</div>
+      <div class="step-text"><strong>Nadie cree solo.</strong> La Iglesia nos sostiene y nosotros la sostenemos.</div>
+    </div>
+  </div>
+
+  <!-- ══ QUIZ ══ -->
+  <div id="quiz-section">
+    <div class="mini-divider" style="margin-top:60px;"></div>
+    <h2 class="quiz-title">¿Cuánto entendiste?</h2>
+    <p class="quiz-sub">10 preguntas sobre el Capítulo III · La respuesta del hombre a Dios</p>
+    <div id="quiz-container"></div>
+    <div id="quiz-result">
+      <span class="result-emoji" id="result-emoji"></span>
+      <p class="result-text" id="result-text"></p>
+      <p class="result-sub" id="result-sub"></p>
+      <button class="result-btn" onclick="resetQuiz()">Volver a intentarlo</button>
+    </div>
+  </div>
+
+  <!-- ══ NAVEGACIÓN ══ -->
+  <div class="page-footer">
+    <a href="capitulo-2.html" style="text-decoration:none;">
+      <span class="footer-text">← Capítulo II</span>
+    </a>
+    <span class="page-num">III</span>
+    <a href="index.html" style="text-decoration:none;">
+      <span class="footer-text">Índice →</span>
+    </a>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+const questions = [
+  {
+    q: "Según el § 142, ¿cómo habla Dios a los hombres y cuál es la respuesta adecuada?",
+    opts: [
+      "Habla como un juez y la respuesta adecuada es el temor.",
+      "Habla como amigo, movido por amor, y la respuesta adecuada es la fe.",
+      "Habla solo a través de la naturaleza y la respuesta adecuada es la admiración.",
+      "Habla únicamente por medio de los sacerdotes."
+    ],
+    correct: 1,
+    explanation: "El § 142 enseña que Dios habla <strong>como amigo</strong>, movido por su gran amor, queriendo que el hombre viva en su compañía. La respuesta adecuada a esa invitación no es el miedo ni el cumplimiento de reglas — es la <strong>fe</strong>: confiar en alguien que nos ama."
+  },
+  {
+    q: "¿Qué significa 'someter la inteligencia a Dios' en la fe, según el § 143?",
+    opts: [
+      "Dejar de pensar y aceptar todo sin cuestionarlo.",
+      "Reconocer que Dios sabe más que yo y confiarle la vida aunque no entienda todo.",
+      "Abandonar los estudios y dedicarse solo a rezar.",
+      "Creer solo lo que la razón puede demostrar."
+    ],
+    correct: 1,
+    explanation: "Someter la inteligencia no significa apagarla. Significa <strong>reconocer los límites de la razón humana</strong> ante el misterio de Dios. Como el niño que toma la mano del padre sin entender el tráfico — no es ignorancia, es confianza razonada en alguien digno de ella."
+  },
+  {
+    q: "¿Por qué la Iglesia llama a Abraham 'el padre de todos los creyentes' (§ 145–146)?",
+    opts: [
+      "Porque fue el primer hombre que leyó la Biblia completa.",
+      "Porque fundó la primera iglesia en Ur de los Caldeos.",
+      "Porque obedeció a Dios confiando en su Palabra, sin ver el resultado, en situaciones humanamente imposibles.",
+      "Porque tuvo más hijos que ningún otro patriarca."
+    ],
+    correct: 2,
+    explanation: "Abraham es modelo de fe porque <strong>obedeció sin ver el resultado</strong>: salió sin saber adónde iba, vivió como extranjero, creyó que tendría un hijo siendo anciano y estuvo dispuesto a ofrecer a Isaac. La Iglesia no destaca sus logros, sino su confianza total en la Palabra de Dios."
+  },
+  {
+    q: "Según el § 148, ¿qué hizo heroica la fe de María en la Anunciación?",
+    opts: [
+      "Que entendía perfectamente el plan de Dios y lo aceptó con facilidad.",
+      "Que dijo que sí sin entender cómo sería posible, sin ver el futuro, solo confiando en la Palabra de Dios.",
+      "Que recibió una garantía escrita de que todo saldría bien.",
+      "Que consultó con los sacerdotes del Templo antes de responder."
+    ],
+    correct: 1,
+    explanation: "La fe de María fue heroica precisamente porque <strong>no tenía certezas humanas</strong>: no entendía cómo sería posible, no veía el futuro, no tenía garantías externas. Solo la Palabra del ángel — y la Palabra de Dios que esa palabra transmitía. Y dijo: 'Hágase en mí según tu palabra.' Eso es fe perfecta."
+  },
+  {
+    q: "¿Cuál es la diferencia entre la fe cristiana y 'creer en una idea', según el § 150?",
+    opts: [
+      "No hay diferencia: creer en Dios es lo mismo que creer en una filosofía.",
+      "La fe cristiana es adhesión a un conjunto de normas morales.",
+      "La fe cristiana es ante todo una adhesión personal a Dios — una relación de confianza con una Persona, no solo con un sistema de ideas.",
+      "La fe cristiana consiste en memorizar el Catecismo."
+    ],
+    correct: 2,
+    explanation: "El § 150 enseña que la fe es <strong>adhesión personal a Dios</strong> — no a una filosofía, no a una institución, no a un conjunto de reglas. Es confiar en una Persona. Al mismo tiempo, implica asentir a todo lo que esa Persona ha revelado. Es una relación, no una ideología."
+  },
+  {
+    q: "¿Por qué no se puede creer en Dios sin creer en Jesucristo, según el § 151?",
+    opts: [
+      "Porque la Iglesia lo exige como requisito administrativo.",
+      "Porque Jesús es el Hijo único que da a conocer perfectamente al Padre — ver a Jesús es ver a Dios.",
+      "Porque Jesús fue el mejor maestro de moral de la historia.",
+      "Porque sin creer en Jesús no se puede entrar a la Iglesia."
+    ],
+    correct: 1,
+    explanation: "Jesús no es solo alguien que habla <em>de</em> Dios. Él mismo dijo: 'El que me ha visto a mí, ha visto al Padre.' <strong>Jesús es Dios que se hace visible</strong> — el Verbo hecho carne. Por eso no hay acceso al Padre que no pase por el Hijo. La fe en Dios incluye necesariamente la fe en Jesucristo."
+  },
+  {
+    q: "Según el § 153, ¿cómo llegó San Pedro a reconocer que Jesús era el Hijo de Dios?",
+    opts: [
+      "Por su propia inteligencia y estudio de las Escrituras.",
+      "Porque Jesús le explicó lógicamente quién era.",
+      "Por revelación de Dios Padre — no por la carne ni la sangre.",
+      "Porque los otros apóstoles se lo dijeron."
+    ],
+    correct: 2,
+    explanation: "Cuando Pedro confesó a Jesús como el Cristo, Jesús le respondió: 'Eso no te lo reveló la carne ni la sangre, sino mi Padre que está en los cielos.' La fe es siempre un <strong>don de Dios</strong> — no el resultado de la inteligencia humana sola. Nadie llega a la fe por sus propias fuerzas."
+  },
+  {
+    q: "¿La fe choca con la ciencia? ¿Qué enseña el § 159?",
+    opts: [
+      "Sí, son incompatibles y hay que elegir una de las dos.",
+      "La ciencia es superior a la fe porque se puede verificar.",
+      "No pueden contradecirse en el fondo, porque Dios es el autor de la naturaleza y de la Revelación.",
+      "La fe debe ignorar los hallazgos científicos."
+    ],
+    correct: 2,
+    explanation: "El § 159 enseña que <strong>fe y ciencia no pueden contradecirse de fondo</strong>. Si parece que hay conflicto, es porque algo se está interpretando mal — o la ciencia, o la fe. Dios es el autor de ambas. Quien busca la verdad con honestidad en la ciencia se acerca a Dios, aunque no lo sepa."
+  },
+  {
+    q: "Según los §§ 166–167, ¿por qué no se puede tener 'una fe solo personal' al margen de la Iglesia?",
+    opts: [
+      "Porque la Iglesia tiene el monopolio de la salvación.",
+      "Porque sin la Iglesia no hay acceso a la Biblia.",
+      "Porque nadie puede creer solo — como nadie puede vivir solo. La fe de cada creyente está sostenida por la fe de la Iglesia, y viceversa.",
+      "Porque el Papa debe aprobar cada acto de fe personal."
+    ],
+    correct: 2,
+    explanation: "El § 166 enseña que la fe es personal — pero nunca solitaria. <strong>Nadie se ha dado la fe a sí mismo</strong>: la recibiste de otros, y tú con tu fe sostienes la fe de otros. Somos eslabones de una cadena que viene de los Apóstoles. 'Creo' y 'Creemos' son inseparables."
+  },
+  {
+    q: "¿Qué significa el principio de San Agustín: 'Creo para comprender, y comprendo para creer mejor'? (§ 158)",
+    opts: [
+      "Que primero hay que entenderlo todo antes de poder creer.",
+      "Que la fe y la razón se necesitan mutuamente y se enriquecen una a la otra.",
+      "Que la razón es más importante que la fe.",
+      "Que solo los teólogos pueden tener una fe verdadera."
+    ],
+    correct: 1,
+    explanation: "San Agustín captura en esta frase la relación perfecta entre fe y razón: <strong>se necesitan mutuamente</strong>. La fe abre horizontes que la razón sola no ve. La razón profundiza lo que la fe ya abrazó. No son enemigas — son compañeras. La fe sin razón se vuelve superstición; la razón sin fe se vuelve soberbia."
+  }
+];
+
+let answered = new Array(questions.length).fill(false);
+let score = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+
+  const bar = document.createElement('div');
+  bar.className = 'quiz-score-bar';
+  bar.innerHTML = `<span class="score-text">Respuestas correctas</span><span class="score-num" id="live-score">0 / ${questions.length}</span>`;
+  container.appendChild(bar);
+
+  questions.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.id = `card-${qi}`;
+
+    const num = document.createElement('p');
+    num.className = 'quiz-q-num';
+    num.textContent = `Pregunta ${qi + 1} de ${questions.length}`;
+    card.appendChild(num);
+
+    const qtext = document.createElement('p');
+    qtext.className = 'quiz-q-text';
+    qtext.textContent = q.q;
+    card.appendChild(qtext);
+
+    const opts = document.createElement('div');
+    opts.className = 'quiz-options';
+
+    const exp = document.createElement('div');
+    exp.className = 'quiz-explanation';
+
+    q.opts.forEach((opt, oi) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.onclick = () => handleAnswer(qi, oi, btn, opts, exp);
+      opts.appendChild(btn);
+    });
+
+    card.appendChild(opts);
+    card.appendChild(exp);
+    container.appendChild(card);
+  });
+}
+
+function handleAnswer(qi, oi, btn, opts, exp) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+
+  const q = questions[qi];
+  const allBtns = opts.querySelectorAll('.quiz-opt');
+
+  allBtns.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add('correct');
+    else if (i === oi && oi !== q.correct) b.classList.add('wrong');
+    else b.classList.add('reveal');
+  });
+
+  if (oi === q.correct) {
+    score++;
+    exp.innerHTML = `<strong>✦ ¡Correcto!</strong><br><br>${q.explanation}`;
+    exp.style.background = 'rgba(184,201,176,0.25)';
+    exp.style.borderColor = 'var(--sage-dark)';
+  } else {
+    exp.innerHTML = `<strong>No es esa.</strong> La respuesta correcta está marcada en verde.<br><br>${q.explanation}`;
+    exp.style.background = 'rgba(245,230,224,0.4)';
+    exp.style.borderColor = 'rgba(200,120,110,0.4)';
+  }
+
+  exp.classList.add('show');
+  document.getElementById('live-score').textContent = `${score} / ${questions.length}`;
+
+  if (answered.every(a => a)) showResult();
+}
+
+function showResult() {
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+
+  const pct = score / questions.length;
+  let emoji, text, sub;
+
+  if (pct === 1) {
+    emoji = '🌸'; text = `¡Perfecto! ${score} de ${questions.length}`;
+    sub = 'Entendiste el Capítulo III por completo. Tienes una comprensión sólida de qué es la fe, por qué Abraham y María son sus modelos, y cómo la Iglesia sostiene nuestra fe. ¡Adelante!';
+  } else if (pct >= 0.7) {
+    emoji = '✝️'; text = `Muy bien — ${score} de ${questions.length}`;
+    sub = 'Entendiste los conceptos fundamentales. Revisa las preguntas que fallaste — las explicaciones están ahí para ayudarte.';
+  } else if (pct >= 0.5) {
+    emoji = '📖'; text = `Vas bien — ${score} de ${questions.length}`;
+    sub = 'Ya tienes la base. Te recomiendo volver a leer las secciones donde fallaste. La segunda lectura siempre aclara más.';
+  } else {
+    emoji = '🕊️'; text = `Sigue adelante — ${score} de ${questions.length}`;
+    sub = 'Este capítulo tiene ideas muy profundas. Intenta releerlo despacio, párrafo por párrafo. ¡Cada relectura suma!';
+  }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-text').textContent = text;
+  document.getElementById('result-sub').textContent = sub;
+  res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+  answered = new Array(questions.length).fill(false);
+  score = 0;
+  document.getElementById('quiz-result').style.display = 'none';
+  buildQuiz();
+  document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
