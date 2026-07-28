@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segunda Sección · La Profesión de la Fe Cristiana</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--blush:#f5e6e0;--rose:#e8c4b8;--mauve:#c9a0a0;--sage:#b8c9b0;--sage-dark:#8aaa80;--cream:#fdf8f4;--warm-brown:#7a5c58;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sky:#c5d9e8;--sky-dark:#4a7090;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);min-height:100vh;overflow-x:hidden;}
+.bg-wash{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-wash::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(200,169,110,0.18) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(45px);}
+.bg-wash::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(40px);}
+.flower-top-right{position:fixed;top:0;right:0;width:260px;opacity:0.45;pointer-events:none;z-index:0;}
+.flower-bottom-left{position:fixed;bottom:0;left:0;width:220px;opacity:0.38;pointer-events:none;z-index:0;transform:rotate(180deg);}
+.page{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:60px 44px 100px;}
+@media(max-width:600px){.page{padding:40px 20px 80px;}}
+
+/* PORTADA */
+.section-cover{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0 80px;}
+.breadcrumb{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:28px;animation:fadeUp 1s ease forwards 0.1s;opacity:0;}
+.part-number{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,9vw,90px);font-weight:300;color:rgba(200,169,110,0.22);line-height:1;animation:fadeUp 1s ease forwards 0.2s;opacity:0;}
+.part-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,48px);font-weight:300;color:var(--warm-brown);line-height:1.15;margin-top:-8px;animation:fadeUp 1s ease forwards 0.35s;opacity:0;}
+.part-subtitle{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);margin-top:12px;line-height:1.5;animation:fadeUp 1s ease forwards 0.5s;opacity:0;}
+.cover-divider{display:flex;align-items:center;gap:14px;margin:36px auto;width:fit-content;animation:fadeUp 1s ease forwards 0.65s;opacity:0;}
+.cover-divider-line{width:70px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}
+.cover-divider-line.r{background:linear-gradient(to left,transparent,var(--rose));}
+.cover-divider-dot{width:5px;height:5px;border-radius:50%;background:var(--soft-gold);}
+.cover-intro{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-light);line-height:1.8;max-width:480px;animation:fadeUp 1s ease forwards 0.8s;opacity:0;}
+
+/* NAV INTERNA */
+.chapter-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:28px 0 0;animation:fadeUp 1s ease forwards 1s;opacity:0;}
+.nav-pill{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.4);border-radius:20px;padding:7px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-brown);text-decoration:none;transition:all 0.2s;}
+.nav-pill:hover{background:rgba(245,230,224,0.7);border-color:rgba(200,169,110,0.4);}
+
+/* DIVISOR SECCIÓN */
+.seccion-divider{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.4),transparent);margin:70px 0 60px;}
+
+/* CABECERA DE SECCIÓN */
+.seccion-header{text-align:center;margin-bottom:48px;}
+.seccion-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.seccion-number{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,8vw,80px);font-weight:300;color:rgba(201,160,160,0.15);line-height:1;display:block;}
+.seccion-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);line-height:1.2;margin-top:-10px;}
+.seccion-sub{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mauve);margin-top:8px;}
+
+/* ARTÍCULO / PÁRRAFO */
+.articulo-tag{display:flex;align-items:center;gap:12px;margin:48px 0 24px;}
+.articulo-tag-line{flex:1;height:1px;background:rgba(201,160,160,0.25);}
+.articulo-tag-text{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);white-space:nowrap;}
+
+/* BLOQUE CCC */
+.ccc-block{background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);border:1px solid rgba(232,196,184,0.35);border-left:3px solid var(--soft-gold);border-radius:0 14px 14px 0;padding:18px 22px;margin:20px 0;}
+.ccc-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.ccc-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.85;}
+
+/* EXPLICACIÓN */
+.exp-block{margin:8px 0 28px;}
+.exp-text{font-size:14.5px;line-height:1.95;color:var(--text);font-weight:300;}
+.exp-text p{margin-bottom:12px;}
+.exp-text p:last-child{margin-bottom:0;}
+.exp-text strong{color:var(--warm-brown);font-weight:400;}
+
+/* IDEA CLAVE */
+.idea-card{background:linear-gradient(135deg,rgba(245,230,224,0.5),rgba(240,246,237,0.4));border:1px solid rgba(200,169,110,0.25);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.idea-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:10px;}
+.idea-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--warm-brown);line-height:1.65;}
+
+/* INSIGHT */
+.insight{background:rgba(184,201,176,0.2);border-left:3px solid var(--sage-dark);padding:14px 20px;border-radius:0 12px 12px 0;margin:16px 0;font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#4a7a44;line-height:1.65;}
+
+/* HIGHLIGHT */
+.highlight{background:linear-gradient(135deg,rgba(245,230,224,0.6),rgba(240,246,237,0.6));border-left:4px solid var(--soft-gold);border-radius:0 16px 16px 0;padding:18px 24px;margin:20px 0;font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.6;color:var(--warm-brown);}
+
+/* MYTH BUSTER */
+.myth-box{background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.35);border-radius:16px;padding:20px 24px;margin:16px 0;}
+.myth-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.myth-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.65;}
+.myth-icon{font-size:16px;flex-shrink:0;margin-top:2px;}
+.myth-text{color:var(--text);font-weight:300;}
+
+/* CITA */
+.cita-block{background:rgba(255,255,255,0.45);border-left:3px solid var(--mauve);border-radius:0 12px 12px 0;padding:16px 20px;margin:16px 0;font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--text-light);line-height:1.75;}
+.cita-autor{font-size:12px;color:var(--mauve);margin-top:8px;font-style:normal;letter-spacing:1px;}
+
+/* CITA CENTRAL */
+.central-quote{text-align:center;background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);border:1px solid rgba(232,196,184,0.45);border-radius:22px;padding:36px 32px;margin:28px 0;position:relative;overflow:hidden;}
+.central-quote::before{content:'\201C';position:absolute;top:-15px;left:18px;font-family:'Cormorant Garamond',serif;font-size:120px;color:rgba(201,160,160,0.18);line-height:1;}
+.cq-text{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,3vw,25px);font-style:italic;font-weight:300;color:var(--warm-brown);line-height:1.5;position:relative;z-index:1;}
+.cq-ref{display:block;margin-top:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);position:relative;z-index:1;}
+
+/* TABLA */
+.tabla-wrap{overflow-x:auto;margin:20px 0;border-radius:14px;overflow:hidden;border:1px solid rgba(232,196,184,0.35);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{background:rgba(245,230,224,0.5);color:var(--warm-brown);font-weight:400;font-family:'Cormorant Garamond',serif;font-size:15px;padding:12px 16px;text-align:left;border-bottom:1px solid rgba(200,169,110,0.3);}
+td{padding:11px 16px;border-bottom:1px solid rgba(232,196,184,0.2);color:var(--text);font-weight:300;line-height:1.65;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.3);}
+
+/* STEPS */
+.step-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;}
+.step-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.35);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--soft-gold);font-weight:600;}
+.step-text{font-size:14.5px;line-height:1.75;color:var(--text);font-weight:300;padding-top:4px;}
+.step-text strong{color:var(--warm-brown);font-weight:400;}
+
+/* GRID 3 */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0;}
+@media(max-width:540px){.grid-3{grid-template-columns:1fr;}}
+.grid-card{background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.3);border-radius:14px;padding:18px 16px;text-align:center;}
+.grid-icon{font-size:26px;margin-bottom:10px;display:block;}
+.grid-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);margin-bottom:6px;}
+.grid-desc{font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.6;}
+
+/* MINI DIVIDER */
+.mini-div{width:40px;height:1px;background:rgba(201,160,160,0.35);margin:28px auto;}
+
+/* TAKEAWAY */
+.takeaway-box{background:linear-gradient(135deg,rgba(248,234,228,0.75),rgba(240,246,237,0.75));border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:36px 40px;margin-top:60px;text-align:center;}
+.takeaway-icon{font-size:30px;margin-bottom:12px;display:block;}
+.takeaway-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:14px;}
+.takeaway-text{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+.takeaway-sub{margin-top:14px;font-size:13.5px;color:var(--text-light);font-weight:300;line-height:1.8;}
+
+/* QUIZ */
+#quiz-section{margin-top:80px;}
+.quiz-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);text-align:center;margin-bottom:8px;}
+.quiz-sub{text-align:center;font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:32px;}
+.quiz-score-bar{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.3);border-radius:12px;padding:12px 20px;margin-bottom:22px;}
+.score-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--soft-gold);font-weight:600;}
+.quiz-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1px solid rgba(232,196,184,0.3);border-radius:18px;padding:24px 26px;margin-bottom:16px;}
+.quiz-q-num{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);margin-bottom:8px;}
+.quiz-q-text{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);line-height:1.45;margin-bottom:16px;font-weight:400;}
+.quiz-options{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{background:rgba(253,248,244,0.8);border:1px solid rgba(232,196,184,0.4);border-radius:10px;padding:11px 15px;text-align:left;font-family:'Lato',sans-serif;font-size:13.5px;color:var(--text);cursor:pointer;transition:all 0.2s;font-weight:300;line-height:1.5;}
+.quiz-opt:hover:not(:disabled){background:rgba(232,196,184,0.2);border-color:rgba(200,169,110,0.4);}
+.quiz-opt.correct{background:rgba(184,201,176,0.3);border-color:var(--sage-dark);color:#3a6a34;font-weight:400;}
+.quiz-opt.wrong{background:rgba(245,210,200,0.35);border-color:rgba(200,120,110,0.4);color:#8a4a40;}
+.quiz-opt.reveal{opacity:0.5;}
+.quiz-explanation{margin-top:14px;padding:14px 17px;border-radius:12px;border:1px solid rgba(232,196,184,0.3);font-size:13.5px;line-height:1.8;color:var(--text);font-weight:300;display:none;}
+.quiz-explanation.show{display:block;}
+.quiz-explanation strong{color:var(--warm-brown);font-weight:400;}
+#quiz-result{display:none;text-align:center;background:linear-gradient(135deg,rgba(248,234,228,0.8),rgba(240,246,237,0.8));border:1px solid rgba(200,169,110,0.3);border-radius:22px;padding:40px;margin-top:26px;}
+.result-emoji{font-size:40px;display:block;margin-bottom:12px;}
+.result-text{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--warm-brown);margin-bottom:10px;}
+.result-sub{font-size:14px;color:var(--text-light);font-weight:300;line-height:1.8;max-width:440px;margin:0 auto 20px;}
+.result-btn{background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.4);border-radius:30px;padding:10px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-brown);cursor:pointer;font-family:'Lato',sans-serif;transition:all 0.2s;}
+.result-btn:hover{background:rgba(200,169,110,0.35);}
+
+/* FOOTER */
+.page-footer{margin-top:70px;display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(201,160,160,0.2);}
+.footer-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);font-weight:300;text-decoration:none;}
+
+/* PRINT */
+#print-btn{position:fixed;bottom:28px;right:28px;z-index:999;background:linear-gradient(135deg,rgba(122,92,88,0.9),rgba(90,65,62,0.95));color:#fff;border:none;border-radius:50px;padding:12px 24px;font-family:'Lato',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 20px rgba(122,92,88,0.4);transition:all 0.25s;}
+#print-btn:hover{transform:translateY(-2px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+@media print{
+  @page{size:letter;margin:18mm 16mm;}
+  #print-btn,.bg-wash,.flower-top-right,.flower-bottom-left{display:none!important;}
+  body{background:#fff!important;font-size:11pt;color:#2a1a18!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{max-width:100%!important;padding:0!important;}
+  *{animation:none!important;opacity:1!important;transform:none!important;}
+  .section-cover{page-break-after:always;min-height:auto!important;padding:40px 0!important;}
+  .seccion-divider{page-break-before:always;}
+  #quiz-section{display:none!important;}
+  .ccc-block,.idea-card,.insight,.highlight,.myth-box,.cita-block,.central-quote,.step-item,.grid-card,.takeaway-box{page-break-inside:avoid;}
+  .insight{background:#eef5eb!important;border-left:3px solid #8aaa80!important;}
+  .highlight{background:#fdf4ee!important;border-left:4px solid #c8a96e!important;}
+  .ccc-block{background:#fdf8f4!important;border:1px solid #e8c4b8!important;border-left:3px solid #c8a96e!important;}
+  .idea-card{background:#fdf6f0!important;border:1px solid #d4b88a!important;}
+  .central-quote{background:#fdf8f4!important;border:1px solid #e8c4b8!important;backdrop-filter:none!important;}
+  .myth-box{background:#fdf8f4!important;border:1px solid #e8c4b8!important;}
+  .takeaway-box{background:#fdf4f0!important;border:1px solid #c8a96e!important;}
+}
+</style>
+</head>
+<body>
+<button id="print-btn" onclick="window.print()">🖨 Guardar como PDF</button>
+<div class="bg-wash"></div>
+
+<svg class="flower-top-right" viewBox="0 0 300 300" fill="none">
+  <circle cx="220" cy="60" r="38" fill="rgba(200,169,110,0.22)"/>
+  <circle cx="248" cy="45" r="26" fill="rgba(245,230,224,0.35)"/>
+  <ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(200,169,110,0.28)" transform="rotate(-20 230 55)"/>
+  <ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.38)" transform="rotate(40 175 85)"/>
+  <circle cx="180" cy="50" r="10" fill="rgba(232,196,184,0.28)"/>
+</svg>
+<svg class="flower-bottom-left" viewBox="0 0 300 300" fill="none">
+  <circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.26)"/>
+  <circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.32)"/>
+  <ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.34)" transform="rotate(-15 75 245)"/>
+</svg>
+
+<div class="page">
+
+<!-- ══ PORTADA ══ -->
+<div class="section-cover">
+  <p class="breadcrumb">Catecismo de la Iglesia Católica · Primera Parte</p>
+  <div class="part-number">II</div>
+  <h1 class="part-title">La Profesión de la<br>Fe Cristiana</h1>
+  <p class="part-subtitle">Segunda Sección · §§ 185–421</p>
+  <div class="cover-divider">
+    <div class="cover-divider-line"></div>
+    <div class="cover-divider-dot"></div>
+    <span style="font-size:20px;">✝️</span>
+    <div class="cover-divider-dot"></div>
+    <div class="cover-divider-line r"></div>
+  </div>
+  <p class="cover-intro">El Credo explicado párrafo por párrafo.<br>Dios Padre, el Creador, la Trinidad,<br>el hombre y el pecado original.</p>
+  <div class="chapter-nav">
+    <a href="#intro" class="nav-pill">Introducción · Los Símbolos</a>
+    <a href="#cap1" class="nav-pill">Capítulo I · Creo en Dios Padre</a>
+    <a href="#trinidad" class="nav-pill">La Trinidad</a>
+    <a href="#creacion" class="nav-pill">El Creador</a>
+    <a href="#hombre" class="nav-pill">El Hombre</a>
+    <a href="#caida" class="nav-pill">La Caída</a>
+    <a href="#quiz-section" class="nav-pill">Quiz</a>
+  </div>
+</div>
+
+<div class="seccion-divider"></div>
+
+<!-- ══════════════════════════════════
+     INTRODUCCIÓN: LOS SÍMBOLOS DE LA FE
+     §§ 185–197
+══════════════════════════════════ -->
+<div id="intro">
+  <div class="seccion-header">
+    <p class="seccion-eyebrow">Introducción · Segunda Sección</p>
+    <span class="seccion-number">✦</span>
+    <h2 class="seccion-title">Los Símbolos de la Fe</h2>
+    <p class="seccion-sub">§§ 185–197 · El Credo como lenguaje común de todos los creyentes</p>
+  </div>
+
+  <div class="ccc-block">
+    <p class="ccc-num">§ 185</p>
+    <p class="ccc-text">"Quien dice 'Yo creo', dice 'Yo me adhiero a lo que nosotros creemos'. La comunión en la fe necesita un lenguaje común de la fe, normativo para todos."</p>
+  </div>
+  <div class="exp-block">
+    <div class="exp-text">
+      <p>Cuando en la Misa decimos el Credo, no estamos recitando un poema. Estamos <strong>uniéndonos a la fe de toda la Iglesia</strong> — la de hoy, la de siempre, la de todos los países del mundo. El "Yo creo" es al mismo tiempo un "nosotros creemos".</p>
+    </div>
+  </div>
+
+  <div class="ccc-block">
+    <p class="ccc-num">§§ 186–188</p>
+    <p class="ccc-text">Desde su origen, la Iglesia expresó su fe en fórmulas breves para todos. A estas síntesis se les llama "profesiones de fe" o "símbolos de la fe" — porque como un objeto partido en dos, permiten reconocer e identificar a los creyentes entre sí.</p>
+  </div>
+  <div class="exp-block">
+    <div class="exp-text">
+      <p>La palabra griega <em>symbolon</em> significaba la mitad de un objeto partido — como un sello roto en dos — que se presentaba como señal de identificación. Reunir las dos partes era verificar la identidad del portador. <strong>El Credo es el "símbolo" que nos une como creyentes.</strong></p>
+    </div>
+    <div class="myth-box">
+      <p class="myth-label">¿Qué es el Símbolo de la fe?</p>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es una profesión de fe:</strong> resume lo que los cristianos creen.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es un símbolo:</strong> signo de identificación y comunión entre los creyentes.</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es un Credo:</strong> su primera palabra normalmente es "Creo".</span></div>
+      <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text"><strong>Es el punto de partida</strong> fundamental de toda catequesis.</span></div>
+    </div>
+  </div>
+
+  <div class="ccc-block">
+    <p class="ccc-num">§§ 194–197</p>
+    <p class="ccc-text">Entre todos los símbolos, dos ocupan un lugar muy particular: el Símbolo de los Apóstoles — el más antiguo catecismo romano — y el Símbolo Niceno-Constantinopolitano, más explícito y detallado, fruto de los primeros Concilios.</p>
+  </div>
+  <div class="exp-block">
+    <div class="tabla-wrap">
+      <table>
+        <tr><th>Símbolo</th><th>Origen</th><th>Uso</th></tr>
+        <tr><td><strong>De los Apóstoles</strong></td><td>Iglesia primitiva de Roma</td><td>Catequesis, bautismo</td></tr>
+        <tr><td><strong>Niceno-Constantinopolitano</strong></td><td>Concilios de Nicea (325) y Constantinopla (381)</td><td>Liturgia dominical</td></tr>
+      </table>
+    </div>
+    <div class="idea-card">
+      <p class="idea-label">Para recordar</p>
+      <p class="idea-text">Recitar el Credo con fe es entrar en comunión con Dios Padre, Hijo y Espíritu Santo, y con toda la Iglesia que nos transmite la fe.</p>
+    </div>
+  </div>
+</div>
+
+<div class="seccion-divider" id="cap1"></div>
+
+<!-- ══════════════════════════════════
+     CAPÍTULO PRIMERO: CREO EN DIOS PADRE
+     §§ 198–421
+══════════════════════════════════ -->
+<div class="seccion-header">
+  <p class="seccion-eyebrow">Capítulo Primero · Segunda Sección</p>
+  <span class="seccion-number">I</span>
+  <h2 class="seccion-title">Creo en Dios Padre</h2>
+  <p class="seccion-sub">§§ 198–421 · El Credo comienza por Dios, porque Dios es el Primero y el Último</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§ 198–199</p>
+  <p class="ccc-text">"Creo en Dios": Esta primera afirmación es también la más fundamental. Todo el Símbolo habla de Dios. Los demás artículos del Credo nos hacen conocer mejor a Dios tal como se reveló progresivamente a los hombres.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El Credo empieza por Dios — no por la Iglesia, no por los mandamientos, no por los sacramentos. Porque <strong>todo lo demás depende de Él</strong>. Entender a Dios es la clave para entender todo lo demás.</p>
+  </div>
+</div>
+
+<!-- ARTÍCULO 1: CREO EN UN SOLO DIOS -->
+<div class="articulo-tag" id="dios-unico">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 1 · "Creo en Dios, Padre Todopoderoso, Creador del cielo y de la tierra"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div style="text-align:center;margin:0 0 28px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--warm-brown);">Párrafo 1 · Creo en Dios</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§ 200–202</p>
+  <p class="ccc-text">"La fe cristiana confiesa que hay un solo Dios, por naturaleza, por substancia y por esencia." A Israel, su elegido, Dios se reveló como el Único: "Escucha, Israel: el Señor nuestro Dios es el único Señor."</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La unicidad de Dios no es un dato abstracto. Es la base de todo: si solo hay un Dios, entonces <strong>no hay nadie más al que entregar nuestra vida completa</strong>. Ningún dinero, ningún poder, ninguna persona puede ocupar ese lugar.</p>
+  </div>
+  <div class="insight">Jesús mismo confirma que Dios es "el único Señor" al que hay que amar con todo el corazón, toda el alma, toda la mente y todas las fuerzas.</div>
+</div>
+
+<!-- DIOS REVELA SU NOMBRE -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">II · Dios revela su Nombre</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 203–206</p>
+  <p class="ccc-text">A su pueblo Israel, Dios se reveló dándole a conocer su Nombre. El nombre expresa la esencia, la identidad de la persona. Dios tiene un nombre. Comunicar su nombre es darse a conocer. Su Nombre es YHWH — "Yo soy el que soy" — o también "Yo soy el que Yo soy".</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Cuando Moisés preguntó a Dios su nombre ante la zarza ardiente, Dios respondió con algo asombroso: <strong>"Yo soy el que soy."</strong> No es evasión — es revelación. Dios dice que Él simplemente <em>es</em>: el ser mismo, sin principio ni fin.</p>
+  </div>
+  <div class="central-quote">
+    <p class="cq-text">"Yo soy el que soy... Este es mi nombre para siempre, por él seré invocado de generación en generación."</p>
+    <span class="cq-ref">Éxodo 3, 14–15</span>
+  </div>
+  <div class="exp-text">
+    <p>El Nombre divino "Yo soy" revela que Dios es <strong>fiel para siempre</strong>: el mismo ayer, hoy y mañana. Sus promesas no caducan. Su amor no cambia. Por eso Israel confiaba en Él aunque los tiempos fueran oscuros.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 210–212</p>
+  <p class="ccc-text">"Yo soy el que soy" expresa la fidelidad de Dios que mantiene su amor por mil generaciones. Solo Dios ES. Dios trasciende el mundo y la historia. Él es quien ha hecho el cielo y la tierra: "Ellos perecen, mas tú quedas."</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Las cosas del mundo cambian, se gastan, desaparecen. <strong>Solo Dios permanece idéntico a sí mismo</strong>, sin sombra de cambio. Por eso la Tradición de la Iglesia ha entendido el Nombre divino como: Dios es la plenitud del Ser y de toda perfección, sin origen ni fin.</p>
+  </div>
+</div>
+
+<!-- DIOS ES VERDAD Y AMOR -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">III · Dios, "el que es", es Verdad y Amor</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 214–221</p>
+  <p class="ccc-text">Dios se reveló como "rico en amor y fidelidad". Estos dos términos expresan de forma condensada las riquezas del Nombre divino. Dios es la Verdad misma. Y "Dios es Amor": su ser mismo es una eterna comunicación de amor.</p>
+</div>
+<div class="exp-block">
+  <div class="grid-3">
+    <div class="grid-card">
+      <span class="grid-icon">🕯️</span>
+      <p class="grid-title">Dios es Luz</p>
+      <p class="grid-desc">No hay tiniebla en Él. Su palabra es verdad y sus promesas se cumplen siempre.</p>
+    </div>
+    <div class="grid-card">
+      <span class="grid-icon">❤️</span>
+      <p class="grid-title">Dios es Amor</p>
+      <p class="grid-desc">No solo tiene amor — su ser mismo es amor. Por eso nos creó y nos redime.</p>
+    </div>
+    <div class="grid-card">
+      <span class="grid-icon">🤝</span>
+      <p class="grid-title">Dios es Fiel</p>
+      <p class="grid-desc">"Rico en amor y fidelidad." Sus promesas no fallan. Su amor es eterno.</p>
+    </div>
+  </div>
+  <div class="highlight">
+    "Nada te turbe / Nada te espante / Todo se pasa / Dios no se muda / La paciencia todo lo alcanza / quien a Dios tiene, nada le falta / Sólo Dios basta." — Santa Teresa de Jesús
+  </div>
+</div>
+
+<!-- CONSECUENCIAS DE LA FE EN EL DIOS ÚNICO -->
+<div class="ccc-block">
+  <p class="ccc-num">§§ 222–227</p>
+  <p class="ccc-text">Creer en Dios, el Único, y amarlo con todo el ser tiene consecuencias inmensas para toda nuestra vida: reconocer su grandeza y majestad; vivir en acción de gracias; reconocer la unidad y la verdadera dignidad de todos los hombres; usar bien de las cosas creadas; confiar en Él en todas las circunstancias.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La fe en el Dios Único no es solo una doctrina — <strong>cambia la forma en que vivimos</strong>. Si Dios es el Único, entonces todo lo demás ocupa su lugar justo: la familia, el trabajo, el dinero, los logros — todo tiene valor, pero ninguno de ellos puede ser el centro de nuestra vida.</p>
+  </div>
+</div>
+
+<!-- ══ PÁRRAFO 2: EL PADRE ══ -->
+<div class="seccion-divider" id="trinidad"></div>
+
+<div style="text-align:center;margin:0 0 32px;">
+  <p class="seccion-eyebrow">Párrafo 2</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);">El Padre y la Santísima Trinidad</h3>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mauve);margin-top:8px;">§§ 232–267 · El misterio más grande de la fe cristiana</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 232–235</p>
+  <p class="ccc-text">El misterio de la Santísima Trinidad es el misterio central de la fe y de la vida cristiana. Es el misterio de Dios en sí mismo. Es, pues, la fuente de todos los otros misterios de la fe. Es la enseñanza más fundamental y esencial en la "jerarquía de las verdades de fe".</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Trinidad no es uno de los misterios de la fe. Es <strong>el misterio del que brotan todos los demás</strong>. La Encarnación, la Redención, los Sacramentos, la vida eterna — todo tiene su raíz en que Dios es Padre, Hijo y Espíritu Santo.</p>
+  </div>
+  <div class="myth-box">
+    <p class="myth-label">¿Qué NO dice la Iglesia sobre la Trinidad?</p>
+    <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No dice que hay tres dioses.</span></div>
+    <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No dice que el Padre, el Hijo y el Espíritu son tres "modos" de un mismo Dios.</span></div>
+    <div class="myth-row" style="margin-top:6px;"><span class="myth-icon">✦</span><span class="myth-text"><strong>Sí dice:</strong> hay un solo Dios en tres Personas realmente distintas entre sí.</span></div>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 238–242</p>
+  <p class="ccc-text">Jesús ha revelado que Dios es "Padre" en un sentido nuevo: no solo en cuanto Creador, sino porque es eternamente Padre en relación a su Hijo Único. "Nadie conoce al Hijo sino el Padre, ni al Padre le conoce nadie sino el Hijo y aquel a quien el Hijo se lo quiera revelar."</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Todas las religiones pueden llamar a Dios "padre" en sentido general — como origen de todo. Pero Jesús revela algo completamente nuevo: <strong>Dios es Padre porque tiene un Hijo eterno</strong>, y ese Hijo se hizo hombre. La paternidad de Dios no es una metáfora — es una realidad eterna.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 243–248</p>
+  <p class="ccc-text">Antes de su Pascua, Jesús anuncia el envío del Espíritu Santo. El Espíritu Santo es enviado a los apóstoles y a la Iglesia por el Padre en nombre del Hijo, y también por el Hijo. La tradición latina confiesa que el Espíritu procede del Padre y del Hijo (Filioque).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El Espíritu Santo no es una fuerza o una energía. Es la <strong>tercera Persona de la Trinidad</strong>, tan Dios como el Padre y el Hijo, que procede de ambos como de un único principio, en una sola espiración de amor.</p>
+  </div>
+</div>
+
+<!-- EL DOGMA TRINITARIO -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">III · La Santísima Trinidad en la doctrina de la fe</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 249–256</p>
+  <p class="ccc-text">La Trinidad es una. No confesamos tres dioses sino un solo Dios en tres personas. Las personas divinas no se reparten la única divinidad. Cada una de ellas es enteramente Dios. Son realmente distintas entre sí: el Padre engendra, el Hijo es engendrado, el Espíritu Santo procede.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Para formular el dogma trinitario, la Iglesia usó términos filosóficos adaptados: <em>substancia</em> para la unidad divina, <em>persona</em> para la distinción, <em>relación</em> para lo que hace distintos a Padre, Hijo y Espíritu.</p>
+  </div>
+  <div class="tabla-wrap">
+    <table>
+      <tr><th>Término</th><th>Qué designa</th></tr>
+      <tr><td><strong>Substancia / Esencia</strong></td><td>Lo que es divino: único e indivisible</td></tr>
+      <tr><td><strong>Persona</strong></td><td>Padre, Hijo y Espíritu Santo en su distinción</td></tr>
+      <tr><td><strong>Relación</strong></td><td>Lo que distingue a cada Persona de las otras</td></tr>
+    </table>
+  </div>
+  <div class="cita-block">
+    "Ante todo, guardaos de este buen depósito: creer en el Padre y en el Hijo y en el Espíritu Santo. Os doy una sola Divinidad sin distinción de sustancia o de naturaleza, igual la gloria, coeterna la majestad."
+    <p class="cita-autor">San Gregorio Nacianceno, "el Teólogo"</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 257–260</p>
+  <p class="ccc-text">Las obras divinas y las misiones trinitarias: Toda la economía divina es obra común de las tres personas divinas. Dios quiere comunicar libremente la gloria de su vida bienaventurada. "Designio benevolente" que concibió antes de la creación del mundo, para hacernos hijos adoptivos suyos en Cristo.</p>
+</div>
+<div class="exp-block">
+  <div class="insight">La vida de la Trinidad no es un misterio encerrado en sí mismo. Es un amor que se desborda y nos invita a participar en él desde el Bautismo.</div>
+</div>
+
+<!-- ══ PÁRRAFO 3: EL TODOPODEROSO ══ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Párrafo 3 · El Todopoderoso</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 268–274</p>
+  <p class="ccc-text">De todos los atributos divinos, solo la omnipotencia es nombrada en el Símbolo. Confesarla tiene un gran alcance para nuestra vida. Es omnipotencia universal, amorosa y misteriosa. Dios Padre revela su omnipotencia en la manera más misteriosa en el anonadamiento voluntario y en la Resurrección de Cristo crucificado.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La omnipotencia de Dios no es la de un rey que aplasta. Es la de un <strong>Padre que cuida</strong>. Se manifiesta especialmente en el perdón y en la misericordia — porque convertir pecadores en hijos es más grande que crear el universo.</p>
+  </div>
+  <div class="myth-box">
+    <p class="myth-label">El misterio de la aparente impotencia de Dios</p>
+    <div class="myth-row"><span class="myth-icon">❓</span><span class="myth-text">Si Dios es todopoderoso, ¿por qué existe el mal y el sufrimiento?</span></div>
+    <div class="myth-row" style="margin-top:6px;"><span class="myth-icon">✦</span><span class="myth-text">Solo la fe puede adherirse a las vías misteriosas de la omnipotencia de Dios. El modelo es María: "nada es imposible para Dios" (Lc 1,37), incluso cuando todo parece perdido.</span></div>
+    <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Dios Padre reveló su omnipotencia de la manera más gloriosa en la Resurrección de Cristo: venciendo el mal por el amor.</span></div>
+  </div>
+</div>
+
+<!-- ══ PÁRRAFO 4: EL CREADOR ══ -->
+<div class="seccion-divider" id="creacion"></div>
+
+<div style="text-align:center;margin:0 0 32px;">
+  <p class="seccion-eyebrow">Párrafo 4</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);">El Creador</h3>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mauve);margin-top:8px;">§§ 279–324 · "En el principio, Dios creó el cielo y la tierra"</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 279–281</p>
+  <p class="ccc-text">"En el principio, Dios creó el cielo y la tierra." La creación es el fundamento de todos los designios salvíficos de Dios, el comienzo de la historia de la salvación. La creación es obra de la Santísima Trinidad.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La fe en la creación no es solo ciencia del origen del mundo. Es la <strong>respuesta a las preguntas más profundas del ser humano</strong>: ¿de dónde venimos? ¿quién puso todo esto en marcha? ¿hay un sentido detrás de la existencia?</p>
+  </div>
+</div>
+
+<!-- LA CATEQUESIS SOBRE LA CREACIÓN -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">I · La catequesis sobre la creación</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 282–289</p>
+  <p class="ccc-text">La catequesis sobre la Creación reviste una importancia capital. Se refiere a los fundamentos mismos de la vida humana y cristiana. Los tres primeros capítulos del Génesis son un texto único que expresa, en su lenguaje solemne, las verdades de la creación, de su origen, de su orden y de su bondad.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El Génesis no es un libro de ciencias naturales — es un texto <strong>teológico que revela verdades sobre Dios y el hombre</strong>. Leído a la luz de Cristo, nos enseña: de dónde venimos, que todo es bueno, que el hombre tiene dignidad especial, y que el pecado rompió la armonía original.</p>
+  </div>
+  <div class="insight">La investigación científica y la fe en la creación no se contradicen. La fe confirma lo que la razón puede encontrar: que el mundo tiene un Creador inteligente y bueno.</div>
+</div>
+
+<!-- LA CREACIÓN: OBRA DE LA TRINIDAD -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">II · La creación: obra de la Santísima Trinidad</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 290–292</p>
+  <p class="ccc-text">"En el principio, Dios creó el cielo y la tierra": El verbo "crear" solo tiene siempre a Dios como sujeto. La totalidad de lo que existe depende de Aquel que le da el ser. El Nuevo Testamento revela que Dios creó todo por el Verbo eterno, su Hijo amado. El Espíritu Santo es el "dador de vida".</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La creación no es obra solo del Padre. Las tres Personas divinas actúan juntas: el Padre crea <em>por</em> el Hijo <em>en</em> el Espíritu Santo. El universo entero lleva la huella de la Trinidad — como las manos de Dios, según la imagen de San Ireneo.</p>
+  </div>
+</div>
+
+<!-- EL MUNDO CREADO PARA LA GLORIA DE DIOS -->
+<div class="ccc-block">
+  <p class="ccc-num">§§ 293–295</p>
+  <p class="ccc-text">"El mundo ha sido creado para la gloria de Dios." No para aumentar su gloria, sino para manifestarla y comunicarla. La gloria de Dios consiste en que se realice esta manifestación y comunicación de su bondad para las cuales el mundo ha sido creado.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Dios no crea por necesidad ni por aburrimiento. Crea <strong>por amor, para compartir su bondad</strong>. El universo es un regalo — y el fin de ese regalo es que las criaturas participen en la verdad, la bondad y la belleza de Dios.</p>
+  </div>
+  <div class="idea-card">
+    <p class="idea-label">Idea central</p>
+    <p class="idea-text">"La gloria de Dios es el hombre viviente, y la vida del hombre es la visión de Dios." — San Ireneo</p>
+  </div>
+</div>
+
+<!-- DIOS CREA DE LA NADA -->
+<div class="ccc-block">
+  <p class="ccc-num">§§ 296–298</p>
+  <p class="ccc-text">Dios crea libremente "de la nada" — sin ninguna materia preexistente. Esta fe está atestiguada en la Escritura. Si Dios puede crear de la nada, puede también dar la vida del alma a los pecadores y dar vida a los muertos mediante la Resurrección.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Crear "de la nada" no es un truco de magia. Significa que Dios <strong>no depende de nada</strong> — ni de materia preexistente, ni de otra fuerza, ni de nadie. Él es el origen absoluto de todo lo que existe. Y eso mismo nos dice algo sobre la Resurrección: si creó de la nada, puede recrear.</p>
+  </div>
+</div>
+
+<!-- DIOS MANTIENE Y CONDUCE -->
+<div class="ccc-block">
+  <p class="ccc-num">§§ 300–301</p>
+  <p class="ccc-text">Dios es infinitamente más grande que todas sus obras, pero está presente en lo más íntimo de sus criaturas. Realizada la creación, Dios no abandona su criatura a ella misma. Le da el ser, le da el obrar y la lleva a su término. Reconocer esta dependencia es fuente de sabiduría, libertad, gozo y confianza.</p>
+</div>
+<div class="exp-block">
+  <div class="cita-block">
+    "Dios está por encima de lo más alto que hay en mí y está en lo más hondo de mi intimidad."
+    <p class="cita-autor">San Agustín, Confesiones III, 6</p>
+  </div>
+</div>
+
+<!-- LA DIVINA PROVIDENCIA -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">V · Dios realiza su designio: la Divina Providencia</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 302–314</p>
+  <p class="ccc-text">La Providencia divina consiste en las disposiciones por las que Dios conduce con sabiduría y amor todas las criaturas hasta su fin último. Dios concede incluso a los hombres poder participar en su Providencia. Sin embargo, los caminos de la Providencia nos son con frecuencia desconocidos.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Providencia no significa que Dios programa cada detalle de nuestra vida como un robot. Significa que <strong>Dios acompaña nuestra libertad</strong> y puede sacar bien incluso del mal que cometemos. "Todo coopera al bien de los que aman a Dios" (Rm 8, 28).</p>
+  </div>
+  <div class="step-item">
+    <div class="step-num">1</div>
+    <div class="step-text"><strong>La providencia es concreta e inmediata:</strong> tiene cuidado de todo, desde las cosas más pequeñas hasta los grandes eventos de la historia.</div>
+  </div>
+  <div class="step-item">
+    <div class="step-num">2</div>
+    <div class="step-text"><strong>Dios se sirve de causas segundas:</strong> los hombres, los eventos, las leyes de la naturaleza — todo es instrumento de su designio.</div>
+  </div>
+  <div class="step-item">
+    <div class="step-num">3</div>
+    <div class="step-text"><strong>El misterio del mal:</strong> Dios puede sacar bien incluso de las consecuencias del mal moral. El mayor bien que sacó fue la Redención de Cristo.</div>
+  </div>
+  <div class="highlight">"No hay un rasgo del mensaje cristiano que no sea en parte una respuesta a la cuestión del mal." — CIC § 309</div>
+</div>
+
+<!-- PÁRRAFO 5: CIELO Y TIERRA / ÁNGELES -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Párrafo 5 · El cielo y la tierra · Los Ángeles</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 325–336</p>
+  <p class="ccc-text">La existencia de seres espirituales, no corporales, que la Sagrada Escritura llama habitualmente ángeles, es una verdad de fe. Los ángeles son criaturas puramente espirituales, con inteligencia y voluntad. Criaturas personales e inmortales. Su función de mensajeros se expresa con su nombre: "ángel" significa "mensajero".</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Los ángeles no son personajes de cuento. Son <strong>seres reales creados por Dios antes que el mundo visible</strong>, que sirven a su designio salvífico y acompañan la historia humana desde la creación hasta el juicio final.</p>
+  </div>
+  <div class="grid-3">
+    <div class="grid-card">
+      <span class="grid-icon">📣</span>
+      <p class="grid-title">Mensajeros</p>
+      <p class="grid-desc">Anuncian nacimientos, vocaciones, la Buena Nueva. Gabriel anuncia a María.</p>
+    </div>
+    <div class="grid-card">
+      <span class="grid-icon">🛡️</span>
+      <p class="grid-title">Protectores</p>
+      <p class="grid-desc">Guardan y protegen a las personas. Cada fiel tiene un ángel custodio.</p>
+    </div>
+    <div class="grid-card">
+      <span class="grid-icon">🙏</span>
+      <p class="grid-title">Intercesores</p>
+      <p class="grid-desc">Sirven a Dios y a los hombres continuamente ante el trono de Dios.</p>
+    </div>
+  </div>
+  <div class="insight">Cristo es el centro del mundo de los ángeles. Le pertenecen porque fueron creados por y para Él.</div>
+</div>
+
+<!-- EL MUNDO VISIBLE -->
+<div class="ccc-block">
+  <p class="ccc-num">§§ 337–349</p>
+  <p class="ccc-text">Dios mismo es quien ha creado el mundo visible en su riqueza, diversidad y orden. Toda criatura posee su bondad y perfección propias. Toda criatura refleja, a su manera, un rayo de la sabiduría e infinita bondad de Dios. El hombre debe respetar la bondad propia de cada criatura. El Sabbat: creación orientada hacia la adoración de Dios.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La belleza del mundo — el sol, el cedro, la florecilla, el águila, el gorrión — no es casualidad. Cada criatura refleja algo de Dios. Por eso la fe impulsa al <strong>cuidado de la creación</strong>: respetarla es respetar al Creador.</p>
+  </div>
+  <div class="cita-block">
+    "Loado seas por toda criatura, mi Señor, y en especial loado por el hermano Sol, que alumbra, y abre el día, y es bello en su esplendor..."
+    <p class="cita-autor">San Francisco de Asís, Cántico de las Criaturas</p>
+  </div>
+</div>
+
+<!-- ══ PÁRRAFO 6: EL HOMBRE ══ -->
+<div class="seccion-divider" id="hombre"></div>
+
+<div style="text-align:center;margin:0 0 32px;">
+  <p class="seccion-eyebrow">Párrafo 6</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);">El Hombre</h3>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mauve);margin-top:8px;">§§ 355–384 · "Dios creó al hombre a su imagen"</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 355–357</p>
+  <p class="ccc-text">"Dios creó al hombre a su imagen, a imagen de Dios lo creó; hombre y mujer los creó." El hombre ocupa un lugar único en la creación: está hecho a imagen de Dios (I); en su propia naturaleza une el mundo espiritual y el mundo material (II); es creado "hombre y mujer" (III); Dios lo estableció en la amistad con Él (IV).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>De todas las criaturas visibles, solo el hombre es <strong>"capaz de conocer y amar a su Creador"</strong>. Solo él es llamado a participar, por el conocimiento y el amor, en la vida de Dios. Esta es la razón fundamental de su dignidad — no sus logros, no su inteligencia, no su fuerza.</p>
+  </div>
+  <div class="idea-card">
+    <p class="idea-label">Por qué el hombre tiene una dignidad única</p>
+    <p class="idea-text">"¿Qué cosa, o quién te ruego, fue el motivo de que establecieras al hombre en semejante dignidad? Ciertamente, nada sino el amor inextinguible con el que contemplaste a tu criatura en ti mismo y te dejaste cautivar de amor por ella." — Santa Catalina de Siena</p>
+  </div>
+</div>
+
+<!-- CUERPO Y ALMA -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">II · "Corpore et anima unus" — Cuerpo y alma, uno</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 362–368</p>
+  <p class="ccc-text">La persona humana, creada a imagen de Dios, es un ser a la vez corporal y espiritual. El alma espiritual e inmortal es creada directamente por Dios. El cuerpo del hombre participa de la dignidad de la "imagen de Dios". La unión del alma y del cuerpo es tan profunda que se debe considerar al alma como la "forma" del cuerpo.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El hombre no es un alma <em>encerrada</em> en un cuerpo — como si el cuerpo fuera una cárcel. <strong>El hombre es su cuerpo y su alma juntos</strong>. Por eso el cuerpo tiene dignidad sagrada: fue creado por Dios, es templo del Espíritu Santo, y resucitará.</p>
+  </div>
+  <div class="myth-box">
+    <p class="myth-label">¿El cuerpo es malo?</p>
+    <div class="myth-row"><span class="myth-icon">❌</span><span class="myth-text">No. El cuerpo es bueno — creado por Dios y destinado a resucitar.</span></div>
+    <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Es incorrecto despreciar el cuerpo. La Iglesia defiende la dignidad del cuerpo humano.</span></div>
+    <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">El alma es inmortal y es creada directamente por Dios para cada persona — no se produce por los padres.</span></div>
+  </div>
+</div>
+
+<!-- HOMBRE Y MUJER -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">III · "Hombre y mujer los creó"</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 369–373</p>
+  <p class="ccc-text">El hombre y la mujer son creados, es decir, son queridos por Dios. Ser "hombre" o "ser mujer" es una realidad buena y querida por Dios. Creados a la vez, el uno para el otro. Dios los ha hecho "a medias" e "incompletos": cada uno puede ser "ayuda" para el otro porque son a la vez iguales en cuanto personas humanas y complementarios.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La diferencia entre hombre y mujer no es un accidente biológico. Es <strong>un diseño de Dios</strong>: fueron creados el uno para el otro, para complementarse, para transmitir la vida, y para reflejar juntos la riqueza de la imagen de Dios.</p>
+  </div>
+</div>
+
+<!-- EL HOMBRE EN EL PARAÍSO -->
+<div class="ccc-block">
+  <p class="ccc-num">§§ 374–379</p>
+  <p class="ccc-text">El primer hombre fue no solamente creado bueno, sino también constituido en la amistad con su Creador y en armonía consigo mismo y con la creación. Esta gracia de la santidad original era una "participación de la vida divina". La armonía interior del hombre constituía el estado llamado "justicia original".</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Adán y Eva en el Paraíso no eran como niños ingenuos en un cuento. Eran seres humanos plenos, en <strong>amistad real con Dios</strong>, con dominio sobre sus pasiones, sin sufrimiento ni muerte, en armonía con la creación. Eso es lo que el pecado destruyó — y lo que Cristo vino a restaurar.</p>
+  </div>
+</div>
+
+<!-- ══ PÁRRAFO 7: LA CAÍDA ══ -->
+<div class="seccion-divider" id="caida"></div>
+
+<div style="text-align:center;margin:0 0 32px;">
+  <p class="seccion-eyebrow">Párrafo 7</p>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);">La Caída</h3>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mauve);margin-top:8px;">§§ 385–421 · "Donde abundó el pecado, sobreabundó la gracia"</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 385–390</p>
+  <p class="ccc-text">Dios es infinitamente bueno y todas sus obras son buenas. Sin embargo, nadie escapa a la experiencia del sufrimiento, del mal, de la muerte. El pecado está presente en la historia del hombre. Para intentar comprender lo que es el pecado, hay que reconocer el vínculo profundo del hombre con Dios.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El mal no se puede entender solo como un fallo psicológico, social o biológico. <strong>Solo se comprende plenamente a la luz de la Revelación</strong>: el pecado es un rechazo de Dios, una ruptura de la relación de amor para la que fuimos creados.</p>
+  </div>
+</div>
+
+<!-- LA CAÍDA DE LOS ÁNGELES -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">II · La caída de los ángeles</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 391–395</p>
+  <p class="ccc-text">Satán o el diablo y los otros demonios son ángeles caídos por haber rechazado libremente servir a Dios y su designio. Su opción contra Dios es definitiva. Es "homicida desde el principio" y "padre de la mentira". Sin embargo, su poder no es infinito: es siempre criatura, poderosa por ser espíritu puro, pero siempre criatura.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El diablo no es el "otro dios". No es igual que Dios. Es una <strong>criatura caída</strong> que actúa con odio contra Dios y contra el hombre, pero cuya acción está permitida y limitada por la divina Providencia. Cristo ya lo ha vencido.</p>
+  </div>
+  <div class="insight">El poder de Satán no es infinito. Aunque cause graves daños espirituales e incluso materiales, Dios dirige la historia con fuerza y dulzura.</div>
+</div>
+
+<!-- EL PECADO ORIGINAL -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">III · El pecado original</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 396–401</p>
+  <p class="ccc-text">El hombre, tentado por el diablo, dejó morir en su corazón la confianza hacia su creador y, abusando de su libertad, desobedeció al mandamiento de Dios. En este pecado, el hombre se prefirió a sí mismo en lugar de Dios. La armonía de la justicia original queda destruida; la creación visible se hace extraña y hostil al hombre.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El pecado original no fue solo un fallo moral — fue una <strong>ruptura de relación</strong>. Adán y Eva eligieron creer la mentira del diablo ("seréis como dioses") antes que confiar en la Palabra de Dios. Esa desconfianza es el núcleo del pecado.</p>
+  </div>
+  <div class="tabla-wrap">
+    <table>
+      <tr><th>Antes del pecado</th><th>Después del pecado</th></tr>
+      <tr><td>Amistad con Dios</td><td>Ruptura con Dios</td></tr>
+      <tr><td>Armonía interior</td><td>Lucha entre razón y pasiones</td></tr>
+      <tr><td>Armonía con el otro</td><td>Tensión entre hombre y mujer</td></tr>
+      <tr><td>Armonía con la creación</td><td>La naturaleza se vuelve hostil</td></tr>
+      <tr><td>Sin muerte</td><td>La muerte entra en la historia</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 402–406</p>
+  <p class="ccc-text">Todos los hombres están implicados en el pecado de Adán. "Por la desobediencia de un solo hombre, todos fueron constituidos pecadores." El pecado original es llamado "contraído", no "cometido": es una condición, no un acto personal. Toda la naturaleza humana quedó debilitada: inclinada al mal, sometida a la ignorancia, al sufrimiento y al dominio de la muerte.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El pecado original no es una "culpa personal" de cada uno — nadie elige nacer con él. Es una <strong>condición heredada</strong>: nacemos en un mundo y con una naturaleza herida por la caída de nuestros primeros padres. El Bautismo borra el pecado original pero deja la inclinación al mal (<em>concupiscencia</em>).</p>
+  </div>
+  <div class="myth-box">
+    <p class="myth-label">¿Qué hace el Bautismo respecto al pecado original?</p>
+    <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Borra el pecado original y devuelve al hombre a Dios.</span></div>
+    <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Pero la inclinación al mal (<em>concupiscencia</em>) permanece como combate espiritual.</span></div>
+    <div class="myth-row"><span class="myth-icon">✦</span><span class="myth-text">Por eso la gracia de Cristo sigue siendo necesaria durante toda la vida.</span></div>
+  </div>
+</div>
+
+<!-- NO LO ABANDONASTE -->
+<div class="mini-div"></div>
+<div style="text-align:center;margin:0 0 20px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);">IV · "No lo abandonaste al poder de la muerte"</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 410–412</p>
+  <p class="ccc-text">Tras la caída, el hombre no fue abandonado por Dios. Al contrario, Dios lo llama y le anuncia de modo misterioso la victoria sobre el mal y el levantamiento de su caída. Este pasaje del Génesis ha sido llamado "Protoevangelio" — el primer anuncio del Evangelio: el anuncio de un combate entre la serpiente y la Mujer, y de la victoria final de un descendiente de ésta.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La historia humana no termina con el pecado. La última palabra no la tiene Satán. Dios mismo anuncia <strong>un Vencedor</strong>: alguien que aplastará la cabeza de la serpiente. La Tradición ve en ese descendiente a Cristo, y en la Mujer a María — la nueva Eva.</p>
+  </div>
+  <div class="central-quote">
+    <p class="cq-text">"Donde abundó el pecado,<br>sobreabundó la gracia."</p>
+    <span class="cq-ref">Romanos 5, 20</span>
+  </div>
+</div>
+
+<!-- TAKEAWAY FINAL -->
+<div class="takeaway-box">
+  <span class="takeaway-icon">✝️</span>
+  <p class="takeaway-label">La idea central de este capítulo</p>
+  <p class="takeaway-text">"Dios es Padre, Trinidad y Creador — y aunque el hombre cayó, no fue abandonado. Donde el pecado abunda, la gracia sobreabunda."</p>
+  <p class="takeaway-sub">El Credo no es solo una lista de verdades. Es la historia del amor de Dios: cómo creó todo por amor, cómo el hombre lo rechazó, y cómo Dios ya estaba preparando la respuesta en Cristo.</p>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<div id="quiz-section" style="margin-top:80px;">
+  <div class="mini-div"></div>
+  <h2 class="quiz-title">¿Cuánto entendiste?</h2>
+  <p class="quiz-sub">10 preguntas sobre el Capítulo I de la Segunda Sección · §§ 185–421</p>
+  <div id="quiz-container"></div>
+  <div id="quiz-result">
+    <span class="result-emoji" id="result-emoji"></span>
+    <p class="result-text" id="result-text"></p>
+    <p class="result-sub" id="result-sub"></p>
+    <button class="result-btn" onclick="resetQuiz()">Volver a intentarlo</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <a href="capitulo-3.html" class="footer-text">← Capítulo III</a>
+  <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(201,160,160,0.4);">II</span>
+  <a href="index.html" class="footer-text">Índice →</a>
+</div>
+
+</div><!-- /page -->
+
+<script>
+const questions = [
+  {
+    q: "¿Qué significa que el Símbolo de la fe es un 'symbolon' griego? (§ 188)",
+    opts:[
+      "Es una oración muy larga y difícil de memorizar.",
+      "Es la mitad de un objeto partido que servía para identificar — signo de comunión entre los creyentes.",
+      "Es una fórmula inventada por filósofos griegos.",
+      "Es el nombre del primer Papa que escribió el Credo."
+    ],
+    correct:1,
+    explanation:"<em>Symbolon</em> era en griego la mitad de un objeto partido — como un sello — que se juntaba para verificar la identidad del portador. <strong>El Credo es el símbolo que une e identifica a los creyentes</strong> entre sí y con toda la Iglesia. Por eso recitarlo es entrar en comunión con toda la fe católica."
+  },
+  {
+    q: "¿Qué revela Dios cuando dice a Moisés 'Yo soy el que soy'? (§§ 205–206)",
+    opts:[
+      "Que Dios no quiere revelar su verdadero nombre.",
+      "Que Dios es el Ser mismo: eterno, fiel, sin principio ni fin, siempre presente.",
+      "Que Dios solo existe en el pasado.",
+      "Que el nombre de Dios es un secreto reservado a los sacerdotes."
+    ],
+    correct:1,
+    explanation:"'Yo soy el que soy' no es evasión — es la revelación más profunda. Dios dice que Él <strong>simplemente ES</strong>: el Ser mismo, sin origen ni fin. Este nombre revela su fidelidad eterna: el Dios de ayer es el mismo de hoy y de mañana. Sus promesas no caducan porque Él no cambia."
+  },
+  {
+    q: "Según el § 221, ¿qué es Dios en su ser más íntimo?",
+    opts:[
+      "Una fuerza impersonal que rige el universo.",
+      "Un juez que registra nuestros actos.",
+      "Amor — su ser mismo es una eterna comunicación de amor.",
+      "Una ley moral universal."
+    ],
+    correct:2,
+    explanation:"San Juan lo dice con toda claridad: 'Dios es Amor' (1 Jn 4, 8.16). No dice que Dios <em>tiene</em> amor — dice que <strong>su ser mismo es amor</strong>. Por eso la Trinidad no es un misterio encerrado en sí mismo: es amor que se derrama y nos invita a participar en él."
+  },
+  {
+    q: "¿Qué enseña el Catecismo sobre la Santísima Trinidad? (§§ 253–255)",
+    opts:[
+      "Que hay tres dioses distintos con poderes diferentes.",
+      "Que Padre, Hijo y Espíritu Santo son tres 'modos' de un mismo Dios.",
+      "Que hay un solo Dios en tres Personas realmente distintas entre sí.",
+      "Que la Trinidad es solo una imagen poética sin realidad."
+    ],
+    correct:2,
+    explanation:"La Iglesia enseña con precisión: <strong>un solo Dios, tres Personas realmente distintas</strong>. No son tres dioses — eso sería politeísmo. No son tres máscaras — eso sería modalismo. Son Padre, Hijo y Espíritu Santo: distintos en sus relaciones, idénticos en su naturaleza divina."
+  },
+  {
+    q: "¿Por qué Dios crea el mundo? (§§ 293–294)",
+    opts:[
+      "Porque estaba solo y necesitaba compañía.",
+      "Para manifestar y comunicar su gloria — su bondad, verdad y belleza.",
+      "Para tener criaturas que le obedezcan.",
+      "Por necesidad de su naturaleza, como el sol que no puede dejar de brillar."
+    ],
+    correct:1,
+    explanation:"Dios no crea por necesidad ni por soledad. Crea <strong>libremente, por amor, para compartir su bondad</strong>. La gloria de Dios consiste en que las criaturas participen en su verdad, bondad y belleza. Como dijo San Ireneo: 'La gloria de Dios es el hombre viviente.'"
+  },
+  {
+    q: "¿Qué significa que Dios crea 'de la nada'? (§§ 296–297)",
+    opts:[
+      "Que Dios usó materiales ya existentes pero muy pequeños.",
+      "Que Dios creó todo sin depender de ninguna materia preexistente — es el origen absoluto de todo.",
+      "Que la creación fue un accidente sin causa.",
+      "Que el universo siempre ha existido y Dios solo lo ordenó."
+    ],
+    correct:1,
+    explanation:"Crear 'de la nada' significa que Dios <strong>no depende de nada</strong> para crear. No tomó materiales preexistentes — Él es el origen absoluto de todo lo que existe. Esto también nos habla de la Resurrección: quien creó de la nada puede recrear el cuerpo."
+  },
+  {
+    q: "¿Cuál es la dignidad única del ser humano entre todas las criaturas? (§§ 355–357)",
+    opts:[
+      "Su inteligencia superior a la de los animales.",
+      "Su capacidad de construir civilizaciones.",
+      "Ser la única criatura creada a imagen de Dios, capaz de conocerlo y amarlo.",
+      "Ser la criatura más longeva del planeta."
+    ],
+    correct:2,
+    explanation:"De todas las criaturas visibles, <strong>solo el hombre es capaz de conocer y amar a su Creador</strong>. Por eso tiene una dignidad que ningún logro ni título puede dar ni quitar. Esta dignidad viene de Dios — no se gana ni se pierde por circunstancias externas."
+  },
+  {
+    q: "¿Qué enseña la Iglesia sobre el cuerpo humano? (§§ 362–364)",
+    opts:[
+      "Que el cuerpo es malo y debe ser mortificado para liberar el alma.",
+      "Que el cuerpo no importa — solo el alma tiene valor espiritual.",
+      "Que el cuerpo es bueno, participa de la dignidad de la imagen de Dios y resucitará.",
+      "Que el cuerpo es solo un instrumento temporal sin valor eterno."
+    ],
+    correct:2,
+    explanation:"La Iglesia enseña que el cuerpo es <strong>bueno, sagrado y destinado a resucitar</strong>. No es una cárcel del alma — es parte esencial del ser humano. Por eso el cuerpo merece respeto y no puede ser despreciado. El hombre es cuerpo y alma: uno solo."
+  },
+  {
+    q: "¿En qué consistió el pecado original de Adán y Eva? (§§ 397–398)",
+    opts:[
+      "En comer fruta sin permiso — un error menor exagerado por la Iglesia.",
+      "En dejar morir la confianza en Dios, desobedecer y preferirse a sí mismos antes que a Dios.",
+      "En no rezar suficientemente.",
+      "En un pecado de orden sexual."
+    ],
+    correct:1,
+    explanation:"El pecado original fue una <strong>ruptura de relación</strong>: Adán y Eva creyeron la mentira del diablo ('seréis como dioses') en lugar de confiar en la Palabra de Dios. El núcleo no fue solo una desobediencia — fue una desconfianza radical que rompió la amistad con Dios."
+  },
+  {
+    q: "¿Qué es el 'Protoevangelio' del § 410 y qué anuncia?",
+    opts:[
+      "El primer libro del Antiguo Testamento sobre la creación.",
+      "El primer anuncio del Evangelio: la promesa de un Vencedor que aplastará la cabeza de la serpiente.",
+      "El primer mandamiento dado a Moisés en el Sinaí.",
+      "El primer símbolo de fe escrito por los apóstoles."
+    ],
+    correct:1,
+    explanation:"El 'Protoevangelio' es el pasaje de Génesis 3,15 donde Dios anuncia, justo después del pecado, que un descendiente de la Mujer vencerá a la serpiente. <strong>Es el primer anuncio de Cristo</strong>. La Tradición ve en la Mujer a María — la nueva Eva — y en el Vencedor a Cristo. La última palabra no la tiene el pecado: 'Donde abundó el pecado, sobreabundó la gracia.'"
+  }
+];
+
+let answered = new Array(questions.length).fill(false);
+let score = 0;
+
+function buildQuiz(){
+  const c = document.getElementById('quiz-container');
+  c.innerHTML = '';
+  const bar = document.createElement('div');
+  bar.className = 'quiz-score-bar';
+  bar.innerHTML = `<span class="score-text">Respuestas correctas</span><span class="score-num" id="live-score">0 / ${questions.length}</span>`;
+  c.appendChild(bar);
+  questions.forEach((q,qi)=>{
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    const num = document.createElement('p');
+    num.className = 'quiz-q-num';
+    num.textContent = `Pregunta ${qi+1} de ${questions.length}`;
+    card.appendChild(num);
+    const qt = document.createElement('p');
+    qt.className = 'quiz-q-text';
+    qt.textContent = q.q;
+    card.appendChild(qt);
+    const opts = document.createElement('div');
+    opts.className = 'quiz-options';
+    const exp = document.createElement('div');
+    exp.className = 'quiz-explanation';
+    q.opts.forEach((opt,oi)=>{
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.onclick = ()=>handleAnswer(qi,oi,btn,opts,exp);
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+    card.appendChild(exp);
+    c.appendChild(card);
+  });
+}
+
+function handleAnswer(qi,oi,btn,opts,exp){
+  if(answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  opts.querySelectorAll('.quiz-opt').forEach((b,i)=>{
+    b.disabled = true;
+    if(i===q.correct) b.classList.add('correct');
+    else if(i===oi&&oi!==q.correct) b.classList.add('wrong');
+    else b.classList.add('reveal');
+  });
+  if(oi===q.correct){
+    score++;
+    exp.innerHTML = `<strong>✦ ¡Correcto!</strong><br><br>${q.explanation}`;
+    exp.style.background = 'rgba(184,201,176,0.25)';
+    exp.style.borderColor = 'var(--sage-dark)';
+  } else {
+    exp.innerHTML = `<strong>No es esa.</strong> La respuesta correcta está marcada en verde.<br><br>${q.explanation}`;
+    exp.style.background = 'rgba(245,230,224,0.4)';
+    exp.style.borderColor = 'rgba(200,120,110,0.4)';
+  }
+  exp.classList.add('show');
+  document.getElementById('live-score').textContent = `${score} / ${questions.length}`;
+  if(answered.every(a=>a)) showResult();
+}
+
+function showResult(){
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+  const pct = score/questions.length;
+  let emoji,text,sub;
+  if(pct===1){emoji='🌸';text=`¡Perfecto! ${score} de ${questions.length}`;sub='Dominaste todo el Capítulo I de la Segunda Sección: el Credo, el Dios Único, la Trinidad, la Creación, el Hombre y la Caída. ¡Excelente!';}
+  else if(pct>=0.7){emoji='✝️';text=`Muy bien — ${score} de ${questions.length}`;sub='Entendiste los conceptos fundamentales. Repasa las preguntas que fallaste leyendo las explicaciones.';}
+  else if(pct>=0.5){emoji='📖';text=`Vas bien — ${score} de ${questions.length}`;sub='Tienes la base. Vuelve a leer las secciones donde fallaste — la segunda lectura siempre aclara más.';}
+  else{emoji='🕊️';text=`Sigue adelante — ${score} de ${questions.length}`;sub='Este capítulo tiene muchas ideas profundas. Reléelo despacio, sección por sección. ¡Cada relectura suma!';}
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-text').textContent = text;
+  document.getElementById('result-sub').textContent = sub;
+  res.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function resetQuiz(){
+  answered = new Array(questions.length).fill(false);
+  score = 0;
+  document.getElementById('quiz-result').style.display = 'none';
+  buildQuiz();
+  document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
