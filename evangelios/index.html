@@ -24,7 +24,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 28px;display:fl
 .dl{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}
 .dlr{background:linear-gradient(to left,transparent,var(--rose));}
 .dot{width:5px;height:5px;border-radius:50%;background:var(--soft-gold);}
-/* HOY CARD */
 .hoy-card{display:block;background:linear-gradient(135deg,rgba(200,169,110,0.12),rgba(184,201,176,0.12));backdrop-filter:blur(10px);border:1px solid rgba(200,169,110,0.35);border-radius:24px;padding:28px 32px;margin-bottom:32px;text-decoration:none;transition:all 0.25s;position:relative;overflow:hidden;}
 .hoy-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--soft-gold),rgba(200,169,110,0.3));}
 .hoy-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,169,110,0.2);}
@@ -33,10 +32,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 28px;display:fl
 .hoy-titulo{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,30px);font-weight:300;color:var(--warm-brown);line-height:1.3;margin-bottom:6px;}
 .hoy-ref{font-size:12px;color:var(--text-light);font-weight:300;}
 .hoy-arrow{position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(200,169,110,0.5);}
-/* MES LABEL */
 .mes-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin:28px 0 14px;display:flex;align-items:center;gap:12px;}
 .mes-label::before,.mes-label::after{content:'';flex:1;height:1px;background:rgba(232,196,184,0.4);}
-/* EV CARD */
 .ev-card{display:flex;align-items:center;gap:0;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1px solid rgba(232,196,184,0.3);border-radius:16px;margin-bottom:10px;text-decoration:none;transition:all 0.2s;overflow:hidden;}
 .ev-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,160,160,0.12);border-color:rgba(200,169,110,0.3);}
 .ev-fecha-box{background:rgba(245,230,224,0.4);padding:14px 16px;min-width:62px;text-align:center;border-right:1px solid rgba(232,196,184,0.25);flex-shrink:0;}
@@ -72,90 +69,398 @@ footer p{font-size:12px;color:var(--mauve);}
     <div class="divider"><div class="dl"></div><div class="dot"></div><div class="dot" style="background:var(--rose)"></div><div class="dot"></div><div class="dl dlr"></div></div>
   </div>
 
-  <!-- HOY -->
-  <a href="2026-06-07.html" class="hoy-card reveal">
+  <a href="2026-07-29.html" class="hoy-card reveal">
     <p class="hoy-tag">✦ Hoy</p>
-    <p class="hoy-fecha">Domingo, 7 de junio de 2026</p>
-    <h2 class="hoy-titulo">Yo soy el pan vivo que da la vida</h2>
-    <p class="hoy-ref">Juan 6, 51-58 · Corpus Christi</p>
+    <p class="hoy-fecha">Miércoles, 29 de julio de 2026</p>
+    <h2 class="hoy-titulo">María ha elegido la parte buena</h2>
+    <p class="hoy-ref">Lucas 10, 38-42 · Miércoles · Santos Marta, María y Lázaro</p>
     <span class="hoy-arrow">→</span>
   </a>
 
-  <!-- ARCHIVO -->
+  <div class="mes-label reveal">Septiembre 2026</div>
+  <a href="2026-09-30.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">30</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Nadie que mira hacia atrás es apto para el Reino</div><div class="ev-ref">Lucas 9, 57-62 · Miércoles · San Jerónimo, presbítero y doctor</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-29.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">29</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Veréis el cielo abierto y a los ángeles de Dios</div><div class="ev-ref">Juan 1, 47-51 · Martes · Santos Arcángeles Miguel, Gabriel y Rafael</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-28.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">28</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">El más pequeño de entre vosotros, ése es mayor</div><div class="ev-ref">Lucas 9, 46-50 · Lunes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-27.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">27</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">El primero se arrepintió y fue</div><div class="ev-ref">Mateo 21, 28-32 · Domingo · XXVI Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-26.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">26</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">El Hijo del hombre va a ser entregado</div><div class="ev-ref">Lucas 9, 43b-45 · Sábado · Santos Cosme y Damián</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-25.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">25</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">El Cristo de Dios</div><div class="ev-ref">Lucas 9, 18-22 · Viernes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-24.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">24</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Herodes buscaba ver a Jesús</div><div class="ev-ref">Lucas 9, 7-9 · Jueves</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-23.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">23</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">No toméis nada para el camino</div><div class="ev-ref">Lucas 9, 1-6 · Miércoles · San Pío de Pietrelcina</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-22.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">22</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Mi madre y mis hermanos son los que oyen la Palabra</div><div class="ev-ref">Lucas 8, 19-21 · Martes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-21.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">21</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Sígueme</div><div class="ev-ref">Mateo 9, 9-13 · Lunes · San Mateo, apóstol y evangelista</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-20.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">20</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Los últimos serán los primeros</div><div class="ev-ref">Mateo 20, 1-16 · Domingo · XXV Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-19.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">19</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Cayó en tierra buena y dio fruto centuplicado</div><div class="ev-ref">Lucas 8, 4-15 · Sábado · San Jenaro</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-18.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">18</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Mujeres que le servían con sus bienes</div><div class="ev-ref">Lucas 8, 1-3 · Viernes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-17.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">17</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">A quien poco se le perdona, poco amor muestra</div><div class="ev-ref">Lucas 7, 36-50 · Jueves</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-16.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">16</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">La Sabiduría se ha acreditado por todos sus hijos</div><div class="ev-ref">Lucas 7, 31-35 · Miércoles · Santos Cornelio y Cipriano</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-15.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">15</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Una espada te atravesará el alma</div><div class="ev-ref">Lucas 2, 33-35 · Martes · Nuestra Señora de los Dolores</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-14.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">14</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Tanto amó Dios al mundo</div><div class="ev-ref">Juan 3, 13-17 · Lunes · La Exaltación de la Santa Cruz</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-13.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">13</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">No hasta siete veces, sino hasta setenta veces siete</div><div class="ev-ref">Mateo 18, 21-35 · Domingo · XXIV Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-12.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">12</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">El buen árbol da fruto bueno</div><div class="ev-ref">Lucas 6, 43-49 · Sábado · El Santísimo Nombre de María</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-11.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">11</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Saca primero la viga de tu propio ojo</div><div class="ev-ref">Lucas 6, 39-42 · Viernes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-10.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">10</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Amad a vuestros enemigos</div><div class="ev-ref">Lucas 6, 27-38 · Jueves</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-09.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">9</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Bienaventurados los pobres, porque vuestro es el Reino</div><div class="ev-ref">Lucas 6, 20-26 · Miércoles · San Pedro Claver</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-08.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">8</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Y le pondrán por nombre Emmanuel</div><div class="ev-ref">Mateo 1, 1-16.18-23 · Martes · La Natividad de la Virgen María</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-07.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">7</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">¿Es lícito hacer el bien en sábado?</div><div class="ev-ref">Lucas 6, 6-11 · Lunes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-06.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">6</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Habrás ganado a tu hermano</div><div class="ev-ref">Mateo 18, 15-20 · Domingo · XXIII Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-05.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">5</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">El Hijo del hombre es señor del sábado</div><div class="ev-ref">Lucas 6, 1-5 · Sábado</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-04.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">4</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Nadie echa vino nuevo en pellejos viejos</div><div class="ev-ref">Lucas 5, 33-39 · Viernes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-03.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">3</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Desde ahora serás pescador de hombres</div><div class="ev-ref">Lucas 5, 1-11 · Jueves · San Gregorio Magno</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-02.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">2</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">A esto he sido enviado</div><div class="ev-ref">Lucas 4, 38-44 · Miércoles</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-09-01.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">1</div><div class="ev-mes">Sep</div></div>
+    <div class="ev-info"><div class="ev-titulo">Manda con autoridad y poder, y salen</div><div class="ev-ref">Lucas 4, 31-37 · Martes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <div class="mes-label reveal">Agosto 2026</div>
+  <a href="2026-08-31.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">31</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Hoy se cumple esta escritura que acabáis de oír</div><div class="ev-ref">Lucas 4, 16-30 · Lunes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-30.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">30</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Si uno quiere salvar su vida, la perderá</div><div class="ev-ref">Mateo 16, 21-27 · Domingo · XXII Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-29.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">29</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">No te está permitido tener la mujer de tu hermano</div><div class="ev-ref">Marcos 6, 17-29 · Sábado · El Martirio de San Juan Bautista</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-28.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">28</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Las prudentes llevaron aceite de reserva</div><div class="ev-ref">Mateo 25, 1-13 · Viernes · San Agustín, obispo y doctor</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-27.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">27</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Estad en vela, porque no sabéis a qué hora vendrá</div><div class="ev-ref">Mateo 24, 42-51 · Jueves · Santa Mónica</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-26.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">26</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Sepulcros blanqueados</div><div class="ev-ref">Mateo 23, 27-32 · Miércoles</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-25.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">25</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Descuidáis lo más importante de la Ley</div><div class="ev-ref">Mateo 23, 23-26 · Martes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-24.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">24</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Un israelita de verdad, en quien no hay engaño</div><div class="ev-ref">Juan 1, 45-51 · Lunes · San Bartolomé, apóstol</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-23.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">23</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Tú eres Pedro, y te daré las llaves del Reino</div><div class="ev-ref">Mateo 16, 13-20 · Domingo · XXI Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-22.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">22</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">El mayor entre vosotros será vuestro servidor</div><div class="ev-ref">Mateo 23, 1-12 · Sábado · Santa María Virgen, Reina</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-21.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">21</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Amarás al Señor y a tu prójimo como a ti mismo</div><div class="ev-ref">Mateo 22, 34-40 · Viernes · San Pío X</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-20.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">20</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Muchos son llamados, mas pocos escogidos</div><div class="ev-ref">Mateo 22, 1-14 · Jueves · San Bernardo</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-19.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">19</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Los últimos serán primeros</div><div class="ev-ref">Mateo 20, 1-16 · Miércoles</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-18.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">18</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Para Dios todo es posible</div><div class="ev-ref">Mateo 19, 23-30 · Martes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-17.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">17</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Vende lo que tienes y dáselo a los pobres</div><div class="ev-ref">Mateo 19, 16-22 · Lunes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-16.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">16</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Mujer, qué grande es tu fe</div><div class="ev-ref">Mateo 15, 21-28 · Domingo · XX Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-15.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">15</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Proclama mi alma la grandeza del Señor</div><div class="ev-ref">Lucas 1, 39-56 · Sábado · La Asunción de la Virgen María</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-14.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">14</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Lo que Dios unió, no lo separe el hombre</div><div class="ev-ref">Mateo 19, 3-12 · Viernes · San Maximiliano María Kolbe</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-13.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">13</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">No hasta siete veces, sino hasta setenta veces siete</div><div class="ev-ref">Mateo 18, 21—19, 1 · Jueves</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-12.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">12</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Si tu hermano llega a pecar, vete y repréndele</div><div class="ev-ref">Mateo 18, 15-20 · Miércoles</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-11.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">11</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Si os hacéis como niños...</div><div class="ev-ref">Mateo 18, 1-5.10.12-14 · Martes · Santa Clara</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-10.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">10</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Si el grano de trigo muere, da mucho fruto</div><div class="ev-ref">Juan 12, 24-26 · Lunes · San Lorenzo</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-09.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">9</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Señor, sálvame</div><div class="ev-ref">Mateo 14, 22-33 · Domingo · XIX Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-08.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">8</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Si tenéis fe como un grano de mostaza</div><div class="ev-ref">Mateo 17, 14-20 · Sábado · Santo Domingo de Guzmán</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-07.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">7</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Que niegue a sí mismo, tome su cruz y me siga</div><div class="ev-ref">Mateo 16, 24-28 · Viernes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-06.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">6</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Su rostro se puso brillante como el sol</div><div class="ev-ref">Mateo 17, 1-9 · Jueves · La Transfiguración del Señor</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-05.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">5</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Mujer, grande es tu fe</div><div class="ev-ref">Mateo 15, 21-28 · Miércoles</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-04.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">4</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Hombre de poca fe, ¿por qué dudaste?</div><div class="ev-ref">Mateo 14, 22-36 · Martes · San Juan María Vianney</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-03.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">3</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Vio mucha gente y sintió compasión</div><div class="ev-ref">Mateo 14, 13-21 · Lunes</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-02.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">2</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Comieron todos hasta quedar satisfechos</div><div class="ev-ref">Mateo 14, 13-21 · Domingo · XVIII Domingo del Tiempo Ordinario</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-08-01.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">1</div><div class="ev-mes">Ago</div></div>
+    <div class="ev-info"><div class="ev-titulo">Ese es Juan el Bautista, ha resucitado</div><div class="ev-ref">Mateo 14, 1-12 · Sábado · San Alfonso María de Ligorio</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <div class="mes-label reveal">Julio 2026</div>
+  <a href="2026-07-31.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">31</div><div class="ev-mes">Jul</div></div>
+    <div class="ev-info"><div class="ev-titulo">Un profeta sólo en su patria carece de prestigio</div><div class="ev-ref">Mateo 13, 54-58 · Viernes · San Ignacio de Loyola</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-07-30.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">30</div><div class="ev-mes">Jul</div></div>
+    <div class="ev-info"><div class="ev-titulo">Recogen en cestos los buenos y tiran los malos</div><div class="ev-ref">Mateo 13, 47-53 · Jueves</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
+  <a href="2026-07-29.html" class="ev-card reveal">
+    <div class="ev-fecha-box"><div class="ev-dia">29</div><div class="ev-mes">Jul</div></div>
+    <div class="ev-info"><div class="ev-titulo">María ha elegido la parte buena</div><div class="ev-ref">Lucas 10, 38-42 · Miércoles · Santos Marta, María y Lázaro</div></div>
+    <div class="ev-arrow">→</div>
+  </a>
   <div class="mes-label reveal">Junio 2026</div>
-
   <a href="2026-06-14.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">14</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Vayan en busca de las ovejas perdidas</div><div class="ev-ref">Mateo 9, 36–10, 8 · Domingo</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-13.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">13</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Su madre guardaba estas cosas en su corazón</div><div class="ev-ref">Lucas 2, 41-51 · Sábado · Corazón Inmaculado de María</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-12.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">12</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Vengan a mí todos los que están fatigados</div><div class="ev-ref">Mateo 11, 25-30 · Viernes · Sagrado Corazón ❤️</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-11.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">11</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Que haya paz en esta casa</div><div class="ev-ref">Mateo 10, 7-13 · Jueves · San Bernabé</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-10.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">10</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Respóndeme, Señor — el Dios verdadero actúa</div><div class="ev-ref">Mateo 5, 17-19 · Miércoles</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-09.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">9</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">La sal de la tierra y la luz del mundo</div><div class="ev-ref">Mateo 5, 13-19 · Martes · San Efrén</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-08.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">8</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Las Bienaventuranzas</div><div class="ev-ref">Mateo 5, 1-12 · Lunes</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-07.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">7</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Yo soy el pan vivo que da la vida</div><div class="ev-ref">Juan 6, 51-58 · Domingo · Corpus Christi</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-06.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">6</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Das limosna de lo que te sobra</div><div class="ev-ref">Marcos 12, 38-44 · Sábado · San Norberto</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-05.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">5</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">La multitud escuchaba a Jesús con agrado</div><div class="ev-ref">Marcos 12, 35-37 · Viernes · San Bonifacio</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-04.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">4</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Son dos amores: a Dios y al prójimo</div><div class="ev-ref">Marcos 12, 28-34 · Jueves</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-03.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">3</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">No es Dios de muertos, sino de vivos</div><div class="ev-ref">Marcos 12, 18-27 · Miércoles · San Carlos Lwanga</div></div>
     <div class="ev-arrow">→</div>
   </a>
-
   <a href="2026-06-02.html" class="ev-card reveal">
     <div class="ev-fecha-box"><div class="ev-dia">2</div><div class="ev-mes">Jun</div></div>
     <div class="ev-info"><div class="ev-titulo">Den a Dios lo que es de Dios</div><div class="ev-ref">Marcos 12, 13-17 · Lunes</div></div>
