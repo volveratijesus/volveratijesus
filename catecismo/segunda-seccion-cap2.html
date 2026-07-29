@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo Segundo · Creo en Jesucristo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--blush:#f5e6e0;--rose:#e8c4b8;--mauve:#c9a0a0;--sage:#b8c9b0;--sage-dark:#8aaa80;--cream:#fdf8f4;--warm-brown:#7a5c58;--soft-gold:#c8a96e;--text:#4a3a38;--text-light:#7a6560;--sky:#c5d9e8;--sky-dark:#4a7090;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);min-height:100vh;overflow-x:hidden;}
+.bg-wash{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.bg-wash::before{content:'';position:absolute;top:-10%;right:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(200,169,110,0.18) 0%,transparent 70%);border-radius:60% 40% 70% 30%;filter:blur(45px);}
+.bg-wash::after{content:'';position:absolute;bottom:5%;left:-8%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(184,201,176,0.2) 0%,transparent 70%);border-radius:40% 60% 30% 70%;filter:blur(40px);}
+.flower-top-right{position:fixed;top:0;right:0;width:260px;opacity:0.45;pointer-events:none;z-index:0;}
+.flower-bottom-left{position:fixed;bottom:0;left:0;width:220px;opacity:0.38;pointer-events:none;z-index:0;transform:rotate(180deg);}
+.page{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:60px 44px 100px;}
+@media(max-width:600px){.page{padding:40px 20px 80px;}}
+
+.section-cover{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0 80px;}
+.breadcrumb{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:28px;animation:fadeUp 1s ease forwards 0.1s;opacity:0;}
+.part-number{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,9vw,90px);font-weight:300;color:rgba(200,169,110,0.22);line-height:1;animation:fadeUp 1s ease forwards 0.2s;opacity:0;}
+.part-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,48px);font-weight:300;color:var(--warm-brown);line-height:1.15;margin-top:-8px;animation:fadeUp 1s ease forwards 0.35s;opacity:0;}
+.part-subtitle{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);margin-top:12px;line-height:1.5;animation:fadeUp 1s ease forwards 0.5s;opacity:0;}
+.cover-divider{display:flex;align-items:center;gap:14px;margin:36px auto;width:fit-content;animation:fadeUp 1s ease forwards 0.65s;opacity:0;}
+.cover-divider-line{width:70px;height:1px;background:linear-gradient(to right,transparent,var(--rose));}
+.cover-divider-line.r{background:linear-gradient(to left,transparent,var(--rose));}
+.cover-divider-dot{width:5px;height:5px;border-radius:50%;background:var(--soft-gold);}
+.cover-intro{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-light);line-height:1.8;max-width:480px;animation:fadeUp 1s ease forwards 0.8s;opacity:0;}
+
+.chapter-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:28px 0 0;animation:fadeUp 1s ease forwards 1s;opacity:0;}
+.nav-pill{background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.4);border-radius:20px;padding:7px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm-brown);text-decoration:none;transition:all 0.2s;}
+.nav-pill:hover{background:rgba(245,230,224,0.7);border-color:rgba(200,169,110,0.4);}
+
+.seccion-divider{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.4),transparent);margin:70px 0 60px;}
+
+.seccion-header{text-align:center;margin-bottom:48px;}
+.seccion-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.seccion-number{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,8vw,80px);font-weight:300;color:rgba(201,160,160,0.15);line-height:1;display:block;}
+.seccion-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:300;color:var(--warm-brown);line-height:1.2;margin-top:-10px;}
+.seccion-sub{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mauve);margin-top:8px;}
+
+.articulo-tag{display:flex;align-items:center;gap:12px;margin:48px 0 24px;}
+.articulo-tag-line{flex:1;height:1px;background:rgba(201,160,160,0.25);}
+.articulo-tag-text{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);white-space:nowrap;}
+
+.parrafo-label{text-align:center;margin:44px 0 20px;}
+.parrafo-label p{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--warm-brown);}
+.subhead-label{text-align:center;margin:0 0 20px;}
+.subhead-label p{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--mauve);}
+.mini-div{width:40px;height:1px;background:rgba(201,160,160,0.35);margin:28px auto;}
+
+.ccc-block{background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);border:1px solid rgba(232,196,184,0.35);border-left:3px solid var(--soft-gold);border-radius:0 14px 14px 0;padding:18px 22px;margin:20px 0;}
+.ccc-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:8px;}
+.ccc-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--warm-brown);line-height:1.85;}
+
+.exp-block{margin:8px 0 28px;}
+.exp-text{font-size:14.5px;line-height:1.95;color:var(--text);font-weight:300;}
+.exp-text p{margin-bottom:12px;}
+.exp-text p:last-child{margin-bottom:0;}
+.exp-text strong{color:var(--warm-brown);font-weight:400;}
+
+.idea-card{background:linear-gradient(135deg,rgba(245,230,224,0.5),rgba(240,246,237,0.4));border:1px solid rgba(200,169,110,0.25);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.idea-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--soft-gold);margin-bottom:10px;}
+.idea-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--warm-brown);line-height:1.65;}
+
+.insight{background:rgba(184,201,176,0.2);border-left:3px solid var(--sage-dark);padding:14px 20px;border-radius:0 12px 12px 0;margin:16px 0;font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#4a7a44;line-height:1.65;}
+
+.highlight{background:linear-gradient(135deg,rgba(245,230,224,0.6),rgba(240,246,237,0.6));border-left:4px solid var(--soft-gold);border-radius:0 16px 16px 0;padding:18px 24px;margin:20px 0;font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.6;color:var(--warm-brown);}
+
+.myth-box{background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.35);border-radius:16px;padding:20px 24px;margin:16px 0;}
+.myth-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);margin-bottom:10px;}
+.myth-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:14px;line-height:1.65;}
+.myth-icon{font-size:16px;flex-shrink:0;margin-top:2px;}
+.myth-text{color:var(--text);font-weight:300;}
+
+.central-quote{text-align:center;background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);border:1px solid rgba(232,196,184,0.45);border-radius:22px;padding:36px 32px;margin:28px 0;position:relative;overflow:hidden;}
+.central-quote::before{content:'\201C';position:absolute;top:-15px;left:18px;font-family:'Cormorant Garamond',serif;font-size:120px;color:rgba(201,160,160,0.18);line-height:1;}
+.cq-text{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,3vw,25px);font-style:italic;font-weight:300;color:var(--warm-brown);line-height:1.5;position:relative;z-index:1;}
+.cq-ref{display:block;margin-top:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);position:relative;z-index:1;}
+
+.tabla-wrap{overflow-x:auto;margin:20px 0;border-radius:14px;overflow:hidden;border:1px solid rgba(232,196,184,0.35);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{background:rgba(245,230,224,0.5);color:var(--warm-brown);font-weight:400;font-family:'Cormorant Garamond',serif;font-size:15px;padding:12px 16px;text-align:left;border-bottom:1px solid rgba(200,169,110,0.3);}
+td{padding:11px 16px;border-bottom:1px solid rgba(232,196,184,0.2);color:var(--text);font-weight:300;line-height:1.65;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.3);}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0;}
+@media(max-width:540px){.grid-3{grid-template-columns:1fr;}}
+.grid-card{background:rgba(255,255,255,0.55);border:1px solid rgba(232,196,184,0.3);border-radius:14px;padding:18px 16px;text-align:center;}
+.grid-icon{font-size:26px;margin-bottom:10px;display:block;}
+.grid-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--warm-brown);margin-bottom:6px;}
+.grid-desc{font-size:12.5px;color:var(--text-light);font-weight:300;line-height:1.6;}
+
+.takeaway-box{background:linear-gradient(135deg,rgba(248,234,228,0.75),rgba(240,246,237,0.75));border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:36px 40px;margin-top:60px;text-align:center;}
+.takeaway-icon{font-size:30px;margin-bottom:12px;display:block;}
+.takeaway-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-bottom:14px;}
+.takeaway-text{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--warm-brown);line-height:1.6;}
+.takeaway-sub{margin-top:14px;font-size:13.5px;color:var(--text-light);font-weight:300;line-height:1.8;}
+
+#quiz-section{margin-top:80px;}
+.quiz-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:300;color:var(--warm-brown);text-align:center;margin-bottom:8px;}
+.quiz-sub{text-align:center;font-size:13px;color:var(--text-light);font-weight:300;margin-bottom:32px;}
+.quiz-score-bar{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.6);border:1px solid rgba(232,196,184,0.3);border-radius:12px;padding:12px 20px;margin-bottom:22px;}
+.score-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--soft-gold);font-weight:600;}
+.quiz-card{background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1px solid rgba(232,196,184,0.3);border-radius:18px;padding:24px 26px;margin-bottom:16px;}
+.quiz-q-num{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);margin-bottom:8px;}
+.quiz-q-text{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--warm-brown);line-height:1.45;margin-bottom:16px;font-weight:400;}
+.quiz-options{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{background:rgba(253,248,244,0.8);border:1px solid rgba(232,196,184,0.4);border-radius:10px;padding:11px 15px;text-align:left;font-family:'Lato',sans-serif;font-size:13.5px;color:var(--text);cursor:pointer;transition:all 0.2s;font-weight:300;line-height:1.5;}
+.quiz-opt:hover:not(:disabled){background:rgba(232,196,184,0.2);border-color:rgba(200,169,110,0.4);}
+.quiz-opt.correct{background:rgba(184,201,176,0.3);border-color:var(--sage-dark);color:#3a6a34;font-weight:400;}
+.quiz-opt.wrong{background:rgba(245,210,200,0.35);border-color:rgba(200,120,110,0.4);color:#8a4a40;}
+.quiz-opt.reveal{opacity:0.5;}
+.quiz-explanation{margin-top:14px;padding:14px 17px;border-radius:12px;border:1px solid rgba(232,196,184,0.3);font-size:13.5px;line-height:1.8;color:var(--text);font-weight:300;display:none;}
+.quiz-explanation.show{display:block;}
+.quiz-explanation strong{color:var(--warm-brown);font-weight:400;}
+#quiz-result{display:none;text-align:center;background:linear-gradient(135deg,rgba(248,234,228,0.8),rgba(240,246,237,0.8));border:1px solid rgba(200,169,110,0.3);border-radius:22px;padding:40px;margin-top:26px;}
+.result-emoji{font-size:40px;display:block;margin-bottom:12px;}
+.result-text{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--warm-brown);margin-bottom:10px;}
+.result-sub{font-size:14px;color:var(--text-light);font-weight:300;line-height:1.8;max-width:440px;margin:0 auto 20px;}
+.result-btn{background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.4);border-radius:30px;padding:10px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-brown);cursor:pointer;font-family:'Lato',sans-serif;transition:all 0.2s;}
+.result-btn:hover{background:rgba(200,169,110,0.35);}
+
+.page-footer{margin-top:70px;display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(201,160,160,0.2);}
+.footer-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);font-weight:300;text-decoration:none;}
+
+#print-btn{position:fixed;bottom:28px;right:28px;z-index:999;background:linear-gradient(135deg,rgba(122,92,88,0.9),rgba(90,65,62,0.95));color:#fff;border:none;border-radius:50px;padding:12px 24px;font-family:'Lato',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 20px rgba(122,92,88,0.4);transition:all 0.25s;}
+#print-btn:hover{transform:translateY(-2px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+@media print{
+  @page{size:letter;margin:18mm 16mm;}
+  #print-btn,.bg-wash,.flower-top-right,.flower-bottom-left{display:none!important;}
+  body{background:#fff!important;font-size:11pt;color:#2a1a18!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{max-width:100%!important;padding:0!important;}
+  *{animation:none!important;opacity:1!important;transform:none!important;}
+  .section-cover{page-break-after:always;min-height:auto!important;padding:40px 0!important;}
+  .seccion-divider{page-break-before:always;}
+  #quiz-section{display:none!important;}
+  .ccc-block,.idea-card,.insight,.highlight,.myth-box,.central-quote,.grid-card,.takeaway-box{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<button id="print-btn" onclick="window.print()">🖨 Guardar como PDF</button>
+<div class="bg-wash"></div>
+
+<svg class="flower-top-right" viewBox="0 0 300 300" fill="none">
+  <circle cx="220" cy="60" r="38" fill="rgba(200,169,110,0.22)"/>
+  <circle cx="248" cy="45" r="26" fill="rgba(245,230,224,0.35)"/>
+  <ellipse cx="230" cy="55" rx="12" ry="22" fill="rgba(200,169,110,0.28)" transform="rotate(-20 230 55)"/>
+  <ellipse cx="175" cy="85" rx="8" ry="28" fill="rgba(184,201,176,0.38)" transform="rotate(40 175 85)"/>
+  <circle cx="180" cy="50" r="10" fill="rgba(232,196,184,0.28)"/>
+</svg>
+<svg class="flower-bottom-left" viewBox="0 0 300 300" fill="none">
+  <circle cx="80" cy="240" r="35" fill="rgba(184,201,176,0.26)"/>
+  <circle cx="55" cy="255" r="24" fill="rgba(210,224,205,0.32)"/>
+  <ellipse cx="75" cy="245" rx="11" ry="21" fill="rgba(184,201,176,0.34)" transform="rotate(-15 75 245)"/>
+</svg>
+
+<div class="page">
+
+<!-- ══ PORTADA ══ -->
+<div class="section-cover">
+  <p class="breadcrumb">Catecismo de la Iglesia Católica · Primera Parte · Segunda Sección</p>
+  <div class="part-number">II</div>
+  <h1 class="part-title">Creo en Jesucristo,<br>su único Hijo</h1>
+  <p class="part-subtitle">Capítulo Segundo · §§ 422–682</p>
+  <div class="cover-divider">
+    <div class="cover-divider-line"></div>
+    <div class="cover-divider-dot"></div>
+    <span style="font-size:20px;">✝️</span>
+    <div class="cover-divider-dot"></div>
+    <div class="cover-divider-line r"></div>
+  </div>
+  <p class="cover-intro">Su nombre, su Encarnación, los misterios de su vida,<br>su pasión y muerte, su Resurrección, su Ascensión<br>y su venida como Juez.</p>
+  <div class="chapter-nav">
+    <a href="#art2" class="nav-pill">Art. 2 · Jesús, Cristo, Hijo, Señor</a>
+    <a href="#art3" class="nav-pill">Art. 3 · Encarnación</a>
+    <a href="#misterios" class="nav-pill">Misterios de su vida</a>
+    <a href="#art4" class="nav-pill">Art. 4 · Pasión y muerte</a>
+    <a href="#art5" class="nav-pill">Art. 5 · Resucitó</a>
+    <a href="#art6" class="nav-pill">Art. 6 · Ascensión</a>
+    <a href="#art7" class="nav-pill">Art. 7 · Juzgar a vivos y muertos</a>
+    <a href="#quiz-section" class="nav-pill">Quiz</a>
+  </div>
+</div>
+
+<div class="seccion-divider" id="art2"></div>
+
+<!-- ══════════════════════════════════
+     ARTÍCULO 2: Y EN JESUCRISTO, SU ÚNICO HIJO, NUESTRO SEÑOR
+     §§ 422–451
+══════════════════════════════════ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 2 · "Y en Jesucristo, su único Hijo, Nuestro Señor"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+<div class="seccion-header">
+  <p class="seccion-eyebrow">Capítulo Segundo</p>
+  <span class="seccion-number">Jesús</span>
+  <h2 class="seccion-title">La Buena Nueva</h2>
+  <p class="seccion-sub">§§ 422–429 · Jesús de Nazaret</p>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§ 422</p>
+  <p class="ccc-text">"Mas, cuando vino la plenitud de los tiempos, envió Dios a su Hijo, nacido de mujer... para que recibiéramos la condición de hijos" (Ga 4, 4-5). Esta es la "Buena Nueva" acerca de Jesucristo, Hijo de Dios, que ha hecho entrar en la historia del mundo la Buena Nueva de Dios.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Todo el Antiguo Testamento espera este momento: que Dios enviara, no solo un mensaje, sino a su propio Hijo, para hacernos hijos con Él. La <strong>Buena Nueva no es una idea, es una Persona</strong>: Jesucristo mismo.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 430–435</p>
+  <p class="ccc-text">"Jesús" significa en hebreo "Dios salva". El ángel Gabriel lo anuncia: "le pondrás por nombre Jesús, porque Él salvará a su pueblo de sus pecados" (Mt 1, 21). Sólo en el nombre de Jesús se otorga la salvación, sólo en Él podemos invocar a Dios como nuestro Padre, porque Él nos lo revela y nos reconcilia con Él.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El nombre "Jesús" no es un nombre cualquiera — <strong>es un anuncio hecho persona</strong>. Cada vez que decimos "Jesús" estamos diciendo "Dios salva". Por eso el nombre de Jesús está en el centro de la oración cristiana.</p>
+  </div>
+  <div class="insight">"En el nombre de Jesús toda rodilla se doble... y toda lengua confiese que Jesucristo es Señor" (Flp 2, 10-11).</div>
+</div>
+
+<div class="mini-div"></div>
+<div class="subhead-label"><p>II · Cristo</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 436–440</p>
+  <p class="ccc-text">"Cristo" viene del griego "Christos", traducción de "Mesías", que significa "ungido". Jesús es el Cristo porque el Espíritu Santo lo consagró y lo ungió, no con óleo material sino con el Espíritu mismo, para su misión de Sacerdote, Profeta y Rey.</p>
+</div>
+<div class="exp-block">
+  <div class="grid-3">
+    <div class="grid-card"><span class="grid-icon">🕊️</span><p class="grid-title">Sacerdote</p><p class="grid-desc">Se ofrece a sí mismo por nosotros.</p></div>
+    <div class="grid-card"><span class="grid-icon">📖</span><p class="grid-title">Profeta</p><p class="grid-desc">Revela plenamente a Dios Padre.</p></div>
+    <div class="grid-card"><span class="grid-icon">👑</span><p class="grid-title">Rey</p><p class="grid-desc">Reina desde la Cruz, sirviendo.</p></div>
+  </div>
+</div>
+
+<div class="mini-div"></div>
+<div class="subhead-label"><p>III · Hijo único de Dios</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 441–445</p>
+  <p class="ccc-text">En el Antiguo Testamento "hijo de Dios" es un título de honor dado a ángeles, al pueblo, a los reyes. Pero para Jesús este título tiene un sentido único e incomparable: no lo es por adopción, sino por naturaleza, "el único" (cf Jn 1, 14. 18): Él es el Hijo eterno del Padre.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Otros pueden llamarse "hijos de Dios" en sentido figurado. Jesús es Hijo <strong>en sentido propio, único e irrepetible</strong> — de la misma naturaleza divina del Padre. Ese "único" cambia todo: significa que en Jesús, Dios mismo se hace visible entre nosotros.</p>
+  </div>
+</div>
+
+<div class="mini-div"></div>
+<div class="subhead-label"><p>IV · Señor</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 446–451</p>
+  <p class="ccc-text">En las traducciones griegas del Antiguo Testamento, "Señor" (Kyrios) traducía el Nombre inefable de Dios, YHWH. Al llamar "Señor" a Jesús resucitado, el Nuevo Testamento le confiesa la misma gloria eterna de Dios. San Pablo dice: "nadie puede decir 'Jesús es Señor' sino por el Espíritu Santo" (1 Co 12, 3).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Llamar "Señor" a Jesús no es solo un título de respeto — es <strong>reconocerlo como Dios mismo</strong>. Por eso la oración "Jesús es Señor" es la confesión más breve y más profunda de la fe cristiana.</p>
+  </div>
+  <div class="central-quote">
+    <p class="cq-text">"Señor mío y Dios mío"</p>
+    <span class="cq-ref">San Juan 20, 28 (Santo Tomás ante el Resucitado)</span>
+  </div>
+</div>
+
+<div class="seccion-divider" id="art3"></div>
+
+<!-- ══════════════════════════════════
+     ARTÍCULO 3
+     §§ 456–511
+══════════════════════════════════ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 3 · "Jesucristo fue concebido por obra y gracia del Espíritu Santo y nació de Santa María Virgen"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="parrafo-label"><p>Párrafo 1 · El Hijo de Dios se hizo hombre</p></div>
+
+<div class="subhead-label"><p>I · Por qué el Verbo se hizo carne</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 456–460</p>
+  <p class="ccc-text">"Con el Verbo hecho carne para nuestra salvación": el Verbo se hizo carne para salvarnos reconciliándonos con Dios; para que conociéramos así el amor de Dios; para ser nuestro modelo de santidad; para hacernos "partícipes de la naturaleza divina" (2 P 1, 4).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Encarnación no fue "un plan B" tras el pecado — es la respuesta de Dios al hombre caído, pero también <strong>la revelación máxima de su amor</strong>. San Atanasio lo resume así: "El Hijo de Dios se hizo hombre para que nosotros fuéramos hechos Dios."</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>II · La Encarnación</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 461–463</p>
+  <p class="ccc-text">La Iglesia llama Encarnación al hecho de que el Hijo de Dios asumiera una naturaleza humana para realizar en ella nuestra salvación. San Juan lo formula: "Y el Verbo se hizo carne, y habitó entre nosotros" (Jn 1, 14).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Dios no envió un mensaje ni un ángel — <strong>se hizo uno de nosotros</strong>, con cuerpo, hambre, cansancio, alegría y dolor, sin dejar de ser Dios.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>III · Verdadero Dios y verdadero hombre</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 464–469</p>
+  <p class="ccc-text">El acontecimiento único e irrepetible de la Encarnación no significa que Jesucristo sea en parte Dios y en parte hombre, ni que sea el resultado de una fusión confusa de lo divino y lo humano. Se hizo verdaderamente hombre permaneciendo verdaderamente Dios. Es Dios y hombre verdaderamente, en la unidad de su Persona divina.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Este es un misterio que la razón no agota, pero que la Iglesia protegió con cuidado en los primeros concilios: Cristo no es "medio Dios y medio hombre" — es <strong>plenamente Dios y plenamente hombre</strong>, sin mezcla ni confusión, en una sola Persona divina.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>IV · Cómo es hombre el Hijo de Dios</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 470–478</p>
+  <p class="ccc-text">Jesucristo posee una inteligencia y una voluntad humanas, perfectamente conformes a su inteligencia y voluntad divinas. Tuvo un verdadero cuerpo humano, una verdadera alma humana con sus facultades de conocimiento y de voluntad. Conoció y amó con un corazón de hombre.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Jesús no fingió ser hombre. Tuvo una <strong>voluntad humana real</strong> que libremente obedeció a la voluntad divina del Padre, sobre todo en Getsemaní. Amó con un corazón humano, literal y verdadero.</p>
+  </div>
+</div>
+
+<div class="parrafo-label"><p>Párrafo 2 · "...Concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen"</p></div>
+
+<div class="subhead-label"><p>I · Concebido por obra y gracia del Espíritu Santo</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 484–486</p>
+  <p class="ccc-text">La Anunciación a María inaugura la plenitud de los tiempos. María es constituida Madre del Hijo de Dios por la acción del Espíritu Santo, sin intervención de varón: "El Espíritu Santo vendrá sobre ti, y el poder del Altísimo te cubrirá con su sombra" (Lc 1, 35).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La concepción virginal de Jesús no es un mito antiguo — es un <strong>signo de que la salvación viene enteramente de Dios</strong>, no del esfuerzo humano. Todo comienza por gracia.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>II · ...Nacido de la Virgen María</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 487–511</p>
+  <p class="ccc-text">María es "Madre de Dios" (Theotokos), pues concibió por obra del Espíritu Santo al Hijo eterno del Padre. Es Inmaculada desde el primer instante de su concepción, "llena de gracia" (Lc 1, 28). Permaneció Virgen antes, durante y después del parto, con virginidad "siempre" (Virgo semper, "Aeiparthenos").</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>María es Madre de Dios porque su Hijo es verdaderamente Dios. Su Inmaculada Concepción significa que Dios la preservó de todo pecado desde el inicio, <strong>en previsión de los méritos de Cristo</strong>, para prepararla como digna Madre del Salvador.</p>
+  </div>
+  <div class="idea-card">
+    <p class="idea-label">Para recordar</p>
+    <p class="idea-text">La maternidad divina de María y su virginidad perpetua no restan nada a la humanidad real de Jesús — al contrario, muestran que la salvación es enteramente iniciativa de Dios.</p>
+  </div>
+</div>
+
+<div class="seccion-divider" id="misterios"></div>
+
+<!-- ══════════════════════════════════
+     PÁRRAFO 3: LOS MISTERIOS DE LA VIDA DE CRISTO
+     §§ 512–570
+══════════════════════════════════ -->
+<div class="seccion-header">
+  <p class="seccion-eyebrow">Artículo 3 · Párrafo 3</p>
+  <span class="seccion-number">✦</span>
+  <h2 class="seccion-title">Los misterios de la vida de Cristo</h2>
+  <p class="seccion-sub">§§ 512–570</p>
+</div>
+
+<div class="subhead-label"><p>I · Toda la vida de Cristo es misterio</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 512–521</p>
+  <p class="ccc-text">Todo lo que Cristo vivió hace posible que nosotros lo vivamos en Él, y que Él lo viva en nosotros. Toda la riqueza de Cristo es "para todo hombre y es propiedad de cada uno". Sus palabras, sus actos, sus silencios, todo es Palabra del Padre.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>No solo importa que Cristo <em>haya vivido</em> — importa que en Él <strong>cada etapa de la vida humana quedó redimida</strong>: su infancia, su trabajo, sus silencios, todo tiene valor salvífico para nosotros.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>II · Los misterios de la infancia y de la vida oculta de Jesús</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 522–534</p>
+  <p class="ccc-text">La venida de Jesús es la irrupción decisiva de Dios en la historia. Su nacimiento en Belén manifiesta que Él vino a compartir nuestra condición humana en la pobreza. Su circuncisión (Lc 2, 21) anuncia la "circuncisión de Cristo" que es el Bautismo. La Epifanía manifiesta a Jesús como Mesías de Israel, Hijo de Dios y Salvador del mundo, a los "magos" venidos de Oriente.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Nacer pobre, ser presentado en el Templo, huir a Egipto — cada episodio de la infancia de Jesús <strong>ya anuncia su misión redentora completa</strong>. Nada es casualidad.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 533–534</p>
+  <p class="ccc-text">Durante la mayor parte de su vida, Jesús compartió la condición de la inmensa mayoría de los hombres: una vida cotidiana sin apariencia, vida de trabajo manual, vida familiar en Nazaret, sometida a María y José.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Los "años ocultos" de Nazaret no son un vacío — son la santificación de <strong>lo cotidiano</strong>: el trabajo, la familia, la obediencia silenciosa.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>III · Los misterios de la vida pública de Jesús</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 535–537</p>
+  <p class="ccc-text">Jesús se hizo bautizar por Juan en el Jordán. En este momento, el Espíritu Santo, que se había cernido sobre las aguas de la primera Creación, desciende sobre Cristo como preludio de la Nueva Creación. Su bautismo es la aceptación y el inicio de su misión de Siervo doliente.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Jesús no necesitaba ser bautizado para su propio perdón — se bautizó para <strong>solidarizarse con nosotros pecadores</strong> desde el inicio de su misión pública.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 538–540</p>
+  <p class="ccc-text">Los evangelios hablan de un tiempo de soledad de Jesús en el desierto inmediatamente después de su bautismo, cuando Satanás lo tienta. Jesús vence esta triple tentación, mostrándose Siervo de Dios totalmente fiel, en contraste al primer Adán y a la tentación en el paraíso.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Donde Adán cedió, Cristo <strong>resiste con la Palabra de Dios</strong>. Es el nuevo comienzo de la historia humana.</p>
+  </div>
+  <div class="insight">Esta victoria anticipa la de la Pasión, la victoria suprema de su obediencia amorosa al Padre.</div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 541–553</p>
+  <p class="ccc-text">"Después que Juan fue encarcelado, se fue Jesús a Galilea a proclamar el Evangelio de Dios: 'El tiempo se ha cumplido, el Reino de Dios está cerca; convertíos y creed en el Evangelio'" (Mc 1, 14-15). Jesús invita a la conversión, llama a doce Apóstoles para que participen de su misión, y a Pedro le confía las llaves del Reino.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La predicación de Jesús no es abstracta: es un anuncio urgente — <strong>el Reino de Dios ya está aquí</strong>, en su propia Persona — y una invitación a cambiar de vida.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 554–556</p>
+  <p class="ccc-text">Durante un tiempo Jesús ocultó su gloria mesiánica; pero en la Transfiguración, ante Pedro, Santiago y Juan, su rostro resplandeció y una nube cubrió a todos con la voz del Padre: "Éste es mi Hijo, el Escogido; escuchadle" (Lc 9, 35).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Transfiguración fortalece a los discípulos <strong>antes del escándalo de la Cruz</strong>, mostrándoles anticipadamente la gloria de la Resurrección.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 557–560</p>
+  <p class="ccc-text">Jesús sube a Jerusalén libremente, sabiendo el destino de muerte que le aguardaba, pero también su Resurrección. Su entrada mesiánica cumple la profecía de Zacarías: el Rey humilde, montado sobre un asno, que trae la paz.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Jesús no fue víctima de las circunstancias — <strong>subió a Jerusalén sabiendo lo que le esperaba</strong>, en plena libertad y obediencia al Padre.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 561–570</p>
+  <p class="ccc-text">Jesús respetó la Ley y la llevó a su plenitud, sin abolirla (cf Mt 5, 17). Amó el Templo, subiendo a él en peregrinación, aunque anunció su destrucción y la llegada de un Templo nuevo: su propio Cuerpo resucitado.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Jesús cumple, no destruye, la Ley y el Templo de Israel — pero anuncia que ambos encuentran su <strong>cumplimiento definitivo en su propia Persona</strong>.</p>
+  </div>
+</div>
+
+<div class="seccion-divider" id="art4"></div>
+
+<!-- ══════════════════════════════════
+     ARTÍCULO 4
+     §§ 571–630
+══════════════════════════════════ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 4 · "Jesucristo padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="parrafo-label"><p>Párrafo 1 · Jesús e Israel</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 595–598</p>
+  <p class="ccc-text">Hubo divisiones entre las autoridades religiosas de Jerusalén respecto a Jesús. El Sanedrín, habiendo declarado a Jesús "reo de muerte" como blasfemo, cometió una falta grave, pero atribuir responsabilidad colectiva a todo el pueblo judío, de ayer o de hoy, no tiene fundamento en la Escritura. Todos los pecadores fueron autores de la Pasión de Cristo.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Este es un punto que la Iglesia subraya con firmeza: <strong>no se puede culpar colectivamente al pueblo judío</strong> por la muerte de Jesús. Cada pecado de cada persona, de todos los tiempos, tuvo parte en su Pasión.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 599–605</p>
+  <p class="ccc-text">La muerte violenta de Jesús no fue fruto del azar, sino parte del designio misterioso de Dios, anunciado ya en la Escritura como muerte del Siervo doliente. Dios entregó a su Hijo por nuestros pecados, y Cristo se ofreció a sí mismo libremente por todos, "muriendo por todos... sin excepción alguna".</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La muerte de Jesús fue <strong>libremente aceptada, no impuesta</strong>. Dios entregó a su Hijo por amor, y el Hijo se entregó a sí mismo por el mismo amor, no como víctima pasiva sino como ofrenda voluntaria.</p>
+  </div>
+  <div class="central-quote">
+    <p class="cq-text">"Tanto amó Dios al mundo que le dio a su Hijo único"</p>
+    <span class="cq-ref">San Juan 3, 16</span>
+  </div>
+</div>
+
+<div class="parrafo-label"><p>Párrafo 2 · Jesucristo fue crucificado, muerto y sepultado</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 606–618</p>
+  <p class="ccc-text">Toda la vida de Cristo es ofrenda al Padre. La muerte de Cristo es a la vez el sacrificio pascual que lleva a cabo la redención definitiva de los hombres y el sacrificio de la Nueva Alianza. Cristo consuma su sacrificio en la cruz, ofreciéndose libremente por amor hasta el extremo (Jn 13, 1).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Cruz no es simplemente un castigo sufrido — es <strong>el sacrificio perfecto y definitivo</strong> que sustituye y cumple todos los sacrificios antiguos, ofrecido por amor hasta el final.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 619–623</p>
+  <p class="ccc-text">"Cristo murió por nuestros pecados según las Escrituras" (1 Co 15, 3). Nuestra salvación procede de la iniciativa del amor de Dios hacia nosotros. La redención de Cristo consiste en que Él vino "a dar su vida en rescate por muchos" (Mt 20, 28), justificando a muchos, cargando con la conducta necia de ellos.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La palabra "redención" significa literalmente rescate: Cristo <strong>paga con su propia vida</strong> para liberarnos de la esclavitud del pecado.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 624–630</p>
+  <p class="ccc-text">Jesús gustó la muerte para bien de todos. Fue sepultado verdaderamente. Durante el tiempo que su cuerpo permaneció en el sepulcro, su Persona divina continuó asumiendo su alma y su cuerpo, separados entre sí por la muerte pero sin que ninguno de los dos cesara de pertenecer a la Persona del Verbo.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Aunque la muerte separó el alma del cuerpo de Jesús —como en toda muerte humana real— <strong>ni el alma ni el cuerpo dejaron de estar unidos a la Persona divina del Hijo</strong>. Por eso su cuerpo no vio la corrupción (cf Hch 13, 37).</p>
+  </div>
+</div>
+
+<div class="seccion-divider" id="art5"></div>
+
+<!-- ══════════════════════════════════
+     ARTÍCULO 5
+     §§ 631–655
+══════════════════════════════════ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 5 · "Jesucristo descendió a los infiernos, al tercer día resucitó de entre los muertos"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 631–637</p>
+  <p class="ccc-text">Jesús bajó a las regiones inferiores de la tierra: quien vivió y quien murió es la misma persona del Verbo encarnado. Su alma unida a su Persona divina bajó a la morada de los muertos para liberar a los justos que le habían precedido, no para librar a los condenados ni para destruir el infierno de los condenados, sino para liberar a los justos que esperaban al Redentor.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El "descenso a los infiernos" (o "seno de Abraham") no significa que Jesús fue condenado — significa que <strong>llevó la salvación a los justos que murieron antes de Él</strong>, esperando su venida.</p>
+  </div>
+</div>
+
+<div class="parrafo-label"><p>Párrafo 2 · Al tercer día resucitó de entre los muertos</p></div>
+
+<div class="subhead-label"><p>I · El acontecimiento histórico y trascendente</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 639–644</p>
+  <p class="ccc-text">"La construcción de la nueva fe... comenzó en la mañana de Pascua." El sepulcro vacío no es en sí mismo una prueba directa, pero es un signo importante. Las apariciones del Resucitado establecen relaciones directas con sus discípulos: se deja tocar por ellos, come con ellos.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Los discípulos no esperaban la Resurrección — al contrario, dudaron y tardaron en creer. Eso hace que su testimonio final sea <strong>más creíble, no menos</strong>: nadie se inventa algo que primero le pareció increíble.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§ 645</p>
+  <p class="ccc-text">Jesús resucitado establece con sus discípulos relaciones directas mediante el tacto y el compartir la comida. Les invita así a reconocer que él no es un espíritu, sino que su cuerpo resucitado con el que él ha sido crucificado sigue siendo el mismo, que sin embargo posee las propiedades nuevas de un cuerpo glorioso.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El cuerpo resucitado es <strong>el mismo cuerpo, pero glorificado</strong>: no está sujeto ni al espacio ni al tiempo como antes, pero lleva las huellas reales de la Pasión.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>II · La resurrección, obra de la Santísima Trinidad</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 648–650</p>
+  <p class="ccc-text">La Resurrección de Cristo se realiza por el poder del Padre, que "resucitó" a su Hijo y así hizo entrar perfectamente su humanidad, con su cuerpo, en la Trinidad. Jesús es definitivamente revelado "Hijo de Dios con poder... según el Espíritu de santidad" (Rm 1, 4).</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Resurrección no es solo algo que le pasó a Jesús — <strong>toda la Trinidad actúa en ella</strong>: el Padre resucita, el Hijo entrega y recupera su vida, el Espíritu vivifica.</p>
+  </div>
+</div>
+
+<div class="subhead-label"><p>III · Sentido y alcance salvífico de la Resurrección</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 651–655</p>
+  <p class="ccc-text">"Si no resucitó Cristo, vana es nuestra fe" (1 Co 15, 14). La Resurrección constituye ante todo la confirmación de todo lo que Cristo mismo hizo y enseñó. Realiza las promesas del Antiguo Testamento. Nos abre el acceso a una nueva vida, justificándonos y confiriéndonos la participación real en la vida del Hijo único.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Resurrección de Cristo no es solo un dato del pasado — es la <strong>fuente de nuestra propia vida nueva</strong>. Cristo resucitado vive en el corazón de los cristianos.</p>
+  </div>
+  <div class="idea-card">
+    <p class="idea-label">Para recordar</p>
+    <p class="idea-text">Cristo resucitado no muere ya nunca más; en Él, y solo en Él, tenemos la esperanza cierta de resucitar también nosotros.</p>
+  </div>
+</div>
+
+<div class="seccion-divider" id="art6"></div>
+
+<!-- ══════════════════════════════════
+     ARTÍCULO 6
+     §§ 659–664
+══════════════════════════════════ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 6 · "Jesucristo subió a los cielos, y está sentado a la derecha de Dios, Padre Todopoderoso"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 659–660</p>
+  <p class="ccc-text">"Con esto, el Señor Jesús, después de haberles hablado, fue elevado al Cielo y se sentó a la diestra de Dios" (Mc 16, 19). El cuerpo de Cristo fue glorificado desde el instante de su Resurrección, como lo prueban las propiedades nuevas y sobrenaturales de las que goza su cuerpo. Pero durante los cuarenta días, su gloria queda todavía velada bajo los rasgos de una humanidad ordinaria.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Ascensión no es que Jesús "empiece a ser glorioso" — ya lo era desde la Resurrección. Es el <strong>último acto visible</strong> antes de que su humanidad glorificada entre plenamente en el misterio de Dios.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 661–664</p>
+  <p class="ccc-text">"Nadie ha subido al cielo sino el que bajó del cielo, el Hijo del hombre" (Jn 3, 13). Sólo Cristo ha podido abrir este acceso al hombre, para que nosotros, miembros de su Cuerpo, vivamos con la ardiente esperanza de seguirlo en su Reino. Cristo está sentado a la derecha del Padre: por "derecha del Padre" entendemos la gloria y el honor de la divinidad.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>"Sentarse a la derecha del Padre" no es una imagen espacial — significa que Cristo, en su humanidad, <strong>participa plenamente del poder y la gloria de Dios</strong>, para siempre.</p>
+  </div>
+</div>
+
+<div class="seccion-divider" id="art7"></div>
+
+<!-- ══════════════════════════════════
+     ARTÍCULO 7
+     §§ 665–682
+══════════════════════════════════ -->
+<div class="articulo-tag">
+  <div class="articulo-tag-line"></div>
+  <span class="articulo-tag-text">Artículo 7 · "Desde allí ha de venir a juzgar a vivos y a muertos"</span>
+  <div class="articulo-tag-line"></div>
+</div>
+
+<div class="subhead-label"><p>I · Volverá en gloria</p></div>
+<div class="ccc-block">
+  <p class="ccc-num">§§ 668–672</p>
+  <p class="ccc-text">"Cristo murió y volvió a la vida para eso, para ser Señor de muertos y vivos" (Rm 14, 9). El Reino de Cristo, presente ya en su Iglesia, no está todavía acabado "con gran poder y gloria" con el advenimiento del Rey a la tierra. Este Reino es objeto de ataques del mal, hasta que todo le sea sometido.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>Vivimos en un "ya, pero todavía no": el Reino de Cristo ya comenzó con su Resurrección, pero <strong>su plenitud final llegará con su segunda venida</strong>.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 673–676</p>
+  <p class="ccc-text">Antes del advenimiento de Cristo, la Iglesia deberá pasar por una prueba final que sacudirá la fe de numerosos creyentes. La impostura religiosa suprema es la del Anticristo, un seudo-mesianismo en que el hombre se glorifica a sí mismo colocándose en el lugar de Dios.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>La Iglesia advierte contra cualquier intento de construir el Reino de Dios por medios puramente humanos o políticos — eso es la <strong>tentación del "milenarismo"</strong>, que la Iglesia rechaza.</p>
+  </div>
+</div>
+
+<div class="ccc-block">
+  <p class="ccc-num">§§ 677–680</p>
+  <p class="ccc-text">La Iglesia sólo entrará en la gloria del Reino a través de esta última Pascua, en la que seguirá a su Señor en su Muerte y su Resurrección. El Reino se realizará plenamente cuando Cristo entregue el Reino a su Padre. Cristo, el Señor de la vida eterna, tiene el pleno derecho de juzgar definitivamente las obras y los corazones de los hombres.</p>
+</div>
+<div class="exp-block">
+  <div class="exp-text">
+    <p>El Juicio no es una amenaza arbitraria — es la <strong>manifestación definitiva de la verdad de cada vida</strong>, hecha con la misericordia y la justicia de Cristo mismo.</p>
+  </div>
+  <div class="highlight">
+    "Cuanto hicisteis a unos de estos hermanos míos más pequeños, a mí me lo hicisteis" — Mateo 25, 40.
+  </div>
+</div>
+
+<div class="takeaway-box">
+  <span class="takeaway-icon">✝️</span>
+  <p class="takeaway-label">Para llevar contigo</p>
+  <p class="takeaway-text">"Y en Jesucristo, su único Hijo, Nuestro Señor" — verdadero Dios y verdadero hombre, que nació, murió, resucitó, subió a los cielos y volverá en gloria.</p>
+  <p class="takeaway-sub">Cada artículo de este Credo no es una idea abstracta: es la vida real de una Persona que se hizo cercana para salvarnos, y que hoy sigue vivo, glorioso, intercediendo por nosotros.</p>
+</div>
+
+<!-- ══════════════════════════════════
+     QUIZ
+══════════════════════════════════ -->
+<div id="quiz-section">
+  <h2 class="quiz-title">Pon a prueba lo aprendido</h2>
+  <p class="quiz-sub">10 preguntas sobre "Creo en Jesucristo" (§§ 422–682)</p>
+  <div id="quiz-container"></div>
+  <div id="quiz-result">
+    <span class="result-emoji" id="result-emoji"></span>
+    <p class="result-text" id="result-text"></p>
+    <p class="result-sub" id="result-sub"></p>
+    <button class="result-btn" onclick="resetQuiz()">Reintentar</button>
+  </div>
+</div>
+
+<div class="page-footer">
+  <a href="segunda-seccion.html" class="footer-text">← Capítulo I</a>
+  <a href="catecismo-index.html" class="footer-text">Índice del Catecismo</a>
+</div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q: "¿Qué significa el nombre 'Jesús'? (§ 430)",
+    opts:["Un nombre común sin significado especial","'Dios salva' — anuncia su misión desde el nombre mismo","'El ungido'","'Hijo del hombre'"],
+    correct:1,
+    explanation:"El ángel Gabriel se lo revela a María: <strong>'le pondrás por nombre Jesús, porque Él salvará a su pueblo de sus pecados'</strong> (Mt 1, 21). El nombre mismo es un anuncio de salvación."
+  },
+  {
+    q: "¿Por qué se llama 'Cristo' a Jesús? (§§ 436-440)",
+    opts:["Es su apellido de familia","Significa 'el Ungido' por el Espíritu Santo para su misión de Sacerdote, Profeta y Rey","Es un título honorífico romano","Significa 'maestro' en arameo"],
+    correct:1,
+    explanation:"'Cristo' traduce 'Mesías', <strong>'el Ungido'</strong>. Jesús fue consagrado por el Espíritu Santo, no con óleo material, para su triple misión de Sacerdote, Profeta y Rey."
+  },
+  {
+    q: "¿En qué sentido es Jesús 'Hijo único de Dios'? (§§ 441-445)",
+    opts:["En el mismo sentido que los ángeles o los reyes de Israel","Por adopción, como todos los creyentes","Por naturaleza, siendo de la misma naturaleza divina del Padre — sentido único e irrepetible","Es un título simbólico sin fundamento real"],
+    correct:2,
+    explanation:"A diferencia de los 'hijos de Dios' del Antiguo Testamento (ángeles, el pueblo, los reyes), Jesús es Hijo <strong>por naturaleza, no por adopción</strong> — 'el único' Hijo, de la misma naturaleza divina del Padre."
+  },
+  {
+    q: "¿Cómo describe el Catecismo la unión de lo divino y lo humano en Cristo? (§§ 464-469)",
+    opts:["Es en parte Dios y en parte hombre","Es una mezcla o fusión de ambas naturalezas","Es verdaderamente Dios y verdaderamente hombre, sin mezcla ni confusión, en la unidad de su Persona divina","Es solo hombre, pero con poderes especiales de Dios"],
+    correct:2,
+    explanation:"La Iglesia enseña que Cristo es <strong>plenamente Dios y plenamente hombre</strong>, en una sola Persona divina, sin que las dos naturalezas se confundan ni se mezclen."
+  },
+  {
+    q: "¿Por qué se dice que María es 'Madre de Dios'? (§§ 495, 509)",
+    opts:["Porque crió a Jesús desde niño","Porque concibió por obra del Espíritu Santo al Hijo eterno del Padre, que es verdaderamente Dios","Es un título honorífico sin fundamento doctrinal","Porque fue elegida entre todas las mujeres del mundo"],
+    correct:1,
+    explanation:"María es Madre de Dios (Theotokos) porque <strong>su Hijo, a quien concibió por obra del Espíritu Santo, es verdaderamente Dios</strong> desde el primer instante de su concepción."
+  },
+  {
+    q: "¿Qué revela la Transfiguración? (§§ 554-556)",
+    opts:["Que Jesús era en realidad un ángel","Un anticipo de la gloria de la Resurrección, para fortalecer la fe de los discípulos antes de la Cruz","Un milagro sin relación con la Pasión","Que Jesús cambió físicamente de identidad"],
+    correct:1,
+    explanation:"En el monte, ante Pedro, Santiago y Juan, Jesús mostró <strong>un anticipo de su gloria futura</strong>, para sostener su fe cuando llegara el escándalo de la Cruz."
+  },
+  {
+    q: "¿Quién es responsable de la muerte de Jesús, según el Catecismo? (§ 598)",
+    opts:["Colectivamente, el pueblo judío de todos los tiempos","Únicamente los romanos","Todos los pecadores, de todos los tiempos, fueron autores de su Pasión","Nadie es responsable; fue un accidente histórico"],
+    correct:2,
+    explanation:"El Catecismo es claro: no se puede culpar colectivamente a ningún pueblo. <strong>'Todos los pecadores fueron los autores de la Pasión de Cristo'</strong> — cada pecado tuvo parte en su muerte."
+  },
+  {
+    q: "¿Qué significa que Cristo 'descendió a los infiernos'? (§§ 632-635)",
+    opts:["Que fue condenado como los pecadores","Que su alma, unida a su Persona divina, bajó a liberar a los justos que esperaban al Redentor antes de Él","Que dejó de ser Dios temporalmente","Que su cuerpo desapareció por completo"],
+    correct:1,
+    explanation:"No significa condena — significa que Cristo <strong>llevó la salvación a los justos que habían muerto antes de Él</strong> y esperaban la redención, como Abraham y los profetas."
+  },
+  {
+    q: "¿Qué prueba, según el Catecismo, la naturaleza del cuerpo resucitado de Jesús? (§ 645)",
+    opts:["Que era un fantasma o espíritu sin cuerpo","Que era el mismo cuerpo crucificado, pero con propiedades nuevas y gloriosas","Que era un cuerpo completamente distinto al que murió","Que solo apareció en visiones internas de los discípulos"],
+    correct:1,
+    explanation:"Jesús se dejó tocar y comió con sus discípulos para mostrar que era <strong>el mismo cuerpo con el que había sido crucificado</strong>, ahora glorificado con propiedades nuevas."
+  },
+  {
+    q: "¿Qué significa que Cristo está 'sentado a la derecha del Padre'? (§ 663)",
+    opts:["Que ocupa un lugar físico específico en el cielo","Que su humanidad participa plenamente de la gloria, el poder y el honor de la divinidad","Que es inferior al Padre en dignidad","Que dejó de ser hombre al subir al cielo"],
+    correct:1,
+    explanation:"Es una expresión que significa que Cristo, <strong>en su humanidad glorificada, participa del mismo poder y gloria de Dios Padre</strong>, no una ubicación literal."
+  }
+];
+
+let answered = new Array(questions.length).fill(false);
+let score = 0;
+
+function buildQuiz(){
+  const c = document.getElementById('quiz-container');
+  c.innerHTML = '';
+  const bar = document.createElement('div');
+  bar.className = 'quiz-score-bar';
+  bar.innerHTML = `<span class="score-text">Respuestas correctas</span><span class="score-num" id="live-score">0 / ${questions.length}</span>`;
+  c.appendChild(bar);
+  questions.forEach((q,qi)=>{
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    const num = document.createElement('p');
+    num.className = 'quiz-q-num';
+    num.textContent = `Pregunta ${qi+1} de ${questions.length}`;
+    card.appendChild(num);
+    const qt = document.createElement('p');
+    qt.className = 'quiz-q-text';
+    qt.textContent = q.q;
+    card.appendChild(qt);
+    const opts = document.createElement('div');
+    opts.className = 'quiz-options';
+    const exp = document.createElement('div');
+    exp.className = 'quiz-explanation';
+    q.opts.forEach((opt,oi)=>{
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.onclick = ()=>handleAnswer(qi,oi,btn,opts,exp);
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+    card.appendChild(exp);
+    c.appendChild(card);
+  });
+}
+
+function handleAnswer(qi,oi,btn,opts,exp){
+  if(answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  opts.querySelectorAll('.quiz-opt').forEach((b,i)=>{
+    b.disabled = true;
+    if(i===q.correct) b.classList.add('correct');
+    else if(i===oi&&oi!==q.correct) b.classList.add('wrong');
+    else b.classList.add('reveal');
+  });
+  if(oi===q.correct){
+    score++;
+    exp.innerHTML = `<strong>✦ ¡Correcto!</strong><br><br>${q.explanation}`;
+    exp.style.background = 'rgba(184,201,176,0.25)';
+    exp.style.borderColor = 'var(--sage-dark)';
+  } else {
+    exp.innerHTML = `<strong>No es esa.</strong> La respuesta correcta está marcada en verde.<br><br>${q.explanation}`;
+    exp.style.background = 'rgba(245,230,224,0.4)';
+    exp.style.borderColor = 'rgba(200,120,110,0.4)';
+  }
+  exp.classList.add('show');
+  document.getElementById('live-score').textContent = `${score} / ${questions.length}`;
+  if(answered.every(a=>a)) showResult();
+}
+
+function showResult(){
+  const res = document.getElementById('quiz-result');
+  res.style.display = 'block';
+  const pct = score/questions.length;
+  let emoji,text,sub;
+  if(pct===1){emoji='✝️';text=`¡Perfecto! ${score} de ${questions.length}`;sub='Dominas el Capítulo Segundo completo: la Encarnación, la vida de Cristo, su Pasión, muerte, Resurrección, Ascensión y su venida como Juez. ¡Excelente!';}
+  else if(pct>=0.7){emoji='🕊️';text=`Muy bien — ${score} de ${questions.length}`;sub='Entendiste los conceptos fundamentales sobre Jesucristo. Repasa las preguntas que fallaste leyendo las explicaciones.';}
+  else if(pct>=0.5){emoji='📖';text=`Vas bien — ${score} de ${questions.length}`;sub='Tienes la base. Vuelve a leer las secciones donde fallaste — la segunda lectura siempre aclara más.';}
+  else{emoji='🌸';text=`Sigue adelante — ${score} de ${questions.length}`;sub='Este capítulo tiene muchas ideas profundas sobre la Persona de Cristo. Reléelo despacio, artículo por artículo.';}
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-text').textContent = text;
+  document.getElementById('result-sub').textContent = sub;
+  res.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function resetQuiz(){
+  answered = new Array(questions.length).fill(false);
+  score = 0;
+  document.getElementById('quiz-result').style.display = 'none';
+  buildQuiz();
+  document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
